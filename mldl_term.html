@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML & DL — Complete Visual Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink-100: #fff0f6;
+  --pink-200: #ffd6e7;
+  --pink-300: #ffadd2;
+  --pink-400: #ff85c2;
+  --pink-500: #f759ab;
+  --pink-600: #eb2f96;
+  --pink-700: #c41d7f;
+  --rose: #ff4d8d;
+  --deep-rose: #d6005a;
+  --cream: #fff9fb;
+  --gold: #ffb347;
+  --purple: #9b4dca;
+  --purple-light: #f3e8ff;
+  --teal: #0891b2;
+  --teal-light: #e0f7fa;
+  --green: #16a34a;
+  --green-light: #dcfce7;
+  --orange: #ea580c;
+  --orange-light: #fff7ed;
+  --blue: #1d4ed8;
+  --blue-light: #eff6ff;
+  --text-dark: #1a0a12;
+  --text-mid: #5c2a3d;
+  --text-light: #9d5b78;
+  --shadow: 0 8px 32px rgba(198,0,100,0.12);
+  --shadow-lg: 0 20px 60px rgba(198,0,100,0.18);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(135deg, #fff0f6 0%, #fce4ec 30%, #fff0f6 60%, #ffd6e7 100%);
+  min-height: 100vh;
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* Decorative background blobs */
+body::before {
+  content: '';
+  position: fixed;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(247,89,171,0.15) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -200px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(155,77,202,0.1) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ========== HERO ========== */
+.hero {
+  text-align: center;
+  padding: 70px 20px 50px;
+  position: relative; z-index: 1;
+}
+.hero-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--pink-500), var(--purple));
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 6px 20px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--deep-rose) 0%, var(--purple) 50%, var(--pink-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--text-mid);
+  max-width: 600px;
+  margin: 0 auto 30px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.stat-pill {
+  background: white;
+  border: 2px solid var(--pink-300);
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--pink-700);
+  box-shadow: 0 4px 12px rgba(247,89,171,0.15);
+}
+
+/* ========== TOC ========== */
+.toc-wrapper {
+  max-width: 1100px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+  position: relative; z-index: 1;
+}
+.toc-card {
+  background: white;
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--pink-200);
+}
+.toc-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--deep-rose);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+.toc-item:hover {
+  background: var(--pink-100);
+  border-color: var(--pink-300);
+  color: var(--deep-rose);
+  transform: translateX(3px);
+}
+.toc-num {
+  width: 24px; height: 24px;
+  background: linear-gradient(135deg, var(--pink-500), var(--purple));
+  color: white;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ========== SECTION HEADERS ========== */
+.category-header {
+  max-width: 1100px;
+  margin: 60px auto 20px;
+  padding: 0 20px;
+  position: relative; z-index: 1;
+}
+.cat-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--deep-rose), var(--purple));
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(198,0,100,0.3);
+}
+.cat-line {
+  height: 2px;
+  background: linear-gradient(90deg, var(--pink-400), transparent);
+  margin-top: 16px;
+  border-radius: 2px;
+}
+
+/* ========== CARDS ========== */
+.cards-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+  position: relative; z-index: 1;
+}
+.cards-container.wide {
+  grid-template-columns: 1fr;
+}
+.cards-container.two-col {
+  grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--pink-200);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--pink-500), var(--purple));
+  border-radius: 20px 20px 0 0;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-num {
+  position: absolute;
+  top: 18px; right: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--pink-200);
+  line-height: 1;
+}
+.card-icon { font-size: 1.6rem; margin-bottom: 10px; }
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--deep-rose);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.card-subtitle {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 12px;
+}
+.card-body {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: var(--text-mid);
+}
+.card-body strong { color: var(--deep-rose); }
+
+/* Hinglish callout */
+.hinglish {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #fff0f6, #f3e8ff);
+  border-left: 3px solid var(--purple);
+  border-radius: 0 10px 10px 0;
+  font-size: 12.5px;
+  color: var(--purple);
+  font-style: italic;
+  line-height: 1.6;
+}
+.hinglish::before { content: '🗣️ '; }
+
+/* Formula box */
+.formula {
+  margin: 14px 0;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #fff0f6 0%, #f3e8ff 100%);
+  border: 1.5px dashed var(--pink-400);
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--deep-rose);
+  text-align: center;
+  line-height: 1.8;
+  font-weight: 600;
+}
+
+/* Tags */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+.tag-pink { background: var(--pink-200); color: var(--pink-700); }
+.tag-purple { background: var(--purple-light); color: var(--purple); }
+.tag-teal { background: var(--teal-light); color: var(--teal); }
+.tag-green { background: var(--green-light); color: var(--green); }
+.tag-orange { background: var(--orange-light); color: var(--orange); }
+.tag-blue { background: var(--blue-light); color: var(--blue); }
+
+/* ========== VISUAL COMPONENTS ========== */
+
+/* Neural Network SVG visual */
+.nn-visual {
+  margin: 16px 0;
+  background: linear-gradient(135deg, #fff0f6, #f3e8ff);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+}
+
+/* Comparison table */
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0;
+  font-size: 12.5px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.comp-table th {
+  background: linear-gradient(135deg, var(--pink-600), var(--purple));
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+.comp-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--pink-200);
+  color: var(--text-mid);
+  vertical-align: top;
+}
+.comp-table tr:nth-child(even) td { background: var(--pink-100); }
+.comp-table tr:last-child td { border-bottom: none; }
+
+/* Progress bar visual */
+.progress-bar {
+  height: 10px;
+  background: var(--pink-200);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 4px 0;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--pink-500), var(--purple));
+  transition: width 1s ease;
+}
+
+/* Step list */
+.steps { list-style: none; margin: 14px 0; }
+.steps li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-mid);
+}
+.step-num {
+  width: 24px; height: 24px;
+  background: linear-gradient(135deg, var(--pink-500), var(--purple));
+  color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+
+/* Divider */
+.divider { margin: 8px 0; height: 1px; background: linear-gradient(90deg, var(--pink-300), transparent); }
+
+/* Example box */
+.example {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--green-light);
+  border-left: 3px solid var(--green);
+  border-radius: 0 10px 10px 0;
+  font-size: 12.5px;
+  color: var(--green);
+  line-height: 1.6;
+}
+.example::before { content: '✅ Example: '; font-weight: 700; }
+
+/* Warning box */
+.warning {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--orange-light);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 10px 10px 0;
+  font-size: 12.5px;
+  color: var(--orange);
+  line-height: 1.6;
+}
+.warning::before { content: '⚠️ Watch out: '; font-weight: 700; }
+
+/* Canvas chart */
+canvas { display: block; margin: 0 auto; }
+
+/* Big card spanning full width */
+.card.full { grid-column: 1 / -1; }
+
+/* Mini metric */
+.metrics-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+.metric-box {
+  flex: 1; min-width: 120px;
+  background: var(--pink-100);
+  border: 1px solid var(--pink-300);
+  border-radius: 12px;
+  padding: 12px 14px;
+  text-align: center;
+}
+.metric-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--deep-rose);
+}
+.metric-label { font-size: 11px; color: var(--text-light); margin-top: 3px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Activation curves mini SVG */
+.act-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 14px; }
+.act-box {
+  background: var(--pink-100);
+  border: 1px solid var(--pink-200);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+}
+.act-name { font-size: 11px; font-weight: 700; color: var(--deep-rose); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+.act-formula { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--purple); }
+
+/* Flow diagram */
+.flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 14px 0;
+  justify-content: center;
+}
+.flow-box {
+  background: linear-gradient(135deg, var(--pink-500), var(--purple));
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+.flow-arrow { color: var(--pink-500); font-size: 18px; font-weight: 900; }
+
+/* ========== FOOTER ========== */
+.footer {
+  text-align: center;
+  padding: 60px 20px;
+  position: relative; z-index: 1;
+}
+.footer-card {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--deep-rose), var(--purple));
+  color: white;
+  padding: 30px 50px;
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+}
+.footer-card h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 8px; }
+.footer-card p { font-size: 14px; opacity: 0.85; line-height: 1.7; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--pink-100); }
+::-webkit-scrollbar-thumb { background: var(--pink-400); border-radius: 10px; }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(30px); }
+  to { opacity:1; transform: translateY(0); }
+}
+.card { animation: fadeUp 0.5s ease both; }
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3) { animation-delay: 0.15s; }
+.card:nth-child(4) { animation-delay: 0.2s; }
+.card:nth-child(5) { animation-delay: 0.25s; }
+
+/* Sticky top nav */
+.top-nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,240,246,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--pink-300);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  overflow-x: auto;
+}
+.nav-item {
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-mid);
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+.nav-item:hover { background: white; border-color: var(--pink-300); color: var(--deep-rose); }
+.nav-logo { font-family:'Playfair Display',serif; font-weight:900; color:var(--deep-rose); font-size:16px; flex-shrink:0; }
+
+/* confusion matrix */
+.cm-grid { display:grid; grid-template-columns:auto 1fr 1fr; gap:4px; margin:14px 0; font-size:12px; }
+.cm-cell {
+  padding:10px 8px; border-radius:8px; text-align:center; font-weight:600;
+}
+.cm-header { background:transparent; color:var(--text-light); font-size:10px; letter-spacing:1px; text-transform:uppercase; display:flex; align-items:center; justify-content:center; }
+.cm-tp { background:#dcfce7; color:#16a34a; }
+.cm-fp { background:#fee2e2; color:#dc2626; }
+.cm-fn { background:#fff7ed; color:#ea580c; }
+.cm-tn { background:#eff6ff; color:#1d4ed8; }
+
+/* GAN diagram */
+.gan-flow { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:14px 0; justify-content:center; }
+.gan-box { padding:12px 16px; border-radius:14px; text-align:center; font-size:12px; font-weight:700; }
+
+/* LR curve visual */
+.lr-visual { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin:14px 0; }
+.lr-item { background:var(--pink-100); border-radius:12px; padding:12px 10px; text-align:center; font-size:11px; font-weight:600; }
+
+/* type badge */
+.type-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 50px;
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.badge-reg { background:#e0f7fa; color:#0891b2; }
+.badge-cls { background:#f3e8ff; color:#9b4dca; }
+.badge-unsup { background:#dcfce7; color:#16a34a; }
+.badge-nn { background:#fce7f3; color:#db2777; }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <span class="nav-logo">ML/DL ✦</span>
+  <a class="nav-item" href="#foundations">Foundations</a>
+  <a class="nav-item" href="#algorithms">Algorithms</a>
+  <a class="nav-item" href="#neural">Neural Networks</a>
+  <a class="nav-item" href="#training">Training</a>
+  <a class="nav-item" href="#regularization">Regularization</a>
+  <a class="nav-item" href="#evaluation">Evaluation</a>
+  <a class="nav-item" href="#modern">Modern DL</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">✦ Complete Visual Guide ✦</div>
+  <h1>Machine Learning<br>&amp; Deep Learning</h1>
+  <p class="hero-sub">Shuru se Samjho — 55+ Terms, Formulas, Visuals, aur Hinglish Mein Clear Explanation</p>
+  <div class="hero-stats">
+    <span class="stat-pill">📚 55+ Terms</span>
+    <span class="stat-pill">📊 Visual Diagrams</span>
+    <span class="stat-pill">🧮 All Formulas</span>
+    <span class="stat-pill">🗣️ Hinglish Notes</span>
+    <span class="stat-pill">✅ Examples</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc-wrapper">
+  <div class="toc-card">
+    <div class="toc-title">📋 Table of Contents</div>
+    <div class="toc-grid">
+      <a class="toc-item" href="#foundations"><span class="toc-num">1</span> ML vs DL — Overview</a>
+      <a class="toc-item" href="#s2"><span class="toc-num">2</span> Features & Labels</a>
+      <a class="toc-item" href="#s3"><span class="toc-num">3</span> Linear Regression</a>
+      <a class="toc-item" href="#s4"><span class="toc-num">4</span> Logistic Regression</a>
+      <a class="toc-item" href="#s5"><span class="toc-num">5</span> Loss / Cost Function</a>
+      <a class="toc-item" href="#s6"><span class="toc-num">6</span> Gradient Descent</a>
+      <a class="toc-item" href="#s7"><span class="toc-num">7</span> Weights & Biases</a>
+      <a class="toc-item" href="#s8"><span class="toc-num">8</span> Parameters vs Hyperparams</a>
+      <a class="toc-item" href="#s9"><span class="toc-num">9</span> Epochs / Batch / Iterations</a>
+      <a class="toc-item" href="#algorithms"><span class="toc-num">10</span> Decision Tree</a>
+      <a class="toc-item" href="#s11"><span class="toc-num">11</span> Random Forest</a>
+      <a class="toc-item" href="#s12"><span class="toc-num">12</span> SVM</a>
+      <a class="toc-item" href="#s13"><span class="toc-num">13</span> K-Means Clustering</a>
+      <a class="toc-item" href="#s14"><span class="toc-num">14</span> Ensemble Learning</a>
+      <a class="toc-item" href="#s15"><span class="toc-num">15</span> PCA</a>
+      <a class="toc-item" href="#neural"><span class="toc-num">16</span> Perceptron & MLP</a>
+      <a class="toc-item" href="#s17"><span class="toc-num">17</span> Activation Functions</a>
+      <a class="toc-item" href="#s18"><span class="toc-num">18</span> Neural Network Architecture</a>
+      <a class="toc-item" href="#s19"><span class="toc-num">19</span> Backpropagation</a>
+      <a class="toc-item" href="#s20"><span class="toc-num">20</span> CNN</a>
+      <a class="toc-item" href="#s21"><span class="toc-num">21</span> RNN & LSTM</a>
+      <a class="toc-item" href="#s22"><span class="toc-num">22</span> Autoencoder</a>
+      <a class="toc-item" href="#s23"><span class="toc-num">23</span> GAN</a>
+      <a class="toc-item" href="#training"><span class="toc-num">24</span> Optimizers</a>
+      <a class="toc-item" href="#s25"><span class="toc-num">25</span> Learning Rate Scheduling</a>
+      <a class="toc-item" href="#regularization"><span class="toc-num">26</span> Overfitting/Underfitting</a>
+      <a class="toc-item" href="#s27"><span class="toc-num">27</span> Regularization (L1/L2)</a>
+      <a class="toc-item" href="#s28"><span class="toc-num">28</span> Dropout & BatchNorm</a>
+      <a class="toc-item" href="#s29"><span class="toc-num">29</span> Early Stopping</a>
+      <a class="toc-item" href="#s30"><span class="toc-num">30</span> Bias-Variance Tradeoff</a>
+      <a class="toc-item" href="#evaluation"><span class="toc-num">31</span> Confusion Matrix</a>
+      <a class="toc-item" href="#s32"><span class="toc-num">32</span> Metrics: Acc/Prec/Recall/F1</a>
+      <a class="toc-item" href="#s33"><span class="toc-num">33</span> ROC & AUC</a>
+      <a class="toc-item" href="#s34"><span class="toc-num">34</span> Cross Validation</a>
+      <a class="toc-item" href="#modern"><span class="toc-num">35</span> Embeddings & Tokenization</a>
+      <a class="toc-item" href="#s36"><span class="toc-num">36</span> Attention Mechanism</a>
+      <a class="toc-item" href="#s37"><span class="toc-num">37</span> Transformer / BERT / GPT</a>
+      <a class="toc-item" href="#s38"><span class="toc-num">38</span> Transfer Learning</a>
+      <a class="toc-item" href="#s39"><span class="toc-num">39</span> Data Augmentation</a>
+      <a class="toc-item" href="#s40"><span class="toc-num">40</span> RAG</a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 1: FOUNDATIONS ==================== -->
+<div class="category-header" id="foundations">
+  <div class="cat-label">🌱 Chapter 1 — Foundations</div>
+  <div class="cat-line"></div>
+</div>
+
+<div class="cards-container wide">
+
+  <!-- ML vs DL -->
+  <div class="card" id="s1">
+    <div class="card-num">01</div>
+    <div class="card-icon">🧠</div>
+    <div class="card-title">Machine Learning vs Deep Learning</div>
+    <div class="card-subtitle">The Big Picture</div>
+    <div class="card-body">
+      <strong>Machine Learning (ML)</strong> is a subset of AI where computers learn patterns from data without being explicitly programmed.<br><br>
+      <strong>Deep Learning (DL)</strong> is a subset of ML that uses Neural Networks with many layers ("deep") to learn complex representations.
+    </div>
+
+    <!-- Visual hierarchy -->
+    <div style="margin:16px 0; text-align:center;">
+      <svg width="100%" viewBox="0 0 500 200" style="max-width:500px;">
+        <defs>
+          <radialGradient id="g1" cx="50%" cy="50%"><stop offset="0%" stop-color="#ffd6e7"/><stop offset="100%" stop-color="#f3e8ff"/></radialGradient>
+          <radialGradient id="g2" cx="50%" cy="50%"><stop offset="0%" stop-color="#ffadd2"/><stop offset="100%" stop-color="#c084fc"/></radialGradient>
+          <radialGradient id="g3" cx="50%" cy="50%"><stop offset="0%" stop-color="#f759ab"/><stop offset="100%" stop-color="#7c3aed"/></radialGradient>
+        </defs>
+        <ellipse cx="250" cy="100" rx="230" ry="90" fill="url(#g1)" stroke="#ffadd2" stroke-width="2"/>
+        <text x="250" y="25" text-anchor="middle" font-size="14" font-weight="700" fill="#9b4dca" font-family="DM Sans">Artificial Intelligence</text>
+        <ellipse cx="250" cy="115" rx="160" ry="65" fill="url(#g2)" stroke="#f759ab" stroke-width="2"/>
+        <text x="250" y="68" text-anchor="middle" font-size="13" font-weight="700" fill="#c41d7f" font-family="DM Sans">Machine Learning</text>
+        <ellipse cx="250" cy="128" rx="90" ry="42" fill="url(#g3)" stroke="#db2777" stroke-width="2"/>
+        <text x="250" y="122" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="DM Sans">Deep</text>
+        <text x="250" y="138" text-anchor="middle" font-size="12" font-weight="700" fill="white" font-family="DM Sans">Learning</text>
+      </svg>
+    </div>
+
+    <table class="comp-table">
+      <tr><th>Aspect</th><th>ML</th><th>DL</th></tr>
+      <tr><td>Data needed</td><td>Small to medium</td><td>Very large</td></tr>
+      <tr><td>Feature engineering</td><td>Manual (human does it)</td><td>Automatic (learns itself)</td></tr>
+      <tr><td>Hardware</td><td>CPU enough</td><td>GPU required</td></tr>
+      <tr><td>Interpretable?</td><td>Often yes</td><td>Often no (black box)</td></tr>
+      <tr><td>Examples</td><td>Decision Trees, SVM</td><td>CNN, RNN, GPT</td></tr>
+    </table>
+
+    <div class="hinglish">AI sabse bada dabba hai. ML uske andar hai. DL ML ke andar hai. Jaise Matryoshka doll!</div>
+
+    <div class="tags">
+      <span class="tag tag-pink">ML</span>
+      <span class="tag tag-purple">DL</span>
+      <span class="tag tag-teal">AI</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="cards-container">
+
+  <!-- Types of ML -->
+  <div class="card" id="s1b">
+    <div class="card-num">1b</div>
+    <div class="card-icon">🗂️</div>
+    <div class="card-title">Types of Machine Learning</div>
+    <div class="card-subtitle">3 Main Categories</div>
+
+    <table class="comp-table">
+      <tr><th>Type</th><th>Data</th><th>Goal</th><th>Example</th></tr>
+      <tr><td><strong>Supervised</strong></td><td>Labeled (X,Y)</td><td>Predict Y from X</td><td>House price, spam detect</td></tr>
+      <tr><td><strong>Unsupervised</strong></td><td>Unlabeled (X only)</td><td>Find patterns</td><td>Clustering, PCA</td></tr>
+      <tr><td><strong>Reinforcement</strong></td><td>Rewards / Penalties</td><td>Maximize reward</td><td>Game AI, Robot control</td></tr>
+    </table>
+    <div class="hinglish">Supervised = Teacher ke saath padhai. Unsupervised = Self-study. Reinforcement = Trial & Error se seekhna!</div>
+    <div class="tags"><span class="tag tag-pink">Supervised</span><span class="tag tag-purple">Unsupervised</span><span class="tag tag-teal">RL</span></div>
+  </div>
+
+  <!-- Features & Labels -->
+  <div class="card" id="s2">
+    <div class="card-num">02</div>
+    <div class="card-icon">🏷️</div>
+    <div class="card-title">Features & Labels</div>
+    <div class="card-subtitle">The Building Blocks of Data</div>
+    <div class="card-body">
+      <strong>Feature (X):</strong> Input variables — data jo model ko dete ho.<br>
+      <strong>Label (Y):</strong> Output/Target — jo predict karna hai.<br>
+      <strong>Dataset:</strong> Features + Labels ka collection (rows = samples, columns = features).
+    </div>
+    <div style="margin:14px 0; overflow-x:auto;">
+      <table class="comp-table">
+        <tr><th>Area (sqft)</th><th>Rooms</th><th>Location</th><th style="background:linear-gradient(135deg,#16a34a,#15803d);color:white;">Price (Label Y)</th></tr>
+        <tr><td>1200</td><td>3</td><td>Urban</td><td style="background:#dcfce7;color:#16a34a;font-weight:700;">₹45L</td></tr>
+        <tr><td>800</td><td>2</td><td>Suburb</td><td style="background:#dcfce7;color:#16a34a;font-weight:700;">₹28L</td></tr>
+        <tr><td>2000</td><td>4</td><td>Urban</td><td style="background:#dcfce7;color:#16a34a;font-weight:700;">₹80L</td></tr>
+      </table>
+    </div>
+    <div class="hinglish">Features = Question paper ke questions. Labels = Answer key. Model ko questions dekhke answers banana seekhna hai!</div>
+  </div>
+
+</div>
+
+<!-- Linear Regression -->
+<div class="cards-container wide" id="s3">
+  <div class="card">
+    <div class="card-num">03</div>
+    <div class="card-icon">📈</div>
+    <div class="card-title">Linear Regression <span class="type-badge badge-reg">Regression</span></div>
+    <div class="card-subtitle">Supervised Learning — Continuous Output</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Predicts a continuous output by fitting a <strong>straight line</strong> through data points. Finds the best linear relationship between features and target.
+    </div>
+
+    <div class="formula">
+      ŷ = w₁x₁ + w₂x₂ + ... + wₙxₙ + b<br>
+      <span style="font-size:11px;color:var(--purple);">ŷ = Predicted | w = Weight (slope) | x = Feature | b = Bias (intercept)</span>
+    </div>
+
+    <!-- SVG: Regression line -->
+    <div class="nn-visual">
+      <svg width="100%" viewBox="0 0 400 200" style="max-width:400px;">
+        <!-- Axes -->
+        <line x1="40" y1="170" x2="380" y2="170" stroke="#ffadd2" stroke-width="2"/>
+        <line x1="40" y1="20" x2="40" y2="170" stroke="#ffadd2" stroke-width="2"/>
+        <text x="210" y="190" text-anchor="middle" font-size="11" fill="#9d5b78" font-family="DM Sans">Area (sqft) →</text>
+        <text x="15" y="100" text-anchor="middle" font-size="11" fill="#9d5b78" font-family="DM Sans" transform="rotate(-90,15,100)">Price →</text>
+        <!-- Data points -->
+        <circle cx="80" cy="140" r="6" fill="#f759ab" opacity="0.8"/>
+        <circle cx="120" cy="125" r="6" fill="#f759ab" opacity="0.8"/>
+        <circle cx="160" cy="110" r="6" fill="#f759ab" opacity="0.8"/>
+        <circle cx="200" cy="95" r="6" fill="#f759ab" opacity="0.8"/>
+        <circle cx="240" cy="78" r="6" fill="#f759ab" opacity="0.8"/>
+        <circle cx="280" cy="65" r="6" fill="#f759ab" opacity="0.8"/>
+        <circle cx="320" cy="50" r="6" fill="#f759ab" opacity="0.8"/>
+        <circle cx="100" cy="130" r="5" fill="#c084fc" opacity="0.7"/>
+        <circle cx="180" cy="102" r="5" fill="#c084fc" opacity="0.7"/>
+        <circle cx="260" cy="70" r="5" fill="#c084fc" opacity="0.7"/>
+        <!-- Regression line -->
+        <line x1="60" y1="152" x2="360" y2="38" stroke="#d6005a" stroke-width="2.5" stroke-dasharray="0"/>
+        <text x="330" y="32" font-size="11" fill="#d6005a" font-weight="700" font-family="DM Sans">ŷ = wx + b</text>
+        <!-- Error lines -->
+        <line x1="160" y1="110" x2="160" y2="100" stroke="#9b4dca" stroke-width="1" stroke-dasharray="3"/>
+        <line x1="240" y1="78" x2="240" y2="68" stroke="#9b4dca" stroke-width="1" stroke-dasharray="3"/>
+      </svg>
+      <div style="font-size:11px;color:var(--text-light);margin-top:4px;">Pink dots = data points | Red line = best-fit | Purple dashes = residual error</div>
+    </div>
+
+    <div class="example">Area=1000sqft → ŷ = 0.05×1000 + 5 = ₹55L (house price prediction)</div>
+    <div class="hinglish">Scatter plot mein sabse best fit line kheencho — jisko dekh ke naye data ka price guess kar sako!</div>
+    <div class="tags"><span class="tag tag-pink">Supervised</span><span class="tag tag-teal">Regression</span><span class="tag tag-purple">Continuous Output</span></div>
+  </div>
+</div>
+
+<div class="cards-container">
+
+  <!-- Logistic Regression -->
+  <div class="card" id="s4">
+    <div class="card-num">04</div>
+    <div class="card-icon">🔀</div>
+    <div class="card-title">Logistic Regression <span class="type-badge badge-cls">Classification</span></div>
+    <div class="card-subtitle">Binary Output — 0 or 1</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Despite the name, it does <strong>classification</strong>! Uses the Sigmoid function to squish output between 0 and 1 (probability).
+    </div>
+    <div class="formula">
+      z = wx + b<br>
+      ŷ = σ(z) = 1 / (1 + e<sup>−z</sup>)<br>
+      <span style="font-size:11px;color:var(--purple);">If ŷ ≥ 0.5 → Class 1 | If ŷ &lt; 0.5 → Class 0</span>
+    </div>
+    <div class="nn-visual">
+      <svg width="100%" viewBox="0 0 320 130" style="max-width:320px;">
+        <line x1="20" y1="100" x2="300" y2="100" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="20" y1="20" x2="20" y2="110" stroke="#ffadd2" stroke-width="1.5"/>
+        <text x="160" y="120" text-anchor="middle" font-size="10" fill="#9d5b78" font-family="DM Sans">z = wx+b</text>
+        <text x="8" y="60" text-anchor="middle" font-size="9" fill="#9d5b78" transform="rotate(-90,8,60)">σ(z)</text>
+        <line x1="20" y1="97" x2="160" y2="97" stroke="#f759ab" stroke-width="0.5" stroke-dasharray="3"/>
+        <line x1="20" y1="33" x2="300" y2="33" stroke="#f759ab" stroke-width="0.5" stroke-dasharray="3"/>
+        <text x="25" y="32" font-size="9" fill="#d6005a" font-family="DM Sans">1.0</text>
+        <text x="25" y="99" font-size="9" fill="#d6005a" font-family="DM Sans">0.0</text>
+        <text x="25" y="67" font-size="9" fill="#9b4dca" font-family="DM Sans">0.5</text>
+        <path d="M30,97 Q80,97 110,75 Q130,60 160,65 Q190,68 210,40 Q240,25 300,24"
+          fill="none" stroke="#d6005a" stroke-width="2.5"/>
+        <line x1="160" y1="20" x2="160" y2="110" stroke="#c084fc" stroke-width="1" stroke-dasharray="3"/>
+        <text x="157" y="15" font-size="9" fill="#9b4dca" font-family="DM Sans">z=0</text>
+      </svg>
+    </div>
+    <div class="example">Email spam detection: ŷ=0.85 → 85% chance it's spam → Classify as Spam!</div>
+    <div class="hinglish">Sigmoid curve — saari values 0 aur 1 ke beech mein! 0.5 threshold pe decision boundary set karo.</div>
+    <div class="tags"><span class="tag tag-pink">Supervised</span><span class="tag tag-cls">Classification</span></div>
+  </div>
+
+  <!-- Loss Function -->
+  <div class="card" id="s5">
+    <div class="card-num">05</div>
+    <div class="card-icon">📉</div>
+    <div class="card-title">Loss / Cost Function</div>
+    <div class="card-subtitle">Measure the Model's Error</div>
+    <div class="card-body">
+      <strong>Loss:</strong> Error for a single sample.<br>
+      <strong>Cost J(θ):</strong> Average loss over the entire dataset.<br><br>
+      We want to <strong>MINIMIZE</strong> the cost function!
+    </div>
+    <table class="comp-table">
+      <tr><th>Name</th><th>Formula</th><th>Used For</th></tr>
+      <tr><td><strong>MSE</strong></td><td>(1/n)Σ(y − ŷ)²</td><td>Regression</td></tr>
+      <tr><td><strong>MAE</strong></td><td>(1/n)Σ|y − ŷ|</td><td>Regression</td></tr>
+      <tr><td><strong>RMSE</strong></td><td>√MSE</td><td>Regression</td></tr>
+      <tr><td><strong>BCE</strong></td><td>−[y·log(ŷ)+(1−y)·log(1−ŷ)]</td><td>Binary Classif.</td></tr>
+      <tr><td><strong>CCE</strong></td><td>−Σyᵢ·log(ŷᵢ)</td><td>Multi-class</td></tr>
+    </table>
+    <div class="hinglish">Jitna zyada galat predict kiya, loss utna bada. Hum minimize karna chahte hain — score 0 ke paas laana!</div>
+  </div>
+
+</div>
+
+<!-- Gradient Descent — FULL WIDTH -->
+<div class="cards-container wide" id="s6">
+  <div class="card">
+    <div class="card-num">06</div>
+    <div class="card-icon">⛰️</div>
+    <div class="card-title">Gradient Descent</div>
+    <div class="card-subtitle">The Optimization Heart of ML — Minimize Loss Iteratively</div>
+
+    <div class="card-body">
+      <strong>Definition:</strong> An iterative optimization algorithm that minimizes the cost function by updating parameters in the direction of the <strong>steepest descent</strong> (opposite to gradient).
+    </div>
+
+    <div class="formula">
+      θ_new = θ_old − α × ∂J(θ)/∂θ<br>
+      <span style="font-size:11px;color:var(--purple);">θ = Parameter | α = Learning Rate | ∂J/∂θ = Gradient (Slope)</span>
+    </div>
+
+    <!-- Mountain analogy SVG -->
+    <div class="nn-visual">
+      <svg width="100%" viewBox="0 0 500 200" style="max-width:500px;">
+        <defs>
+          <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#f3e8ff"/>
+            <stop offset="100%" stop-color="#fff0f6"/>
+          </linearGradient>
+        </defs>
+        <rect width="500" height="200" fill="url(#sky)"/>
+        <!-- Mountain shape = loss curve -->
+        <path d="M20,180 Q60,100 100,80 Q130,65 160,55 Q180,48 200,80 Q220,110 240,140 Q260,160 300,170 Q350,178 480,178"
+          fill="none" stroke="#f759ab" stroke-width="3"/>
+        <!-- Fill below curve -->
+        <path d="M20,180 Q60,100 100,80 Q130,65 160,55 Q180,48 200,80 Q220,110 240,140 Q260,160 300,170 Q350,178 480,178 L480,200 L20,200 Z"
+          fill="rgba(247,89,171,0.08)"/>
+        <!-- Gradient arrows going down -->
+        <circle cx="100" cy="80" r="6" fill="#f759ab"/>
+        <line x1="100" y1="80" x2="130" y2="110" stroke="#d6005a" stroke-width="2" marker-end="url(#arr)"/>
+        <circle cx="130" cy="110" r="5" fill="#c084fc"/>
+        <line x1="130" y1="110" x2="152" y2="130" stroke="#d6005a" stroke-width="2"/>
+        <circle cx="152" cy="130" r="4" fill="#9b4dca"/>
+        <line x1="152" y1="130" x2="168" y2="148" stroke="#d6005a" stroke-width="2"/>
+        <circle cx="168" cy="148" r="4" fill="#7c3aed"/>
+        <line x1="168" y1="148" x2="178" y2="158" stroke="#d6005a" stroke-width="2"/>
+        <circle cx="178" cy="158" r="4" fill="#4f46e5"/>
+        <!-- Minimum marker -->
+        <circle cx="200" cy="80" r="8" fill="#16a34a" opacity="0.9"/>
+        <text x="200" y="75" text-anchor="middle" font-size="10" fill="#166534" font-weight="700" font-family="DM Sans">MIN</text>
+        <!-- Labels -->
+        <text x="95" y="70" font-size="10" fill="#d6005a" font-weight="700" font-family="DM Sans">Start</text>
+        <text x="330" y="165" font-size="10" fill="#d6005a" font-family="DM Sans">High Loss</text>
+        <text x="55" y="105" font-size="9" fill="#9b4dca" font-family="DM Sans" transform="rotate(-35,55,105)">each step ↓</text>
+        <text x="220" y="100" font-size="10" fill="#d6005a" font-family="DM Sans">← J(θ) Loss Curve</text>
+      </svg>
+    </div>
+
+    <div class="card-body" style="margin-top:10px;">
+      <strong>Types of Gradient Descent:</strong>
+    </div>
+    <table class="comp-table">
+      <tr><th>Type</th><th>Uses Per Update</th><th>Speed</th><th>Stability</th><th>Most Common?</th></tr>
+      <tr><td><strong>Batch GD</strong></td><td>Entire dataset</td><td>Slow</td><td>Very stable</td><td>❌ Rare</td></tr>
+      <tr><td><strong>SGD</strong></td><td>1 sample</td><td>Very fast</td><td>Noisy</td><td>Sometimes</td></tr>
+      <tr><td><strong>Mini-Batch GD</strong></td><td>32/64/128 samples</td><td>Fast</td><td>Good</td><td>✅ Yes!</td></tr>
+    </table>
+
+    <div class="steps">
+      <li><span class="step-num">1</span> Initialize θ (weights & biases) randomly</li>
+      <li><span class="step-num">2</span> Forward pass — compute predictions ŷ</li>
+      <li><span class="step-num">3</span> Calculate loss J(θ)</li>
+      <li><span class="step-num">4</span> Compute gradient ∂J/∂θ (backprop)</li>
+      <li><span class="step-num">5</span> Update: θ = θ − α × gradient</li>
+      <li><span class="step-num">6</span> Repeat until convergence</li>
+    </div>
+
+    <div class="hinglish">Pahaad ki ek ghati (valley) dhundho jahan loss sabse kam ho. Gradient batata hai — "yaar upar ja raha hai agar aage badhoge" — toh hum ulti direction mein chalte hain!</div>
+    <div class="tags"><span class="tag tag-pink">Optimization</span><span class="tag tag-purple">Iterative</span><span class="tag tag-teal">Core Algorithm</span></div>
+  </div>
+</div>
+
+<div class="cards-container">
+
+  <!-- Weights & Biases -->
+  <div class="card" id="s7">
+    <div class="card-num">07</div>
+    <div class="card-icon">⚖️</div>
+    <div class="card-title">Weights & Biases</div>
+    <div class="card-subtitle">What the Model Actually Learns</div>
+    <div class="card-body">
+      <strong>Weight (w):</strong> How important is each feature? Larger weight = feature matters more.<br><br>
+      <strong>Bias (b):</strong> A constant offset that lets the model shift its output — flexibility!
+    </div>
+    <div class="formula">y = wx + b<br><span style="font-size:11px;color:var(--purple);">w = slope (weight) | b = y-intercept (bias)</span></div>
+    <div style="margin:14px 0; text-align:center;">
+      <svg width="100%" viewBox="0 0 300 120" style="max-width:300px;">
+        <line x1="20" y1="100" x2="280" y2="100" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="20" y1="10" x2="20" y2="105" stroke="#ffadd2" stroke-width="1.5"/>
+        <!-- w large line -->
+        <line x1="20" y1="95" x2="280" y2="25" stroke="#f759ab" stroke-width="2.5"/>
+        <text x="240" y="20" font-size="10" fill="#d6005a" font-weight="700" font-family="DM Sans">Large w (steep)</text>
+        <!-- w small line -->
+        <line x1="20" y1="85" x2="280" y2="65" stroke="#c084fc" stroke-width="2"/>
+        <text x="240" y="60" font-size="10" fill="#9b4dca" font-weight="700" font-family="DM Sans">Small w (flat)</text>
+        <!-- bias shift -->
+        <line x1="20" y1="60" x2="280" y2="40" stroke="#0891b2" stroke-width="2" stroke-dasharray="5"/>
+        <text x="60" y="37" font-size="10" fill="#0891b2" font-family="DM Sans">Shifted by b (bias)</text>
+      </svg>
+    </div>
+    <div class="hinglish">w = feature ki importance. b = line ko upar-neeche shift karne ka knob. Dono milke sahi line fit karte hain!</div>
+  </div>
+
+  <!-- Parameters vs Hyperparameters -->
+  <div class="card" id="s8">
+    <div class="card-num">08</div>
+    <div class="card-icon">🎛️</div>
+    <div class="card-title">Parameters vs Hyperparameters</div>
+    <div class="card-subtitle">Learned vs Manually Set</div>
+    <table class="comp-table">
+      <tr><th>Type</th><th>Who Sets?</th><th>When?</th><th>Examples</th></tr>
+      <tr><td><strong>Parameters</strong></td><td>Model learns automatically</td><td>During training</td><td>Weights (w), Biases (b)</td></tr>
+      <tr><td><strong>Hyperparameters</strong></td><td>We (human) set manually</td><td>Before training</td><td>Learning rate α, Epochs, Batch size, #layers, #neurons</td></tr>
+    </table>
+    <div style="margin-top:14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--deep-rose);margin-bottom:8px;">Hyperparameter Tuning Methods:</div>
+      <ul class="steps">
+        <li><span class="step-num">1</span> <strong>Grid Search</strong> — Saari combinations try karo (thorough but slow)</li>
+        <li><span class="step-num">2</span> <strong>Random Search</strong> — Random combinations (faster)</li>
+        <li><span class="step-num">3</span> <strong>Bayesian Optimization</strong> — Smart, learns from previous attempts</li>
+      </ul>
+    </div>
+    <div class="hinglish">Parameters = model khud seekhta hai. Hyperparameters = hum set karte hain. Jaise recipe mein — oven temperature (hyperparameter) hum set karte hain, khana pakna (parameters) khud hota hai!</div>
+  </div>
+
+  <!-- Epochs / Batch / Iterations -->
+  <div class="card" id="s9">
+    <div class="card-num">09</div>
+    <div class="card-icon">🔄</div>
+    <div class="card-title">Epochs, Batch Size & Iterations</div>
+    <div class="card-subtitle">Training Timeline</div>
+    <div class="card-body">
+      <strong>Epoch:</strong> Poora training dataset <strong>ek baar</strong> model se guzar gaya = 1 Epoch<br><br>
+      <strong>Batch Size:</strong> Ek update mein kitne samples use hote hain<br><br>
+      <strong>Iteration:</strong> Ek single parameter update = 1 Iteration
+    </div>
+    <div class="formula">
+      Iterations per Epoch = Total Samples ÷ Batch Size<br>
+      <span style="font-size:11px;color:var(--purple);">1000 samples, Batch=100 → 10 iterations per epoch</span>
+    </div>
+    <div style="margin:14px 0;">
+      <div style="font-size:11px;color:var(--text-light);margin-bottom:6px;font-weight:600;">1000 samples, Batch=200, 3 Epochs:</div>
+      <div style="background:var(--pink-100);border-radius:10px;padding:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--deep-rose);line-height:1.8;">
+        Epoch 1: [Batch1][Batch2][Batch3][Batch4][Batch5] → 5 iterations<br>
+        Epoch 2: [Batch1][Batch2][Batch3][Batch4][Batch5] → 5 iterations<br>
+        Epoch 3: [Batch1][Batch2][Batch3][Batch4][Batch5] → 5 iterations<br>
+        Total = 15 weight updates!
+      </div>
+    </div>
+    <div class="hinglish">1 Epoch = poori book ek baar padhna. Batch = ek chapter. Iteration = ek chapter padhke notes update karna!</div>
+  </div>
+
+</div>
+
+<!-- ==================== SECTION 2: ALGORITHMS ==================== -->
+<div class="category-header" id="algorithms">
+  <div class="cat-label">🤖 Chapter 2 — Classical ML Algorithms</div>
+  <div class="cat-line"></div>
+</div>
+
+<div class="cards-container">
+
+  <!-- Decision Tree -->
+  <div class="card" id="s10">
+    <div class="card-num">10</div>
+    <div class="card-icon">🌳</div>
+    <div class="card-title">Decision Tree <span class="type-badge badge-cls">Classification</span></div>
+    <div class="card-subtitle">Tree-based Rule Learning</div>
+    <div class="card-body">
+      <strong>Definition:</strong> A tree-structured model where each internal <strong>node is a question</strong>, each branch is an answer, and each leaf is a final prediction.
+    </div>
+    <div class="nn-visual">
+      <svg width="100%" viewBox="0 0 380 200" style="max-width:380px;">
+        <!-- Root -->
+        <rect x="140" y="10" width="100" height="32" rx="8" fill="#f759ab"/>
+        <text x="190" y="31" text-anchor="middle" font-size="11" fill="white" font-weight="700" font-family="DM Sans">Age > 30?</text>
+        <!-- Lines -->
+        <line x1="160" y1="42" x2="80" y2="80" stroke="#ffadd2" stroke-width="2"/>
+        <line x1="220" y1="42" x2="300" y2="80" stroke="#ffadd2" stroke-width="2"/>
+        <text x="100" y="70" font-size="10" fill="#d6005a" font-weight="700" font-family="DM Sans">YES</text>
+        <text x="270" y="70" font-size="10" fill="#d6005a" font-weight="700" font-family="DM Sans">NO</text>
+        <!-- Level 2 -->
+        <rect x="30" y="80" width="100" height="32" rx="8" fill="#c084fc"/>
+        <text x="80" y="101" text-anchor="middle" font-size="10" fill="white" font-weight="700" font-family="DM Sans">Salary > 50k?</text>
+        <rect x="250" y="80" width="100" height="32" rx="8" fill="#c084fc"/>
+        <text x="300" y="101" text-anchor="middle" font-size="10" fill="white" font-weight="700" font-family="DM Sans">Job Stable?</text>
+        <!-- Lines -->
+        <line x1="55" y1="112" x2="30" y2="155" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="105" y1="112" x2="130" y2="155" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="270" y1="112" x2="250" y2="155" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="330" y1="112" x2="350" y2="155" stroke="#ffadd2" stroke-width="1.5"/>
+        <!-- Leaves -->
+        <rect x="5" y="155" width="55" height="28" rx="6" fill="#16a34a"/>
+        <text x="32" y="173" text-anchor="middle" font-size="10" fill="white" font-weight="700" font-family="DM Sans">✓ Approve</text>
+        <rect x="105" y="155" width="55" height="28" rx="6" fill="#dc2626"/>
+        <text x="132" y="173" text-anchor="middle" font-size="10" fill="white" font-weight="700" font-family="DM Sans">✗ Reject</text>
+        <rect x="222" y="155" width="55" height="28" rx="6" fill="#16a34a"/>
+        <text x="249" y="173" text-anchor="middle" font-size="10" fill="white" font-weight="700" font-family="DM Sans">✓ Approve</text>
+        <rect x="322" y="155" width="55" height="28" rx="6" fill="#dc2626"/>
+        <text x="349" y="173" text-anchor="middle" font-size="10" fill="white" font-weight="700" font-family="DM Sans">✗ Reject</text>
+      </svg>
+    </div>
+    <div class="example">Loan approval: Age? → Salary? → Decision! Easy to understand and explain.</div>
+    <div class="hinglish">Flowchart ki tarah! Ek ek sawaal poochho, aur answer tak pahoncho. Samjhana bahut easy hai — doctor bhi use karte hain!</div>
+    <div class="tags"><span class="tag tag-green">Interpretable</span><span class="tag tag-pink">Classification</span><span class="tag tag-orange">Regression too!</span></div>
+  </div>
+
+  <!-- Random Forest -->
+  <div class="card" id="s11">
+    <div class="card-num">11</div>
+    <div class="card-icon">🌲🌲🌲</div>
+    <div class="card-title">Random Forest</div>
+    <div class="card-subtitle">Ensemble of Decision Trees</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Multiple Decision Trees trained on different <strong>random subsets</strong> of data and features. Final prediction = <strong>majority vote</strong> (classification) or <strong>average</strong> (regression).
+    </div>
+    <div class="formula">
+      Final Prediction = MAJORITY VOTE (Tree₁, Tree₂, ..., Treeₙ)<br>
+      <span style="font-size:11px;color:var(--purple);">Each tree sees different data (Bootstrap Sampling)</span>
+    </div>
+    <div class="metrics-row">
+      <div class="metric-box"><div class="metric-val">🌳×100</div><div class="metric-label">Trees Vote</div></div>
+      <div class="metric-box"><div class="metric-val">↑ Acc</div><div class="metric-label">More Accurate</div></div>
+      <div class="metric-box"><div class="metric-val">↓ Var</div><div class="metric-label">Less Overfit</div></div>
+    </div>
+    <div class="hinglish">Ek judge ki jagah 100 judges ka panel! Democracy — majority vote se final decision. Akele tree se zyada accurate aur reliable!</div>
+    <div class="tags"><span class="tag tag-pink">Ensemble</span><span class="tag tag-green">Bagging</span><span class="tag tag-teal">Robust</span></div>
+  </div>
+
+  <!-- SVM -->
+  <div class="card" id="s12">
+    <div class="card-num">12</div>
+    <div class="card-icon">📏</div>
+    <div class="card-title">SVM — Support Vector Machine <span class="type-badge badge-cls">Classification</span></div>
+    <div class="card-subtitle">Maximum Margin Classifier</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Finds the <strong>optimal hyperplane</strong> that maximally separates two classes. The points closest to the hyperplane are <strong>Support Vectors</strong>.
+    </div>
+    <div class="formula">
+      Hyperplane: w·x + b = 0<br>
+      Maximize Margin: 2 / ‖w‖<br>
+      <span style="font-size:11px;color:var(--purple);">Kernel trick: maps data to higher dimensions to handle non-linear data</span>
+    </div>
+    <div class="nn-visual">
+      <svg width="100%" viewBox="0 0 300 160" style="max-width:300px;">
+        <!-- Class 1 dots (pink) -->
+        <circle cx="60" cy="50" r="7" fill="#f759ab" opacity="0.8"/>
+        <circle cx="80" cy="70" r="7" fill="#f759ab" opacity="0.8"/>
+        <circle cx="50" cy="80" r="7" fill="#f759ab" opacity="0.8"/>
+        <circle cx="90" cy="40" r="7" fill="#f759ab" opacity="0.8"/>
+        <circle cx="40" cy="60" r="7" fill="#f759ab" opacity="0.8"/>
+        <!-- Class 2 dots (purple) -->
+        <circle cx="210" cy="70" r="7" fill="#9b4dca" opacity="0.8"/>
+        <circle cx="240" cy="50" r="7" fill="#9b4dca" opacity="0.8"/>
+        <circle cx="220" cy="100" r="7" fill="#9b4dca" opacity="0.8"/>
+        <circle cx="250" cy="80" r="7" fill="#9b4dca" opacity="0.8"/>
+        <circle cx="260" cy="110" r="7" fill="#9b4dca" opacity="0.8"/>
+        <!-- Decision boundary (hyperplane) -->
+        <line x1="155" y1="20" x2="150" y2="145" stroke="#d6005a" stroke-width="3"/>
+        <!-- Margins -->
+        <line x1="130" y1="20" x2="125" y2="145" stroke="#ffadd2" stroke-width="1.5" stroke-dasharray="5"/>
+        <line x1="180" y1="20" x2="175" y2="145" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="5"/>
+        <!-- Support vectors highlighted -->
+        <circle cx="90" cy="40" r="12" fill="none" stroke="#d6005a" stroke-width="2"/>
+        <circle cx="210" cy="70" r="12" fill="none" stroke="#d6005a" stroke-width="2"/>
+        <!-- Labels -->
+        <text x="65" y="130" font-size="10" fill="#d6005a" font-family="DM Sans" font-weight="700">Class A</text>
+        <text x="205" y="130" font-size="10" fill="#9b4dca" font-family="DM Sans" font-weight="700">Class B</text>
+        <text x="138" y="15" font-size="9" fill="#d6005a" font-family="DM Sans">← margin →</text>
+        <text x="130" y="155" font-size="9" fill="#d6005a" font-family="DM Sans">Hyperplane (max margin)</text>
+      </svg>
+    </div>
+    <div class="hinglish">Do groups ke beech mein sabse chodi sadak (margin) dhundho! Support vectors = sadak ke kinare wale points. SVM usi sadak ke middle mein boundary banata hai!</div>
+  </div>
+
+  <!-- K-Means -->
+  <div class="card" id="s13">
+    <div class="card-num">13</div>
+    <div class="card-icon">🎯</div>
+    <div class="card-title">K-Means Clustering <span class="type-badge badge-unsup">Unsupervised</span></div>
+    <div class="card-subtitle">Group Similar Data Without Labels</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Groups data into <strong>K clusters</strong> by iteratively assigning points to nearest centroid and updating centroids.
+    </div>
+    <div class="formula">
+      Distance = √(Σ(xᵢ − cᵢ)²)  [Euclidean]<br>
+      New Centroid = Mean of all points in cluster
+    </div>
+    <ul class="steps">
+      <li><span class="step-num">1</span> K centroids randomly initialize karo</li>
+      <li><span class="step-num">2</span> Har point ko nearest centroid assign karo</li>
+      <li><span class="step-num">3</span> Centroid = cluster ka mean update karo</li>
+      <li><span class="step-num">4</span> Repeat jab tak stable na ho jaaye</li>
+    </ul>
+    <div class="example">Customer segmentation: Group customers by buying behavior — Budget / Mid / Premium buyers!</div>
+    <div class="hinglish">School mein students ko interest ke hisab se group karna — koi sports group, koi coding group. Labels nahi hote — khud groups bante hain!</div>
+  </div>
+
+  <!-- Ensemble -->
+  <div class="card" id="s14">
+    <div class="card-num">14</div>
+    <div class="card-icon">🏆</div>
+    <div class="card-title">Ensemble Learning</div>
+    <div class="card-subtitle">Combine Models for Better Results</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Combine multiple "weak" models to make one powerful model.
+    </div>
+    <table class="comp-table">
+      <tr><th>Method</th><th>How</th><th>Example</th></tr>
+      <tr><td><strong>Bagging</strong></td><td>Parallel training, majority vote</td><td>Random Forest</td></tr>
+      <tr><td><strong>Boosting</strong></td><td>Sequential — fix previous errors</td><td>XGBoost, AdaBoost</td></tr>
+      <tr><td><strong>Stacking</strong></td><td>Models → meta-model</td><td>Blend of models</td></tr>
+    </table>
+    <div class="warning">XGBoost is one of the most powerful ML algorithms — wins most Kaggle competitions!</div>
+    <div class="hinglish">Ek player se match nahi jeeta — poori team lagao! Bagging = parallel team. Boosting = ek ke baad ek, pehle ki galtiyon pe focus!</div>
+  </div>
+
+  <!-- PCA -->
+  <div class="card" id="s15">
+    <div class="card-num">15</div>
+    <div class="card-icon">📐</div>
+    <div class="card-title">PCA — Principal Component Analysis</div>
+    <div class="card-subtitle">Dimensionality Reduction</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Compresses high-dimensional data into fewer dimensions while preserving maximum <strong>variance (information)</strong>. Creates new features called <strong>Principal Components</strong>.
+    </div>
+    <div class="formula">
+      PC1 = direction of maximum variance<br>
+      PC2 = max variance ⊥ to PC1 (perpendicular)<br>
+      <span style="font-size:11px;color:var(--purple);">Variance explained by each PC = eigenvalue / sum of eigenvalues</span>
+    </div>
+    <div class="metrics-row">
+      <div class="metric-box"><div class="metric-val">100</div><div class="metric-label">Features In</div></div>
+      <div class="metric-box"><div class="metric-val" style="color:var(--green);">10</div><div class="metric-label">Features Out</div></div>
+      <div class="metric-box"><div class="metric-val">95%</div><div class="metric-label">Info Retained</div></div>
+    </div>
+    <div class="hinglish">100 features hain lekin 90 almost same info dete hain. PCA = compress karo — sirf important directions rakho! Jaise photo ko ZIP karna — quality almost same, size chota!</div>
+  </div>
+
+</div>
+
+<!-- ==================== SECTION 3: NEURAL NETWORKS ==================== -->
+<div class="category-header" id="neural">
+  <div class="cat-label">🧠 Chapter 3 — Neural Networks & Deep Learning</div>
+  <div class="cat-line"></div>
+</div>
+
+<div class="cards-container">
+
+  <!-- Perceptron & MLP -->
+  <div class="card" id="s16">
+    <div class="card-num">16</div>
+    <div class="card-icon">⚡</div>
+    <div class="card-title">Perceptron & MLP</div>
+    <div class="card-subtitle">Building Blocks of Neural Networks</div>
+    <div class="card-body">
+      <strong>Perceptron:</strong> Simplest artificial neuron — weighted sum of inputs + activation.<br><br>
+      <strong>MLP (Multi-Layer Perceptron):</strong> Many perceptrons stacked in layers = basic neural network.
+    </div>
+    <div class="formula">
+      Output = Activation( Σ(wᵢ × xᵢ) + b )
+    </div>
+    <div class="nn-visual">
+      <svg width="100%" viewBox="0 0 360 180" style="max-width:360px;">
+        <!-- Input layer -->
+        <circle cx="40" cy="50" r="18" fill="#ffadd2" stroke="#f759ab" stroke-width="2"/>
+        <text x="40" y="55" text-anchor="middle" font-size="10" fill="#d6005a" font-weight="700">x₁</text>
+        <circle cx="40" cy="100" r="18" fill="#ffadd2" stroke="#f759ab" stroke-width="2"/>
+        <text x="40" y="105" text-anchor="middle" font-size="10" fill="#d6005a" font-weight="700">x₂</text>
+        <circle cx="40" cy="150" r="18" fill="#ffadd2" stroke="#f759ab" stroke-width="2"/>
+        <text x="40" y="155" text-anchor="middle" font-size="10" fill="#d6005a" font-weight="700">x₃</text>
+        <!-- Hidden layer 1 -->
+        <circle cx="140" cy="40" r="18" fill="#c084fc" stroke="#9b4dca" stroke-width="2"/>
+        <circle cx="140" cy="90" r="18" fill="#c084fc" stroke="#9b4dca" stroke-width="2"/>
+        <circle cx="140" cy="140" r="18" fill="#c084fc" stroke="#9b4dca" stroke-width="2"/>
+        <!-- Hidden layer 2 -->
+        <circle cx="230" cy="65" r="18" fill="#818cf8" stroke="#4f46e5" stroke-width="2"/>
+        <circle cx="230" cy="115" r="18" fill="#818cf8" stroke="#4f46e5" stroke-width="2"/>
+        <!-- Output -->
+        <circle cx="320" cy="90" r="20" fill="#16a34a" stroke="#166534" stroke-width="2"/>
+        <text x="320" y="95" text-anchor="middle" font-size="10" fill="white" font-weight="700">ŷ</text>
+        <!-- Connections (selected) -->
+        <line x1="58" y1="55" x2="122" y2="45" stroke="#ffadd2" stroke-width="1"/>
+        <line x1="58" y1="55" x2="122" y2="95" stroke="#ffadd2" stroke-width="1"/>
+        <line x1="58" y1="100" x2="122" y2="45" stroke="#ffadd2" stroke-width="1"/>
+        <line x1="58" y1="100" x2="122" y2="95" stroke="#ffadd2" stroke-width="1"/>
+        <line x1="58" y1="100" x2="122" y2="145" stroke="#ffadd2" stroke-width="1"/>
+        <line x1="58" y1="150" x2="122" y2="95" stroke="#ffadd2" stroke-width="1"/>
+        <line x1="58" y1="150" x2="122" y2="145" stroke="#ffadd2" stroke-width="1"/>
+        <line x1="158" y1="45" x2="212" y2="70" stroke="#e9d5ff" stroke-width="1"/>
+        <line x1="158" y1="90" x2="212" y2="70" stroke="#e9d5ff" stroke-width="1"/>
+        <line x1="158" y1="90" x2="212" y2="120" stroke="#e9d5ff" stroke-width="1"/>
+        <line x1="158" y1="140" x2="212" y2="120" stroke="#e9d5ff" stroke-width="1"/>
+        <line x1="248" y1="70" x2="300" y2="90" stroke="#bbf7d0" stroke-width="1.5"/>
+        <line x1="248" y1="120" x2="300" y2="90" stroke="#bbf7d0" stroke-width="1.5"/>
+        <!-- Labels -->
+        <text x="40" y="180" text-anchor="middle" font-size="9" fill="#9d5b78" font-family="DM Sans">Input</text>
+        <text x="140" y="170" text-anchor="middle" font-size="9" fill="#9d5b78" font-family="DM Sans">Hidden 1</text>
+        <text x="230" y="145" text-anchor="middle" font-size="9" fill="#9d5b78" font-family="DM Sans">Hidden 2</text>
+        <text x="320" y="118" text-anchor="middle" font-size="9" fill="#9d5b78" font-family="DM Sans">Output</text>
+      </svg>
+    </div>
+    <div class="hinglish">Perceptron = ek akela neuron. MLP = neurons ki poori team — layers mein organized. Zyada layers = zyada complex patterns seekh sakta hai!</div>
+  </div>
+
+  <!-- Activation Functions -->
+  <div class="card" id="s17">
+    <div class="card-num">17</div>
+    <div class="card-icon">⚡</div>
+    <div class="card-title">Activation Functions</div>
+    <div class="card-subtitle">Non-linearity in Neural Networks</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Applied after each neuron — introduces non-linearity so the network can learn complex patterns. Without it, the entire network is just a linear function!
+    </div>
+    <div class="act-grid">
+      <div class="act-box">
+        <div class="act-name">Sigmoid</div>
+        <svg viewBox="0 0 100 70" width="100%">
+          <line x1="5" y1="60" x2="95" y2="60" stroke="#ffadd2" stroke-width="1"/>
+          <line x1="50" y1="5" x2="50" y2="65" stroke="#ffadd2" stroke-width="1"/>
+          <path d="M10,58 Q25,58 35,50 Q45,40 50,35 Q55,30 65,18 Q75,10 90,8" fill="none" stroke="#f759ab" stroke-width="2"/>
+          <text x="5" y="10" font-size="8" fill="#9d5b78">1</text>
+          <text x="5" y="62" font-size="8" fill="#9d5b78">0</text>
+        </svg>
+        <div class="act-formula">1/(1+e⁻ˣ) | Range: (0,1)</div>
+      </div>
+      <div class="act-box">
+        <div class="act-name">ReLU</div>
+        <svg viewBox="0 0 100 70" width="100%">
+          <line x1="5" y1="60" x2="95" y2="60" stroke="#ffadd2" stroke-width="1"/>
+          <line x1="50" y1="5" x2="50" y2="65" stroke="#ffadd2" stroke-width="1"/>
+          <path d="M10,60 L50,60 L90,10" fill="none" stroke="#9b4dca" stroke-width="2"/>
+          <text x="5" y="62" font-size="8" fill="#9d5b78">0</text>
+        </svg>
+        <div class="act-formula">max(0,x) | Range: [0,∞)</div>
+      </div>
+      <div class="act-box">
+        <div class="act-name">Tanh</div>
+        <svg viewBox="0 0 100 70" width="100%">
+          <line x1="5" y1="35" x2="95" y2="35" stroke="#ffadd2" stroke-width="1"/>
+          <line x1="50" y1="5" x2="50" y2="65" stroke="#ffadd2" stroke-width="1"/>
+          <path d="M10,63 Q20,62 30,50 Q40,35 50,35 Q60,35 70,20 Q80,8 90,7" fill="none" stroke="#0891b2" stroke-width="2"/>
+          <text x="5" y="10" font-size="8" fill="#9d5b78">+1</text>
+          <text x="5" y="65" font-size="8" fill="#9d5b78">-1</text>
+        </svg>
+        <div class="act-formula">(eˣ−e⁻ˣ)/(eˣ+e⁻ˣ) | (-1,1)</div>
+      </div>
+      <div class="act-box">
+        <div class="act-name">Softmax</div>
+        <svg viewBox="0 0 100 70" width="100%">
+          <rect x="10" y="20" width="20" height="40" rx="3" fill="#f759ab" opacity="0.7"/>
+          <rect x="40" y="10" width="20" height="50" rx="3" fill="#9b4dca" opacity="0.7"/>
+          <rect x="70" y="35" width="20" height="25" rx="3" fill="#0891b2" opacity="0.7"/>
+          <text x="20" y="67" text-anchor="middle" font-size="7" fill="#9d5b78">Cat</text>
+          <text x="50" y="67" text-anchor="middle" font-size="7" fill="#9d5b78">Dog</text>
+          <text x="80" y="67" text-anchor="middle" font-size="7" fill="#9d5b78">Bird</text>
+        </svg>
+        <div class="act-formula">eˣᵢ/Σeˣʲ | Sums to 1</div>
+      </div>
+    </div>
+    <div class="hinglish">Bina activation function ke, NN sirf linear equations hai. Activation non-linearity laata hai — complex shapes seekhna possible hota hai! ReLU sabse popular — fast aur effective!</div>
+    <div class="tags"><span class="tag tag-pink">Sigmoid: Binary</span><span class="tag tag-purple">ReLU: Hidden</span><span class="tag tag-teal">Softmax: Multi-class</span></div>
+  </div>
+
+</div>
+
+<!-- Backpropagation — Full Width -->
+<div class="cards-container wide" id="s19">
+  <div class="card">
+    <div class="card-num">18-19</div>
+    <div class="card-icon">🔁</div>
+    <div class="card-title">Neural Network Training: Forward Pass + Backpropagation</div>
+    <div class="card-subtitle">How Neural Networks Actually Learn</div>
+
+    <div class="flow">
+      <div class="flow-box">Input X</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Forward Pass<br><span style="font-size:9px;font-weight:400;">Compute ŷ</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Loss J(θ)<br><span style="font-size:9px;font-weight:400;">Compare ŷ vs y</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Backprop<br><span style="font-size:9px;font-weight:400;">Chain Rule ∂L/∂w</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Update Weights<br><span style="font-size:9px;font-weight:400;">θ = θ − α∇</span></div>
+      <div class="flow-arrow">↩️</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--deep-rose);margin-bottom:8px;">➡️ Forward Pass</div>
+        <div class="card-body">Input data layer-by-layer se guzarta hai. Har layer calculation karta hai: z = wx + b, then a = activation(z). Final output ŷ produce hota hai.</div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:8px;">⬅️ Backpropagation</div>
+        <div class="card-body">Loss calculate hone ke baad, gradient <strong>output se input ki taraf</strong> propagate hota hai using Chain Rule. Har layer ka gradient compute hota hai.</div>
+      </div>
+    </div>
+
+    <div class="formula">
+      Chain Rule: ∂L/∂w = ∂L/∂ŷ × ∂ŷ/∂z × ∂z/∂w<br>
+      <span style="font-size:11px;color:var(--purple);">Error peeche ki taraf propagate hota hai — isliye "back"propagation!</span>
+    </div>
+
+    <div class="hinglish">Exam mein galat answer diya → teacher ne correction bataya (backprop) → next time sahi karo (weight update). Neural network exactly yahi karta hai — baar baar!</div>
+  </div>
+</div>
+
+<div class="cards-container">
+
+  <!-- CNN -->
+  <div class="card" id="s20">
+    <div class="card-num">20</div>
+    <div class="card-icon">🖼️</div>
+    <div class="card-title">CNN — Convolutional Neural Network <span class="type-badge badge-nn">Deep Learning</span></div>
+    <div class="card-subtitle">Specialized for Images</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Neural network that uses <strong>convolutional layers</strong> to automatically learn spatial features (edges, textures, shapes) from images.
+    </div>
+    <div class="flow" style="flex-direction:column;align-items:flex-start;">
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+        <div class="flow-box" style="background:#f759ab;">Image Input<br><span style="font-size:9px;">224×224×3</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="background:#c084fc;">Conv Layer<br><span style="font-size:9px;">Detect edges</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="background:#818cf8;">ReLU</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="background:#0891b2;">Pooling<br><span style="font-size:9px;">Reduce size</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="background:#16a34a;">FC Layer + Softmax<br><span style="font-size:9px;">Classify!</span></div>
+      </div>
+    </div>
+    <table class="comp-table" style="margin-top:12px;">
+      <tr><th>Layer</th><th>What it does</th></tr>
+      <tr><td><strong>Conv Layer</strong></td><td>Filters slide over image to detect local features (edges, shapes)</td></tr>
+      <tr><td><strong>Pooling</strong></td><td>Max Pooling reduces spatial size — keeps important features</td></tr>
+      <tr><td><strong>Flatten</strong></td><td>2D feature map → 1D vector for FC layers</td></tr>
+      <tr><td><strong>Dense/FC</strong></td><td>Final classification or regression</td></tr>
+    </table>
+    <div class="example">Face recognition: Conv layers detect eyes/nose/mouth → FC classifies who it is!</div>
+    <div class="hinglish">Image dekhke khud samjho — "yeh edge hai, yeh aankh hai, yeh chehra XYZ ka hai!" CNN automatically feature engineering karta hai!</div>
+  </div>
+
+  <!-- RNN & LSTM -->
+  <div class="card" id="s21">
+    <div class="card-num">21</div>
+    <div class="card-icon">🔄</div>
+    <div class="card-title">RNN & LSTM</div>
+    <div class="card-subtitle">Sequential Data with Memory</div>
+    <div class="card-body">
+      <strong>RNN:</strong> Neural network with loops — has <strong>memory of previous inputs</strong>.<br><br>
+      <strong>LSTM (Long Short-Term Memory):</strong> Improved RNN with <strong>gates</strong> that control what to remember and forget.
+    </div>
+    <div class="formula">
+      RNN: hₜ = tanh(Wh·hₜ₋₁ + Wx·xₜ + b)<br>
+      LSTM Gates: Forget Gate | Input Gate | Output Gate
+    </div>
+    <table class="comp-table">
+      <tr><th>Model</th><th>Memory</th><th>Long sequences</th><th>Problem</th></tr>
+      <tr><td>Vanilla RNN</td><td>Short-term</td><td>❌ Forgets</td><td>Vanishing gradient</td></tr>
+      <tr><td><strong>LSTM</strong></td><td>Long + Short</td><td>✅ Remembers</td><td>Slow, complex</td></tr>
+      <tr><td>GRU</td><td>Long + Short</td><td>✅ Good</td><td>Simpler than LSTM</td></tr>
+    </table>
+    <div class="example">Sentence translation: "I love programming" → must remember "I" is still subject at "programming"</div>
+    <div class="hinglish">RNN ko memory hai — pehle kya suna, woh yaad rehta hai agle word ke liye. LSTM smarter hai — decide karta hai kya remember karna hai, kya bhoolna hai!</div>
+  </div>
+
+  <!-- Autoencoder -->
+  <div class="card" id="s22">
+    <div class="card-num">22</div>
+    <div class="card-icon">🗜️</div>
+    <div class="card-title">Autoencoder</div>
+    <div class="card-subtitle">Compress → Reconstruct</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Unsupervised neural network that <strong>compresses input to a latent vector</strong> (bottleneck) and then reconstructs it. Learns efficient data representations.
+    </div>
+    <div class="formula">
+      Input X → Encoder → Latent z → Decoder → Output X'<br>
+      Minimize: ‖X − X'‖²  (Reconstruction Loss)
+    </div>
+    <div class="nn-visual">
+      <svg width="100%" viewBox="0 0 360 100" style="max-width:360px;">
+        <!-- Encoder -->
+        <rect x="10" y="20" width="50" height="60" rx="8" fill="#f759ab" opacity="0.8"/>
+        <text x="35" y="55" text-anchor="middle" font-size="10" fill="white" font-weight="700">Input</text>
+        <line x1="60" y1="50" x2="100" y2="50" stroke="#ffadd2" stroke-width="2" marker-end="url(#a)"/>
+        <rect x="100" y="30" width="50" height="40" rx="8" fill="#c084fc" opacity="0.8"/>
+        <text x="125" y="55" text-anchor="middle" font-size="9" fill="white" font-weight="700">Encoder</text>
+        <line x1="150" y1="50" x2="185" y2="50" stroke="#ffadd2" stroke-width="2"/>
+        <!-- Bottleneck -->
+        <rect x="185" y="38" width="30" height="24" rx="6" fill="#d6005a"/>
+        <text x="200" y="53" text-anchor="middle" font-size="8" fill="white" font-weight="700">z</text>
+        <text x="200" y="85" text-anchor="middle" font-size="9" fill="#d6005a" font-family="DM Sans">Latent</text>
+        <line x1="215" y1="50" x2="250" y2="50" stroke="#bbf7d0" stroke-width="2"/>
+        <!-- Decoder -->
+        <rect x="250" y="30" width="50" height="40" rx="8" fill="#818cf8" opacity="0.8"/>
+        <text x="275" y="55" text-anchor="middle" font-size="9" fill="white" font-weight="700">Decoder</text>
+        <line x1="300" y1="50" x2="340" y2="50" stroke="#bbf7d0" stroke-width="2"/>
+        <rect x="300" y="20" width="55" height="60" rx="8" fill="#16a34a" opacity="0.8"/>
+        <text x="327" y="55" text-anchor="middle" font-size="10" fill="white" font-weight="700">Output</text>
+      </svg>
+    </div>
+    <div class="example">Image denoising: Noisy image in → compressed representation → clean image out!</div>
+    <div class="hinglish">Photo ki description likhna (encode), phir description se wapas photo banana (decode). Self-supervised — khud ko sikhata hai!</div>
+  </div>
+
+  <!-- GAN -->
+  <div class="card" id="s23">
+    <div class="card-num">23</div>
+    <div class="card-icon">🎭</div>
+    <div class="card-title">GAN — Generative Adversarial Network</div>
+    <div class="card-subtitle">Two Networks in Competition</div>
+    <div class="card-body">
+      <strong>Generator (G):</strong> Creates fake data that looks real.<br>
+      <strong>Discriminator (D):</strong> Distinguishes real from fake.<br><br>
+      They compete — both get better over time!
+    </div>
+    <div class="gan-flow">
+      <div class="gan-box" style="background:#fff0f6;border:2px solid #f759ab;color:#d6005a;">🎨 Generator<br><span style="font-size:10px;font-weight:400;">Makes fake images</span></div>
+      <div class="flow-arrow">→ fake →</div>
+      <div class="gan-box" style="background:#f3e8ff;border:2px solid #9b4dca;color:#7c3aed;">🔍 Discriminator<br><span style="font-size:10px;font-weight:400;">Real or Fake?</span></div>
+      <div class="flow-arrow">←feedback←</div>
+      <div class="gan-box" style="background:#dcfce7;border:2px solid #16a34a;color:#166534;">📊 Real Data<br><span style="font-size:10px;font-weight:400;">Ground truth</span></div>
+    </div>
+    <div class="formula">
+      G: minimize log(1 − D(G(z)))<br>
+      D: maximize log(D(x)) + log(1 − D(G(z)))
+    </div>
+    <div class="example">DeepFake generation, realistic AI art (DALL-E ancestor), data augmentation</div>
+    <div class="hinglish">Nakli note banane wala (G) aur police (D) — dono ek doosre ko improve karte hain! G itna accha ho jaata hai ki D pakad nahi sakta!</div>
+  </div>
+
+  <!-- Vanishing/Exploding Gradient -->
+  <div class="card">
+    <div class="card-num">24</div>
+    <div class="card-icon">💥</div>
+    <div class="card-title">Vanishing & Exploding Gradients</div>
+    <div class="card-subtitle">Deep Network Training Problems</div>
+    <table class="comp-table">
+      <tr><th>Problem</th><th>What Happens</th><th>Result</th></tr>
+      <tr><td><strong>Vanishing</strong></td><td>Gradient → 0 as backprop goes back</td><td>Early layers stop learning</td></tr>
+      <tr><td><strong>Exploding</strong></td><td>Gradient → ∞, weights blow up</td><td>NaN loss, training crash</td></tr>
+    </table>
+    <div style="margin-top:14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--deep-rose);margin-bottom:8px;">Solutions:</div>
+      <table class="comp-table">
+        <tr><th>Problem</th><th>Solution</th></tr>
+        <tr><td>Vanishing</td><td>ReLU activation, BatchNorm, ResNet skip connections, LSTM</td></tr>
+        <tr><td>Exploding</td><td>Gradient Clipping (cap gradient at max value), careful weight init</td></tr>
+      </table>
+    </div>
+    <div class="hinglish">100 layers deep mein gradient multiply hote hote ya to bilkul zero ho jaata hai (vanishing) ya explosion! Isliye ReLU aur ResNet ne deep learning revolve kar diya!</div>
+  </div>
+
+  <!-- ResNet -->
+  <div class="card">
+    <div class="card-num">25</div>
+    <div class="card-icon">⚡</div>
+    <div class="card-title">ResNet — Residual Networks</div>
+    <div class="card-subtitle">Skip Connections for Deep Networks</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Instead of learning H(x), learn the <strong>residual F(x) = H(x) − x</strong>. Skip connections allow gradients to flow directly, enabling very deep networks (100+ layers).
+    </div>
+    <div class="formula">
+      Output = F(x, {Wᵢ}) + x<br>
+      <span style="font-size:11px;color:var(--purple);">x = skip connection (shortcut) | F(x) = residual to learn</span>
+    </div>
+    <div class="nn-visual">
+      <svg viewBox="0 0 300 120" width="100%" style="max-width:300px;">
+        <rect x="20" y="45" width="50" height="30" rx="6" fill="#f759ab"/>
+        <text x="45" y="65" text-anchor="middle" font-size="10" fill="white" font-weight="700">Input x</text>
+        <!-- Skip connection (top) -->
+        <path d="M70,60 Q150,20 230,60" fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="5"/>
+        <text x="150" y="22" text-anchor="middle" font-size="9" fill="#16a34a" font-weight="700">Skip: +x</text>
+        <!-- Conv layers -->
+        <rect x="90" y="45" width="60" height="30" rx="6" fill="#c084fc"/>
+        <text x="120" y="62" text-anchor="middle" font-size="9" fill="white" font-weight="700">Conv+ReLU</text>
+        <rect x="160" y="45" width="60" height="30" rx="6" fill="#818cf8"/>
+        <text x="190" y="62" text-anchor="middle" font-size="9" fill="white" font-weight="700">Conv+ReLU</text>
+        <!-- Addition -->
+        <circle cx="240" cy="60" r="14" fill="#d6005a"/>
+        <text x="240" y="65" text-anchor="middle" font-size="14" fill="white" font-weight="700">+</text>
+        <!-- Output -->
+        <rect x="264" y="45" width="30" height="30" rx="6" fill="#16a34a"/>
+        <text x="279" y="65" text-anchor="middle" font-size="9" fill="white" font-weight="700">Out</text>
+        <line x1="70" y1="60" x2="90" y2="60" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="150" y1="60" x2="160" y2="60" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="220" y1="60" x2="226" y2="60" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="254" y1="60" x2="264" y2="60" stroke="#bbf7d0" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="hinglish">Seedha shortcut dedo! Agar koi layer kuch useful nahi seekh raha — directly bypass karke gradient bhej do. 152 layer deep ResNet banaya gaya iska use karke!</div>
+  </div>
+
+</div>
+
+<!-- ==================== SECTION 4: TRAINING ==================== -->
+<div class="category-header" id="training">
+  <div class="cat-label">⚙️ Chapter 4 — Training Mechanics & Optimizers</div>
+  <div class="cat-line"></div>
+</div>
+
+<div class="cards-container">
+
+  <!-- Optimizers -->
+  <div class="card" id="s24">
+    <div class="card-num">26</div>
+    <div class="card-icon">🚀</div>
+    <div class="card-title">Optimizers</div>
+    <div class="card-subtitle">Advanced Gradient Descent Variants</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Algorithms that determine how weights are updated. Beyond basic GD — smarter, faster convergence.
+    </div>
+    <table class="comp-table">
+      <tr><th>Optimizer</th><th>Key Idea</th><th>Formula Snippet</th><th>When to Use</th></tr>
+      <tr><td><strong>SGD</strong></td><td>Basic GD on mini-batch</td><td>θ = θ − α∇J</td><td>Simple tasks</td></tr>
+      <tr><td><strong>Momentum</strong></td><td>Add previous direction</td><td>v = βv + ∇J; θ = θ − αv</td><td>Smoother descent</td></tr>
+      <tr><td><strong>RMSProp</strong></td><td>Adaptive per-parameter α</td><td>θ = θ − α/√(E[g²]+ε) × g</td><td>RNNs</td></tr>
+      <tr><td><strong>Adam ⭐</strong></td><td>Momentum + RMSProp</td><td>m̂,v̂ → θ = θ − α×m̂/√v̂+ε</td><td>Default choice!</td></tr>
+    </table>
+    <div class="metrics-row">
+      <div class="metric-box"><div class="metric-val">β₁=0.9</div><div class="metric-label">Adam Momentum</div></div>
+      <div class="metric-box"><div class="metric-val">β₂=0.999</div><div class="metric-label">Adam RMSProp</div></div>
+      <div class="metric-box"><div class="metric-val">ε=1e-8</div><div class="metric-label">Stability</div></div>
+    </div>
+    <div class="hinglish">Adam = best of all worlds. Ball ko dhakka do (momentum) + har parameter ka apna speed (adaptive). Isliye Adam sabse popular optimizer hai — almost always use karo!</div>
+  </div>
+
+  <!-- Learning Rate Scheduling -->
+  <div class="card" id="s25">
+    <div class="card-num">27</div>
+    <div class="card-icon">📉</div>
+    <div class="card-title">Learning Rate Scheduling</div>
+    <div class="card-subtitle">Dynamic Alpha Over Time</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Change learning rate during training — start large (explore), then small (fine-tune).
+    </div>
+    <div class="lr-visual">
+      <div class="lr-item" style="background:#fff0f6;border:1px solid #f759ab;">
+        📉 Step Decay<br>
+        <span style="font-size:10px;color:var(--text-light);">α = α × 0.1 every N epochs</span>
+      </div>
+      <div class="lr-item" style="background:#f3e8ff;border:1px solid #9b4dca;">
+        〰️ Cosine Annealing<br>
+        <span style="font-size:10px;color:var(--text-light);">αₜ = αmin + ½(αmax−αmin)(1+cos(πt/T))</span>
+      </div>
+      <div class="lr-item" style="background:#dcfce7;border:1px solid #16a34a;">
+        ↗️ Warmup + Decay<br>
+        <span style="font-size:10px;color:var(--text-light);">Pehle badhao, phir ghataao</span>
+      </div>
+    </div>
+    <div class="nn-visual">
+      <svg viewBox="0 0 300 100" width="100%" style="max-width:300px;">
+        <line x1="20" y1="80" x2="280" y2="80" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="20" y1="10" x2="20" y2="85" stroke="#ffadd2" stroke-width="1.5"/>
+        <text x="150" y="97" text-anchor="middle" font-size="9" fill="#9d5b78">Epochs →</text>
+        <text x="8" y="45" font-size="9" fill="#9d5b78" transform="rotate(-90,8,45)">α</text>
+        <!-- Step decay -->
+        <path d="M25,20 L100,20 L100,40 L175,40 L175,55 L250,55 L250,65 L270,65" fill="none" stroke="#f759ab" stroke-width="2"/>
+        <text x="50" y="15" font-size="8" fill="#d6005a" font-family="DM Sans">Step Decay</text>
+        <!-- Cosine -->
+        <path d="M25,25 Q80,25 130,50 Q180,72 230,73 Q250,73 270,73" fill="none" stroke="#9b4dca" stroke-width="2" stroke-dasharray="4"/>
+        <text x="180" y="68" font-size="8" fill="#9b4dca" font-family="DM Sans">Cosine</text>
+      </svg>
+    </div>
+    <div class="hinglish">Training ke shuruaat mein badi strides lo (explore karo), baad mein choti fine steps (precise hono). Jaise car park karte waqt — pehle fast aao, phir dheere dheere perfect position mein!</div>
+  </div>
+
+  <!-- Data Augmentation -->
+  <div class="card" id="s39">
+    <div class="card-num">28</div>
+    <div class="card-icon">✨</div>
+    <div class="card-title">Data Augmentation</div>
+    <div class="card-subtitle">Artificially Expand Training Data</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Create new training samples from existing data using transformations. Prevents overfitting and improves generalization.
+    </div>
+    <table class="comp-table">
+      <tr><th>Data Type</th><th>Augmentation Techniques</th></tr>
+      <tr><td><strong>Images</strong></td><td>Flip, Rotate, Crop, Brightness/Contrast change, Zoom, Noise, Cutout</td></tr>
+      <tr><td><strong>Text</strong></td><td>Synonym replacement, Back-translation, Random deletion, Paraphrase</td></tr>
+      <tr><td><strong>Audio</strong></td><td>Pitch shift, Speed change, Add noise, Time stretch</td></tr>
+    </table>
+    <div class="formula">
+      1 image + 10 augmentations = 10 new training samples!<br>
+      <span style="font-size:11px;color:var(--purple);">No new data needed — free samples!</span>
+    </div>
+    <div class="hinglish">Ek photo se 10 photos banana — rotate karo, flip karo, zoom karo! Model ko variety milti hai — generalise karna seekhta hai. Free mein data badhao!</div>
+  </div>
+
+</div>
+
+<!-- ==================== SECTION 5: REGULARIZATION ==================== -->
+<div class="category-header" id="regularization">
+  <div class="cat-label">🔧 Chapter 5 — Regularization & Generalization</div>
+  <div class="cat-line"></div>
+</div>
+
+<div class="cards-container">
+
+  <!-- Overfitting/Underfitting -->
+  <div class="card" id="s26">
+    <div class="card-num">29</div>
+    <div class="card-icon">🎯</div>
+    <div class="card-title">Overfitting vs Underfitting</div>
+    <div class="card-subtitle">The Goldilocks Problem</div>
+    <div class="nn-visual">
+      <svg width="100%" viewBox="0 0 380 160" style="max-width:380px;">
+        <!-- Underfit -->
+        <rect x="5" y="5" width="110" height="155" rx="8" fill="#fff7ed"/>
+        <text x="60" y="20" text-anchor="middle" font-size="10" fill="#ea580c" font-weight="700" font-family="DM Sans">Underfitting</text>
+        <circle cx="25" cy="80" r="4" fill="#f759ab"/><circle cx="40" cy="50" r="4" fill="#f759ab"/>
+        <circle cx="55" cy="90" r="4" fill="#f759ab"/><circle cx="70" cy="40" r="4" fill="#f759ab"/>
+        <circle cx="85" cy="75" r="4" fill="#f759ab"/><circle cx="100" cy="55" r="4" fill="#f759ab"/>
+        <line x1="20" y1="90" x2="110" y2="55" stroke="#ea580c" stroke-width="2"/>
+        <text x="60" y="140" text-anchor="middle" font-size="9" fill="#ea580c" font-family="DM Sans">High Bias (too simple)</text>
+        <!-- Just right -->
+        <rect x="130" y="5" width="120" height="155" rx="8" fill="#dcfce7"/>
+        <text x="190" y="20" text-anchor="middle" font-size="10" fill="#16a34a" font-weight="700" font-family="DM Sans">Just Right ✓</text>
+        <circle cx="145" cy="100" r="4" fill="#f759ab"/><circle cx="160" cy="65" r="4" fill="#f759ab"/>
+        <circle cx="175" cy="80" r="4" fill="#f759ab"/><circle cx="190" cy="45" r="4" fill="#f759ab"/>
+        <circle cx="205" cy="70" r="4" fill="#f759ab"/><circle cx="220" cy="55" r="4" fill="#f759ab"/>
+        <circle cx="235" cy="40" r="4" fill="#f759ab"/>
+        <path d="M145,100 Q160,65 175,80 Q190,45 205,70 Q220,55 240,38" fill="none" stroke="#16a34a" stroke-width="2"/>
+        <text x="190" y="140" text-anchor="middle" font-size="9" fill="#16a34a" font-family="DM Sans">Good generalization</text>
+        <!-- Overfit -->
+        <rect x="265" y="5" width="110" height="155" rx="8" fill="#fee2e2"/>
+        <text x="320" y="20" text-anchor="middle" font-size="10" fill="#dc2626" font-weight="700" font-family="DM Sans">Overfitting</text>
+        <circle cx="280" cy="110" r="4" fill="#f759ab"/><circle cx="295" cy="70" r="4" fill="#f759ab"/>
+        <circle cx="310" cy="85" r="4" fill="#f759ab"/><circle cx="325" cy="50" r="4" fill="#f759ab"/>
+        <circle cx="340" cy="75" r="4" fill="#f759ab"/><circle cx="355" cy="55" r="4" fill="#f759ab"/>
+        <path d="M278,112 Q290,73 308,88 Q318,55 325,50 Q338,40 340,75 Q348,55 357,57" fill="none" stroke="#dc2626" stroke-width="2"/>
+        <text x="320" y="140" text-anchor="middle" font-size="9" fill="#dc2626" font-family="DM Sans">High Variance (memorized)</text>
+      </svg>
+    </div>
+    <table class="comp-table">
+      <tr><th></th><th>Train Error</th><th>Test Error</th><th>Fix</th></tr>
+      <tr><td><strong>Underfit</strong></td><td>High ❌</td><td>High ❌</td><td>More complex model</td></tr>
+      <tr><td><strong>Just Right</strong></td><td>Low ✅</td><td>Low ✅</td><td>—</td></tr>
+      <tr><td><strong>Overfit</strong></td><td>Very Low ✅</td><td>High ❌</td><td>Regularize, more data</td></tr>
+    </table>
+    <div class="hinglish">Underfit = padhai hi nahi ki. Overfit = sirf exact questions ratt liye. Just Right = concept samjha — koi bhi question solve karo!</div>
+  </div>
+
+  <!-- Bias-Variance -->
+  <div class="card" id="s30">
+    <div class="card-num">30</div>
+    <div class="card-icon">⚖️</div>
+    <div class="card-title">Bias-Variance Tradeoff</div>
+    <div class="card-subtitle">The Fundamental ML Challenge</div>
+    <div class="formula">
+      Total Error = Bias² + Variance + Irreducible Noise<br>
+      <span style="font-size:11px;color:var(--purple);">Goal: Minimize both bias AND variance (but they fight each other!)</span>
+    </div>
+    <table class="comp-table">
+      <tr><th></th><th>High Bias</th><th>High Variance</th></tr>
+      <tr><td><strong>Cause</strong></td><td>Model too simple</td><td>Model too complex</td></tr>
+      <tr><td><strong>Problem</strong></td><td>Underfitting</td><td>Overfitting</td></tr>
+      <tr><td><strong>Fix</strong></td><td>More features, complex model</td><td>Regularize, more data, dropout</td></tr>
+    </table>
+    <div class="nn-visual">
+      <svg viewBox="0 0 300 120" width="100%" style="max-width:300px;">
+        <line x1="20" y1="100" x2="280" y2="100" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="20" y1="10" x2="20" y2="105" stroke="#ffadd2" stroke-width="1.5"/>
+        <text x="150" y="115" text-anchor="middle" font-size="9" fill="#9d5b78" font-family="DM Sans">Model Complexity →</text>
+        <!-- Bias curve (decreasing) -->
+        <path d="M25,20 Q60,30 100,55 Q140,75 200,85 Q240,90 275,93" fill="none" stroke="#f759ab" stroke-width="2"/>
+        <text x="90" y="45" font-size="9" fill="#d6005a" font-family="DM Sans">Bias² ↘</text>
+        <!-- Variance curve (increasing) -->
+        <path d="M25,95 Q80,93 130,85 Q170,70 210,45 Q240,28 275,15" fill="none" stroke="#9b4dca" stroke-width="2"/>
+        <text x="190" y="40" font-size="9" fill="#9b4dca" font-family="DM Sans">Variance ↗</text>
+        <!-- Total error = U shape -->
+        <path d="M25,30 Q70,35 120,55 Q150,50 180,55 Q220,65 275,30" fill="none" stroke="#0891b2" stroke-width="2.5" stroke-dasharray="5"/>
+        <text x="150" y="48" font-size="9" fill="#0891b2" font-family="DM Sans" font-weight="700">Total Error (U-shape)</text>
+        <!-- Sweet spot -->
+        <line x1="155" y1="10" x2="155" y2="100" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="145" y="10" font-size="9" fill="#16a34a" font-family="DM Sans">Sweet</text>
+        <text x="145" y="20" font-size="9" fill="#16a34a" font-family="DM Sans">Spot</text>
+      </svg>
+    </div>
+    <div class="hinglish">Zyada simple = Bias. Zyada complex = Variance. Dono ka balance = best model! Is "sweet spot" ko dhundho!</div>
+  </div>
+
+  <!-- Regularization -->
+  <div class="card" id="s27">
+    <div class="card-num">31</div>
+    <div class="card-icon">🛡️</div>
+    <div class="card-title">Regularization — L1 & L2</div>
+    <div class="card-subtitle">Penalize Large Weights to Prevent Overfitting</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Add a penalty term to the cost function that discourages large weights, keeping the model simpler and more generalizable.
+    </div>
+    <div class="formula">
+      L1 (Lasso): J = Loss + λΣ|wᵢ|<br>
+      L2 (Ridge): J = Loss + λΣwᵢ²<br>
+      <span style="font-size:11px;color:var(--purple);">λ = regularization strength (hyperparameter)</span>
+    </div>
+    <table class="comp-table">
+      <tr><th></th><th>L1 (Lasso)</th><th>L2 (Ridge)</th></tr>
+      <tr><td><strong>Effect</strong></td><td>Makes some weights exactly 0 (sparse)</td><td>Makes weights small but not zero</td></tr>
+      <tr><td><strong>Feature Selection</strong></td><td>✅ Yes — eliminates features</td><td>❌ No — keeps all features small</td></tr>
+      <tr><td><strong>Use when</strong></td><td>Many irrelevant features</td><td>All features matter somewhat</td></tr>
+    </table>
+    <div class="example">λ=0.01, large w penalized → model forced to use small weights → less overfitting!</div>
+    <div class="hinglish">Model ko simple rehne ki "saza" do agar zyada complex hona chahte ho. L1 kuch features ko zero kar deta hai (feature selection). L2 sab kuch thoda chota karta hai!</div>
+  </div>
+
+  <!-- Dropout + BatchNorm -->
+  <div class="card" id="s28">
+    <div class="card-num">32</div>
+    <div class="card-icon">🎲</div>
+    <div class="card-title">Dropout & Batch Normalization</div>
+    <div class="card-subtitle">Regularization Techniques in Neural Networks</div>
+    <div class="card-body">
+      <strong>Dropout:</strong> Randomly "turn off" p% neurons during training each iteration. Prevents co-adaptation, forces redundancy.
+    </div>
+    <div class="formula">
+      Dropout: Each neuron kept with probability (1−p)<br>
+      Typical p = 0.2 to 0.5
+    </div>
+    <div class="divider"></div>
+    <div class="card-body" style="margin-top:10px;">
+      <strong>Batch Normalization:</strong> Normalize each layer's activations to have mean=0, variance=1 during training. Stabilizes and accelerates training.
+    </div>
+    <div class="formula">
+      x̂ = (x − μ_batch) / √(σ²_batch + ε)<br>
+      output = γ × x̂ + β  ← learnable parameters
+    </div>
+    <div class="hinglish">Dropout = random team members absent karke training karo — baaki sab sab kuch seekhte hain! BatchNorm = sab students ka marks same scale pe laana — outliers control karo!</div>
+  </div>
+
+  <!-- Early Stopping -->
+  <div class="card" id="s29">
+    <div class="card-num">33</div>
+    <div class="card-icon">🏁</div>
+    <div class="card-title">Early Stopping</div>
+    <div class="card-subtitle">Stop Before Overfitting!</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Monitor validation loss during training. When validation loss stops improving (or starts increasing), stop training — even if training loss is still decreasing.
+    </div>
+    <div class="nn-visual">
+      <svg viewBox="0 0 300 130" width="100%" style="max-width:300px;">
+        <line x1="20" y1="110" x2="280" y2="110" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="20" y1="10" x2="20" y2="115" stroke="#ffadd2" stroke-width="1.5"/>
+        <text x="150" y="125" text-anchor="middle" font-size="9" fill="#9d5b78" font-family="DM Sans">Epochs →</text>
+        <text x="8" y="60" font-size="9" fill="#9d5b78" transform="rotate(-90,8,60)">Loss</text>
+        <!-- Train loss (keeps going down) -->
+        <path d="M25,80 Q60,60 100,40 Q140,28 180,18 Q220,12 270,8" fill="none" stroke="#f759ab" stroke-width="2"/>
+        <text x="240" y="12" font-size="8" fill="#d6005a" font-family="DM Sans">Train ↓</text>
+        <!-- Val loss (U-shape: goes down then up) -->
+        <path d="M25,82 Q60,60 100,45 Q130,38 155,36 Q175,37 200,45 Q230,60 270,82" fill="none" stroke="#9b4dca" stroke-width="2"/>
+        <text x="230" y="78" font-size="8" fill="#9b4dca" font-family="DM Sans">Val ↑</text>
+        <!-- Stop line -->
+        <line x1="155" y1="10" x2="155" y2="110" stroke="#16a34a" stroke-width="2" stroke-dasharray="5"/>
+        <text x="160" y="22" font-size="8" fill="#16a34a" font-family="DM Sans" font-weight="700">⟵ STOP HERE!</text>
+        <!-- Overfit zone -->
+        <rect x="155" y="10" width="115" height="98" fill="rgba(220,38,38,0.07)" rx="4"/>
+        <text x="210" y="60" text-anchor="middle" font-size="8" fill="#dc2626" font-family="DM Sans">Overfit Zone</text>
+      </svg>
+    </div>
+    <div class="hinglish">Jab validation loss badhne lage — rukk jao! Training loss abhi bhi ghar raha hoga lekin woh sirf training data yaad kar raha hai. Val loss = asli performance indicator!</div>
+  </div>
+
+  <!-- Normalization -->
+  <div class="card">
+    <div class="card-num">34</div>
+    <div class="card-icon">📏</div>
+    <div class="card-title">Normalization & Standardization</div>
+    <div class="card-subtitle">Put Features on the Same Scale</div>
+    <div class="card-body">
+      <strong>Why?</strong> Features with different scales (age: 0-100, salary: 0-1,00,000) confuse gradient descent — large-scale features dominate!
+    </div>
+    <div class="formula">
+      Min-Max Normalization: x' = (x − xmin) / (xmax − xmin)  → [0, 1]<br>
+      Z-Score Standardization: x' = (x − μ) / σ  → Mean=0, Std=1
+    </div>
+    <table class="comp-table">
+      <tr><th></th><th>Normalization</th><th>Standardization</th></tr>
+      <tr><td><strong>Range</strong></td><td>[0, 1]</td><td>(-∞, ∞) centered at 0</td></tr>
+      <tr><td><strong>Sensitive to outliers</strong></td><td>Yes ⚠️</td><td>Less so</td></tr>
+      <tr><td><strong>Best for</strong></td><td>CNN (images), when known bounds</td><td>Most ML algorithms</td></tr>
+    </table>
+    <div class="hinglish">Age (0-100) aur Salary (0-100k) — dono same range pe laao. Warna gradient descent salary ke peeche bhaagega aur age ignore karega!</div>
+  </div>
+
+</div>
+
+<!-- Train/Val/Test Split -->
+<div class="cards-container wide">
+  <div class="card">
+    <div class="card-num">35</div>
+    <div class="card-icon">✂️</div>
+    <div class="card-title">Train / Validation / Test Split & Cross-Validation</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--deep-rose);margin-bottom:10px;">Standard Split</div>
+        <div style="display:flex;gap:4px;height:40px;border-radius:10px;overflow:hidden;margin-bottom:10px;">
+          <div style="flex:7;background:#f759ab;display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:700;">Train 70%</div>
+          <div style="flex:1.5;background:#9b4dca;display:flex;align-items:center;justify-content:center;color:white;font-size:10px;font-weight:700;">Val 15%</div>
+          <div style="flex:1.5;background:#0891b2;display:flex;align-items:center;justify-content:center;color:white;font-size:10px;font-weight:700;">Test 15%</div>
+        </div>
+        <div style="font-size:12px;color:var(--text-mid);line-height:1.7;">
+          <strong>Train:</strong> Model yahan se seekhta hai<br>
+          <strong>Val:</strong> Hyperparameter tuning ke liye<br>
+          <strong>Test:</strong> Final honest evaluation only!
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--deep-rose);margin-bottom:10px;">K-Fold Cross-Validation (K=5)</div>
+        <div style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text-mid);line-height:2;background:var(--pink-100);padding:10px;border-radius:8px;">
+          Fold 1: [TEST][Train][Train][Train][Train]<br>
+          Fold 2: [Train][TEST][Train][Train][Train]<br>
+          Fold 3: [Train][Train][TEST][Train][Train]<br>
+          Fold 4: [Train][Train][Train][TEST][Train]<br>
+          Fold 5: [Train][Train][Train][Train][TEST]<br>
+          Score = Average of all 5 fold scores ✅
+        </div>
+      </div>
+    </div>
+    <div class="hinglish">Test set ko kabhi training mein mat use karo — woh final exam hai! K-Fold = sab students baar baar different role mein — sabse fair evaluation!</div>
+  </div>
+</div>
+
+<!-- ==================== SECTION 6: EVALUATION ==================== -->
+<div class="category-header" id="evaluation">
+  <div class="cat-label">📊 Chapter 6 — Evaluation Metrics</div>
+  <div class="cat-line"></div>
+</div>
+
+<div class="cards-container">
+
+  <!-- Confusion Matrix -->
+  <div class="card" id="s31">
+    <div class="card-num">36</div>
+    <div class="card-icon">🔲</div>
+    <div class="card-title">Confusion Matrix</div>
+    <div class="card-subtitle">Visual Performance Breakdown</div>
+    <div class="card-body">
+      For binary classification — shows what the model got right AND wrong, broken down by class.
+    </div>
+    <div class="cm-grid">
+      <div class="cm-header"></div>
+      <div class="cm-header">Predicted: +</div>
+      <div class="cm-header">Predicted: −</div>
+      <div class="cm-header" style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;">Actual: +</div>
+      <div class="cm-cell cm-tp">TP ✅<br><span style="font-size:10px;font-weight:400;">True Positive<br>Sick → Sick ✓</span></div>
+      <div class="cm-cell cm-fn">FN ⚠️<br><span style="font-size:10px;font-weight:400;">False Negative<br>Sick → Healthy ✗</span></div>
+      <div class="cm-header" style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;">Actual: −</div>
+      <div class="cm-cell cm-fp">FP ⚠️<br><span style="font-size:10px;font-weight:400;">False Positive<br>Healthy → Sick ✗</span></div>
+      <div class="cm-cell cm-tn">TN ✅<br><span style="font-size:10px;font-weight:400;">True Negative<br>Healthy → Healthy ✓</span></div>
+    </div>
+    <div class="warning">FN in medical = missed disease (dangerous!). FP in spam = real email in spam (annoying). Context decides which error is worse!</div>
+    <div class="hinglish">4 buckets: TP=sahi pakda, TN=sahi choda, FP=galat alarm (Type I), FN=miss kar gaye (Type II). Medical mein FN zyada dangerous hai!</div>
+  </div>
+
+  <!-- Metrics -->
+  <div class="card" id="s32">
+    <div class="card-num">37</div>
+    <div class="card-icon">📐</div>
+    <div class="card-title">Classification Metrics</div>
+    <div class="card-subtitle">Accuracy, Precision, Recall, F1</div>
+    <div class="formula">
+      Accuracy  = (TP + TN) / (TP + TN + FP + FN)<br>
+      Precision = TP / (TP + FP)   ← How precise when says +?<br>
+      Recall    = TP / (TP + FN)   ← How many actual + caught?<br>
+      F1 Score  = 2 × (P × R) / (P + R)  ← Harmonic mean
+    </div>
+    <table class="comp-table">
+      <tr><th>Metric</th><th>Optimize when</th><th>Example</th></tr>
+      <tr><td><strong>Accuracy</strong></td><td>Classes balanced</td><td>General tasks</td></tr>
+      <tr><td><strong>Precision</strong></td><td>FP is costly</td><td>Spam filter (don't block real email)</td></tr>
+      <tr><td><strong>Recall</strong></td><td>FN is costly</td><td>Cancer detection (don't miss disease)</td></tr>
+      <tr><td><strong>F1 Score</strong></td><td>Balance P & R, imbalanced data</td><td>Fraud detection</td></tr>
+    </table>
+
+    <div style="margin-top:14px;">
+      <div style="font-size:12px;font-weight:700;color:var(--deep-rose);margin-bottom:8px;">Regression Metrics:</div>
+      <div class="formula" style="font-size:12px;">
+        MAE = (1/n)Σ|y − ŷ|<br>
+        MSE = (1/n)Σ(y − ŷ)²<br>
+        RMSE = √MSE  ← Same unit as target<br>
+        R² = 1 − [Σ(y−ŷ)² / Σ(y−ȳ)²]  → closer to 1 = better
+      </div>
+    </div>
+    <div class="hinglish">Accuracy chhota wala number! Imbalanced data mein 99% accuracy bhi bekar hoti hai. F1 sab ka balance deta hai. Cancer detection mein Recall maximize karo — miss mat karo!</div>
+  </div>
+
+  <!-- ROC & AUC -->
+  <div class="card" id="s33">
+    <div class="card-num">38</div>
+    <div class="card-icon">📈</div>
+    <div class="card-title">ROC Curve & AUC</div>
+    <div class="card-subtitle">Model Discrimination Power</div>
+    <div class="card-body">
+      <strong>ROC Curve:</strong> Plots True Positive Rate vs False Positive Rate at different thresholds.<br><br>
+      <strong>AUC:</strong> Area Under the ROC Curve. Ranges 0 to 1.
+    </div>
+    <div class="nn-visual">
+      <svg viewBox="0 0 240 180" width="100%" style="max-width:240px;">
+        <rect x="20" y="10" width="200" height="150" rx="4" fill="#fff0f6"/>
+        <line x1="20" y1="160" x2="220" y2="160" stroke="#ffadd2" stroke-width="1.5"/>
+        <line x1="20" y1="10" x2="20" y2="165" stroke="#ffadd2" stroke-width="1.5"/>
+        <text x="120" y="178" text-anchor="middle" font-size="9" fill="#9d5b78" font-family="DM Sans">False Positive Rate →</text>
+        <text x="10" y="85" font-size="9" fill="#9d5b78" transform="rotate(-90,10,85)">True Positive Rate ↑</text>
+        <!-- Random baseline -->
+        <line x1="20" y1="160" x2="220" y2="10" stroke="#bdbdbd" stroke-width="1.5" stroke-dasharray="4"/>
+        <text x="130" y="75" font-size="8" fill="#9e9e9e" font-family="DM Sans" transform="rotate(-37,130,75)">Random (AUC=0.5)</text>
+        <!-- Good model curve -->
+        <path d="M20,160 Q25,80 50,40 Q80,18 220,10" fill="none" stroke="#f759ab" stroke-width="2.5"/>
+        <!-- Area fill -->
+        <path d="M20,160 Q25,80 50,40 Q80,18 220,10 L220,160 Z" fill="rgba(247,89,171,0.15)"/>
+        <text x="90" y="130" font-size="9" fill="#d6005a" font-family="DM Sans" font-weight="700">AUC = 0.92 🌟</text>
+        <!-- Labels -->
+        <text x="22" y="12" font-size="8" fill="#d6005a" font-family="DM Sans">1.0</text>
+        <text x="22" y="163" font-size="8" fill="#d6005a" font-family="DM Sans">0</text>
+        <text x="215" y="163" font-size="8" fill="#d6005a" font-family="DM Sans">1</text>
+      </svg>
+    </div>
+    <div class="metrics-row">
+      <div class="metric-box"><div class="metric-val">0.5</div><div class="metric-label">Random Model</div></div>
+      <div class="metric-box"><div class="metric-val">&gt;0.8</div><div class="metric-label">Good Model</div></div>
+      <div class="metric-box"><div class="metric-val">1.0</div><div class="metric-label">Perfect Model</div></div>
+    </div>
+    <div class="hinglish">AUC = model kitna acha hai ek number mein! 0.5 = random flip. 1.0 = perfect. 0.9+ = bahut accha model!</div>
+  </div>
+
+</div>
+
+<!-- ==================== SECTION 7: MODERN DL ==================== -->
+<div class="category-header" id="modern">
+  <div class="cat-label">🌐 Chapter 7 — Modern Deep Learning & NLP</div>
+  <div class="cat-line"></div>
+</div>
+
+<div class="cards-container">
+
+  <!-- Embeddings & Tokenization -->
+  <div class="card" id="s35">
+    <div class="card-num">39</div>
+    <div class="card-icon">🔤</div>
+    <div class="card-title">Embeddings & Tokenization</div>
+    <div class="card-subtitle">How Machines Understand Text</div>
+    <div class="card-body">
+      <strong>Tokenization:</strong> Text ko chote pieces (tokens) mein todna — first step of NLP.
+    </div>
+    <div class="formula">
+      "I love ML" → ["I", "love", "ML"] → [102, 2293, 7471]<br>
+      <span style="font-size:11px;color:var(--purple);">Each token gets a unique integer ID</span>
+    </div>
+    <div class="card-body" style="margin-top:10px;">
+      <strong>Embeddings:</strong> Convert token IDs to <strong>dense vectors</strong> — similar meanings = similar vectors!
+    </div>
+    <div class="formula">
+      "King" → [0.7, -0.3, 0.9, ...]  (300-dim vector)<br>
+      "Queen" → [0.6, -0.2, 0.8, ...]  (similar!)<br>
+      King − Man + Woman ≈ Queen  ← Vector arithmetic!
+    </div>
+    <div class="example">Word2Vec, GloVe, FastText — pretrained embeddings that capture semantic meaning!</div>
+    <div class="hinglish">Computer text directly nahi samajhta — numbers chahiye. Tokenization = words todna, Embedding = words ko meaningful numbers mein badalna!</div>
+  </div>
+
+  <!-- Attention -->
+  <div class="card" id="s36">
+    <div class="card-num">40</div>
+    <div class="card-icon">👁️</div>
+    <div class="card-title">Attention Mechanism</div>
+    <div class="card-subtitle">Focus on What Matters</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Allows the model to focus on <strong>different parts of the input sequence</strong> when generating each output. Each word attends to all other words!
+    </div>
+    <div class="formula">
+      Attention(Q, K, V) = softmax(QKᵀ / √d_k) × V<br>
+      <span style="font-size:11px;color:var(--purple);">Q=Query, K=Key, V=Value | d_k = key dimension</span>
+    </div>
+    <div class="nn-visual">
+      <svg viewBox="0 0 340 120" width="100%" style="max-width:340px;">
+        <text x="20" y="30" font-size="12" fill="#f759ab" font-weight="700" font-family="DM Sans">The</text>
+        <text x="55" y="30" font-size="12" fill="#f759ab" font-weight="700" font-family="DM Sans">cat</text>
+        <text x="95" y="30" font-size="12" fill="#f759ab" font-weight="700" font-family="DM Sans">sat</text>
+        <text x="130" y="30" font-size="12" fill="#f759ab" font-weight="700" font-family="DM Sans">on</text>
+        <text x="160" y="30" font-size="12" fill="#f759ab" font-weight="700" font-family="DM Sans">the</text>
+        <text x="195" y="30" font-size="14" fill="#d6005a" font-weight="900" font-family="DM Sans">mat</text>
+        <!-- Attention lines to "mat" -->
+        <line x1="35" y1="35" x2="210" y2="90" stroke="#ffadd2" stroke-width="1" opacity="0.4"/>
+        <line x1="65" y1="35" x2="210" y2="90" stroke="#f759ab" stroke-width="3" opacity="0.9"/>
+        <line x1="110" y1="35" x2="210" y2="90" stroke="#ffadd2" stroke-width="1.5" opacity="0.5"/>
+        <line x1="140" y1="35" x2="210" y2="90" stroke="#f759ab" stroke-width="2" opacity="0.7"/>
+        <line x1="175" y1="35" x2="210" y2="90" stroke="#ffadd2" stroke-width="1" opacity="0.4"/>
+        <!-- mat highlighted below -->
+        <rect x="190" y="85" width="50" height="25" rx="6" fill="#f759ab"/>
+        <text x="215" y="102" text-anchor="middle" font-size="10" fill="white" font-weight="700" font-family="DM Sans">mat</text>
+        <!-- Attention weights label -->
+        <text x="280" y="55" font-size="9" fill="#9d5b78" font-family="DM Sans">Attention</text>
+        <text x="280" y="67" font-size="9" fill="#9d5b78" font-family="DM Sans">weights for</text>
+        <text x="280" y="79" font-size="9" fill="#d6005a" font-weight="700" font-family="DM Sans">"mat"</text>
+        <text x="37" y="50" font-size="8" fill="#bdbdbd" font-family="DM Sans">0.05</text>
+        <text x="60" y="50" font-size="8" fill="#d6005a" font-weight="700" font-family="DM Sans">0.60</text>
+        <text x="95" y="50" font-size="8" fill="#9d5b78" font-family="DM Sans">0.20</text>
+        <text x="128" y="50" font-size="8" fill="#9d5b78" font-family="DM Sans">0.10</text>
+        <text x="163" y="50" font-size="8" fill="#bdbdbd" font-family="DM Sans">0.05</text>
+      </svg>
+    </div>
+    <div class="hinglish">Jaise padhte waqt important words pe zyada dhyan dete ho. "mat" ko predict karte waqt — "cat" aur "sat" pe zyada focus, "The" pe kam. Attention weights yahi batate hain!</div>
+  </div>
+
+  <!-- Transformer -->
+  <div class="card" id="s37">
+    <div class="card-num">41</div>
+    <div class="card-icon">🤖</div>
+    <div class="card-title">Transformer Architecture</div>
+    <div class="card-subtitle">The Foundation of Modern NLP</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Architecture based entirely on <strong>Multi-Head Self-Attention</strong> — no RNNs needed. Processes all tokens simultaneously (parallel), enabling massive scale.
+    </div>
+    <div class="flow">
+      <div class="flow-box" style="font-size:9px;">Input Embedding + Positional Encoding</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="font-size:9px;">Multi-Head Self-Attention (×N)</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="font-size:9px;">Feed-Forward Layers</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="font-size:9px;">Output</div>
+    </div>
+    <table class="comp-table" style="margin-top:12px;">
+      <tr><th>Model</th><th>Architecture</th><th>Best For</th></tr>
+      <tr><td><strong>BERT</strong></td><td>Encoder only, bidirectional</td><td>Classification, Q&A, NLU</td></tr>
+      <tr><td><strong>GPT</strong></td><td>Decoder only, left-to-right</td><td>Text generation (ChatGPT!)</td></tr>
+      <tr><td><strong>T5/BART</strong></td><td>Encoder + Decoder</td><td>Translation, Summarization</td></tr>
+    </table>
+    <div class="hinglish">RNN = ek ek word dekho (slow). Transformer = sab words ek saath dekho (fast + powerful)! ChatGPT, Claude, BERT — sab Transformer pe based hain!</div>
+  </div>
+
+  <!-- Transfer Learning -->
+  <div class="card" id="s38">
+    <div class="card-num">42</div>
+    <div class="card-icon">♻️</div>
+    <div class="card-title">Transfer Learning & Fine-Tuning</div>
+    <div class="card-subtitle">Reuse Pre-trained Model Knowledge</div>
+    <div class="card-body">
+      <strong>Transfer Learning:</strong> Take a model trained on large data (e.g., ImageNet, Wikipedia) and use it for your smaller task — <strong>without retraining from scratch</strong>.<br><br>
+      <strong>Fine-Tuning:</strong> Continue training pre-trained model on your task-specific data with small learning rate.
+    </div>
+    <div class="flow">
+      <div class="flow-box">Pre-train on Big Data<br><span style="font-size:9px;">ImageNet / Wikipedia</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Freeze early layers<br><span style="font-size:9px;">Keep learned features</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Fine-tune on your data<br><span style="font-size:9px;">Small LR, few epochs</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Deploy! 🚀</div>
+    </div>
+    <div class="example">BERT pre-trained on Wikipedia → Fine-tune on medical text → Medical Q&A bot with just 1000 examples!</div>
+    <div class="hinglish">Pehle general knowledge lo (pre-train), phir specific field ke liye thodi aur padhai (fine-tune). Jaise MBBS ke baad specialization!</div>
+    <div class="tags"><span class="tag tag-green">Data Efficient</span><span class="tag tag-teal">Faster Training</span><span class="tag tag-pink">Industry Standard</span></div>
+  </div>
+
+  <!-- RAG -->
+  <div class="card" id="s40">
+    <div class="card-num">43</div>
+    <div class="card-icon">📚</div>
+    <div class="card-title">RAG — Retrieval Augmented Generation</div>
+    <div class="card-subtitle">LLM + External Knowledge</div>
+    <div class="card-body">
+      <strong>Definition:</strong> Instead of relying on LLM's training memory, <strong>retrieve relevant documents</strong> from an external knowledge base, then pass them to the LLM to generate an answer.
+    </div>
+    <div class="flow">
+      <div class="flow-box">User Query</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Retrieve relevant docs<br><span style="font-size:9px;">Vector DB search</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">LLM reads docs + generates</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">Accurate Answer ✅</div>
+    </div>
+    <div class="example">Company FAQ bot: User asks → search internal docs → LLM answers with actual company policy!</div>
+    <div class="hinglish">Open-book exam! LLM pehle relevant pages dhundha (retrieve), phir answer likhta hai (generate). Hallucination kam, accuracy zyada!</div>
+  </div>
+
+</div>
+
+<!-- FINAL SUMMARY — Full Pipeline -->
+<div style="max-width:1100px;margin:40px auto 0;padding:0 20px;position:relative;z-index:1;">
+  <div class="card" style="background:linear-gradient(135deg,#fff0f6,#f3e8ff);">
+    <div class="card-title" style="font-size:1.4rem;margin-bottom:16px;">🗺️ The Complete ML/DL Pipeline — Ek Nazar Mein</div>
+
+    <div class="flow" style="flex-wrap:wrap;gap:8px;justify-content:center;">
+      <div class="flow-box">📊 Raw Data</div><div class="flow-arrow">→</div>
+      <div class="flow-box">🧹 Clean + Preprocess<br><span style="font-size:9px;">Normalize, Handle Nulls</span></div><div class="flow-arrow">→</div>
+      <div class="flow-box">✂️ Train/Val/Test Split</div><div class="flow-arrow">→</div>
+      <div class="flow-box">🏗️ Choose Model<br><span style="font-size:9px;">LR/NN/CNN/Transformer</span></div><div class="flow-arrow">→</div>
+      <div class="flow-box">⚙️ Define Loss Function</div><div class="flow-arrow">→</div>
+      <div class="flow-box">🔁 Train<br><span style="font-size:9px;">Forward → Loss → Backprop → Update</span></div><div class="flow-arrow">→</div>
+      <div class="flow-box">📈 Evaluate on Val<br><span style="font-size:9px;">Tune Hyperparams</span></div><div class="flow-arrow">→</div>
+      <div class="flow-box">✅ Final Test Score</div><div class="flow-arrow">→</div>
+      <div class="flow-box">🚀 Deploy!</div>
+    </div>
+
+    <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;">
+      <div style="background:white;border-radius:12px;padding:12px;border-left:3px solid #f759ab;">
+        <div style="font-size:11px;font-weight:700;color:var(--deep-rose);margin-bottom:4px;">📊 Data</div>
+        <div style="font-size:11px;color:var(--text-mid);">Features, Labels, Normalization, Augmentation, Tokenization, Embeddings, PCA</div>
+      </div>
+      <div style="background:white;border-radius:12px;padding:12px;border-left:3px solid #9b4dca;">
+        <div style="font-size:11px;font-weight:700;color:var(--purple);margin-bottom:4px;">🤖 Algorithms</div>
+        <div style="font-size:11px;color:var(--text-mid);">Linear Reg, Logistic Reg, Decision Tree, Random Forest, SVM, K-Means, Ensemble</div>
+      </div>
+      <div style="background:white;border-radius:12px;padding:12px;border-left:3px solid #0891b2;">
+        <div style="font-size:11px;font-weight:700;color:var(--teal);margin-bottom:4px;">🧠 Neural Networks</div>
+        <div style="font-size:11px;color:var(--text-mid);">Perceptron, MLP, CNN, RNN, LSTM, GAN, Autoencoder, ResNet, Transformer</div>
+      </div>
+      <div style="background:white;border-radius:12px;padding:12px;border-left:3px solid #16a34a;">
+        <div style="font-size:11px;font-weight:700;color:var(--green);margin-bottom:4px;">⚙️ Training</div>
+        <div style="font-size:11px;color:var(--text-mid);">GD, Backprop, Adam, Batch Size, Epochs, LR Scheduling, Activation Functions</div>
+      </div>
+      <div style="background:white;border-radius:12px;padding:12px;border-left:3px solid #ea580c;">
+        <div style="font-size:11px;font-weight:700;color:var(--orange);margin-bottom:4px;">🔧 Regularization</div>
+        <div style="font-size:11px;color:var(--text-mid);">Overfitting, L1/L2, Dropout, BatchNorm, Early Stopping, Bias-Variance</div>
+      </div>
+      <div style="background:white;border-radius:12px;padding:12px;border-left:3px solid #1d4ed8;">
+        <div style="font-size:11px;font-weight:700;color:var(--blue);margin-bottom:4px;">📈 Evaluation</div>
+        <div style="font-size:11px;color:var(--text-mid);">Confusion Matrix, Accuracy, F1, Precision, Recall, ROC-AUC, MSE, R², K-Fold CV</div>
+      </div>
+    </div>
+
+    <div class="hinglish" style="margin-top:16px;font-size:13px;padding:14px;">
+      Yeh poora flow hi Machine Learning hai! Data aao → Saaf karo → Model chuno → Train karo (loss → gradient → update) → Evaluate karo → Deploy karo. Bas yahi baar baar hota hai! 🚀
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-card">
+    <h2>🎓 Ab Tum Ready Ho!</h2>
+    <p>ML aur DL ke saare core terms ab clear hain.<br>
+    Linear Regression se lekar Transformer tak — shuru se end tak!<br>
+    <span style="font-size:13px;opacity:0.7;margin-top:8px;display:block;">43+ topics | All formulas | Visual diagrams | Hinglish explanations</span></p>
+  </div>
+</div>
+
+<script>
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const el = document.querySelector(a.getAttribute('href'));
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Animate progress bars on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.progress-fill').forEach(bar => {
+        bar.style.width = bar.dataset.width || bar.style.width;
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.card').forEach(card => observer.observe(card));
+
+// Add slight parallax to hero
+window.addEventListener('scroll', () => {
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    hero.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+  }
+});
+</script>
+</body>
+</html>
