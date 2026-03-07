@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GitHub Master Guide — Ayush</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:#282a36; --bg2:#1e1f29; --bg3:#313341; --bg4:#44475a;
+  --fg:#f8f8f2; --comment:#6272a4;
+  --cyan:#8be9fd; --green:#50fa7b; --orange:#ffb86c;
+  --pink:#ff79c6; --purple:#bd93f9; --red:#ff5555; --yellow:#f1fa8c;
+  --sidebar-w:260px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg2);color:var(--fg);font-family:'Space Grotesk',sans-serif;font-size:15px;line-height:1.75;display:flex;min-height:100vh;overflow-x:hidden}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);min-height:100vh;background:var(--bg2);border-right:1px solid var(--bg4);position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:100;overflow-y:auto;transition:transform .3s ease}
+.sidebar-header{padding:28px 20px 20px;border-bottom:1px solid var(--bg4)}
+.sidebar-logo{font-family:'Fira Code',monospace;font-size:12px;color:var(--purple);margin-bottom:5px;letter-spacing:.5px}
+.sidebar-title{font-size:15px;font-weight:700;color:var(--fg);line-height:1.3}
+.sidebar-sub{font-size:11px;color:var(--comment);margin-top:3px}
+.sidebar-nav{padding:14px 0;flex:1}
+.nav-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--comment);padding:12px 20px 5px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 20px;color:var(--comment);text-decoration:none;font-size:13px;font-weight:500;border-left:3px solid transparent;transition:all .18s;cursor:pointer}
+.nav-item:hover{color:var(--fg);background:var(--bg3);border-left-color:var(--purple)}
+.nav-item.active{color:var(--purple);background:rgba(189,147,249,.1);border-left-color:var(--purple)}
+.nav-icon{font-size:14px;width:18px;text-align:center}
+.sidebar-footer{padding:14px 20px;border-top:1px solid var(--bg4);font-size:11px;color:var(--comment);font-family:'Fira Code',monospace}
+
+/* MAIN */
+.main{margin-left:var(--sidebar-w);flex:1;min-height:100vh}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--bg2) 0%,#1a1b26 50%,var(--bg2) 100%);padding:72px 56px 52px;position:relative;overflow:hidden;border-bottom:1px solid var(--bg4)}
+.hero::before{content:'';position:absolute;width:450px;height:450px;background:radial-gradient(circle,rgba(189,147,249,.09) 0%,transparent 70%);top:-100px;right:-80px;border-radius:50%;pointer-events:none}
+.hero::after{content:'';position:absolute;width:280px;height:280px;background:radial-gradient(circle,rgba(80,250,123,.07) 0%,transparent 70%);bottom:-60px;left:80px;border-radius:50%;pointer-events:none}
+.hero-eyebrow{font-family:'Fira Code',monospace;font-size:11px;color:var(--green);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;animation:slideUp .6s ease both}
+.hero h1{font-size:48px;font-weight:700;line-height:1.1;margin-bottom:14px;animation:slideUp .6s ease .1s both}
+.hero h1 .acc{color:var(--purple)}
+.hero-sub{font-size:16px;color:var(--comment);max-width:580px;animation:slideUp .6s ease .2s both}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;animation:slideUp .6s ease .3s both}
+.hero-tag{background:var(--bg3);border:1px solid var(--bg4);border-radius:20px;padding:4px 13px;font-size:12px;color:var(--comment);font-family:'Fira Code',monospace}
+
+/* SECTION */
+.section{padding:52px 56px 36px;border-bottom:1px solid var(--bg3)}
+.section:last-child{border-bottom:none}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid var(--bg3)}
+.section-icon{width:50px;height:50px;background:var(--bg3);border:1px solid var(--bg4);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.section-header h2{font-size:24px;font-weight:700;color:var(--fg)}
+.section-header p{font-size:13px;color:var(--comment);margin-top:2px}
+h3{font-size:17px;font-weight:600;color:var(--pink);margin:32px 0 12px;display:flex;align-items:center;gap:8px}
+h3::before{content:'//';color:var(--comment);font-family:'Fira Code',monospace;font-size:13px}
+h4{font-size:14px;font-weight:600;color:var(--cyan);margin:18px 0 8px}
+p{color:var(--fg);margin:8px 0;font-size:14px}
+
+/* BADGE PROGRESS */
+.badge-progress{background:var(--bg3);border:1px solid var(--bg4);border-radius:14px;padding:22px 26px;margin-bottom:28px}
+.bp-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.bp-title{font-weight:600;color:var(--fg);font-size:14px}
+.bp-count{font-family:'Fira Code',monospace;font-size:12px;color:var(--purple)}
+.bp-track{background:var(--bg4);border-radius:100px;height:7px;overflow:hidden;margin-bottom:14px}
+.bp-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--pink));border-radius:100px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+.bp-chips{display:flex;gap:7px;flex-wrap:wrap}
+.bp-chip{display:flex;align-items:center;gap:5px;background:var(--bg2);border:1px solid var(--bg4);border-radius:7px;padding:5px 10px;font-size:11px;transition:all .2s}
+.bp-chip.earned{border-color:var(--green);background:rgba(80,250,123,.06);color:var(--green)}
+.bp-chip.soon{border-color:var(--orange);color:var(--orange);background:rgba(255,184,108,.06)}
+.bp-chip.pending{color:var(--comment)}
+
+/* BADGE GRID */
+.badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin:14px 0}
+.badge-card{background:var(--bg3);border:1px solid var(--bg4);border-radius:13px;padding:20px;position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s;cursor:default}
+.badge-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.3)}
+.badge-card.c-earned{border-color:rgba(80,250,123,.3)}
+.badge-card.c-earned:hover{box-shadow:0 10px 28px rgba(80,250,123,.08)}
+.badge-card.c-soon{border-color:rgba(255,184,108,.3)}
+.badge-card.c-hard{border-color:rgba(189,147,249,.3)}
+.badge-card.c-expired{opacity:.4}
+.bc-glow{position:absolute;top:-40px;right:-40px;width:110px;height:110px;border-radius:50%;pointer-events:none}
+.c-earned .bc-glow{background:radial-gradient(circle,rgba(80,250,123,.1),transparent 70%)}
+.c-soon .bc-glow{background:radial-gradient(circle,rgba(255,184,108,.1),transparent 70%)}
+.c-hard .bc-glow{background:radial-gradient(circle,rgba(189,147,249,.1),transparent 70%)}
+.bc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
+.bc-emoji{font-size:32px;line-height:1}
+.status-pill{font-size:10px;font-weight:600;letter-spacing:.4px;padding:3px 9px;border-radius:20px}
+.p-earned{background:rgba(80,250,123,.15);color:var(--green)}
+.p-soon{background:rgba(255,184,108,.15);color:var(--orange)}
+.p-hard{background:rgba(189,147,249,.15);color:var(--purple)}
+.p-paid{background:rgba(139,233,253,.15);color:var(--cyan)}
+.p-expired{background:rgba(98,114,164,.15);color:var(--comment)}
+.bc-name{font-size:15px;font-weight:700;color:var(--fg);margin-bottom:5px}
+.bc-desc{font-size:12.5px;color:var(--comment);line-height:1.6;margin-bottom:12px}
+.bc-steps{list-style:none}
+.bc-steps li{font-size:12px;color:var(--comment);padding:3px 0 3px 16px;position:relative;border-bottom:1px solid rgba(68,71,90,.4)}
+.bc-steps li:last-child{border-bottom:none}
+.bc-steps li::before{content:'→';position:absolute;left:0;color:var(--purple);font-family:'Fira Code',monospace;font-size:10px;top:5px}
+.bc-tiers{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap}
+.tier{font-family:'Fira Code',monospace;font-size:10px;background:var(--bg2);border:1px solid var(--bg4);border-radius:5px;padding:2px 7px;color:var(--comment)}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;margin:14px 0;border-radius:10px;border:1px solid var(--bg4)}
+table{width:100%;border-collapse:collapse}
+thead tr{background:rgba(189,147,249,.07)}
+thead th{color:var(--purple);font-size:11px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;padding:13px 16px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--bg4)}
+tbody tr{transition:background .15s}
+tbody tr:hover{background:var(--bg3)}
+td{padding:11px 16px;font-size:13px;color:var(--fg);border-bottom:1px solid rgba(68,71,90,.35);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+.t-done{background:rgba(80,250,123,.1);color:var(--green);font-size:10px;padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:600}
+.t-soon{background:rgba(255,184,108,.1);color:var(--orange);font-size:10px;padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:600}
+.t-hard{background:rgba(189,147,249,.1);color:var(--purple);font-size:10px;padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:600}
+.t-months{background:rgba(255,85,85,.1);color:var(--red);font-size:10px;padding:2px 8px;border-radius:10px;white-space:nowrap;font-weight:600}
+
+/* ACTIVITY GRID */
+.act-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:14px 0}
+.act-card{background:var(--bg3);border:1px solid var(--bg4);border-radius:11px;padding:16px;transition:border-color .2s,transform .2s}
+.act-card:hover{border-color:var(--purple);transform:translateY(-2px)}
+.act-time{font-family:'Fira Code',monospace;font-size:10px;color:var(--cyan);font-weight:600;margin-bottom:8px}
+.act-title{font-size:13px;font-weight:600;color:var(--fg);margin-bottom:7px}
+.act-card ul{list-style:none}
+.act-card ul li{font-size:12px;color:var(--comment);padding:3px 0 3px 14px;position:relative}
+.act-card ul li::before{content:'▸';position:absolute;left:0;color:var(--purple);font-size:9px;top:6px}
+
+/* WEEK GRID */
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin:14px 0}
+.week-day{background:var(--bg3);border:1px solid var(--bg4);border-radius:9px;padding:12px 8px;text-align:center;transition:border-color .2s,transform .2s}
+.week-day:hover{border-color:var(--purple);transform:translateY(-2px)}
+.wd-name{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--comment);margin-bottom:6px}
+.wd-emoji{font-size:20px;margin-bottom:6px}
+.wd-task{font-size:10px;color:var(--fg);line-height:1.4}
+.wd-repo{font-size:9px;color:var(--comment);margin-top:5px;font-family:'Fira Code',monospace}
+
+/* CHECKLIST */
+.checklist{background:var(--bg3);border:1px solid var(--bg4);border-radius:13px;padding:22px 26px;margin:14px 0}
+.cl-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.cl-title{font-size:14px;font-weight:600;color:var(--fg)}
+.cl-prog{font-family:'Fira Code',monospace;font-size:11px;color:var(--green)}
+.cl-item{display:flex;align-items:flex-start;gap:11px;padding:10px 6px;border-bottom:1px solid rgba(68,71,90,.35);cursor:pointer;border-radius:6px;transition:background .15s}
+.cl-item:last-child{border-bottom:none}
+.cl-item:hover{background:rgba(189,147,249,.05)}
+.cl-item input[type=checkbox]{appearance:none;-webkit-appearance:none;width:17px;height:17px;border:2px solid var(--bg4);border-radius:4px;background:var(--bg2);cursor:pointer;flex-shrink:0;margin-top:2px;transition:all .2s;position:relative}
+.cl-item input:checked{background:var(--purple);border-color:var(--purple)}
+.cl-item input:checked::after{content:'✓';position:absolute;color:var(--bg);font-size:10px;font-weight:700;top:50%;left:50%;transform:translate(-50%,-50%)}
+.cl-label{font-size:13px;color:var(--fg);line-height:1.5}
+.cl-item input:checked~.cl-label{text-decoration:line-through;color:var(--comment)}
+.cl-tag{font-size:10px;color:var(--purple);background:rgba(189,147,249,.1);border-radius:4px;padding:2px 6px;margin-left:5px;white-space:nowrap}
+
+/* PROJECT CARDS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:14px 0}
+.proj-card{background:var(--bg3);border:1px solid var(--bg4);border-radius:11px;padding:18px;transition:all .2s}
+.proj-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.pc-icon{font-size:26px;margin-bottom:8px}
+.pc-name{font-size:14px;font-weight:700;color:var(--fg);margin-bottom:4px}
+.pc-stack{font-family:'Fira Code',monospace;font-size:10px;color:var(--cyan);margin-bottom:6px}
+.pc-val{font-size:11px;color:var(--comment)}
+
+/* LINK CARDS */
+.links-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin:14px 0}
+.link-card{background:var(--bg3);border:1px solid var(--bg4);border-radius:10px;padding:14px;text-decoration:none;color:inherit;transition:all .2s;display:flex;align-items:center;gap:10px}
+.link-card:hover{border-color:var(--purple);background:rgba(189,147,249,.06);transform:translateY(-2px)}
+.lc-icon{font-size:18px;width:34px;height:34px;background:var(--bg2);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lc-name{font-size:12px;font-weight:600;color:var(--fg)}
+.lc-url{font-family:'Fira Code',monospace;font-size:10px;color:var(--comment);margin-top:2px}
+
+/* TIP */
+.tip{background:var(--bg3);border-left:3px solid var(--yellow);border-radius:0 9px 9px 0;padding:12px 16px;margin:14px 0;font-size:13px}
+.tip.green{border-color:var(--green)}
+.tip strong{color:var(--yellow);display:block;margin-bottom:3px;font-size:11px;letter-spacing:.5px;text-transform:uppercase}
+.tip.green strong{color:var(--green)}
+.tip p{color:var(--comment);margin:0}
+
+/* FOOTER */
+.footer{text-align:center;padding:52px 40px;border-top:1px solid var(--bg4);background:var(--bg2)}
+.footer-q{font-size:19px;font-weight:700;color:var(--yellow);margin-bottom:8px}
+.footer-s{color:var(--comment);font-size:13px}
+.footer-a{margin-top:14px;font-family:'Fira Code',monospace;font-size:11px;color:var(--purple)}
+
+/* ANIMATIONS */
+@keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
+
+/* MOBILE */
+.menu-btn{display:none;position:fixed;top:14px;left:14px;z-index:200;background:var(--bg3);border:1px solid var(--bg4);border-radius:7px;padding:7px 9px;cursor:pointer;font-size:16px}
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .main{margin-left:0}
+  .menu-btn{display:block}
+  .hero,.section{padding:48px 22px 32px}
+  .hero h1{font-size:30px}
+  .week-grid{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+<body>
+
+<button class="menu-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">// ayushcmd</div>
+    <div class="sidebar-title">GitHub Master Guide</div>
+    <div class="sidebar-sub">BS CS @ IIT Patna '27</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-label">Overview</div>
+    <a class="nav-item active" href="#hero"><span class="nav-icon">🏠</span>Home</a>
+
+    <div class="nav-label">🏆 Badges</div>
+    <a class="nav-item" href="#s-status"><span class="nav-icon">✅</span>Current Status</a>
+    <a class="nav-item" href="#s-roadmap"><span class="nav-icon">🎯</span>Roadmap</a>
+    <a class="nav-item" href="#s-timeline"><span class="nav-icon">📅</span>Timeline</a>
+
+    <div class="nav-label">🟩 Contribution</div>
+    <a class="nav-item" href="#s-activities"><span class="nav-icon">⚡</span>Daily Activities</a>
+    <a class="nav-item" href="#s-routine"><span class="nav-icon">⏰</span>30-Min Routine</a>
+    <a class="nav-item" href="#s-weekly"><span class="nav-icon">🗓️</span>Weekly Plan</a>
+    <a class="nav-item" href="#s-projects"><span class="nav-icon">🚀</span>Project Ideas</a>
+
+    <div class="nav-label">📌 Quick Ref</div>
+    <a class="nav-item" href="#s-checklist"><span class="nav-icon">☑️</span>Daily Checklist</a>
+    <a class="nav-item" href="#s-links"><span class="nav-icon">🔗</span>Links</a>
+  </nav>
+  <div class="sidebar-footer">
+    <div>v1.0 · March 2026</div>
+    <div style="color:var(--green);margin-top:3px">● Active</div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-eyebrow">// GitHub Mastery Guide</div>
+  <h1>Badges + <span class="acc">Contribution</span><br/>Strategy 🚀</h1>
+  <p class="hero-sub">Tera complete GitHub roadmap — badges kaise kamao, contribution graph green kaise rakho, aur apna naam banao.</p>
+  <div class="hero-tags">
+    <span class="hero-tag">ayushcmd</span>
+    <span class="hero-tag">IIT Patna '27</span>
+    <span class="hero-tag">Python · ML · Web Dev</span>
+    <span class="hero-tag">Open to Internships 🔥</span>
+  </div>
+</div>
+
+<!-- BADGES STATUS -->
+<section class="section" id="s-status">
+  <div class="section-header">
+    <div class="section-icon">🏆</div>
+    <div><h2>GitHub Badges Roadmap</h2><p>9 earnable badges — tera status aur plan</p></div>
+  </div>
+
+  <!-- Progress -->
+  <div class="badge-progress">
+    <div class="bp-top">
+      <div class="bp-title">🎯 Badge Collection Progress</div>
+      <div class="bp-count" id="bp-count">3 / 7 Earnable</div>
+    </div>
+    <div class="bp-track"><div class="bp-fill" id="bp-fill"></div></div>
+    <div class="bp-chips">
+      <div class="bp-chip earned">🔵 Developer Member</div>
+      <div class="bp-chip earned">⚡ Quickdraw</div>
+      <div class="bp-chip earned">🦈 YOLO</div>
+      <div class="bp-chip soon">🔱 Pull Shark ⏳</div>
+      <div class="bp-chip pending">🌟 Starstruck</div>
+      <div class="bp-chip pending">🧠 Galaxy Brain</div>
+      <div class="bp-chip pending">💗 Sponsor</div>
+    </div>
+  </div>
+
+  <!-- Badge Cards -->
+  <div id="s-roadmap">
+    <h3>All Badges — Complete Guide</h3>
+  </div>
+  <div class="badge-grid">
+
+    <div class="badge-card c-earned">
+      <div class="bc-glow"></div>
+      <div class="bc-top"><div class="bc-emoji">🔵</div><span class="status-pill p-earned">✅ EARNED</span></div>
+      <div class="bc-name">Developer Program Member</div>
+      <div class="bc-desc">GitHub Developer Program join karo — free hai.</div>
+      <ul class="bc-steps"><li>github.com/developers pe jaao</li><li>Free registration karo</li><li>Ek baar karo — done! 🎉</li></ul>
+    </div>
+
+    <div class="badge-card c-earned">
+      <div class="bc-glow"></div>
+      <div class="bc-top"><div class="bc-emoji">⚡</div><span class="status-pill p-earned">✅ EARNED</span></div>
+      <div class="bc-name">Quickdraw</div>
+      <div class="bc-desc">Issue ya PR 5 minutes mein close karo.</div>
+      <ul class="bc-steps"><li>Apne repo mein issue banao</li><li>5 min mein close karo</li><li>Already done! 🎉</li></ul>
+    </div>
+
+    <div class="badge-card c-earned">
+      <div class="bc-glow"></div>
+      <div class="bc-top"><div class="bc-emoji">🦈</div><span class="status-pill p-earned">✅ EARNED</span></div>
+      <div class="bc-name">YOLO</div>
+      <div class="bc-desc">Bina review ke PR merge karo.</div>
+      <ul class="bc-steps"><li>PR banao kisi bhi repo mein</li><li>Bina review ke merge karo</li><li>Already done! 🎉</li></ul>
+    </div>
+
+    <div class="badge-card c-soon">
+      <div class="bc-glow"></div>
+      <div class="bc-top"><div class="bc-emoji">🔱</div><span class="status-pill p-soon">⏳ Coming Soon!</span></div>
+      <div class="bc-name">Pull Shark</div>
+      <div class="bc-desc">2 PRs merge karo — already done! Badge processing mein hai.</div>
+      <ul class="bc-steps"><li>2 PRs merge ✅ Done!</li><li>Badge kuch ghanton mein aayega</li><li>Real improvements karte raho repos mein</li></ul>
+      <div class="bc-tiers"><span class="tier">Base: 2 PRs</span><span class="tier">x2: 16 PRs</span><span class="tier">x3: 128 PRs</span></div>
+    </div>
+
+    <div class="badge-card c-hard">
+      <div class="bc-glow"></div>
+      <div class="bc-top"><div class="bc-emoji">🌟</div><span class="status-pill p-hard">🎯 Action Needed</span></div>
+      <div class="bc-name">Starstruck</div>
+      <div class="bc-desc">Tera koi ek repo 16 stars paye. Best bet: dollar-hegemony!</div>
+      <ul class="bc-steps">
+        <li>LinkedIn pe project share karo with demo link</li>
+        <li>Reddit r/MachineLearning ya r/datascience pe post</li>
+        <li>IIT Patna classmates se star karne ko kaho</li>
+        <li>Twitter/X pe #MachineLearning ke saath</li>
+        <li>HuggingFace community mein share karo</li>
+      </ul>
+      <div class="bc-tiers"><span class="tier">Base: 16 ⭐</span><span class="tier">x2: 128 ⭐</span><span class="tier">x3: 512 ⭐</span><span class="tier">x4: 4096 ⭐</span></div>
+    </div>
+
+    <div class="badge-card c-hard">
+      <div class="bc-glow"></div>
+      <div class="bc-top"><div class="bc-emoji">🧠</div><span class="status-pill p-hard">🎯 Action Needed</span></div>
+      <div class="bc-name">Galaxy Brain</div>
+      <div class="bc-desc">GitHub Discussions mein tera answer "accepted answer" ban jaye.</div>
+      <ul class="bc-steps">
+        <li>github.com/orgs/community/discussions pe jao</li>
+        <li>Python, ML, FastAPI topics dhundo</li>
+        <li>Detail aur helpful answer likho</li>
+        <li>Repo owner "Mark as answer" karega</li>
+        <li>1–2 hafte lag sakte hain</li>
+      </ul>
+    </div>
+
+    <div class="badge-card" style="border-color:rgba(139,233,253,.2)">
+      <div class="bc-top"><div class="bc-emoji">💗</div><span class="status-pill p-paid">💰 Paid</span></div>
+      <div class="bc-name">Public Sponsor</div>
+      <div class="bc-desc">Kisi developer ko GitHub Sponsors se sponsor karo.</div>
+      <ul class="bc-steps"><li>Minimum $1/month bhi chalega</li><li>Abhi zaroorat nahi — baad mein karna</li></ul>
+    </div>
+
+    <div class="badge-card c-expired">
+      <div class="bc-top"><div class="bc-emoji">🥇</div><span class="status-pill p-expired">❌ Expired 2020</span></div>
+      <div class="bc-name">Arctic Code Vault</div>
+      <div class="bc-desc">2020 mein tha — ab nahi milta.</div>
+    </div>
+
+    <div class="badge-card c-expired">
+      <div class="bc-top"><div class="bc-emoji">🚀</div><span class="status-pill p-expired">❌ Expired 2021</span></div>
+      <div class="bc-name">Mars Helicopter</div>
+      <div class="bc-desc">NASA ke special project ke liye tha — expired.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section" id="s-timeline">
+  <h3 style="margin-top:0">📅 Badge Earning Timeline</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Badge</th><th>Expected Time</th><th>Action Required</th></tr></thead>
+      <tbody>
+        <tr><td>🔱 Pull Shark</td><td><span class="t-done">Aaj / Kal</span></td><td>Already done — bas wait karo!</td></tr>
+        <tr><td>🌟 Starstruck</td><td><span class="t-soon">1–4 weeks</span></td><td>dollar-hegemony ko LinkedIn + Reddit pe share karo</td></tr>
+        <tr><td>🧠 Galaxy Brain</td><td><span class="t-soon">1–4 weeks</span></td><td>GitHub Discussions mein daily helpful answers do</td></tr>
+        <tr><td>🔱 Pull Shark x2</td><td><span class="t-hard">2–3 months</span></td><td>16 total PRs — real project improvements karte raho</td></tr>
+        <tr><td>🌟 Starstruck x2</td><td><span class="t-months">3–6 months</span></td><td>128 stars — consistently share karte raho</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- DAILY ACTIVITIES -->
+<section class="section" id="s-activities">
+  <div class="section-header">
+    <div class="section-icon">🟩</div>
+    <div><h2>Daily Contribution Strategy</h2><p>30–60 min daily — contribution graph hamesha green!</p></div>
+  </div>
+  <h3 style="margin-top:0">⚡ Activities aur Unka Impact</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Activity</th><th>Time</th><th>Commits</th><th>Kaise Karo</th></tr></thead>
+      <tbody>
+        <tr><td>README update karo</td><td>5 min</td><td>1</td><td>Kisi bhi repo mein description ya badges improve karo</td></tr>
+        <tr><td>Code comment add karo</td><td>10 min</td><td>1</td><td>Files mein helpful inline comments likho</td></tr>
+        <tr><td>Bug fix karo</td><td>15–30 min</td><td>1–2</td><td>Chhoti errors ya warnings fix karo</td></tr>
+        <tr><td>New feature add karo</td><td>30–60 min</td><td>2–3</td><td>Naya section ya functionality add karo</td></tr>
+        <tr><td>Issue banao + close karo</td><td>5 min</td><td>1</td><td>Apne repo mein tasks as issues track karo</td></tr>
+        <tr><td>PR banao + merge karo</td><td>10 min</td><td>2</td><td>Branch → change → PR → merge <span class="cl-tag">Pull Shark</span></td></tr>
+        <tr><td>New file add karo</td><td>10 min</td><td>1</td><td>Docs, notes, screenshots, examples add karo</td></tr>
+        <tr><td>GitHub Discussions answer</td><td>15 min</td><td>—</td><td>Community help karo <span class="cl-tag">Galaxy Brain</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tip green">
+    <strong>💡 Pro Tip</strong>
+    <p>Ek bada change multiple small commits mein todo — zyada green squares! "Add LSTM model" ki jagah 3 commits: setup → training → evaluation.</p>
+  </div>
+</section>
+
+<!-- 30 MIN ROUTINE -->
+<section class="section" id="s-routine">
+  <h3 style="margin-top:0">⏰ 30-Minute Daily Routine</h3>
+  <p style="color:var(--comment);margin-bottom:18px">Ye follow karo har din — guaranteed green square! 🟩</p>
+  <div class="act-grid">
+    <div class="act-card"><div class="act-time">00:00 – 05:00 min</div><div class="act-title">Morning Check</div><ul><li>GitHub profile open karo</li><li>Notifications check karo</li><li>Aaj ka plan decide karo</li></ul></div>
+    <div class="act-card"><div class="act-time">05:00 – 20:00 min</div><div class="act-title">Main Work</div><ul><li>Current project mein improve karo</li><li>Feature add ya bug fix karo</li><li>Descriptive commit message likho</li></ul></div>
+    <div class="act-card"><div class="act-time">20:00 – 25:00 min</div><div class="act-title">PR Workflow</div><ul><li>New branch pe kaam karo</li><li>PR banao → merge karo</li><li>Branch delete karo (clean!)</li></ul></div>
+    <div class="act-card"><div class="act-time">25:00 – 30:00 min</div><div class="act-title">Documentation</div><ul><li>README mein koi update karo</li><li>Screenshots add karo project ke</li><li>Final commit — done! ✅</li></ul></div>
+  </div>
+</section>
+
+<!-- WEEKLY -->
+<section class="section" id="s-weekly">
+  <h3 style="margin-top:0">🗓️ Weekly Plan</h3>
+  <div class="week-grid">
+    <div class="week-day"><div class="wd-name">Mon</div><div class="wd-emoji">🚀</div><div class="wd-task">New feature start karo</div><div class="wd-repo">dollar-hegemony</div></div>
+    <div class="week-day"><div class="wd-name">Tue</div><div class="wd-emoji">🔀</div><div class="wd-task">Feature + PR merge</div><div class="wd-repo">same repo</div></div>
+    <div class="week-day"><div class="wd-name">Wed</div><div class="wd-emoji">📝</div><div class="wd-task">README/Docs improve</div><div class="wd-repo">AQI-Dashboard</div></div>
+    <div class="week-day"><div class="wd-name">Thu</div><div class="wd-emoji">🐛</div><div class="wd-task">Bug fixes + cleanup</div><div class="wd-repo">portfolio</div></div>
+    <div class="week-day"><div class="wd-name">Fri</div><div class="wd-emoji">✨</div><div class="wd-task">New project start</div><div class="wd-repo">naya repo</div></div>
+    <div class="week-day"><div class="wd-name">Sat</div><div class="wd-emoji">🌐</div><div class="wd-task">Open source + discussions</div><div class="wd-repo">community</div></div>
+    <div class="week-day"><div class="wd-name">Sun</div><div class="wd-emoji">📊</div><div class="wd-task">Weekly review + plan</div><div class="wd-repo">all repos</div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="s-projects">
+  <h3 style="margin-top:0">🚀 Project Ideas — Next 3 Months</h3>
+  <div class="proj-grid">
+    <div class="proj-card"><div class="pc-icon">🌦️</div><div class="pc-name">Weather Dashboard</div><div class="pc-stack">Python · API · Streamlit</div><div class="pc-val">ML + Web combo — good for portfolio</div></div>
+    <div class="proj-card"><div class="pc-icon">✍️</div><div class="pc-name">Personal Blog</div><div class="pc-stack">React · Node.js</div><div class="pc-val">Full stack practice</div></div>
+    <div class="proj-card"><div class="pc-icon">📈</div><div class="pc-name">Stock Predictor</div><div class="pc-stack">Python · LSTM · Plotly</div><div class="pc-val">ML research — stars milenge!</div></div>
+    <div class="proj-card"><div class="pc-icon">💬</div><div class="pc-name">Chat App</div><div class="pc-stack">Node.js · MongoDB · Socket.io</div><div class="pc-val">Real-time full stack</div></div>
+    <div class="proj-card"><div class="pc-icon">📄</div><div class="pc-name">Resume Builder</div><div class="pc-stack">React · PDF generation</div><div class="pc-val">Useful tool — community stars</div></div>
+    <div class="proj-card"><div class="pc-icon">🔍</div><div class="pc-name">Data Scraper + Viz</div><div class="pc-stack">Python · BeautifulSoup · Plotly</div><div class="pc-val">Data Analytics showcase</div></div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="section" id="s-checklist">
+  <div class="section-header">
+    <div class="section-icon">📌</div>
+    <div><h2>Quick Reference</h2><p>Daily checklist + important links</p></div>
+  </div>
+  <h3 style="margin-top:0">☑️ Daily Checklist</h3>
+  <div class="checklist">
+    <div class="cl-head">
+      <div class="cl-title">Aaj ke GitHub Goals</div>
+      <span class="cl-prog" id="cl-prog">0 / 5 done</span>
+    </div>
+    <label class="cl-item"><input type="checkbox" onchange="updateCL()"/><span class="cl-label">Kam se kam <strong>1 commit</strong> karo <span class="cl-tag">🟩 green square</span></span></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateCL()"/><span class="cl-label">Kam se kam <strong>1 PR banao + merge</strong> karo <span class="cl-tag">🔱 Pull Shark</span></span></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateCL()"/><span class="cl-label"><strong>README ya docs</strong> mein kuch improve karo</span></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateCL()"/><span class="cl-label"><strong>1 GitHub Discussion</strong> answer karo <span class="cl-tag">🧠 Galaxy Brain</span></span></label>
+    <label class="cl-item"><input type="checkbox" onchange="updateCL()"/><span class="cl-label"><strong>Project share</strong> karo social media pe <span class="cl-tag">🌟 Starstruck</span></span></label>
+  </div>
+</section>
+
+<!-- LINKS -->
+<section class="section" id="s-links">
+  <h3 style="margin-top:0">🔗 Important Links</h3>
+  <div class="links-grid">
+    <a class="link-card" href="https://github.com/ayushcmd" target="_blank"><div class="lc-icon">🐙</div><div><div class="lc-name">GitHub Profile</div><div class="lc-url">github.com/ayushcmd</div></div></a>
+    <a class="link-card" href="https://ayushcmd.github.io/portfolio-website/" target="_blank"><div class="lc-icon">🌐</div><div><div class="lc-name">Portfolio</div><div class="lc-url">ayushcmd.github.io</div></div></a>
+    <a class="link-card" href="https://huggingface.co/spaces/Ayush0826/dollar-hegemony" target="_blank"><div class="lc-icon">🤗</div><div><div class="lc-name">Dollar Hegemony</div><div class="lc-url">huggingface.co/spaces/Ayush0826</div></div></a>
+    <a class="link-card" href="https://github.com/orgs/community/discussions" target="_blank"><div class="lc-icon">💬</div><div><div class="lc-name">GitHub Discussions</div><div class="lc-url">Galaxy Brain ke liye!</div></div></a>
+    <a class="link-card" href="https://github.com/developers" target="_blank"><div class="lc-icon">🔵</div><div><div class="lc-name">Developer Program</div><div class="lc-url">github.com/developers</div></div></a>
+    <a class="link-card" href="https://linkedin.com/in/aryiitp" target="_blank"><div class="lc-icon">💼</div><div><div class="lc-name">LinkedIn</div><div class="lc-url">linkedin.com/in/aryiitp</div></div></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-q">🌍 "Contribution over consumption."</div>
+  <p class="footer-s">"Experiences over things. Knowledge over noise."</p>
+  <div class="footer-a">— Ayush · IIT Patna BS CS '27 · ayushcmd</div>
+</div>
+
+</div><!-- end .main -->
+
+<script>
+// Badge progress bar
+window.addEventListener('load', () => {
+  setTimeout(() => { document.getElementById('bp-fill').style.width = '43%'; }, 500);
+});
+
+// Checklist counter
+function updateCL() {
+  const all = document.querySelectorAll('.cl-item input[type=checkbox]');
+  const done = [...all].filter(c => c.checked).length;
+  const el = document.getElementById('cl-prog');
+  el.textContent = done === all.length ? `${done} / ${all.length} done 🎉` : `${done} / ${all.length} done`;
+  el.style.color = done === all.length ? 'var(--yellow)' : 'var(--green)';
+}
+
+// Scroll spy
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.nav-item').forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-item[href="#${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.25, rootMargin: '-50px 0px -50px 0px' });
+document.querySelectorAll('[id]').forEach(el => spy.observe(el));
+
+// Card entrance animations
+const io = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = (i % 4 * 0.07) + 's';
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.badge-card, .act-card, .proj-card, .link-card, .week-day').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(14px)';
+  el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+  io.observe(el);
+});
+
+// Mobile sidebar close
+document.querySelectorAll('.nav-item').forEach(l => {
+  l.addEventListener('click', () => {
+    if (window.innerWidth <= 900) document.querySelector('.sidebar').classList.remove('open');
+  });
+});
+</script>
+</body>
+</html>
