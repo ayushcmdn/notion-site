@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeetCode Mastery Guide — ayush08iitp</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #1a1a1a;
+    --border: #2a2a2a;
+    --orange: #f97316;
+    --yellow: #fbbf24;
+    --green: #22c55e;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+    --red: #ef4444;
+    --text: #e5e5e5;
+    --muted: #737373;
+    --card: #141414;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; overflow-x:hidden; cursor:default; }
+  ::-webkit-scrollbar{width:4px;} ::-webkit-scrollbar-track{background:var(--bg);} ::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px;}
+
+  nav { position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 60px;background:rgba(10,10,10,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border); }
+  .nav-logo { font-family:'Space Mono',monospace;font-size:.95rem;color:var(--orange);letter-spacing:.1em; }
+  .nav-links { display:flex;gap:24px;list-style:none; }
+  .nav-links a { color:var(--muted);text-decoration:none;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s;font-family:'JetBrains Mono',monospace; }
+  .nav-links a:hover { color:var(--orange); }
+
+  .profile-bar { background:var(--bg2);border-bottom:1px solid var(--border);padding:9px 60px;display:flex;align-items:center;justify-content:flex-end;gap:28px;margin-top:57px; }
+  .profile-link { display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);text-decoration:none;transition:color .2s; }
+  .profile-link:hover { color:var(--orange); }
+  .profile-link .dot { width:5px;height:5px;border-radius:50%;background:var(--orange);flex-shrink:0; }
+
+  .hero { min-height:92vh;display:flex;align-items:center;padding:80px 60px;position:relative;overflow:hidden; }
+  .hero-grid { position:absolute;inset:0;background-image:linear-gradient(rgba(249,115,22,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(249,115,22,.04) 1px,transparent 1px);background-size:60px 60px; }
+  .hero-glow { position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(249,115,22,.1) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none; }
+  .hero-content { position:relative;z-index:1;max-width:800px; }
+  .hero-tag { display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:var(--orange);padding:5px 15px;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.1em;margin-bottom:28px; }
+  .hero-tag .blink { width:5px;height:5px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite; }
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
+  h1 { font-size:clamp(2.8rem,7vw,5.5rem);font-weight:800;line-height:.95;margin-bottom:22px;letter-spacing:-.02em; }
+  h1 .line1 { display:block;color:var(--text); }
+  h1 .line2 { display:block;background:linear-gradient(135deg,var(--orange),var(--yellow));-webkit-background-clip:text;-webkit-text-fill-color:transparent; }
+  .hero-desc { font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--muted);line-height:1.9;max-width:500px;margin-bottom:44px; }
+  .hero-stats { display:flex;gap:44px;flex-wrap:wrap; }
+  .stat-num { font-size:1.9rem;font-weight:800;color:var(--orange);font-family:'Space Mono',monospace; }
+  .stat-label { font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-family:'JetBrains Mono',monospace; }
+
+  section { padding:88px 60px;border-top:1px solid var(--border); }
+  .section-label { font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--orange);text-transform:uppercase;letter-spacing:.2em;margin-bottom:9px; }
+  .section-title { font-size:clamp(1.7rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;margin-bottom:13px;line-height:1.1; }
+  .section-sub { font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--muted);max-width:540px;line-height:1.8;margin-bottom:48px; }
+
+  /* BADGES */
+  .badges-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:2px; }
+  .badge-card { background:var(--card);padding:28px;position:relative;overflow:hidden;transition:transform .3s,background .3s;border:1px solid var(--border); }
+  .badge-card:hover { background:#1c1c1c;transform:translateY(-4px); }
+  .badge-card::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent,var(--orange));transform:scaleX(0);transform-origin:left;transition:transform .4s; }
+  .badge-card:hover::before { transform:scaleX(1); }
+  .badge-icon { font-size:2.2rem;margin-bottom:13px;display:block; }
+  .badge-name { font-size:1.1rem;font-weight:700;margin-bottom:7px;color:var(--accent,var(--orange)); }
+  .badge-req { font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--muted);line-height:1.7;margin-bottom:13px; }
+  .badge-tag { display:inline-block;padding:3px 9px;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);color:var(--accent,var(--orange));font-size:.6rem;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;border-radius:2px; }
+
+  /* CONTEST */
+  #contest { background:var(--bg2); }
+  .contest-grid { display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:44px; }
+  .contest-card { background:var(--card);padding:34px;border:1px solid var(--border);transition:border-color .3s; }
+  .contest-card:hover { border-color:var(--orange); }
+  .contest-type { font-family:'Space Mono',monospace;font-size:.62rem;color:var(--orange);text-transform:uppercase;letter-spacing:.15em;margin-bottom:9px; }
+  .contest-title { font-size:1.35rem;font-weight:700;margin-bottom:13px; }
+  .contest-detail { font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--muted);line-height:2; }
+  .contest-detail span { color:var(--text);font-weight:600; }
+  .rating-table { width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:.78rem;margin-top:26px; }
+  .rating-table th { text-align:left;padding:11px 16px;background:var(--bg3);color:var(--orange);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;border:1px solid var(--border); }
+  .rating-table td { padding:11px 16px;border:1px solid var(--border);color:var(--muted);background:var(--card);transition:background .2s; }
+  .rating-table tr:hover td { background:#1a1a1a; }
+  .rating-table td.rating-col { color:var(--yellow);font-weight:700; }
+
+  /* STUDY */
+  .plans-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:2px; }
+  .plan-card { background:var(--card);padding:34px 28px;border:1px solid var(--border);position:relative;overflow:hidden;transition:transform .3s; }
+  .plan-card:hover { transform:translateY(-6px); }
+  .plan-num { font-family:'Space Mono',monospace;font-size:3.2rem;font-weight:700;color:var(--border);position:absolute;top:12px;right:18px;line-height:1;transition:color .3s; }
+  .plan-card:hover .plan-num { color:rgba(249,115,22,.12); }
+  .plan-icon { font-size:1.7rem;margin-bottom:14px;display:block; }
+  .plan-name { font-size:1.15rem;font-weight:700;margin-bottom:5px; }
+  .plan-count { font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px; }
+  .plan-desc { font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--muted);line-height:1.7;margin-bottom:18px; }
+  .plan-priority { display:inline-block;padding:3px 9px;border-radius:2px;font-size:.6rem;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;font-weight:600; }
+  .priority-1 { background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.3); }
+  .priority-2 { background:rgba(249,115,22,.1);color:var(--orange);border:1px solid rgba(249,115,22,.3); }
+  .priority-3 { background:rgba(59,130,246,.1);color:var(--blue);border:1px solid rgba(59,130,246,.3); }
+  .progress-bar { height:3px;background:var(--border);border-radius:2px;margin-top:9px;overflow:hidden; }
+  .progress-fill { height:100%;background:linear-gradient(90deg,var(--orange),var(--yellow));border-radius:2px;width:0%;transition:width 1.5s ease; }
+
+  /* STREAK */
+  #streak { background:var(--bg2); }
+  .streak-content { display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start; }
+  .tip-item { display:flex;gap:16px;margin-bottom:26px;padding-bottom:26px;border-bottom:1px solid var(--border); }
+  .tip-item:last-child { border-bottom:none; }
+  .tip-num { font-family:'Space Mono',monospace;font-size:1.7rem;font-weight:700;color:var(--border);min-width:42px;line-height:1;padding-top:3px; }
+  .tip-title { font-size:.9rem;font-weight:700;margin-bottom:5px; }
+  .tip-desc { font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--muted);line-height:1.7; }
+  .streak-calendar { background:var(--card);border:1px solid var(--border);padding:26px; }
+  .cal-title { font-family:'Space Mono',monospace;font-size:.68rem;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px; }
+  .cal-grid { display:grid;grid-template-columns:repeat(15,1fr);gap:4px;margin-bottom:12px; }
+  .cal-cell { aspect-ratio:1;border-radius:2px;background:var(--border);transition:transform .2s; }
+  .cal-cell:hover { transform:scale(1.3); }
+  .cal-cell.active1 { background:rgba(249,115,22,.3); }
+  .cal-cell.active2 { background:rgba(249,115,22,.6); }
+  .cal-cell.active3 { background:var(--orange); }
+  .cal-cell.active4 { background:var(--yellow); }
+  .cal-legend { display:flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);flex-wrap:wrap; }
+  .legend-box { width:10px;height:10px;border-radius:2px; }
+  .streak-milestones { margin-top:26px; }
+  .milestone { display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border); }
+  .milestone-label { font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--muted); }
+  .milestone-badge { font-size:.6rem;padding:3px 9px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;border-radius:2px; }
+
+  /* CHECKLIST */
+  .checklist-progress { background:var(--card);border:1px solid var(--border);padding:26px;margin-bottom:2px;display:flex;align-items:center;gap:28px;flex-wrap:wrap; }
+  .checklist-num { font-family:'Space Mono',monospace;font-size:2.3rem;font-weight:700;color:var(--orange); }
+  .checklist-label { font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em; }
+  .overall-bar { flex:1;min-width:120px;height:5px;background:var(--border);border-radius:3px;overflow:hidden; }
+  .overall-fill { height:100%;background:linear-gradient(90deg,var(--orange),var(--yellow));border-radius:3px;transition:width .5s ease; }
+  .checklist-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:2px; }
+  .topic-card { background:var(--card);border:1px solid var(--border);padding:22px;transition:border-color .3s; }
+  .topic-card:hover { border-color:var(--orange); }
+  .topic-header { display:flex;align-items:center;justify-content:space-between;margin-bottom:12px; }
+  .topic-name { font-size:.9rem;font-weight:700; }
+  .topic-count { font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted); }
+  .topic-bar { height:3px;background:var(--border);border-radius:2px;margin-bottom:12px;overflow:hidden; }
+  .topic-fill { height:100%;border-radius:2px;width:0%;transition:width 1.5s ease; }
+  .topic-items { display:flex;flex-wrap:wrap;gap:5px; }
+  .topic-chip { display:flex;align-items:center;gap:5px;padding:3px 9px;background:var(--bg3);border:1px solid var(--border);border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);cursor:pointer;transition:all .2s;user-select:none; }
+  .topic-chip:hover { border-color:var(--orange);color:var(--text); }
+  .topic-chip.done { background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.3);color:var(--green); }
+  .topic-chip .chip-dot { width:4px;height:4px;border-radius:50%;background:var(--border);flex-shrink:0;transition:background .2s; }
+  .topic-chip.done .chip-dot { background:var(--green); }
+
+  /* PATTERNS */
+  #patterns { background:var(--bg2); }
+  .pattern-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:2px; }
+  .pattern-card { background:var(--card);border:1px solid var(--border);padding:26px;transition:border-color .3s,transform .3s; }
+  .pattern-card:hover { border-color:var(--orange);transform:translateY(-3px); }
+  .pattern-name { font-size:.95rem;font-weight:700;margin-bottom:5px; }
+  .pattern-when { font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--orange);margin-bottom:9px; }
+  .pattern-desc { font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--muted);line-height:1.7;margin-bottom:11px; }
+  .pattern-examples { display:flex;flex-wrap:wrap;gap:5px; }
+  .ex-chip { padding:2px 7px;background:var(--bg3);border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--muted);border-radius:2px; }
+
+  /* PREMIUM */
+  #premium { }
+  .premium-grid { display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px; }
+  .premium-card { background:var(--card);padding:34px;border:1px solid var(--border); }
+  .premium-card.highlight { border-color:rgba(249,115,22,.35); }
+  .prem-title { font-size:1.25rem;font-weight:700;margin-bottom:5px; }
+  .prem-price { font-family:'Space Mono',monospace;font-size:1.7rem;color:var(--orange);margin-bottom:18px; }
+  .prem-price span { font-size:.75rem;color:var(--muted); }
+  .prem-feature { display:flex;align-items:flex-start;gap:9px;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--muted);margin-bottom:10px;line-height:1.5; }
+  .prem-feature .yes { color:var(--green);flex-shrink:0; }
+  .prem-feature .no { color:var(--red);flex-shrink:0; }
+  .verdict-box { background:var(--card);border:1px solid rgba(249,115,22,.3);padding:26px; }
+  .verdict-title { font-size:.95rem;font-weight:700;color:var(--orange);margin-bottom:12px; }
+  .verdict-text { font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--muted);line-height:1.9; }
+  .verdict-text strong { color:var(--text); }
+
+  /* COMPANIES */
+  #companies { background:var(--bg2); }
+  .company-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px;margin-bottom:2px; }
+  .company-card { background:var(--card);border:1px solid var(--border);padding:22px;transition:border-color .3s; }
+  .company-card:hover { border-color:var(--orange); }
+  .company-name { font-size:1.05rem;font-weight:700;margin-bottom:5px; }
+  .company-count { font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--orange);margin-bottom:9px; }
+  .company-topics { font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);line-height:1.8; }
+  .company-topics span { color:var(--text); }
+  .how-to-filter { background:var(--card);border:1px solid rgba(249,115,22,.3);padding:26px; }
+  .how-title { font-size:.95rem;font-weight:700;color:var(--orange);margin-bottom:13px; }
+  .how-steps { display:flex;flex-direction:column;gap:9px; }
+  .how-step { display:flex;align-items:flex-start;gap:11px;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--muted); }
+  .step-num { background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);color:var(--orange);width:20px;height:20px;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;flex-shrink:0; }
+
+  /* COINS */
+  #coins { }
+  .coins-grid { display:grid;grid-template-columns:1fr 1fr;gap:2px; }
+  .coins-earn,.coins-spend { background:var(--card);border:1px solid var(--border);padding:30px; }
+  .coins-subtitle { font-size:.95rem;font-weight:700;margin-bottom:18px;color:var(--yellow); }
+  .coin-item { display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--border); }
+  .coin-item:last-child { border-bottom:none; }
+  .coin-action { font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--muted);flex:1; }
+  .coin-amount { font-family:'Space Mono',monospace;font-size:.82rem;font-weight:700;color:var(--yellow);white-space:nowrap; }
+
+  /* ROADMAP */
+  .roadmap-timeline { position:relative;padding-left:38px; }
+  .roadmap-timeline::before { content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--orange),var(--yellow),transparent); }
+  .phase { position:relative;margin-bottom:40px; }
+  .phase::before { content:'';position:absolute;left:-34px;top:5px;width:13px;height:13px;border-radius:50%;background:var(--bg);border:2px solid var(--orange);z-index:1; }
+  .phase-header { display:flex;align-items:center;gap:12px;margin-bottom:12px; }
+  .phase-tag { font-family:'Space Mono',monospace;font-size:.6rem;color:var(--orange);text-transform:uppercase;letter-spacing:.15em;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);padding:3px 9px;border-radius:2px; }
+  .phase-title { font-size:1.05rem;font-weight:700; }
+  .phase-items { background:var(--card);border:1px solid var(--border);padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:9px; }
+  .phase-item { display:flex;align-items:flex-start;gap:7px;font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--muted);line-height:1.5; }
+  .phase-item::before { content:'→';color:var(--orange);flex-shrink:0; }
+
+  /* TIPS */
+  #tips { background:var(--bg2); }
+  .tips-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2px; }
+  .tip-card { background:var(--card);padding:26px;border:1px solid var(--border);transition:border-color .3s,transform .3s; }
+  .tip-card:hover { border-color:var(--orange);transform:translateY(-4px); }
+  .tip-card-icon { font-size:1.7rem;margin-bottom:12px; }
+  .tip-card-title { font-size:.9rem;font-weight:700;margin-bottom:7px; }
+  .tip-card-text { font-family:'JetBrains Mono',monospace;font-size:.73rem;color:var(--muted);line-height:1.7; }
+
+  /* FAQ */
+  #faq { }
+  .faq-list { max-width:760px; }
+  .faq-item { border:1px solid var(--border);margin-bottom:2px;overflow:hidden; }
+  .faq-q { padding:18px 22px;font-size:.88rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background .2s; }
+  .faq-q:hover { background:var(--bg3); }
+  .faq-q .arrow { font-size:.65rem;color:var(--orange);transition:transform .3s; }
+  .faq-q.open .arrow { transform:rotate(180deg); }
+  .faq-a { padding:0 22px;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--muted);line-height:1.8; }
+  .faq-a.open { max-height:200px;padding:0 22px 18px; }
+
+  footer { padding:48px 60px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px; }
+  .footer-logo { font-family:'Space Mono',monospace;font-size:.95rem;color:var(--orange);margin-bottom:7px; }
+  .footer-user { font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted); }
+  .footer-links { display:flex;flex-direction:column;gap:7px;text-align:right; }
+  .footer-link { font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);text-decoration:none;transition:color .2s; }
+  .footer-link:hover { color:var(--orange); }
+  .footer-bottom { width:100%;text-align:center;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--border);padding-top:18px;border-top:1px solid var(--border);margin-top:4px; }
+
+  .fade-up { opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease; }
+  .fade-up.visible { opacity:1;transform:translateY(0); }
+
+  @media(max-width:768px){
+    nav{padding:13px 18px;} .nav-links{display:none;}
+    .profile-bar{padding:7px 18px;flex-wrap:wrap;justify-content:flex-start;}
+    section{padding:55px 18px;}
+    .hero{padding:75px 18px 55px;}
+    .contest-grid,.premium-grid,.streak-content,.coins-grid{grid-template-columns:1fr;}
+    .plans-grid{grid-template-columns:1fr;}
+    footer{padding:36px 18px;flex-direction:column;align-items:flex-start;}
+    .footer-links{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">LC // ayush08iitp</div>
+  <ul class="nav-links">
+    <li><a href="#badges">Badges</a></li>
+    <li><a href="#contest">Contests</a></li>
+    <li><a href="#study">Study Plans</a></li>
+    <li><a href="#streak">Streaks</a></li>
+    <li><a href="#checklist">Checklist</a></li>
+    <li><a href="#patterns">Patterns</a></li>
+    <li><a href="#premium">Premium</a></li>
+    <li><a href="#companies">Companies</a></li>
+    <li><a href="#coins">Coins</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#tips">Tips</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+
+<div class="profile-bar">
+  <a class="profile-link" href="https://leetcode.com/u/ayush08iitp" target="_blank"><span class="dot"></span>leetcode / ayush08iitp</a>
+  <a class="profile-link" href="https://linkedin.com/in/ayush08iitp" target="_blank"><span class="dot"></span>linkedin / ayush08iitp</a>
+  <a class="profile-link" href="https://github.com/ayushcmd" target="_blank"><span class="dot"></span>github / ayushcmd</a>
+</div>
+
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag"><span class="blink"></span>ayush08iitp's LeetCode Playbook</div>
+    <h1><span class="line1">CRACK THE</span><span class="line2">CODE.</span></h1>
+    <p class="hero-desc">Badges. Contests. Study plans. Patterns. Checklists.<br>Everything to go from 0 → Knight — in one place.</p>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">3865</div><div class="stat-label">Total Problems</div></div>
+      <div class="stat-item"><div class="stat-num">20+</div><div class="stat-label">Badge Types</div></div>
+      <div class="stat-item"><div class="stat-num">1600</div><div class="stat-label">Knight Rating</div></div>
+      <div class="stat-item"><div class="stat-num">2×</div><div class="stat-label">Weekly Contests</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BADGES -->
+<section id="badges">
+  <div class="section-label">// 01 — Badges</div>
+  <h2 class="section-title">How to Earn Badges</h2>
+  <p class="section-sub">Badges appear on your public profile and signal skill, consistency, and contest performance to recruiters.</p>
+  <div class="badges-grid">
+    <div class="badge-card fade-up" style="--accent:var(--yellow)"><span class="badge-icon">🛡️</span><div class="badge-name">Knight</div><div class="badge-req">Contest rating <strong style="color:#e5e5e5">1600+</strong>. Participate in contests consistently. Most common goal for beginners building a strong profile.</div><span class="badge-tag" style="color:var(--yellow);border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.08)">Contest</span></div>
+    <div class="badge-card fade-up" style="--accent:var(--purple)"><span class="badge-icon">👁️</span><div class="badge-name">Guardian</div><div class="badge-req">Contest rating <strong style="color:#e5e5e5">2000+</strong>. Only top-tier competitive programmers hit this. Extremely rare and prestigious.</div><span class="badge-tag" style="color:var(--purple);border-color:rgba(168,85,247,.3);background:rgba(168,85,247,.08)">Elite</span></div>
+    <div class="badge-card fade-up" style="--accent:var(--green)"><span class="badge-icon">📚</span><div class="badge-name">LeetCode 75</div><div class="badge-req">Complete all <strong style="color:#e5e5e5">75 problems</strong> in the LC 75 plan. Covers all core patterns for interviews.</div><span class="badge-tag" style="color:var(--green);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)">Study Plan</span></div>
+    <div class="badge-card fade-up" style="--accent:var(--blue)"><span class="badge-icon">🎯</span><div class="badge-name">Top Interview 150</div><div class="badge-req">Solve all <strong style="color:#e5e5e5">150 problems</strong> in Top Interview 150. Covers everything asked at FAANG.</div><span class="badge-tag" style="color:var(--blue);border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.08)">Study Plan</span></div>
+    <div class="badge-card fade-up" style="--accent:var(--orange)"><span class="badge-icon">🔥</span><div class="badge-name">100 Day Streak</div><div class="badge-req">Solve at least <strong style="color:#e5e5e5">1 problem daily</strong> for 100 days straight. One miss resets everything.</div><span class="badge-tag">Streak</span></div>
+    <div class="badge-card fade-up" style="--accent:var(--yellow)"><span class="badge-icon">🌟</span><div class="badge-name">365 Day Badge</div><div class="badge-req">Maintain a <strong style="color:#e5e5e5">full year streak</strong> — 365 days. Extremely rare. One of the most impressive profile badges.</div><span class="badge-tag" style="color:var(--yellow);border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.08)">Streak</span></div>
+    <div class="badge-card fade-up" style="--accent:var(--orange)"><span class="badge-icon">📅</span><div class="badge-name">Annual Badge</div><div class="badge-req">Solve <strong style="color:#e5e5e5">daily challenges</strong> consistently throughout the year. A special badge released each year.</div><span class="badge-tag">Annual</span></div>
+    <div class="badge-card fade-up" style="--accent:var(--green)"><span class="badge-icon">🗄️</span><div class="badge-name">SQL 50</div><div class="badge-req">Complete the <strong style="color:#e5e5e5">SQL 50 study plan</strong>. Proves DB skills. Separate track from coding badges.</div><span class="badge-tag" style="color:var(--green);border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.08)">Study Plan</span></div>
+    <div class="badge-card fade-up" style="--accent:var(--red)"><span class="badge-icon">⚡</span><div class="badge-name">Problem Milestones</div><div class="badge-req">Solve <strong style="color:#e5e5e5">50 / 200 / 500</strong> total problems. Automatically awarded as you grind.</div><span class="badge-tag" style="color:var(--red);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.08)">Milestone</span></div>
+  </div>
+</section>
+
+<!-- CONTEST -->
+<section id="contest">
+  <div class="section-label">// 02 — Contests</div>
+  <h2 class="section-title">Contest Guide</h2>
+  <p class="section-sub">Contests are the fastest path to Knight/Guardian badges. Don't fear them — just show up every week.</p>
+  <div class="contest-grid fade-up">
+    <div class="contest-card"><div class="contest-type">Every Sunday</div><div class="contest-title">Weekly Contest</div><div class="contest-detail"><span>Time:</span> 8:00 AM IST (Sunday)<br><span>Duration:</span> 1.5 hours<br><span>Problems:</span> 4 questions (Easy → Hard)<br><span>Tip:</span> Always attempt Q1 & Q2. Even 2 solves gains you rating.</div></div>
+    <div class="contest-card"><div class="contest-type">Alternate Saturdays</div><div class="contest-title">Biweekly Contest</div><div class="contest-detail"><span>Time:</span> 8:00 PM IST (alternate Saturday)<br><span>Duration:</span> 1.5 hours<br><span>Problems:</span> 4 questions<br><span>Tip:</span> Slightly easier than weekly. Best for beginners to start.</div></div>
+  </div>
+  <h3 style="font-size:.95rem;margin-bottom:5px;font-weight:700;color:var(--orange);">Rating → Badge System</h3>
+  <table class="rating-table fade-up">
+    <thead><tr><th>Badge</th><th>Title</th><th>Rating</th><th>Level</th></tr></thead>
+    <tbody>
+      <tr><td>🟤</td><td>Starter</td><td class="rating-col">0 – 1199</td><td style="color:var(--green)">Just begin</td></tr>
+      <tr><td>⚪</td><td>Newcomer</td><td class="rating-col">1200 – 1399</td><td style="color:var(--green)">Beginner</td></tr>
+      <tr><td>🟢</td><td>Pupil</td><td class="rating-col">1400 – 1599</td><td style="color:var(--yellow)">Easy–Med</td></tr>
+      <tr><td>🛡️</td><td>Knight</td><td class="rating-col">1600 – 1999</td><td style="color:var(--orange)">Consistent</td></tr>
+      <tr><td>👁️</td><td>Guardian</td><td class="rating-col">2000+</td><td style="color:var(--red)">Elite</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:28px;background:var(--card);border:1px solid var(--border);padding:26px;" class="fade-up">
+    <div style="font-size:.95rem;font-weight:700;color:var(--orange);margin-bottom:12px;">How Rating is Calculated</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--muted);line-height:2;">
+      • Rating changes based on your <strong style="color:var(--text)">rank vs expected rank</strong><br>
+      • Solving Q1+Q2 fast = safe rating gain even for beginners<br>
+      • <strong style="color:var(--text)">Speed matters</strong> — same problems solved faster = better rank<br>
+      • Wrong submissions add a <strong style="color:var(--text)">5-minute penalty</strong> — test before submitting<br>
+      • You always gain something by attempting — don't skip contests
+    </div>
+  </div>
+</section>
+
+<!-- STUDY PLANS -->
+<section id="study">
+  <div class="section-label">// 03 — Study Plans</div>
+  <h2 class="section-title">Official Study Plans</h2>
+  <p class="section-sub">LeetCode's curated plans are the fastest path to interview readiness — each earns a badge on completion.</p>
+  <div class="plans-grid">
+    <div class="plan-card fade-up"><div class="plan-num">75</div><span class="plan-icon">🎯</span><div class="plan-name">LeetCode 75</div><div class="plan-count">75 Problems • ~3 weeks</div><div class="plan-desc">Gold standard for interview prep. Covers all core patterns: arrays, strings, sliding window, graphs, DP, trees. Start here — no exceptions.</div><span class="plan-priority priority-1">Start Here</span><div class="progress-bar"><div class="progress-fill" data-width="95"></div></div></div>
+    <div class="plan-card fade-up"><div class="plan-num">150</div><span class="plan-icon">🏢</span><div class="plan-name">Top Interview 150</div><div class="plan-count">150 Problems • ~6 weeks</div><div class="plan-desc">Covers every topic asked at FAANG. Do after LC 75. Gets you badge + deep interview readiness. Most comprehensive plan available.</div><span class="plan-priority priority-2">Do Second</span><div class="progress-bar"><div class="progress-fill" data-width="88"></div></div></div>
+    <div class="plan-card fade-up"><div class="plan-num">50</div><span class="plan-icon">🗄️</span><div class="plan-name">SQL 50</div><div class="plan-count">50 Problems • ~2 weeks</div><div class="plan-desc">Master SQL for backend, data, or full-stack roles. Short but powerful. Earns a unique SQL badge separate from your coding badges.</div><span class="plan-priority priority-3">Parallel</span><div class="progress-bar"><div class="progress-fill" data-width="75"></div></div></div>
+  </div>
+</section>
+
+<!-- STREAK -->
+<section id="streak">
+  <div class="section-label">// 04 — Streaks</div>
+  <h2 class="section-title">Build Your Streak</h2>
+  <p class="section-sub">The submission heatmap and streak are the most visible proof of consistency. They matter more than your total count.</p>
+  <div class="streak-content">
+    <div>
+      <div class="tip-item fade-up"><div class="tip-num">01</div><div><div class="tip-title">Solve the Daily Challenge every day</div><div class="tip-desc">LeetCode posts 1 problem daily at midnight UTC. Even on busy days — just solve this one to keep your streak alive.</div></div></div>
+      <div class="tip-item fade-up"><div class="tip-num">02</div><div><div class="tip-title">Use streak freeze wisely (Premium)</div><div class="tip-desc">Premium users can freeze streak for 1 day. Use only in emergencies — not as a habit or crutch.</div></div></div>
+      <div class="tip-item fade-up"><div class="tip-num">03</div><div><div class="tip-title">Solve 2–3 problems per session</div><div class="tip-desc">More submissions = denser heatmap. Quality solves + quantity = green calendar that impresses recruiters.</div></div></div>
+      <div class="tip-item fade-up"><div class="tip-num">04</div><div><div class="tip-title">Fix a time daily — treat it like gym</div><div class="tip-desc">Morning, after class, or night. Same time every day. Habit beats motivation every single time.</div></div></div>
+    </div>
+    <div>
+      <div class="streak-calendar fade-up">
+        <div class="cal-title">// Submission Heatmap (simulation)</div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend">
+          <div class="legend-box" style="background:var(--border)"></div>None
+          <div class="legend-box active1" style="background:rgba(249,115,22,.3)"></div>1–2
+          <div class="legend-box active2" style="background:rgba(249,115,22,.6)"></div>3–5
+          <div class="legend-box active3" style="background:var(--orange)"></div>6–10
+          <div class="legend-box active4" style="background:var(--yellow)"></div>10+
+        </div>
+      </div>
+      <div class="streak-milestones fade-up">
+        <div class="milestone"><span class="milestone-label">7 day streak</span><span class="milestone-badge" style="background:rgba(34,197,94,.1);color:var(--green);border:1px solid rgba(34,197,94,.3)">Week Warrior</span></div>
+        <div class="milestone"><span class="milestone-label">30 day streak</span><span class="milestone-badge" style="background:rgba(249,115,22,.1);color:var(--orange);border:1px solid rgba(249,115,22,.3)">Monthly Grinder</span></div>
+        <div class="milestone"><span class="milestone-label">100 day streak</span><span class="milestone-badge" style="background:rgba(251,191,36,.1);color:var(--yellow);border:1px solid rgba(251,191,36,.3)">🔥 100 Day Badge</span></div>
+        <div class="milestone"><span class="milestone-label">365 day streak</span><span class="milestone-badge" style="background:rgba(168,85,247,.1);color:var(--purple);border:1px solid rgba(168,85,247,.3)">🌟 Legend Badge</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DSA CHECKLIST -->
+<section id="checklist">
+  <div class="section-label">// 05 — DSA Topic Checklist</div>
+  <h2 class="section-title">Topic Tracker</h2>
+  <p class="section-sub">Click each sub-topic to mark it done. Progress is saved in your browser automatically.</p>
+  <div class="checklist-progress fade-up">
+    <div><div class="checklist-num" id="doneCount">0</div><div class="checklist-label">Done</div></div>
+    <div><div class="checklist-num" id="totalCount">0</div><div class="checklist-label">Total</div></div>
+    <div class="overall-bar"><div class="overall-fill" id="overallFill"></div></div>
+    <div style="font-family:'Space Mono',monospace;font-size:1.4rem;font-weight:700;color:var(--orange)" id="pctText">0%</div>
+  </div>
+  <div class="checklist-grid" id="checklistGrid"></div>
+</section>
+
+<!-- PATTERNS -->
+<section id="patterns">
+  <div class="section-label">// 06 — Pattern Cheatsheet</div>
+  <h2 class="section-title">When to Use What</h2>
+  <p class="section-sub">The most valuable skill is pattern recognition — knowing which technique to apply within 30 seconds of reading a problem.</p>
+  <div class="pattern-grid">
+    <div class="pattern-card fade-up"><div class="pattern-name">Two Pointers</div><div class="pattern-when">Use when → sorted array, find pair/triplet with target sum</div><div class="pattern-desc">One pointer at start, one at end. Move based on condition. O(n) instead of O(n²).</div><div class="pattern-examples"><span class="ex-chip">Two Sum II</span><span class="ex-chip">3Sum</span><span class="ex-chip">Container With Water</span></div></div>
+    <div class="pattern-card fade-up"><div class="pattern-name">Sliding Window</div><div class="pattern-when">Use when → subarray/substring of fixed or variable size</div><div class="pattern-desc">Expand right pointer, shrink left when condition breaks. Avoids recomputing overlapping parts.</div><div class="pattern-examples"><span class="ex-chip">Max Subarray</span><span class="ex-chip">Longest Substring</span><span class="ex-chip">Min Window</span></div></div>
+    <div class="pattern-card fade-up"><div class="pattern-name">Binary Search</div><div class="pattern-when">Use when → sorted input, or search on answer space</div><div class="pattern-desc">Halve the search space each step. Works on arrays AND on answer ranges (e.g., min/max problems).</div><div class="pattern-examples"><span class="ex-chip">Search Rotated</span><span class="ex-chip">Koko Eating</span><span class="ex-chip">Find Min</span></div></div>
+    <div class="pattern-card fade-up"><div class="pattern-name">BFS / DFS</div><div class="pattern-when">Use when → graph traversal, shortest path, components</div><div class="pattern-desc">BFS = level by level (shortest path). DFS = go deep (cycle detection, topo sort).</div><div class="pattern-examples"><span class="ex-chip">Number of Islands</span><span class="ex-chip">Course Schedule</span><span class="ex-chip">Clone Graph</span></div></div>
+    <div class="pattern-card fade-up"><div class="pattern-name">Dynamic Programming</div><div class="pattern-when">Use when → optimal substructure + overlapping subproblems</div><div class="pattern-desc">Break into subproblems, cache results. Top-down (memo) or bottom-up (tabulation).</div><div class="pattern-examples"><span class="ex-chip">Climbing Stairs</span><span class="ex-chip">Coin Change</span><span class="ex-chip">LCS</span></div></div>
+    <div class="pattern-card fade-up"><div class="pattern-name">Backtracking</div><div class="pattern-when">Use when → all combinations/permutations/subsets needed</div><div class="pattern-desc">Try a choice, recurse, undo. Exhaustive search with pruning to cut dead ends early.</div><div class="pattern-examples"><span class="ex-chip">Subsets</span><span class="ex-chip">Permutations</span><span class="ex-chip">N-Queens</span></div></div>
+    <div class="pattern-card fade-up"><div class="pattern-name">Heap / Priority Queue</div><div class="pattern-when">Use when → kth largest/smallest, top-K, streaming data</div><div class="pattern-desc">Min-heap for kth largest. Max-heap for kth smallest. O(n log k) beats sorting.</div><div class="pattern-examples"><span class="ex-chip">Kth Largest</span><span class="ex-chip">Top K Frequent</span><span class="ex-chip">Merge K Lists</span></div></div>
+    <div class="pattern-card fade-up"><div class="pattern-name">Fast & Slow Pointers</div><div class="pattern-when">Use when → linked list cycle, middle of list</div><div class="pattern-desc">Slow moves 1 step, fast moves 2. If they meet → cycle. Where they meet → cycle start.</div><div class="pattern-examples"><span class="ex-chip">Linked List Cycle</span><span class="ex-chip">Middle of List</span><span class="ex-chip">Happy Number</span></div></div>
+    <div class="pattern-card fade-up"><div class="pattern-name">Monotonic Stack</div><div class="pattern-when">Use when → next greater/smaller element, span problems</div><div class="pattern-desc">Maintain stack that's always increasing or decreasing. Pop when current breaks order.</div><div class="pattern-examples"><span class="ex-chip">Daily Temperatures</span><span class="ex-chip">Largest Rectangle</span><span class="ex-chip">Next Greater</span></div></div>
+  </div>
+</section>
+
+<!-- PREMIUM -->
+<section id="premium">
+  <div class="section-label">// 07 — Premium vs Free</div>
+  <h2 class="section-title">Is Premium Worth It?</h2>
+  <p class="section-sub">The most common beginner question. Here's a no-nonsense breakdown.</p>
+  <div class="premium-grid fade-up">
+    <div class="premium-card">
+      <div class="prem-title">Free Tier</div>
+      <div class="prem-price">₹0 <span>/ forever</span></div>
+      <div class="prem-feature"><span class="yes">✓</span> Access to 2000+ problems</div>
+      <div class="prem-feature"><span class="yes">✓</span> All study plans (LC 75, Top 150)</div>
+      <div class="prem-feature"><span class="yes">✓</span> Weekly & biweekly contests</div>
+      <div class="prem-feature"><span class="yes">✓</span> Discussion tab & other solutions</div>
+      <div class="prem-feature"><span class="yes">✓</span> Submission history & streak</div>
+      <div class="prem-feature"><span class="no">✗</span> Company-tagged problems</div>
+      <div class="prem-feature"><span class="no">✗</span> ~500 locked premium problems</div>
+      <div class="prem-feature"><span class="no">✗</span> Streak freeze</div>
+      <div class="prem-feature"><span class="no">✗</span> Interview simulation mode</div>
+    </div>
+    <div class="premium-card highlight">
+      <div class="prem-title">Premium 💎</div>
+      <div class="prem-price">~₹850 <span>/ month</span></div>
+      <div class="prem-feature"><span class="yes">✓</span> Everything in Free</div>
+      <div class="prem-feature"><span class="yes">✓</span> Company-tagged problem lists</div>
+      <div class="prem-feature"><span class="yes">✓</span> 500+ premium-only problems</div>
+      <div class="prem-feature"><span class="yes">✓</span> Streak freeze (1 day)</div>
+      <div class="prem-feature"><span class="yes">✓</span> Interview simulation (timed)</div>
+      <div class="prem-feature"><span class="yes">✓</span> Autocomplete in editor</div>
+      <div class="prem-feature"><span class="yes">✓</span> Video solutions</div>
+      <div class="prem-feature"><span class="yes">✓</span> Debug mode</div>
+    </div>
+  </div>
+  <div class="verdict-box fade-up">
+    <div class="verdict-title">⚡ Honest Verdict for Beginners (ayush08iitp)</div>
+    <div class="verdict-text">
+      <strong>Don't buy premium right now.</strong> As a beginner you have 2000+ free problems — it'll take months before premium matters.<br><br>
+      <strong>When to buy:</strong> 3–4 months before a target company interview. Buy for 1–2 months, grind company-tagged problems, then cancel.<br><br>
+      <strong>Free workaround:</strong> GitHub has many community lists of company-tagged problems. Search "Amazon LeetCode 2024 GitHub" — free and effective.
+    </div>
+  </div>
+</section>
+
+<!-- COMPANIES -->
+<section id="companies">
+  <div class="section-label">// 08 — Company Tags</div>
+  <h2 class="section-title">Filter by Company</h2>
+  <p class="section-sub">Each company repeats certain patterns. Knowing what a company asks lets you grind smarter, not harder.</p>
+  <div class="company-grid fade-up">
+    <div class="company-card"><div class="company-name">Google 🔵</div><div class="company-count">~200 tagged problems</div><div class="company-topics">Focus: <span>Graphs, DP, Trees</span><br>Hard: <span>60% of questions</span><br>Style: <span>Optimization, edge cases</span></div></div>
+    <div class="company-card"><div class="company-name">Amazon 🟠</div><div class="company-count">~300 tagged problems</div><div class="company-topics">Focus: <span>Arrays, Trees, OOP Design</span><br>Hard: <span>40% of questions</span><br>Style: <span>System + Coding combo</span></div></div>
+    <div class="company-card"><div class="company-name">Microsoft 🟦</div><div class="company-count">~250 tagged problems</div><div class="company-topics">Focus: <span>Linked Lists, Trees, DP</span><br>Hard: <span>35% of questions</span><br>Style: <span>Clear problem solving</span></div></div>
+    <div class="company-card"><div class="company-name">Meta 🔷</div><div class="company-count">~180 tagged problems</div><div class="company-topics">Focus: <span>Arrays, Strings, BFS/DFS</span><br>Hard: <span>45% of questions</span><br>Style: <span>Speed + clean code</span></div></div>
+    <div class="company-card"><div class="company-name">Apple 🍎</div><div class="company-count">~120 tagged problems</div><div class="company-topics">Focus: <span>Strings, Sliding Window</span><br>Hard: <span>30% of questions</span><br>Style: <span>Practical, clean code</span></div></div>
+    <div class="company-card"><div class="company-name">Adobe 🔴</div><div class="company-count">~100 tagged problems</div><div class="company-topics">Focus: <span>Arrays, Math, Strings</span><br>Hard: <span>25% of questions</span><br>Style: <span>Beginner-friendly OAs</span></div></div>
+  </div>
+  <div class="how-to-filter fade-up">
+    <div class="how-title">How to Filter by Company (Free Workaround)</div>
+    <div class="how-steps">
+      <div class="how-step"><span class="step-num">1</span>Go to leetcode.com/problemset → Tags filter → type company name (Premium for official)</div>
+      <div class="how-step"><span class="step-num">2</span>Search "Amazon LeetCode questions 2025" on GitHub — many free curated lists exist</div>
+      <div class="how-step"><span class="step-num">3</span>Use Naukri Code360 or GFG for company-specific free problem sets</div>
+      <div class="how-step"><span class="step-num">4</span>With Premium: Problems → Filter → Company → select your target company</div>
+    </div>
+  </div>
+</section>
+
+<!-- COINS -->
+<section id="coins">
+  <div class="section-label">// 09 — Points & Coins</div>
+  <h2 class="section-title">LeetCode Coins System</h2>
+  <p class="section-sub">LeetCode has its own coin economy. Here's how to earn and what to spend them on.</p>
+  <div class="coins-grid fade-up">
+    <div class="coins-earn">
+      <div class="coins-subtitle">💰 How to Earn Coins</div>
+      <div class="coin-item"><span class="coin-action">Daily Challenge (first solve)</span><span class="coin-amount">+10 coins</span></div>
+      <div class="coin-item"><span class="coin-action">Solve problem (first time)</span><span class="coin-amount">+2 coins</span></div>
+      <div class="coin-item"><span class="coin-action">Complete a Study Plan</span><span class="coin-amount">+50–100</span></div>
+      <div class="coin-item"><span class="coin-action">Contest participation</span><span class="coin-amount">+5–50</span></div>
+      <div class="coin-item"><span class="coin-action">Streak milestone badges</span><span class="coin-amount">+30–200</span></div>
+      <div class="coin-item"><span class="coin-action">Upvoted solution/post</span><span class="coin-amount">+2 each</span></div>
+    </div>
+    <div class="coins-spend">
+      <div class="coins-subtitle">🛒 How to Spend Coins</div>
+      <div class="coin-item"><span class="coin-action">Avatar frames (LC Store)</span><span class="coin-amount">100–500</span></div>
+      <div class="coin-item"><span class="coin-action">Profile backgrounds</span><span class="coin-amount">200–600</span></div>
+      <div class="coin-item"><span class="coin-action">Badges from store</span><span class="coin-amount">300–1000</span></div>
+      <div class="coin-item"><span class="coin-action">Dynamic avatars</span><span class="coin-amount">500–2000</span></div>
+      <div class="coin-item"><span class="coin-action">LeetCode merchandise</span><span class="coin-amount">varies</span></div>
+      <div class="coin-item"><span class="coin-action">Premium trial (when available)</span><span class="coin-amount">varies</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="section-label">// 10 — Roadmap</div>
+  <h2 class="section-title">0 → Knight in 6 Months</h2>
+  <p class="section-sub">A realistic plan for ayush08iitp to reach Knight badge (contest rating 1600+).</p>
+  <div class="roadmap-timeline">
+    <div class="phase fade-up"><div class="phase-header"><span class="phase-tag">Week 1–2</span><span class="phase-title">Foundations</span></div><div class="phase-items"><div class="phase-item">10–15 Easy problems (Arrays, Strings)</div><div class="phase-item">Learn Big-O notation deeply</div><div class="phase-item">C++ STL — vectors, maps, sets</div><div class="phase-item">Start daily challenge habit</div></div></div>
+    <div class="phase fade-up"><div class="phase-header"><span class="phase-tag">Week 3–6</span><span class="phase-title">Core Patterns</span></div><div class="phase-items"><div class="phase-item">Start LeetCode 75 plan</div><div class="phase-item">Two pointers, Sliding window</div><div class="phase-item">Linked lists, Stacks, Queues</div><div class="phase-item">Binary search fundamentals</div><div class="phase-item">Basic BFS/DFS on trees</div></div></div>
+    <div class="phase fade-up"><div class="phase-header"><span class="phase-tag">Month 2</span><span class="phase-title">First Contests</span></div><div class="phase-items"><div class="phase-item">Attempt first Weekly Contest</div><div class="phase-item">Don't worry about score yet</div><div class="phase-item">Upsolve every contest problem</div><div class="phase-item">Complete LeetCode 75</div><div class="phase-item">Start Top Interview 150</div></div></div>
+    <div class="phase fade-up"><div class="phase-header"><span class="phase-tag">Month 3–4</span><span class="phase-title">Intermediate DSA</span></div><div class="phase-items"><div class="phase-item">Graphs — BFS, DFS, Cycle detection</div><div class="phase-item">Dynamic Programming (1D + 2D)</div><div class="phase-item">Backtracking patterns</div><div class="phase-item">Heaps & Priority Queues</div><div class="phase-item">3–5 Mediums daily</div><div class="phase-item">Rating reaching ~1400</div></div></div>
+    <div class="phase fade-up"><div class="phase-header"><span class="phase-tag">Month 5–6</span><span class="phase-title">Knight Badge 🛡️</span></div><div class="phase-items"><div class="phase-item">Advanced DP (interval, tree)</div><div class="phase-item">Segment Trees, Tries</div><div class="phase-item">Weekly contest every week</div><div class="phase-item">Upsolve Hard problems after contests</div><div class="phase-item">Hit 1600 rating 🛡️</div></div></div>
+  </div>
+</section>
+
+<!-- TIPS -->
+<section id="tips">
+  <div class="section-label">// 11 — Pro Tips</div>
+  <h2 class="section-title">Profile & Strategy</h2>
+  <p class="section-sub">Maximize your LeetCode profile and make it recruiter-ready.</p>
+  <div class="tips-grid">
+    <div class="tip-card fade-up"><div class="tip-card-icon">🔄</div><div class="tip-card-title">Always Upsolve After Contests</div><div class="tip-card-text">After every contest, solve problems you couldn't. This is where 80% of growth happens. Never skip this step.</div></div>
+    <div class="tip-card fade-up"><div class="tip-card-icon">📝</div><div class="tip-card-title">Use LeetCode Notebook</div><div class="tip-card-text">Save pattern notes per problem. "Sliding window + hashmap" type notes. Review weekly. Pattern recall is the skill.</div></div>
+    <div class="tip-card fade-up"><div class="tip-card-icon">🎯</div><div class="tip-card-title">Quality Over Quantity</div><div class="tip-card-text">3 understood problems beat 10 copy-pasted solutions. Code every solved problem from scratch the next day.</div></div>
+    <div class="tip-card fade-up"><div class="tip-card-icon">📊</div><div class="tip-card-title">Use the Progress Tab</div><div class="tip-card-text">Shows your skill breakdown by topic. Find weak areas and target them specifically instead of random grinding.</div></div>
+    <div class="tip-card fade-up"><div class="tip-card-icon">🌐</div><div class="tip-card-title">Fill Your Profile Completely</div><div class="tip-card-text">Add GitHub (ayushcmd), LinkedIn (ayush08iitp), university. Recruiters search LeetCode profiles regularly.</div></div>
+    <div class="tip-card fade-up"><div class="tip-card-icon">⏱️</div><div class="tip-card-title">Practice Under Timer</div><div class="tip-card-text">Real interviews: 20–30 min per problem. Easy ≤ 10min, Medium ≤ 25min. Speed comes from pattern recognition only.</div></div>
+    <div class="tip-card fade-up"><div class="tip-card-icon">💬</div><div class="tip-card-title">Read the Discuss Tab</div><div class="tip-card-text">After solving, read top solutions. You'll often find a cleaner O(n) approach you didn't think of. Doubles learning speed.</div></div>
+    <div class="tip-card fade-up"><div class="tip-card-icon">📋</div><div class="tip-card-title">Create Custom Lists</div><div class="tip-card-text">Use "My Lists" to group problems by pattern — "Sliding Window", "Tree DP". Great for targeted revision before interviews.</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-label">// 12 — FAQ</div>
+  <h2 class="section-title">Beginner FAQs</h2>
+  <p class="section-sub">Common questions every beginner asks — answered honestly.</p>
+  <div class="faq-list">
+    <div class="faq-item fade-up"><div class="faq-q" onclick="toggleFaq(this)">How long will it take to get good at LeetCode? <span class="arrow">▼</span></div><div class="faq-a">For most consistent beginners, 3–4 months of daily practice to solve Mediums comfortably. Knight badge typically takes 5–8 months. There's no shortcut — consistent daily practice is the only path.</div></div>
+    <div class="faq-item fade-up"><div class="faq-q" onclick="toggleFaq(this)">C++ or Python — which should I use? <span class="arrow">▼</span></div><div class="faq-a">C++ is faster (important in contests with tight time limits) and forces you to understand memory better. Since you're already using C++, stick with it — it's the right choice for competitive programming and gives you an edge in execution speed.</div></div>
+    <div class="faq-item fade-up"><div class="faq-q" onclick="toggleFaq(this)">I'm stuck on a problem for over 45 minutes — what do I do? <span class="arrow">▼</span></div><div class="faq-a">After 30–45 minutes of no progress, read the editorial approach (not the code). Understand the idea, close the solution, then implement it yourself from memory. Don't copy-paste — re-derive it. This is where learning actually happens.</div></div>
+    <div class="faq-item fade-up"><div class="faq-q" onclick="toggleFaq(this)">What ratio of Easy / Medium / Hard should I solve? <span class="arrow">▼</span></div><div class="faq-a">Ideal ratio: 20% Easy, 65% Medium, 15% Hard. Don't spend too much time on Easy (they don't appear in real interviews much). Mediums are the bread and butter. Hards are for contest rating and top-tier company prep.</div></div>
+    <div class="faq-item fade-up"><div class="faq-q" onclick="toggleFaq(this)">Does LeetCode rating actually matter for placements? <span class="arrow">▼</span></div><div class="faq-a">Not directly — companies don't ask for it. But the Knight badge is a strong signal of ability on your profile. More importantly, grinding for rating forces you to learn the hard patterns that appear in actual interviews.</div></div>
+    <div class="faq-item fade-up"><div class="faq-q" onclick="toggleFaq(this)">How many problems before applying for internships? <span class="arrow">▼</span></div><div class="faq-a">Minimum: 150–200 problems with strong Medium coverage. Comfortable: 300+ with all core patterns covered. Quality over quantity — being able to solve any Medium from scratch matters more than your count.</div></div>
+    <div class="faq-item fade-up"><div class="faq-q" onclick="toggleFaq(this)">Is random grinding or pattern-based learning better? <span class="arrow">▼</span></div><div class="faq-a">Pattern-based learning is far more effective. Group problems by topic: "all sliding window", then "all BFS", etc. This builds recognition far faster than random or difficulty-based ordering. Use the study plans — they're already organized this way.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo">LC // ayush08iitp</div>
+    <div class="footer-user">Stay consistent. The heatmap fills itself. 🔥</div>
+  </div>
+  <div class="footer-links">
+    <a class="footer-link" href="https://leetcode.com/u/ayush08iitp" target="_blank">⚡ leetcode / ayush08iitp</a>
+    <a class="footer-link" href="https://linkedin.com/in/ayush08iitp" target="_blank">💼 linkedin / ayush08iitp</a>
+    <a class="footer-link" href="https://github.com/ayushcmd" target="_blank">🐙 github / ayushcmd</a>
+  </div>
+  <div class="footer-bottom">Built for Ayush — IITP DSA Journey 2026 🚀</div>
+</footer>
+
+<script>
+  // Scroll fade
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('.progress-fill').forEach(b => { b.style.width = b.dataset.width + '%'; });
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Nav active
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+    document.querySelectorAll('.nav-links a').forEach(a => { a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--orange)' : ''; });
+  });
+
+  // Heatmap
+  const grid = document.getElementById('calGrid');
+  const levels = ['','active1','active2','active3','active4'];
+  const weights = [0.25,0.3,0.25,0.12,0.08];
+  for (let i = 0; i < 90; i++) {
+    const cell = document.createElement('div'); cell.className = 'cal-cell';
+    const r = Math.random(); let acc = 0, lvl = 0;
+    for (let j = 0; j < weights.length; j++) { acc += weights[j]; if (r < acc) { lvl = j; break; } }
+    if (lvl > 0) cell.classList.add(levels[lvl]);
+    grid.appendChild(cell);
+  }
+
+  // DSA Checklist
+  const topics = [
+    { name:'Arrays', color:'#f97316', items:['Two Pointers','Prefix Sum','Kadane\'s Algo','Sorting','Binary Search','Sliding Window'] },
+    { name:'Strings', color:'#22c55e', items:['Manipulation','KMP Algorithm','Rabin Karp','Anagrams','Palindromes','Z-Algorithm'] },
+    { name:'Linked List', color:'#3b82f6', items:['Reversal','Merge Two Lists','Cycle Detection','Fast & Slow','LRU Cache','Floyd\'s Algo'] },
+    { name:'Trees', color:'#a855f7', items:['Inorder/Pre/Post','Level Order','BST Operations','Lowest Ancestor','Diameter','Tree DP'] },
+    { name:'Graphs', color:'#fbbf24', items:['BFS','DFS','Cycle Detection','Topological Sort','Dijkstra','Union Find'] },
+    { name:'Dynamic Programming', color:'#ef4444', items:['1D DP','2D DP','Knapsack','LCS/LIS','Matrix DP','Interval DP'] },
+    { name:'Backtracking', color:'#06b6d4', items:['Subsets','Permutations','Combinations','N-Queens','Sudoku','Word Search'] },
+    { name:'Heap / PQ', color:'#f97316', items:['Min Heap','Max Heap','Top-K','Merge K Lists','Median Stream','Task Scheduler'] },
+    { name:'Stack & Queue', color:'#22c55e', items:['Monotonic Stack','Next Greater','Valid Parens','Min Stack','Decode String','Sliding Max'] },
+    { name:'Bit Manipulation', color:'#a855f7', items:['XOR Tricks','Count Bits','Power of 2','Single Number','Subset Bits','Bit Masking'] },
+  ];
+
+  const STORAGE_KEY = 'lc_checklist_ayush08iitp';
+  let done = {};
+  try { done = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
+
+  const cgrid = document.getElementById('checklistGrid');
+
+  topics.forEach(topic => {
+    const card = document.createElement('div');
+    card.className = 'topic-card fade-up';
+    const topicDone = topic.items.filter(i => done[topic.name+':'+i]).length;
+    const pct = Math.round((topicDone / topic.items.length) * 100);
+    card.innerHTML = `
+      <div class="topic-header"><div class="topic-name">${topic.name}</div><div class="topic-count">${topicDone}/${topic.items.length}</div></div>
+      <div class="topic-bar"><div class="topic-fill" style="background:${topic.color};width:${pct}%" data-key="${topic.name}"></div></div>
+      <div class="topic-items">${topic.items.map(item => `<div class="topic-chip ${done[topic.name+':'+item]?'done':''}" data-topic="${topic.name}" data-item="${item}"><span class="chip-dot"></span>${item}</div>`).join('')}</div>
+    `;
+    cgrid.appendChild(card);
+    obs.observe(card);
+  });
+
+  document.getElementById('totalCount').textContent = topics.reduce((s,t) => s + t.items.length, 0);
+  updateOverall();
+
+  cgrid.addEventListener('click', e => {
+    const chip = e.target.closest('.topic-chip');
+    if (!chip) return;
+    const key = chip.dataset.topic + ':' + chip.dataset.item;
+    if (done[key]) { delete done[key]; chip.classList.remove('done'); }
+    else { done[key] = true; chip.classList.add('done'); }
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(done)); } catch(e) {}
+    updateOverall();
+    updateCard(chip.dataset.topic);
+  });
+
+  function updateCard(topicName) {
+    const topic = topics.find(t => t.name === topicName);
+    const d = topic.items.filter(i => done[topicName+':'+i]).length;
+    const pct = Math.round((d / topic.items.length) * 100);
+    const fill = document.querySelector(`.topic-fill[data-key="${topicName}"]`);
+    if (fill) fill.style.width = pct + '%';
+    const card = fill?.closest('.topic-card');
+    if (card) card.querySelector('.topic-count').textContent = `${d}/${topic.items.length}`;
+  }
+
+  function updateOverall() {
+    const total = topics.reduce((s,t) => s + t.items.length, 0);
+    const d = topics.reduce((s,t) => s + t.items.filter(i => done[t.name+':'+i]).length, 0);
+    document.getElementById('doneCount').textContent = d;
+    const pct = total > 0 ? Math.round((d/total)*100) : 0;
+    document.getElementById('overallFill').style.width = pct + '%';
+    document.getElementById('pctText').textContent = pct + '%';
+  }
+
+  function toggleFaq(el) {
+    const ans = el.nextElementSibling;
+    const isOpen = ans.classList.contains('open');
+    document.querySelectorAll('.faq-a.open').forEach(a => { a.classList.remove('open'); a.previousElementSibling.classList.remove('open'); });
+    if (!isOpen) { ans.classList.add('open'); el.classList.add('open'); }
+  }
+</script>
+</body>
+</html>
