@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSA Patterns</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0a0a0a; color: #ccc; font-family: 'Courier New', monospace; min-height: 100vh; padding: 20px; }
+
+  /* SETUP MODAL */
+  #setup-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 999; display: flex; align-items: center; justify-content: center; }
+  .modal-box { background: #111; border: 0.5px solid #333; border-radius: 10px; padding: 30px; width: 420px; max-width: 95vw; }
+  .modal-title { color: #fff; font-size: 14px; letter-spacing: 2px; margin-bottom: 6px; }
+  .modal-sub { color: #555; font-size: 11px; margin-bottom: 20px; line-height: 1.6; }
+  .modal-input { width: 100%; background: #0d0d0d; border: 0.5px solid #333; border-radius: 6px; padding: 10px 14px; color: #aaa; font-family: 'Courier New', monospace; font-size: 12px; margin-bottom: 10px; outline: none; }
+  .modal-input:focus { border-color: #555; }
+  .modal-btn { width: 100%; background: #1a1a1a; border: 0.5px solid #444; border-radius: 6px; padding: 10px; color: #ddd; font-family: 'Courier New', monospace; font-size: 12px; letter-spacing: 1px; cursor: pointer; transition: background 0.2s; }
+  .modal-btn:hover { background: #222; }
+  .modal-link { color: #4a7acc; font-size: 11px; text-decoration: none; display: block; margin-top: 12px; text-align: center; }
+
+  /* HEADER */
+  .header { background: #111; border: 0.5px solid #1e1e1e; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .header-title { color: #fff; font-size: 16px; letter-spacing: 3px; flex: 1; }
+  .search-input { background: #0d0d0d; border: 0.5px solid #2a2a2a; border-radius: 6px; padding: 7px 12px; color: #aaa; font-family: 'Courier New', monospace; font-size: 12px; width: 200px; outline: none; }
+  .search-input:focus { border-color: #444; }
+  .sync-btn { background: #0d1f0d; border: 0.5px solid #2d5a2d; border-radius: 6px; padding: 7px 14px; color: #4a9e4a; font-family: 'Courier New', monospace; font-size: 11px; cursor: pointer; letter-spacing: 1px; }
+  .sync-btn:hover { background: #122012; }
+  .sync-status { font-size: 10px; color: #444; letter-spacing: 1px; }
+
+  /* STATS */
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
+  .stat { background: #111; border: 0.5px solid #1e1e1e; border-radius: 8px; padding: 10px 14px; text-align: center; }
+  .stat-num { font-size: 20px; font-weight: 500; color: #fff; }
+  .stat-label { font-size: 9px; color: #444; letter-spacing: 1px; margin-top: 3px; }
+
+  /* CATEGORY */
+  .category { background: #111; border: 0.5px solid #1e1e1e; border-radius: 8px; margin-bottom: 6px; overflow: hidden; }
+  .cat-header { padding: 12px 16px; display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; transition: background 0.15s; }
+  .cat-header:hover { background: #161616; }
+  .cat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .cat-name { color: #ddd; font-size: 12px; letter-spacing: 2px; flex: 1; }
+  .cat-badge { font-size: 9px; padding: 2px 8px; border-radius: 3px; letter-spacing: 0.5px; }
+  .cat-progress-bar { height: 1px; background: #1a1a1a; }
+  .cat-progress-fill { height: 100%; transition: width 0.4s; }
+  .cat-arrow { color: #333; font-size: 10px; transition: transform 0.2s; }
+  .cat-arrow.open { transform: rotate(90deg); }
+
+  /* PATTERN (level 2) */
+  .pattern-list { display: none; }
+  .pattern-list.open { display: block; }
+  .pattern-item { border-top: 0.5px solid #161616; }
+  .pattern-header { padding: 9px 16px 9px 32px; display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; transition: background 0.15s; }
+  .pattern-header:hover { background: #141414; }
+  .pattern-arrow { color: #2a2a2a; font-size: 9px; transition: transform 0.2s; }
+  .pattern-arrow.open { transform: rotate(90deg); }
+  .pattern-name { color: #999; font-size: 11px; flex: 1; letter-spacing: 0.5px; }
+
+  /* SUB-ITEMS (level 3) */
+  .sub-list { display: none; background: #0d0d0d; }
+  .sub-list.open { display: block; }
+  .sub-item { padding: 7px 16px 7px 52px; border-top: 0.5px solid #131313; display: flex; align-items: center; gap: 8px; }
+  .sub-name { color: #666; font-size: 11px; flex: 1; }
+  .sub-arrow { color: #222; font-size: 9px; transition: transform 0.2s; cursor: pointer; }
+  .sub-arrow.open { transform: rotate(90deg); }
+
+  /* LEAF ITEMS (level 4) */
+  .leaf-list { display: none; background: #0a0a0a; }
+  .leaf-list.open { display: block; }
+  .leaf-item { padding: 5px 16px 5px 68px; border-top: 0.5px solid #111; }
+  .leaf-name { color: #444; font-size: 10px; }
+
+  /* SOLUTION PANEL */
+  .solution-panel { display: none; background: #0a0a0a; border-top: 0.5px solid #161616; padding: 10px 16px 10px 52px; }
+  .solution-panel.open { display: block; }
+  .sol-row { display: flex; gap: 6px; margin-bottom: 6px; align-items: center; flex-wrap: wrap; }
+  .mark-btn { font-family: 'Courier New', monospace; font-size: 10px; padding: 4px 10px; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px; border: 0.5px solid; transition: all 0.15s; }
+  .mark-solved { background: #0d1f0d; border-color: #2d5a2d; color: #4a9e4a; }
+  .mark-solved:hover { background: #122012; }
+  .mark-solved.active { background: #1a3d1a; border-color: #4a9e4a; color: #6fc96f; }
+  .mark-ref { background: #1f1a0d; border-color: #5a4a2d; color: #9e844a; }
+  .mark-ref:hover { background: #252010; }
+  .mark-ref.active { background: #3d320d; border-color: #9e844a; color: #c9a84a; }
+  .mark-reset { background: #1a0d0d; border-color: #5a2d2d; color: #9e4a4a; }
+  .mark-reset:hover { background: #201212; }
+  .sol-textarea { width: 100%; background: #0d0d0d; border: 0.5px solid #222; border-radius: 5px; padding: 7px 10px; color: #888; font-family: 'Courier New', monospace; font-size: 10px; resize: vertical; min-height: 56px; outline: none; line-height: 1.5; margin-top: 4px; }
+  .sol-textarea:focus { border-color: #333; }
+  .sol-textarea::placeholder { color: #333; }
+  .sol-save-btn { background: #111; border: 0.5px solid #2a2a2a; border-radius: 4px; padding: 4px 12px; color: #555; font-family: 'Courier New', monospace; font-size: 10px; cursor: pointer; margin-top: 5px; }
+  .sol-save-btn:hover { color: #888; border-color: #444; }
+
+  /* STATUS INDICATOR */
+  .status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .status-none { background: #222; }
+  .status-solved { background: #4a9e4a; }
+  .status-ref { background: #9e844a; }
+
+  /* TOAST */
+  #toast { position: fixed; bottom: 20px; right: 20px; background: #1a1a1a; border: 0.5px solid #333; border-radius: 6px; padding: 10px 16px; color: #aaa; font-size: 11px; letter-spacing: 1px; opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 100; }
+  #toast.show { opacity: 1; }
+
+  @media (max-width: 500px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .search-input { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div id="setup-modal">
+  <div class="modal-box">
+    <div class="modal-title">GITHUB GIST SETUP</div>
+    <div class="modal-sub">
+      Tera DSA progress GitHub Gist pe save hoga.<br>
+      Ek baar setup karo, har device pe sync rahega.
+    </div>
+    <input class="modal-input" id="pat-input" type="password" placeholder="GitHub Personal Access Token" />
+    <input class="modal-input" id="gist-input" type="text" placeholder="Gist ID (optional — blank = new gist banao)" />
+    <button class="modal-btn" onclick="setupGist()">CONNECT & START</button>
+    <a class="modal-link" href="https://github.com/settings/tokens/new?scopes=gist&description=DSA+Patterns" target="_blank">
+      → Create token here (sirf gist scope chahiye)
+    </a>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<div id="app" style="display:none; max-width: 820px; margin: 0 auto;">
+  <div class="header">
+    <div class="header-title">DSA PATTERNS</div>
+    <input class="search-input" id="search" placeholder="search pattern..." oninput="filterPatterns()" />
+    <button class="sync-btn" onclick="saveToGist()">↑ SYNC</button>
+    <div class="sync-status" id="sync-status">not synced</div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num" id="s-cat">16</div><div class="stat-label">CATEGORIES</div></div>
+    <div class="stat"><div class="stat-num" id="s-pat">0</div><div class="stat-label">PATTERNS</div></div>
+    <div class="stat"><div class="stat-num" id="s-solved" style="color:#4a9e4a">0</div><div class="stat-label">SOLVED</div></div>
+    <div class="stat"><div class="stat-num" id="s-ref" style="color:#9e844a">0</div><div class="stat-label">REFERRED</div></div>
+  </div>
+
+  <div id="categories-container"></div>
+</div>
+
+<script>
+const DSA_DATA = [
+  { name: "ARRAY", color: "#5b8dee", patterns: [
+    { name: "Sliding Window", subs: ["Fixed Size", { name: "Variable Size", leaves: ["Expand–Shrink", "Monotonic Window"] }] },
+    { name: "Two Pointer", subs: ["Opposite ends (left + right)", "Same direction (fast & slow)", "Partition / Dutch flag"] },
+    { name: "Prefix Based", subs: ["Prefix Sum", "Prefix XOR", "2D Prefix"] },
+    { name: "Kadane's / Subarray", subs: ["Max subarray sum", "Max product subarray", "Subarray with given XOR / sum"] },
+    { name: "Binary Search", subs: ["On index", "On answer"] }
+  ]},
+  { name: "STRING", color: "#d45f7a", patterns: [
+    { name: "Sliding Window", subs: ["Longest substring without repeat", "Minimum window substring", "Anagram / permutation in string"] },
+    { name: "Two Pointers", subs: ["Palindrome check", "Reverse words / characters", "String compression"] },
+    { name: "Pattern Matching", subs: ["KMP (failure function)", "Rabin-Karp (rolling hash)", "Z-algorithm"] }
+  ]},
+  { name: "HASH MAP", color: "#e8a44a", patterns: [
+    { name: "Frequency Based", subs: [] },
+    { name: "Lookup Based", subs: [] },
+    { name: "Set Based", subs: [] },
+    { name: "Index Mapping", subs: [] },
+    { name: "Grouping Pattern", subs: [] }
+  ]},
+  { name: "STACK", color: "#4ab8a0", patterns: [
+    { name: "Monotonic Stack", subs: ["Increasing", "Decreasing"] },
+    { name: "Nearest Element", subs: ["Next Greater", "Next Smaller", "Previous Variants"] },
+    { name: "Range / Span", subs: [] },
+    { name: "min/Max Stack", subs: [] },
+    { name: "Expression Handling", subs: [] },
+    { name: "Histogram Pattern", subs: [] }
+  ]},
+  { name: "QUEUE / DEQUE", color: "#a07adb", patterns: [
+    { name: "FIFO Processing", subs: [] },
+    { name: "Level-wise Processing", subs: [] },
+    { name: "Circular Queue Pattern", subs: [] },
+    { name: "Deque Based", subs: [] }
+  ]},
+  { name: "LINKED LIST", color: "#e8c44a", patterns: [
+    { name: "Pointer Techniques", subs: ["Fast–Slow", "Cycle Detection"] },
+    { name: "Reversal", subs: ["Full Reverse", "Partial (k-group)"] },
+    { name: "Merge Lists", subs: [] }
+  ]},
+  { name: "TREES", color: "#e8724a", patterns: [
+    { name: "Traversal", subs: [{ name: "DFS", leaves: ["Pre order", "In order", "Post order"] }, { name: "BFS", leaves: ["Level Order", "Zigzag", "Right side view"] }] },
+    { name: "Recursion Patterns", subs: ["Top Down approach", "Bottom Up approach"] },
+    { name: "Path Based", subs: ["Max path sum", "Diameter / Height / depth"] },
+    { name: "BST", subs: [] }
+  ]},
+  { name: "RECURSION", color: "#9e5bde", patterns: [
+    { name: "Backtracking", subs: [
+      { name: "Exploration", leaves: ["Decision Tree", "Choose–Explore–Unchoose", "Subsets (power set)", "Permutations / Combinations", "Word search on grid", "Palindrome partitioning"] },
+      "Pruning / State Tracking"
+    ]},
+    { name: "Divide & Conquer", subs: ["Merge sort pattern", "Quick select (Kth largest)", "Count inversions"] }
+  ]},
+  { name: "HEAP", color: "#5bde9e", patterns: [
+    { name: "Top K / Kth Element", subs: ["Top K elements", "Kth largest", "K closest points"] },
+    { name: "Greedy + Heap", subs: ["Task scheduler", "Meeting rooms", "Reorganize string", "Huffman encoding"] },
+    { name: "K-way Merge", subs: [] }
+  ]},
+  { name: "GRAPHS", color: "#de9e5b", patterns: [
+    { name: "Traversal", subs: ["BFS", "DFS"] },
+    { name: "Cycle Detection", subs: ["Directed", "Undirected"] },
+    { name: "Topological Sort", subs: ["Kahn's algorithm (BFS in-degree)", "DFS-based topo sort"] },
+    { name: "Shortest Path", subs: ["Dijkstra", "Bellman-Ford", "Floyd-Warshall (all pairs)"] },
+    { name: "Spanning Tree", subs: ["Kruskal", "Prims"] },
+    { name: "Union-Find (DSU)", subs: [] },
+    { name: "Bipartite / 0-1 BFS", subs: [] }
+  ]},
+  { name: "TRIE", color: "#5bdede", patterns: [
+    { name: "Prefix Based", subs: ["Insert / Search", "Prefix Match"] },
+    { name: "Bitwise Trie", subs: [] }
+  ]},
+  { name: "DYNAMIC PROGRAMMING", color: "#de5b9e", patterns: [
+    { name: "Core", subs: ["1D", "2D"] },
+    { name: "Transition Type", subs: ["Linear DP", "Grid DP", "Decision DP"] },
+    { name: "Pattern Types", subs: ["Knapsack", "Sequence DP", "Partition DP", "Interval DP"] },
+    { name: "Advanced", subs: ["Bitmask DP", "Digit DP", "DP on Trees"] },
+    { name: "Optimization", subs: ["Memoization", "Tabulation"] }
+  ]},
+  { name: "GREEDY", color: "#9ede5b", patterns: [
+    { name: "Interval Greedy", subs: ["Activity Selection", "Non-overlapping Intervals", "Minimum Removals"] },
+    { name: "Scheduling Greedy", subs: ["Deadline Based Scheduling", "Profit Based Selection"] },
+    { name: "Resource Allocation", subs: ["Minimum Platforms / Rooms", "Meeting Rooms"] },
+    { name: "Jump Game Pattern", subs: [] },
+    { name: "Huffman / Merge Cost", subs: [] }
+  ]},
+  { name: "BIT MANIPULATION", color: "#5b9ede", patterns: [
+    { name: "Core", subs: ["XOR Pattern", "Bit Masking"] },
+    { name: "Usage", subs: ["Subset via Bits", "Bit Checks", "Prefix XOR"] }
+  ]},
+  { name: "SORTING ALGORITHMS", color: "#aaa", patterns: [
+    { name: "Comparison Based", subs: ["Bubble Sort", "Selection Sort", "Insertion Sort", "Merge Sort", "Quick Sort", "Heap Sort"] },
+    { name: "Non-Comparison", subs: ["Counting Sort", "Radix Sort", "Bucket Sort"] }
+  ]},
+  { name: "RANGE STRUCTURES", color: "#de7a5b", patterns: [
+    { name: "Segment Tree", subs: ["Range Query", "Lazy Propagation"] },
+    { name: "Fenwick Tree", subs: ["Prefix Query"] }
+  ]}
+];
+
+let progress = {};
+let gistId = '';
+let githubToken = '';
+
+function patKey(catName, patName) { return `${catName}||${patName}`; }
+
+function setupGist() {
+  const token = document.getElementById('pat-input').value.trim();
+  const gid = document.getElementById('gist-input').value.trim();
+  if (!token) { showToast('Token daalo pehle'); return; }
+  githubToken = token;
+  localStorage.setItem('gh_token', token);
+  if (gid) {
+    gistId = gid;
+    localStorage.setItem('gist_id', gid);
+    loadFromGist();
+  } else {
+    createNewGist();
+  }
+}
+
+async function createNewGist() {
+  showToast('Creating gist...');
+  try {
+    const res = await fetch('https://api.github.com/gists', {
+      method: 'POST',
+      headers: { 'Authorization': `token ${githubToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ description: 'DSA Patterns Progress', public: false, files: { 'dsa-progress.json': { content: JSON.stringify({}) } } })
+    });
+    const data = await res.json();
+    gistId = data.id;
+    localStorage.setItem('gist_id', gistId);
+    showToast('Gist created! ID: ' + gistId);
+    document.getElementById('setup-modal').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    renderAll();
+  } catch(e) { showToast('Error: ' + e.message); }
+}
+
+async function loadFromGist() {
+  showToast('Loading from gist...');
+  try {
+    const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+      headers: { 'Authorization': `token ${githubToken}` }
+    });
+    const data = await res.json();
+    const content = data.files['dsa-progress.json']?.content || '{}';
+    progress = JSON.parse(content);
+    document.getElementById('setup-modal').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    renderAll();
+    updateStats();
+    showToast('Loaded from cloud ✓');
+    document.getElementById('sync-status').textContent = 'synced';
+  } catch(e) { showToast('Load error: ' + e.message); }
+}
+
+async function saveToGist() {
+  if (!gistId || !githubToken) { showToast('Setup pehle karo'); return; }
+  document.getElementById('sync-status').textContent = 'syncing...';
+  try {
+    await fetch(`https://api.github.com/gists/${gistId}`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `token ${githubToken}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ files: { 'dsa-progress.json': { content: JSON.stringify(progress) } } })
+    });
+    document.getElementById('sync-status').textContent = 'synced ✓';
+    showToast('Saved to cloud ✓');
+  } catch(e) {
+    document.getElementById('sync-status').textContent = 'sync failed';
+    showToast('Sync error: ' + e.message);
+  }
+}
+
+function renderAll() {
+  const container = document.getElementById('categories-container');
+  container.innerHTML = '';
+  let totalPat = 0;
+  DSA_DATA.forEach((cat, ci) => {
+    totalPat += cat.patterns.length;
+    container.appendChild(buildCategory(cat, ci));
+  });
+  document.getElementById('s-pat').textContent = totalPat;
+  updateStats();
+}
+
+function buildCategory(cat, ci) {
+  const div = document.createElement('div');
+  div.className = 'category';
+  div.id = `cat-${ci}`;
+
+  const header = document.createElement('div');
+  header.className = 'cat-header';
+  header.innerHTML = `
+    <div class="cat-dot" style="background:${cat.color}"></div>
+    <div class="cat-name">${cat.name}</div>
+    <div class="cat-badge" style="background:${cat.color}18; color:${cat.color}; border:0.5px solid ${cat.color}44;">${cat.patterns.length} patterns</div>
+    <div class="cat-arrow" id="cat-arrow-${ci}">▶</div>
+  `;
+  header.onclick = () => toggleCat(ci, cat.color);
+  div.appendChild(header);
+
+  const progBar = document.createElement('div');
+  progBar.className = 'cat-progress-bar';
+  const progFill = document.createElement('div');
+  progFill.className = 'cat-progress-fill';
+  progFill.id = `prog-${ci}`;
+  progFill.style.background = cat.color;
+  progFill.style.width = getCatProgress(cat) + '%';
+  progBar.appendChild(progFill);
+  div.appendChild(progBar);
+
+  const patList = document.createElement('div');
+  patList.className = 'pattern-list';
+  patList.id = `patlist-${ci}`;
+
+  cat.patterns.forEach((pat, pi) => {
+    patList.appendChild(buildPattern(cat, pat, ci, pi));
+  });
+  div.appendChild(patList);
+  return div;
+}
+
+function buildPattern(cat, pat, ci, pi) {
+  const key = patKey(cat.name, pat.name);
+  const state = progress[key] || {};
+  const div = document.createElement('div');
+  div.className = 'pattern-item';
+  div.id = `pat-${ci}-${pi}`;
+
+  const hasSubs = pat.subs && pat.subs.length > 0;
+  const statusClass = state.status === 'solved' ? 'status-solved' : state.status === 'ref' ? 'status-ref' : 'status-none';
+
+  const header = document.createElement('div');
+  header.className = 'pattern-header';
+  header.innerHTML = `
+    <div class="status-dot ${statusClass}" id="sdot-${ci}-${pi}"></div>
+    <div class="pattern-arrow${hasSubs ? '' : ' hidden'}" id="pat-arrow-${ci}-${pi}">▶</div>
+    <div class="pattern-name">${pat.name}</div>
+  `;
+  if (hasSubs) header.onclick = () => togglePattern(ci, pi);
+  div.appendChild(header);
+
+  if (hasSubs) {
+    const subList = document.createElement('div');
+    subList.className = 'sub-list';
+    subList.id = `sublist-${ci}-${pi}`;
+    pat.subs.forEach((sub, si) => {
+      subList.appendChild(buildSub(cat, pat, sub, ci, pi, si));
+    });
+    div.appendChild(subList);
+  }
+
+  const solPanel = buildSolutionPanel(cat, pat, ci, pi, key, state);
+  div.appendChild(solPanel);
+
+  return div;
+}
+
+function buildSub(cat, pat, sub, ci, pi, si) {
+  const div = document.createElement('div');
+  div.className = 'sub-item';
+
+  if (typeof sub === 'string') {
+    div.innerHTML = `<div class="sub-name">${sub}</div>`;
+  } else {
+    const hasLeaves = sub.leaves && sub.leaves.length > 0;
+    div.innerHTML = `
+      <div class="sub-arrow" id="subarrow-${ci}-${pi}-${si}">${hasLeaves ? '▶' : ''}</div>
+      <div class="sub-name">${sub.name}</div>
+    `;
+    if (hasLeaves) {
+      div.querySelector('.sub-arrow').onclick = (e) => { e.stopPropagation(); toggleSub(ci, pi, si); };
+      div.style.cursor = 'pointer';
+      div.onclick = () => toggleSub(ci, pi, si);
+    }
+
+    const leafList = document.createElement('div');
+    leafList.style.gridColumn = '1/-1';
+    const leafContainer = document.createElement('div');
+    leafContainer.className = 'leaf-list';
+    leafContainer.id = `leaflist-${ci}-${pi}-${si}`;
+    sub.leaves.forEach(leaf => {
+      const l = document.createElement('div');
+      l.className = 'leaf-item';
+      l.innerHTML = `<div class="leaf-name">— ${leaf}</div>`;
+      leafContainer.appendChild(l);
+    });
+
+    const wrapper = document.createElement('div');
+    wrapper.style.gridColumn = '1/-1';
+    div.parentNode?.appendChild(leafContainer);
+    setTimeout(() => { div.insertAdjacentElement('afterend', leafContainer); }, 0);
+  }
+  return div;
+}
+
+function buildSolutionPanel(cat, pat, ci, pi, key, state) {
+  const panel = document.createElement('div');
+  panel.className = 'solution-panel open';
+  panel.id = `solpanel-${ci}-${pi}`;
+  const solvedActive = state.status === 'solved' ? 'active' : '';
+  const refActive = state.status === 'ref' ? 'active' : '';
+  panel.innerHTML = `
+    <div class="sol-row">
+      <button class="mark-btn mark-solved ${solvedActive}" onclick="markStatus('${cat.name}','${pat.name}',${ci},${pi},'solved')">✓ Solved by self</button>
+      <button class="mark-btn mark-ref ${refActive}" onclick="markStatus('${cat.name}','${pat.name}',${ci},${pi},'ref')">👁 Referred</button>
+      <button class="mark-btn mark-reset" onclick="markStatus('${cat.name}','${pat.name}',${ci},${pi},'none')">✕ Reset</button>
+    </div>
+    <textarea class="sol-textarea" id="notes-${ci}-${pi}" placeholder="solution notes, approach, LeetCode link...">${state.notes || ''}</textarea>
+    <button class="sol-save-btn" onclick="saveNotes('${cat.name}','${pat.name}',${ci},${pi})">save notes</button>
+  `;
+  return panel;
+}
+
+function toggleCat(ci, color) {
+  const list = document.getElementById(`patlist-${ci}`);
+  const arrow = document.getElementById(`cat-arrow-${ci}`);
+  const isOpen = list.classList.contains('open');
+  list.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+function togglePattern(ci, pi) {
+  const sublist = document.getElementById(`sublist-${ci}-${pi}`);
+  const arrow = document.getElementById(`pat-arrow-${ci}-${pi}`);
+  if (sublist) { sublist.classList.toggle('open'); arrow.classList.toggle('open'); }
+}
+
+function toggleSub(ci, pi, si) {
+  const leaflist = document.getElementById(`leaflist-${ci}-${pi}-${si}`);
+  const arrow = document.getElementById(`subarrow-${ci}-${pi}-${si}`);
+  if (leaflist) { leaflist.classList.toggle('open'); arrow.classList.toggle('open'); }
+}
+
+function markStatus(catName, patName, ci, pi, status) {
+  const key = patKey(catName, patName);
+  if (!progress[key]) progress[key] = {};
+  progress[key].status = status === 'none' ? '' : status;
+  const dot = document.getElementById(`sdot-${ci}-${pi}`);
+  dot.className = 'status-dot ' + (status === 'solved' ? 'status-solved' : status === 'ref' ? 'status-ref' : 'status-none');
+  document.querySelectorAll(`#pat-${ci}-${pi} .mark-btn`).forEach(b => b.classList.remove('active'));
+  if (status !== 'none') event.target.classList.add('active');
+  updateStats();
+  updateCatProgress(ci);
+  saveToGist();
+}
+
+function saveNotes(catName, patName, ci, pi) {
+  const key = patKey(catName, patName);
+  if (!progress[key]) progress[key] = {};
+  progress[key].notes = document.getElementById(`notes-${ci}-${pi}`).value;
+  showToast('Notes saved');
+  saveToGist();
+}
+
+function getCatProgress(cat) {
+  const total = cat.patterns.length;
+  if (!total) return 0;
+  const done = cat.patterns.filter(p => (progress[patKey(cat.name, p.name)] || {}).status === 'solved').length;
+  return Math.round((done / total) * 100);
+}
+
+function updateCatProgress(ci) {
+  const cat = DSA_DATA[ci];
+  document.getElementById(`prog-${ci}`).style.width = getCatProgress(cat) + '%';
+}
+
+function updateStats() {
+  let solved = 0, ref = 0;
+  Object.values(progress).forEach(v => {
+    if (v.status === 'solved') solved++;
+    if (v.status === 'ref') ref++;
+  });
+  document.getElementById('s-solved').textContent = solved;
+  document.getElementById('s-ref').textContent = ref;
+}
+
+function filterPatterns() {
+  const q = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.pattern-item').forEach(item => {
+    const name = item.querySelector('.pattern-name')?.textContent.toLowerCase() || '';
+    item.style.display = (!q || name.includes(q)) ? '' : 'none';
+  });
+  if (q) {
+    document.querySelectorAll('.pattern-list').forEach(l => l.classList.add('open'));
+    document.querySelectorAll('.cat-arrow').forEach(a => a.classList.add('open'));
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+window.onload = () => {
+  const token = localStorage.getItem('gh_token');
+  const gid = localStorage.getItem('gist_id');
+  if (token && gid) {
+    githubToken = token;
+    gistId = gid;
+    loadFromGist();
+  }
+};
+</script>
+</body>
+</html>
