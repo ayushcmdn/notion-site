@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0078)file:///C:/Users/ASUS/Downloads/Ayush%20Raj%20%202026%20Master%20Timeline.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ayush Raj — 2026 Master Timeline</title>
-<link href="./Ayush 2026 Master Timeline_files/css2" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0c10;
@@ -617,7 +617,7 @@
     <div class="controls">
       <button class="btn" onclick="toggleEditMode()">✏️ Edit Mode</button>
       <button class="btn" onclick="exportData()">💾 Save JSON</button>
-      <button class="btn" onclick="document.getElementById(&#39;importFile&#39;).click()">📂 Load JSON</button>
+      <button class="btn" onclick="document.getElementById('importFile').click()">📂 Load JSON</button>
       <input type="file" id="importFile" style="display:none" accept=".json" onchange="importData(event)">
     </div>
   </div>
@@ -625,368 +625,26 @@
 
 <!-- Stats Bar -->
 <div class="stats-bar" id="statsBar">
-  <div class="stat-item"><div class="stat-dot" style="background:var(--green)"></div><span class="stat-label">Applied</span><span class="stat-count" id="countApplied">3</span></div>
-  <div class="stat-item"><div class="stat-dot" style="background:var(--yellow)"></div><span class="stat-label">Upcoming Deadlines</span><span class="stat-count" id="countApply">20</span></div>
-  <div class="stat-item"><div class="stat-dot" style="background:var(--white-ev)"></div><span class="stat-label">Exams Scheduled</span><span class="stat-count" id="countExam">10</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--green)"></div><span class="stat-label">Applied</span><span class="stat-count" id="countApplied">0</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--yellow)"></div><span class="stat-label">Upcoming Deadlines</span><span class="stat-count" id="countApply">0</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--white-ev)"></div><span class="stat-label">Exams Scheduled</span><span class="stat-count" id="countExam">0</span></div>
   <div class="stat-item"><div class="stat-dot" style="background:var(--blue)"></div><span class="stat-label">Info / Results</span><span class="stat-count" id="countPrep">0</span></div>
 </div>
 
 <!-- Filter Bar -->
 <div class="filter-bar">
-  <button class="filter-btn active" onclick="filterCat(&#39;all&#39;, this)">All</button>
-  <button class="filter-btn" onclick="filterCat(&#39;central&#39;, this)">🏛️ Central Govt</button>
-  <button class="filter-btn" onclick="filterCat(&#39;cg&#39;, this)">🟠 CG State</button>
-  <button class="filter-btn" onclick="filterCat(&#39;bihar&#39;, this)">🔴 Bihar</button>
-  <button class="filter-btn" onclick="filterCat(&#39;it&#39;, this)">💻 IT Companies</button>
-  <button class="filter-btn" onclick="filterCat(&#39;schol&#39;, this)">🌏 Scholarships</button>
-  <button class="filter-btn" onclick="filterCat(&#39;lang&#39;, this)">🗣️ JLPT / Language</button>
+  <button class="filter-btn active" onclick="filterCat('all', this)">All</button>
+  <button class="filter-btn" onclick="filterCat('central', this)">🏛️ Central Govt</button>
+  <button class="filter-btn" onclick="filterCat('cg', this)">🟠 CG State</button>
+  <button class="filter-btn" onclick="filterCat('bihar', this)">🔴 Bihar</button>
+  <button class="filter-btn" onclick="filterCat('it', this)">💻 IT Companies</button>
+  <button class="filter-btn" onclick="filterCat('schol', this)">🌏 Scholarships</button>
+  <button class="filter-btn" onclick="filterCat('lang', this)">🗣️ JLPT / Language</button>
 </div>
 
 <!-- Timeline -->
 <div class="timeline-wrap">
-  <div class="months-row" id="timelineRoot"><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">JAN</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-1">
-        
-      <div class="event-card ev-info" data-id="j1">
-    <span class="ev-tag tag-schol">Scholarship</span>
-    <span class="ev-status status-info">Info</span>
-    <div class="ev-title">GKS UG 2026 Results (Info)</div>
-    <div class="ev-date">Jan 2026</div>
-    <div class="ev-note">Korea GKS Undergraduate 2026 results typically announced in January. If you had applied (Sept-Oct 2025 window), check studyinkorea.go.kr. The 2027 cycle opens Sept 15, 2026.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">FEB</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-2">
-        
-      <div class="event-card ev-info" data-id="f1">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-info">Info</span>
-    <div class="ev-title">SSC GD Exam — POSTPONED</div>
-    <div class="ev-date">Was Feb 23</div>
-    <div class="ev-note">✅ ALREADY APPLIED. SSC GD Constable 2026 exam postponed from Feb 23. Revised dates expected April–May 2026. ⚠️ NOTE: This exam has a Physical Efficiency Test — you applied before knowing this. Just appear for written exam. Keep checking ssc.gov.in.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="border-color:#3b82f6;background:#0f1a2e;">
-        <span class="month-name" style="color:#60a5fa;">MAR</span>
-        <span class="month-num">📍 NOW</span>
-      </div>
-      <div class="month-body" id="month-3">
-        <div class="today-marker">📍 YOU ARE HERE</div>
-      <div class="event-card ev-applied" data-id="m1">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-applied">Applied ✓</span>
-    <div class="ev-title">RRB NTPC 12th Level Exam</div>
-    <div class="ev-date">Mar 16–27, 2026</div>
-    <div class="ev-note">✅ ALREADY APPLIED. RRB NTPC CEN 07/2025 — 12th Pass (UG Level). Posts: Junior Clerk cum Typist, Account Clerk cum Typist, Junior Time Keeper, Commercial cum Ticket Clerk. Exam ONGOING. Check admit card at rrbapply.gov.in. Salary: Pay Level 2–3 → ₹19,900–₹25,500/month. No physical test ✅.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">APR</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-4">
-        
-      <div class="event-card ev-apply" data-id="a1">
-    <span class="ev-tag tag-it">IT / Campus</span>
-    <span class="ev-status status-apply">Apply!</span>
-    <div class="ev-title">TCS iON NQT — DEADLINE</div>
-    <div class="ev-date">Apr 2, 2026</div>
-    <div class="ev-note">Last date to register for April TCS iON NQT. Visit tcsion.com → Select "Learners-Youth" → Choose IT variant (₹999) or Cognitive (₹599). Score valid 2 years — useful when you graduate in 2027. You are eligible as 2nd year pre-final student.</div>
-  </div><div class="event-card ev-exam" data-id="a2">
-    <span class="ev-tag tag-it">IT / Campus</span>
-    <span class="ev-status status-exam">Exam</span>
-    <div class="ev-title">TCS iON NQT Exam</div>
-    <div class="ev-date">Apr 14, 2026</div>
-    <div class="ev-note">TCS National Qualifier Test. Duration: 190 mins. Sections: Numerical, Verbal, Reasoning (25 min each), Advanced Quant+Reasoning (25 min), Coding (90 min). No negative marking. Score valid 2 years. Mode: At-home or in-centre.</div>
-  </div><div class="event-card ev-applied" data-id="a5">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">SSC GD Exam — Tentative</div>
-    <div class="ev-date">Apr–May 2026</div>
-    <div class="ev-note">✅ ALREADY APPLIED. SSC GD Constable exam rescheduled to April-May 2026. Written exam first → then PET/PST for shortlisted. Just appear for written — you've done the hard part. ssc.gov.in for hall ticket.</div>
-  </div><div class="event-card ev-apply" data-id="a6">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-apply">Apply!</span>
-    <div class="ev-title">🔴 SSC Phase 14 — DEADLINE</div>
-    <div class="ev-date">Apr 30, 2026</div>
-    <div class="ev-note">🚨 URGENT — APPLY BEFORE APR 30. SSC Selection Post Phase 14. Form opens Mar 31, closes Apr 30. 2,400+ vacancies. Many 12th pass posts available ✅. Age: 18–42 years (wider range). No interview, no physical test ✅. CBT only → DV. Salary: Pay Level 1–7 (₹18,000–₹44,900/month). Apply NOW at ssc.gov.in → OTR login → Phase XIV.</div>
-  </div><div class="event-card ev-apply" data-id="chsl_form">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-apply">Apply!</span>
-    <div class="ev-title">SSC CHSL 2026 — Form Opens</div>
-    <div class="ev-date">Apr 30, 2026</div>
-    <div class="ev-note">SSC CHSL 2026 form opens April 30. Deadline: May 31. 12th Pass ✅ eligible. Posts: LDC (₹19,900), JSA (₹19,900), Postal Assistant/Sorting Assistant (₹25,500), DEO (₹25,500–₹29,200). Appearing candidates allowed ✅ (must have passed by DV). No physical test ✅. Negative marking: -0.5. Competition: HIGH (50+ lakh applicants). DEO post = CS background advantage. Apply at ssc.gov.in.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">MAY</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-5">
-        
-      <div class="event-card ev-applied" data-id="my1">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">RRB NTPC 12th Level Exam</div>
-    <div class="ev-date">~May 2026</div>
-    <div class="ev-note">✅ ALREADY APPLIED. RRB NTPC CEN 07/2025 — 12th pass UG level. CBT-1 tentatively May 2026. Posts: Junior Clerk, Account Clerk, Commercial cum Ticket Clerk. Salary: ₹19,900–₹25,500/month. No physical test ✅. Check rrbapply.gov.in for admit card. Appearing candidates allowed for exam but need passing certificate at DV.</div>
-  </div><div class="event-card ev-apply" data-id="chsl_deadline">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-apply">Apply!</span>
-    <div class="ev-title">SSC CHSL 2026 — Form Deadline</div>
-    <div class="ev-date">May 31, 2026</div>
-    <div class="ev-note">LAST DATE to apply for SSC CHSL 2026. Apply at ssc.gov.in. Posts: LDC, JSA, PA/SA, DEO. 12th Pass ✅. Age: 18–27 years. Fee: ₹100 (General), Free for Women/SC/ST/PwD. Salary: ₹19,900–₹29,200/month. Exam: July–September 2026.</div>
-  </div><div class="event-card ev-apply" data-id="my3">
-    <span class="ev-tag tag-schol">Scholarship</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">MEXT 2027 Embassy Deadline</div>
-    <div class="ev-date">~May 2026</div>
-    <div class="ev-note">CRITICAL! MEXT Embassy Recommended UG Scholarship for 2027 enrollment — deadline approximately May 2026 for India. Fully funded: ¥117,000/month stipend + tuition + airfare. 5-year scholarship (1 yr Japanese prep + 4 yr UG). Apply at Embassy of Japan, New Delhi. You are eligible as current UG student. No Japanese needed initially.</div>
-  </div><div class="event-card ev-apply" data-id="cg_deo_form">
-    <span class="ev-tag tag-cg">CG State</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">CG DEO — Form Deadline</div>
-    <div class="ev-date">~May 2026</div>
-    <div class="ev-note">CG Vyapam Data Entry Operator recruitment. Form typically closes ~4–6 weeks before exam date. Qualification: 12th Pass + typing speed 5000 KDPH. Age: 18–35 years (General). CG domicile required. Fee: ₹0 for CG domicile. Apply at vyapamcg.cgstate.gov.in. Your BSc CS background = big advantage.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">JUN</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-6">
-        
-      <div class="event-card ev-apply" data-id="mts_notif">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-apply">Apply!</span>
-    <div class="ev-title">SSC MTS 2026 — Form Opens</div>
-    <div class="ev-date">Jun 30, 2026</div>
-    <div class="ev-note">SSC MTS (Multi-Tasking Staff) 2026 notification + form opens June 30. 10th Pass ✅ eligible (you are 12th pass = easily qualified). Age: 18–25 years. Fee: ₹100 (General), Free for Women/SC/ST/PwD. 7,000–10,000+ vacancies. No physical test for MTS posts ✅. CBT only → DV. Salary: Pay Level 1 → ₹18,000–₹22,000/month. Easiest paper of all SSC exams. Apply at ssc.gov.in.</div>
-  </div><div class="event-card ev-info" data-id="jn3">
-    <span class="ev-tag tag-bihar">Bihar</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">BSSC Inter Level Prelims (Info)</div>
-    <div class="ev-date">Jun–Jul 2026</div>
-    <div class="ev-note">BSSC 2nd Inter Level — 26,426 vacancies (LDC, Panchayat Secretary, Revenue Employee). 12th pass eligible but Bihar domicile required — you are CG domicile so you will be treated as General/UR category. Form closed Feb 2026 (missed). NEXT CYCLE — watch bssc.bihar.gov.in. Salary: ₹19,900–₹25,000/month.</div>
-  </div><div class="event-card ev-exam" data-id="cg_deo_exam">
-    <span class="ev-tag tag-cg">CG State</span>
-    <span class="ev-status status-exam">Exam</span>
-    <div class="ev-title">CG DEO Exam (Data Entry Operator)</div>
-    <div class="ev-date">Jun 28, 2026</div>
-    <div class="ev-note">CG Vyapam Data Entry Operator Exam — confirmed on official exam calendar. Qualification: 12th Pass + 5000 KDPH typing. Salary: Pay Level 4–5 → ₹19,500–₹25,000/month. Selection: Written Test → Typing Test → DV. Your CS background = highest advantage of any CG exam. Syllabus: GK, Hindi, Maths, Reasoning, Computer Knowledge.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">JUL</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-7">
-        
-      <div class="event-card ev-exam" data-id="jl1">
-    <span class="ev-tag tag-lang">JLPT / Language</span>
-    <span class="ev-status status-exam">Exam</span>
-    <div class="ev-title">🇯🇵 JLPT Exam — July Session</div>
-    <div class="ev-date">Jul 6, 2026 (SUN)</div>
-    <div class="ev-note">CONFIRMED EXAM DATE — JLPT July 2026. First Sunday of July. Japan Language Proficiency Test. Centers across India. Carry admit card + ID proof. JLPT score boosts your MEXT scholarship application. Aim for N4/N5 if beginner. Results: September 2026.</div>
-  </div><div class="event-card ev-info" data-id="jl2">
-    <span class="ev-tag tag-bihar">Bihar</span>
-    <span class="ev-status status-info">Info</span>
-    <div class="ev-title">BPSC 72nd CCE Prelims (Info)</div>
-    <div class="ev-date">Jul 26, 2026</div>
-    <div class="ev-note">INFO ONLY — for 2027 planning. BPSC 72nd CCE Prelims. Qualification: Graduate ❌ (you need Aug 2027). ~1,000+ vacancies. Posts: Deputy Collector, DSP, BDO, Naib Tehsildar. Salary: ₹35,400–₹56,100/month. Bihar domicile preferred for reserved seats. CG domicile = General category. Target BPSC 73rd cycle after graduation. psc.bih.nic.in.</div>
-  </div><div class="event-card ev-exam" data-id="jl3">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">SSC CHSL 2026 — Exam (Tier 1)</div>
-    <div class="ev-date">Jul–Sep 2026</div>
-    <div class="ev-note">SSC CHSL 2026 Tier 1 CBT exam window July–September 2026. YOU ARE ELIGIBLE ✅ — 12th Pass. Posts: LDC, JSA, DEO, PA/SA. Salary: ₹19,900–₹29,200/month. Syllabus: Reasoning (25Q), GK (25Q), Maths (25Q), English (25Q). Negative marking: -0.50. DEO post = CS/typing advantage. No physical test ✅.</div>
-  </div><div class="event-card ev-apply" data-id="mts_deadline">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-apply">Apply!</span>
-    <div class="ev-title">SSC MTS 2026 — Form Deadline</div>
-    <div class="ev-date">Jul 31, 2026</div>
-    <div class="ev-note">LAST DATE to apply for SSC MTS 2026 at ssc.gov.in. 10th Pass eligible ✅, you are 12th pass. Age: 18–25 years. 7,000–10,000+ vacancies. No physical test for MTS posts ✅. Easiest SSC exam. Do not miss this.</div>
-  </div><div class="event-card ev-apply" data-id="cg_ag3_form">
-    <span class="ev-tag tag-cg">CG State</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">CG Asst Grade-3 — Form Deadline</div>
-    <div class="ev-date">~Jul–Aug 2026</div>
-    <div class="ev-note">CG Vyapam Assistant Grade-3 form typically closes 6–8 weeks before exam. Qualification: 12th Pass. Age: 18–35 years. Fee waived for CG domicile. Apply at vyapamcg.cgstate.gov.in. This is the BIGGEST batch — largest number of vacancies (500–3000 posts across departments). Start preparing: CG GK, Hindi, Maths, Reasoning.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">AUG</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-8">
-        
-      <div class="event-card ev-apply" data-id="ag1">
-    <span class="ev-tag tag-lang">JLPT / Language</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">JLPT December — Registration Opens</div>
-    <div class="ev-date">~Aug 2026</div>
-    <div class="ev-note">JLPT December 2026 registration typically opens August. Exam date: December 6, 2026 (confirmed). Register at jlptonline.co.in. If you gave N5 in July and passed, aim for N4 in December. JLPT results from July session come in September — use that to decide.</div>
-  </div><div class="event-card ev-apply" data-id="ag2">
-    <span class="ev-tag tag-it">IT / Campus</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">Wipro Elite NTH Registration</div>
-    <div class="ev-date">Aug–Nov 2026</div>
-    <div class="ev-note">Wipro Elite NTH / Turbo drives open August–November for 2027 batch. Salary: ₹3.5 LPA (Elite) → ₹6.5 LPA (Turbo). Qualification: 60% throughout, no backlogs. Register at careers.wipro.com. Sections: Aptitude, Written English (hard!), Coding (2 problems). Practice essay writing!</div>
-  </div><div class="event-card ev-apply" data-id="ag3">
-    <span class="ev-tag tag-it">IT / Campus</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">LTIMindtree Registration Opens</div>
-    <div class="ev-date">Aug–Sep 2026</div>
-    <div class="ev-note">LTIMindtree hiring registration for 2027 batch opens August-September. Salary: ₹5–7 LPA. Register at careers.ltimindtree.com. 60% throughout, CS/IT preferred. Test: Aptitude + Coding. About 50% shortlisted candidates progress to interview. Apply early as slots fill fast.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">SEP</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-9">
-        
-      <div class="event-card ev-apply" data-id="sp1">
-    <span class="ev-tag tag-schol">Scholarship</span>
-    <span class="ev-status status-apply">Apply!</span>
-    <div class="ev-title">GKS UG 2027 Applications OPEN</div>
-    <div class="ev-date">Sep 15, 2026</div>
-    <div class="ev-note">🔥 KEY OPPORTUNITY! Global Korea Scholarship (GKS) Undergraduate 2027 cycle opens Sep 15, 2026. Fully funded: tuition + ₹57,000/month + flight + language training (1 yr Korean). Age limit: under 25 ✅. No bachelor's needed (you don't have one) ✅. Apply via Embassy Track (Korean Embassy, New Delhi) or University Track (studyinkorea.go.kr). India quota: 26 embassy + 47 university seats.</div>
-  </div><div class="event-card ev-apply" data-id="sp2">
-    <span class="ev-tag tag-it">IT / Campus</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">Cognizant GenC / Accenture Drives</div>
-    <div class="ev-date">Sep–Dec 2026</div>
-    <div class="ev-note">Cognizant GenC (₹4 LPA), GenC Elevate (₹5 LPA), GenC Pro (₹8 LPA) and Accenture ASE (₹4.5 LPA) off-campus drives open September onwards for 2027 batch. Register at careers.cognizant.com and accenture.com/careers. 60% throughout required. Test: Aptitude + Coding + Psychometric (Accenture).</div>
-  </div><div class="event-card ev-info" data-id="sp4">
-    <span class="ev-tag tag-bihar">Bihar</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">BSSC Inter Level — Next Cycle Watch</div>
-    <div class="ev-date">Sep–Dec 2026</div>
-    <div class="ev-note">BSSC 2nd Inter Level next recruitment notification expected Sep–Dec 2026. 12th Pass eligible ✅. Bihar domicile — you (CG domicile) = General/UR category only. No reserved benefits. But you can still apply and compete. Posts: LDC, Revenue Employee, Panchayat Secretary. Salary: ₹19,900–₹25,000/month. Watch bssc.bihar.gov.in.</div>
-  </div><div class="event-card ev-exam" data-id="mts_exam">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">SSC MTS 2026 — Exam</div>
-    <div class="ev-date">Sep–Nov 2026</div>
-    <div class="ev-note">SSC MTS 2026 CBT exam window September–November 2026. 10th pass eligible ✅ (you are 12th pass). Age: 18–25 years. 7,000–10,000+ vacancies. Paper: Reasoning (20Q), English (25Q), Maths (25Q), GK (25Q). Time: 90 mins. No negative marking in Paper 1. Easiest SSC exam to crack. No physical for MTS ✅.</div>
-  </div><div class="event-card ev-exam" data-id="cg_ag3_sep">
-    <span class="ev-tag tag-cg">CG State</span>
-    <span class="ev-status status-exam">Exam</span>
-    <div class="ev-title">CG Assistant Grade-3 Exam (Batch 1)</div>
-    <div class="ev-date">Sep 6, 2026</div>
-    <div class="ev-note">CG Vyapam Assistant Grade-3 — Batch 1. CONFIRMED on official calendar. Qualification: 12th Pass. Age: 18–35 years (General). Salary: Pay Level 3–4 → ₹19,500–₹22,000/month. Selection: Written MCQ only → Document Verification. No physical test ✅. Departments: Revenue, Health, Education, Forest, Agriculture — desk/office work. Syllabus: CG GK, Hindi, General Maths, Reasoning, Computer.</div>
-  </div><div class="event-card ev-apply" data-id="cg_patwari_form">
-    <span class="ev-tag tag-cg">CG State</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">CG Patwari — Form Expected</div>
-    <div class="ev-date">~Sep–Oct 2026</div>
-    <div class="ev-note">🔥 MOST IMPORTANT CG EXAM FOR YOU. CG Patwari recruitment notification expected Sep-Oct 2026. Qualification: 12th Pass + 1-year Computer Diploma (CPCT/DEO certificate). Age: 18–40 years ✅. Salary: Pay Level 6 → ₹25,300–₹82,200 basic (gross ~₹40,000–₹55,000/month) — BEST salary for 12th pass. Vacancies: 1,000–2,000+. ACTION NOW: Get enrolled in a 1-year Computer Diploma course immediately if you don't have one. vyapamcg.cgstate.gov.in.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">OCT</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-10">
-        
-      <div class="event-card ev-apply" data-id="oc1">
-    <span class="ev-tag tag-schol">Scholarship</span>
-    <span class="ev-status status-apply">Apply!</span>
-    <div class="ev-title">GKS UG 2027 — DEADLINE</div>
-    <div class="ev-date">Oct 31, 2026</div>
-    <div class="ev-note">FINAL DEADLINE for GKS Undergraduate 2027. Submit to Korean Embassy (Embassy Track) or chosen Korean university (University Track). Documents needed: High school + UG transcripts, personal statement, recommendation letters, health certificate, passport copy. studyinkorea.go.kr.</div>
-  </div><div class="event-card ev-apply" data-id="oc2">
-    <span class="ev-tag tag-schol">Scholarship</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">DAAD IIT Sandwich Deadline</div>
-    <div class="ev-date">Oct 30, 2026</div>
-    <div class="ev-note">DAAD-IIT Master Sandwich Scholarship deadline ~October 30, 2026. Allows IIT students to do a semester at a German university with full funding (€934/month + travel). Contact daad.in for exact deadline. Needs: Recommendation from IIT Patna supervisor, German university acceptance.</div>
-  </div><div class="event-card ev-apply" data-id="oc3">
-    <span class="ev-tag tag-lang">JLPT / Language</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">JLPT December — Reg Deadline</div>
-    <div class="ev-date">~Oct 2026</div>
-    <div class="ev-note">Last date to register for JLPT December 2026 exam. jlptonline.co.in. Exam date: December 6 (confirmed). Registration typically closes ~6 weeks before exam. Fee: ~₹1,500–2,000.</div>
-  </div><div class="event-card ev-info" data-id="chsl_result">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">SSC Phase 14 Exam Result (Info)</div>
-    <div class="ev-date">~Oct 2026</div>
-    <div class="ev-note">SSC Selection Post Phase 14 results expected ~October 2026 (if exam held May-July). Check ssc.gov.in for scorecards and merit list. Qualified candidates called for DV. Keep all original documents ready.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">NOV</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-11">
-        
-      <div class="event-card ev-exam" data-id="cg_stor_exam">
-    <span class="ev-tag tag-cg">CG State</span>
-    <span class="ev-status status-exam">Exam</span>
-    <div class="ev-title">CG Storekeeper (Bhandarpalak) Exam</div>
-    <div class="ev-date">Nov 22, 2026</div>
-    <div class="ev-note">CG Vyapam Storekeeper exam — CONFIRMED on official calendar. Qualification: 12th Pass. Age: 18–35 years. Salary: Pay Level 3–4 → ₹19,500–₹22,000/month. Selection: Written only → DV. No physical test ✅. Departments: Agriculture, Food &amp; Civil Supplies. Low to medium competition — less popular post = better chances.</div>
-  </div><div class="event-card ev-apply" data-id="nv1">
-    <span class="ev-tag tag-schol">Scholarship</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">MEXT Uni Recommended 2027 — Apply</div>
-    <div class="ev-date">Nov 2026</div>
-    <div class="ev-note">MEXT University Recommended 2027 scholarship applications open at most Japanese universities in November 2026. Apply directly to the Japanese university you want. Popular for CS/Data: Tokyo, Osaka, Tohoku, Kyushu, Nagoya, APU. Fully funded: ¥117,000/month + tuition + airfare. No Japanese required initially. Check each university's international admissions page.</div>
-  </div></div>
-    </div><div class="month-col">
-      <div class="month-header" style="">
-        <span class="month-name" style="">DEC</span>
-        <span class="month-num">2026</span>
-      </div>
-      <div class="month-body" id="month-12">
-        
-      <div class="event-card ev-exam" data-id="cg_ag3_dec1">
-    <span class="ev-tag tag-cg">CG State</span>
-    <span class="ev-status status-exam">Exam</span>
-    <div class="ev-title">CG Assistant Grade-3 Exam (Batch 2)</div>
-    <div class="ev-date">Dec 6, 2026</div>
-    <div class="ev-note">CG Vyapam Assistant Grade-3 — Batch 2. CONFIRMED on official calendar. Same eligibility as Sep batch. 12th Pass. Salary: ₹19,500–₹22,000/month. Apply if you missed Sep batch or want another attempt. Written MCQ → DV only. No physical test ✅.</div>
-  </div><div class="event-card ev-exam" data-id="cg_ag3_dec2">
-    <span class="ev-tag tag-cg">CG State</span>
-    <span class="ev-status status-exam">Exam</span>
-    <div class="ev-title">CG Assistant Grade-3 Exam (Batch 3)</div>
-    <div class="ev-date">Dec 20, 2026</div>
-    <div class="ev-note">CG Vyapam Assistant Grade-3 — Batch 3. CONFIRMED on official calendar. Third and final batch for 2026. Qualification: 12th Pass. Age: 18–35 years. Salary: ₹19,500–₹22,000/month. Written MCQ only. No physical test ✅. This batch typically covers remaining departments not covered in earlier batches.</div>
-  </div><div class="event-card ev-apply" data-id="cg_patwari_exam">
-    <span class="ev-tag tag-cg">CG State</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">CG Patwari Exam — Expected (Form in 2026)</div>
-    <div class="ev-date">Dec 2026 / Jan 2027</div>
-    <div class="ev-note">CG Patwari exam expected Dec 2026 or early Jan 2027 (form released Sep-Oct 2026). APPLY IN 2026 — exam may fall in early 2027. Qualification: 12th Pass + Computer Diploma. Salary: ₹25,300–₹82,200 basic. Most important CG exam for 12th pass CS students. Negative marking: 0.25 per wrong answer. Start preparing CG GK, Hindi, Maths, Computer seriously.</div>
-  </div><div class="event-card ev-exam" data-id="dc1">
-    <span class="ev-tag tag-lang">JLPT / Language</span>
-    <span class="ev-status status-exam">Exam</span>
-    <div class="ev-title">🇯🇵 JLPT Exam — December Session</div>
-    <div class="ev-date">Dec 6, 2026 (SUN)</div>
-    <div class="ev-note">CONFIRMED EXAM DATE — JLPT December 2026. First Sunday of December. Carry admit card + ID proof. If you gave N5 in July and passed, aim for N4 here. N3 is considered "working level" Japanese — strongly recommended before MEXT 2027 interview. Results: February 2027.</div>
-  </div><div class="event-card ev-info" data-id="dc2">
-    <span class="ev-tag tag-schol">Scholarship</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">GKS UG 2027 Results</div>
-    <div class="ev-date">~Dec 2026</div>
-    <div class="ev-note">GKS UG 2027 scholarship results expected December 2026 (if applied in Sep-Oct 2026). Check studyinkorea.go.kr or Korean Embassy India website. Selected candidates proceed for Korean language training starting March 2027.</div>
-  </div><div class="event-card ev-info" data-id="dc3">
-    <span class="ev-tag tag-central">Central Govt</span>
-    <span class="ev-status status-tentative">TENTATIVE</span>
-    <div class="ev-title">SSC GD 2027 Notification Expected</div>
-    <div class="ev-date">~Dec 2026</div>
-    <div class="ev-note">SSC GD Constable 2027 cycle notification expected around December 2026 (based on calendar pattern). You'll still be 12th pass eligible. Watch ssc.gov.in.</div>
-  </div></div>
-    </div></div>
+  <div class="months-row" id="timelineRoot"></div>
 </div>
 
 <!-- Edit Modal -->
@@ -1047,70 +705,237 @@
 <!-- Notebook Section -->
 <div class="notebook-section">
   <div class="notebook-header">
-    <h2>📓 My Notebook <span style="font-size:0.7rem;color:var(--muted);font-weight:400;font-family:&#39;JetBrains Mono&#39;,monospace;">— auto-saved in browser</span></h2>
+    <h2>📓 My Notebook <span style="font-size:0.7rem;color:var(--muted);font-weight:400;font-family:'JetBrains Mono',monospace;">— auto-saved in browser</span></h2>
     <button class="btn" onclick="exportNotebook()">💾 Export Notes (.txt)</button>
   </div>
 
   <div class="notebook-tabs">
-    <button class="nb-tab" onclick="switchTab(&#39;cg&#39;, this)">🟠 CG State Jobs</button>
-    <button class="nb-tab" onclick="switchTab(&#39;central&#39;, this)">🏛️ Central Govt</button>
-    <button class="nb-tab" onclick="switchTab(&#39;bihar&#39;, this)">🔴 Bihar Jobs</button>
-    <button class="nb-tab" onclick="switchTab(&#39;it&#39;, this)">💻 IT Companies</button>
-    <button class="nb-tab" onclick="switchTab(&#39;jlpt&#39;, this)">🇯🇵 JLPT / Japanese</button>
-    <button class="nb-tab active" onclick="switchTab(&#39;schol&#39;, this)">🌏 Scholarships</button>
+    <button class="nb-tab active" onclick="switchTab('cg', this)">🟠 CG State Jobs</button>
+    <button class="nb-tab" onclick="switchTab('central', this)">🏛️ Central Govt</button>
+    <button class="nb-tab" onclick="switchTab('bihar', this)">🔴 Bihar Jobs</button>
+    <button class="nb-tab" onclick="switchTab('it', this)">💻 IT Companies</button>
+    <button class="nb-tab" onclick="switchTab('jlpt', this)">🇯🇵 JLPT / Japanese</button>
+    <button class="nb-tab" onclick="switchTab('schol', this)">🌏 Scholarships</button>
   </div>
 
   <!-- CG Notebook -->
-  <div class="nb-panel" id="nb-cg">
+  <div class="nb-panel active" id="nb-cg">
     <div class="nb-panel-inner">
       <div class="nb-panel-toolbar">
         <span>🟠 CG State Jobs — Notes, Syllabus, Strategy, Deadlines</span>
-        <button class="nb-save-btn" onclick="saveNote(&#39;cg&#39;)">💾 Save</button>
+        <button class="nb-save-btn" onclick="saveNote('cg')">💾 Save</button>
       </div>
-      <textarea class="nb-textarea" id="note-cg" placeholder="Write your CG exam notes here...
-
-SUGGESTED STRUCTURE:
+      <textarea class="nb-textarea" id="note-cg">═══════════════════════════════════════
+📋 CG EXAMS — 2026 COMPLETE TRACKER
 ═══════════════════════════════════════
-📋 EXAMS TO APPEAR IN 2026
-═══════════════════════════════════════
-1. CG DEO (Data Entry Operator) — Jun 28, 2026
-   • Qualification: 12th Pass + Typing 5000 KDPH
-   • Salary: ₹19,500–₹25,000/month
-   • Apply: ~May 2026
-   • Notes:
 
-2. CG Assistant Grade-3 — Sep 6 / Dec 6 / Dec 20, 2026
-   • Qualification: 12th Pass
-   • Salary: ₹19,500–₹22,000/month
-   • Apply: ~Jul–Aug 2026
-   • Notes:
-
-3. CG Storekeeper — Nov 22, 2026
-   • Qualification: 12th Pass
-   • Salary: ₹19,500–₹22,000/month
-   • Notes:
-
-4. CG Patwari (APPLY in 2026, Exam Dec/Jan)
-   • Qualification: 12th + Computer Diploma
-   • Salary: ₹25,300–₹82,200 basic (BEST PAYING)
-   • ACTION: Get Computer Diploma enrolled NOW
-   • Notes:
+⚠️ PROFILE CHECK:
+• Age           : 18+ (under 19)
+• Qualification : 12th Pass ✅
+• Degree        : BSc CS — Aug 2027
+• Domicile      : Chhattisgarh ✅ (Fee waiver advantage)
+• Excluded      : Physical test / Police / Constable / Driver
 
 ═══════════════════════════════════════
-📚 COMMON SYLLABUS (All CG Vyapam)
+🔥 EXAM 1 — CG DEO (Data Entry Operator)
 ═══════════════════════════════════════
-• CG GK &amp; Current Affairs — High weightage
-• General Hindi — High weightage
-• Mathematics (Basic) — Medium
-• Reasoning &amp; Mental Ability — Medium
-• Computer Knowledge — YOUR ADVANTAGE ✅
-• General English — Low
+• Department    : CG Vyapam (Health / Revenue / Panchayat Dept)
+• Qualification : 12th Pass + Typing 5000 KDPH ✅
+• Age Limit     : 18–35 years (General) ✅
+                  SC/ST +5 yrs | OBC +3 yrs
+• Vacancies     : 100–500 per notification
+• Form Opens    : ~April–May 2026
+• Form Deadline : ~May 2026 (4–6 weeks before exam)
+• Exam Date     : June 28, 2026 (CONFIRMED ✅)
+• Selection     : Written Test → Typing Speed Test → DV
+• No Physical   : ✅
+• Salary        : Pay Level 4–5 → ₹19,500–₹25,000/month
+• Fee           : ₹0 for CG Domicile ✅
+• Portal        : vyapamcg.cgstate.gov.in
+• CS Advantage  : ✅✅ HIGHEST — typing + computer paper
+• Competition   : Medium
+• My Status     : Applied / Not Applied
+• Admit Card    :
+• Notes         :
+
+─────────────────────────────────────────
+
+🔥 EXAM 2 — CG Assistant Grade-3 (Sahayak Grade-3)
+─────────────────────────────────────────
+• Department    : CG Vyapam (Multiple — Revenue, Health,
+                  Education, Forest, Agriculture — all desk jobs)
+• Qualification : 12th Pass ✅
+• Age Limit     : 18–35 years (General) ✅
+                  SC/ST +5 yrs | OBC +3 yrs
+• Vacancies     : 500–3,000 per batch (BIGGEST vacancy)
+• Form Opens    : ~July 2026
+• Form Deadline : ~July–August 2026
+• Exam Date     : BATCH 1 → Sep 6, 2026  ✅ CONFIRMED
+                  BATCH 2 → Dec 6, 2026  ✅ CONFIRMED
+                  BATCH 3 → Dec 20, 2026 ✅ CONFIRMED
+• Selection     : Written MCQ only → DV
+• No Physical   : ✅
+• Salary        : Pay Level 3–4 → ₹19,500–₹22,000/month
+• Fee           : ₹0 for CG Domicile ✅
+• Portal        : vyapamcg.cgstate.gov.in
+• CS Advantage  : Medium — Computer section in paper
+• Competition   : Medium (large vacancies = better odds)
+• My Status     : Applied / Not Applied
+• Admit Card    :
+• Notes         :
+
+─────────────────────────────────────────
+
+🔥 EXAM 3 — CG Storekeeper (Bhandarpalak)
+─────────────────────────────────────────
+• Department    : CG Vyapam (Agriculture / Food & Civil Supplies)
+• Qualification : 12th Pass ✅
+• Age Limit     : 18–35 years ✅
+• Form Deadline : ~Sep–Oct 2026
+• Exam Date     : November 22, 2026 ✅ CONFIRMED
+• Selection     : Written only → DV
+• No Physical   : ✅
+• Salary        : Pay Level 3–4 → ₹19,500–₹22,000/month
+• Fee           : ₹0 for CG Domicile ✅
+• Competition   : LOW — less popular post = better chances ✅
+• My Status     : Applied / Not Applied
+• Notes         :
+
+─────────────────────────────────────────
+
+⭐ EXAM 4 — CG Patwari (MOST IMPORTANT — Best Salary)
+─────────────────────────────────────────
+• Department    : CG Vyapam (Revenue & Disaster Management)
+• Qualification : 12th Pass + 1-year Computer Diploma ✅
+                  (CPCT / DEO Certificate / O-Level)
+• Age Limit     : 18–40 years ✅ (widest range!)
+• Vacancies     : 1,000–2,000+ (biggest 12th pass exam)
+• Form Opens    : ~Sep–Oct 2026 (APPLY IN 2026)
+• Form Deadline : ~Oct 2026
+• Exam Date     : Dec 2026 / Jan 2027 (form in 2026)
+• Selection     : Written Exam → Typing/Data Entry Test → DV
+• No Physical   : ✅
+• Salary        : Pay Level 6 → ₹25,300–₹82,200 basic
+                  Gross in-hand ~₹40,000–₹55,000/month
+                  BEST SALARY FOR 12th PASS IN CG ⭐
+• Negative Mark : Yes — 0.25 per wrong answer
+• Fee           : ₹0 for CG Domicile ✅
+• Competition   : HIGH (most popular CG exam)
+• CS Advantage  : ✅✅ Computer Diploma mandatory = your edge
+• Portal        : vyapamcg.cgstate.gov.in
+
+🚨 ACTION REQUIRED NOW:
+   Get enrolled in 1-year Computer Diploma course
+   immediately if not already done.
+   Options: CPCT / O-Level / DEO Certificate
+   Duration: 6–12 months | Cost: ₹2,000–₹5,000
+   Available at: Govt ITI / DOEACC / any recognized center
+
+• My Diploma Status : Enrolled / Not Enrolled
+• Institute         :
+• Completion Date   :
+• Notes             :
+
+═══════════════════════════════════════
+🎓 EXAMS AFTER AUG 2027 (Graduate Level)
+═══════════════════════════════════════
+
+5. CGPSC State Service Exam (SSE) — Most Prestigious
+   • Posts     : Deputy Collector, DSP, BDO, Naib Tehsildar,
+                 State Tax Inspector, Excise SI
+   • Vacancies : ~246 per cycle
+   • Age       : 21–30 years (General Male) ✅
+   • Salary    : Group A ₹56,100+/month | Group B ₹35,400+/month
+   • Selection : Prelims → Mains (7 papers) → Interview
+   • Next Notif: Late 2026 / Early 2027
+   • START PREPARING NOW — takes 1.5–2 years!
+   • Portal    : psc.cg.gov.in
+   • Notes     :
+
+6. ADEO (Assistant Development Extension Officer)
+   • Department: Agriculture (CG Vyapam)
+   • Age       : 20–30 years ✅
+   • Salary    : Pay Level 7 → ₹28,700–₹91,300
+                 Gross ~₹45,000–₹55,000/month
+   • Vacancies : 500–1,000+ per cycle
+   • Notes     :
+
+7. Sub Engineer (IT/CS side)
+   • Qualification: BSc CS / BCA / Diploma CS/IT ✅
+   • Age          : 21–30 years
+   • Salary       : Pay Level 8–9 → ₹29,200–₹44,900/month
+   • CS Advantage : ✅✅ HIGHEST — degree directly fits
+   • Notes        :
+
+═══════════════════════════════════════
+📚 COMMON SYLLABUS — ALL CG VYAPAM EXAMS
+═══════════════════════════════════════
+
+Subject                 | Weightage | My Level
+──────────────────────────────────────────────
+CG GK & Current Affairs | HIGH ⭐    | ___/10
+General Hindi           | HIGH ⭐    | ___/10
+Mathematics (Basic)     | MEDIUM    | ___/10
+Reasoning & Mental Ablt | MEDIUM    | ___/10
+Computer Knowledge      | MEDIUM ✅  | ___/10
+General English         | LOW       | ___/10
+
+📖 Books / Resources:
+• CG GK    : Yuva Sahitya Prakashan CG GK book
+• Hindi    : Lucent Samanya Hindi
+• Maths    : NCERT Class 9–10 + RS Aggarwal
+• Reasoning: RS Aggarwal Verbal & Non-Verbal
+• Computer : NIELIT O-Level material
+• Online   : cgvyapam.choice.gov.in (old papers)
+
+═══════════════════════════════════════
+📅 2026 MONTH-WISE ACTION PLAN
+═══════════════════════════════════════
+
+March 2026   → Enroll in Computer Diploma (for Patwari)
+               Start CG GK + Hindi preparation
+April–May    → Apply for CG DEO (form opens ~April)
+June 28      → ✅ CG DEO EXAM
+July–Aug     → Apply for CG Assistant Grade-3
+Sep 6        → ✅ CG Assistant Grade-3 Batch 1 EXAM
+Sep–Oct      → Apply for CG Patwari (form opens)
+Nov 22       → ✅ CG Storekeeper EXAM
+Dec 6        → ✅ CG Assistant Grade-3 Batch 2 EXAM
+Dec 20       → ✅ CG Assistant Grade-3 Batch 3 EXAM
+Dec / Jan 27 → ✅ CG Patwari EXAM
+
+═══════════════════════════════════════
+💰 SALARY COMPARISON (Quick Reference)
+═══════════════════════════════════════
+CG Patwari         ₹40,000–55,000/month  ⭐ BEST
+CG ADEO            ₹45,000–55,000/month  (after graduation)
+CGPSC Group A      ₹56,100+/month        (after graduation)
+CGPSC Group B      ₹35,400+/month        (after graduation)
+Sub Engineer (IT)  ₹29,200–44,900/month  (after graduation)
+CG DEO             ₹19,500–25,000/month
+CG Asst Grade-3    ₹19,500–22,000/month
+CG Storekeeper     ₹19,500–22,000/month
+
+═══════════════════════════════════════
+📋 RESERVATION DETAILS (CG Rules)
+═══════════════════════════════════════
+Category | Age Relax | Fee        | Reservation
+─────────────────────────────────────────────────
+General  | None      | Full       | Open seats
+OBC (CG) | +3 years  | Reduced    | 14%
+SC       | +5 years  | Waived ✅  | 12%
+ST       | +5 years  | Waived ✅  | 32%
+EWS      | None      | Normal     | 10%
+PwD      | +10 years | Waived ✅  | 4%
+Women    | +10 years | Reduced    | Horizontal
 
 ═══════════════════════════════════════
 🌐 OFFICIAL LINKS
 ═══════════════════════════════════════
-• vyapamcg.cgstate.gov.in — All CG Vyapam exams
-• psc.cg.gov.in — CGPSC State Service (after graduation)"></textarea>
+• vyapamcg.cgstate.gov.in  — CG Vyapam all exams
+• psc.cg.gov.in            — CGPSC State Service
+• cgstate.gov.in           — All CG Govt announcements
+• choice.gov.in/cgvyapam   — Old question papers</textarea>
     </div>
   </div>
 
@@ -1119,101 +944,276 @@ SUGGESTED STRUCTURE:
     <div class="nb-panel-inner">
       <div class="nb-panel-toolbar">
         <span>🏛️ Central Government Jobs — Notes, Deadlines, Strategy</span>
-        <button class="nb-save-btn" onclick="saveNote(&#39;central&#39;)">💾 Save</button>
+        <button class="nb-save-btn" onclick="saveNote('central')">💾 Save</button>
       </div>
-      <textarea class="nb-textarea" id="note-central" placeholder="Write your Central Govt exam notes here...
+      <textarea class="nb-textarea" id="note-central">═══════════════════════════════════════
+📋 CENTRAL GOVT JOBS — 2026 COMPLETE TRACKER
+═══════════════════════════════════════
+
+⚠️ PROFILE CHECK:
+• Age           : 18+ (under 19)
+• Qualification : 12th Pass ✅
+• Degree        : BSc CS — Aug 2027
+• Domicile      : Chhattisgarh ✅ (valid for all central exams)
+• Excluded      : Physical test jobs (Army, Police, CAPF etc.)
+
+💡 ADVANTAGE:
+CG SC/ST/OBC certificate is FULLY VALID
+in all Central Govt exams across India ✅
 
 ═══════════════════════════════════════
-✅ ALREADY APPLIED
+✅ ALREADY APPLIED — STATUS TRACKING
 ═══════════════════════════════════════
-1. RRB NTPC 12th Level (CEN 07/2025)
-   • Exam: ~May 2026 (Tentative)
-   • Posts: Junior Clerk, Account Clerk, Commercial cum Ticket Clerk
-   • Salary: Pay Level 2–3 → ₹19,900–₹25,500/month
-   • No physical test ✅
-   • Status: Watch rrbapply.gov.in for admit card
-   • My Score Target:
-   • Notes:
+
+1. RRB NTPC — 12th Level (CEN 07/2025)
+• Organization  : Railway Recruitment Board
+• Portal        : rrbapply.gov.in
+• Qualification : 12th Pass ✅
+• Posts Applied : Junior Clerk cum Typist
+                  Account Clerk cum Typist
+                  Junior Time Keeper
+                  Commercial cum Ticket Clerk
+• Vacancies     : 3,000+ (12th level)
+• Age Limit     : 18–33 years ✅
+• Exam Date     : ~May 2026 (Tentative CBT-1)
+• Exam Pattern  :
+  CBT-1 → 100Q (GK 40 + Maths 30 + Reasoning 30)
+         → 90 minutes | Negative: -1/3
+  CBT-2 → Post specific — typing/computer test
+• Salary        : Pay Level 2–3 → ₹19,900–₹25,500/month
+• No Physical   : ✅
+• Status        : Applied ✅ | Admit card pending
+• Hall Ticket   : rrbapply.gov.in
+• My Prep Score : ___
+• Exam City     :
+• Notes         :
+
+─────────────────────────────────────────
 
 2. SSC GD Constable 2026
-   • Exam: Apr–May 2026 (Postponed from Feb)
-   • ⚠️ Has Physical Test (PET/PST) after written
-   • Just appear for written exam — already applied
-   • Status: Check ssc.gov.in for revised hall ticket
-   • Notes:
+• Organization  : SSC + CRPF/BSF/CISF etc.
+• Qualification : 12th Pass ✅
+• Age Limit     : 18–23 years ✅
+• Exam Date     : Apr–May 2026 (Postponed from Feb 23)
+• ⚠️ WARNING    : Has Physical Efficiency Test (PET/PST)
+                  after written exam for shortlisted candidates
+• Strategy      : Just appear for written exam
+                  Qualify written = good practice
+• Salary        : Pay Level 3 → ₹21,700–₹25,000/month
+• Status        : Applied ✅ | Check ssc.gov.in for hall ticket
+• Hall Ticket   : ssc.gov.in
+• Notes         :
 
 ═══════════════════════════════════════
-🔴 URGENT — APPLY BEFORE APR 30
+🔴 URGENT — APPLY BEFORE APR 30, 2026
 ═══════════════════════════════════════
-3. SSC Selection Post Phase 14
-   • Form: Mar 31 – Apr 30, 2026
-   • 2,400+ vacancies | 12th Pass posts ✅
-   • Age: 18–42 years (wider range)
-   • No physical test ✅ | CBT only
-   • Salary: Pay Level 1–7 (₹18,000–₹44,900/month)
-   • Apply: ssc.gov.in → OTR → Phase XIV
-   • Status: Applied / Not Applied
-   • Notes:
+
+3. SSC Selection Post Phase 14 ⭐
+• Organization  : SSC
+• Portal        : ssc.gov.in
+• Qualification : 12th Pass posts available ✅
+• Age Limit     : 18–42 years (widest range of any SSC exam!)
+• Form Opens    : March 31, 2026
+• Form Deadline : April 30, 2026 🔴 URGENT
+• Exam Date     : May–July 2026
+• Vacancies     : ~2,400+
+• Selection     : CBT only → DV (No interview, No physical ✅)
+• Salary        : Pay Level 1–7 → ₹18,000–₹44,900/month
+• Negative Mark : -0.50 per wrong answer
+• Fee           : ₹100 (General) | Free (Women/SC/ST/PwD/ESM)
+• Competition   : MEDIUM — less famous than CHSL = better odds ✅
+• CS Advantage  : ✅ Lab Assistant / Technical posts
+• How to Apply  : ssc.gov.in → OTR Registration → Phase XIV
+• Status        : Applied / Not Applied
+• Posts Selected:
+• Notes         :
 
 ═══════════════════════════════════════
-📋 UPCOMING FORMS (April–July 2026)
+📋 UPCOMING FORMS — APPLY MONTH-WISE
 ═══════════════════════════════════════
+
 4. SSC CHSL 2026 — 🔥 MOST IMPORTANT
-   • Form: Apr 30 – May 31, 2026
-   • Exam: Jul–Sep 2026
-   • 12th Pass ✅ | Age: 18–27 years
-   • Posts: LDC (₹19,900), PA/SA (₹25,500), DEO (₹25,500–29,200)
-   • No physical test ✅ | Negative marking: -0.50
-   • DEO post = YOUR CS ADVANTAGE ✅
-   • Appearing candidates: ✅ ALLOWED
-   • My Prep Status:
-   • Notes:
+• Organization  : SSC (Combined Higher Secondary Level)
+• Portal        : ssc.gov.in
+• Qualification : 12th Pass ✅
+• Age Limit     : 18–27 years ✅
+• Form Opens    : April 30, 2026
+• Form Deadline : May 31, 2026
+• Exam Date     : July–September 2026 (Tier 1 CBT)
+• Vacancies     : ~3,131
+• Posts         :
+  LDC (Lower Division Clerk)    → Pay Level 2 → ₹19,900/month
+  JSA (Junior Secretariat Asst) → Pay Level 2 → ₹19,900/month
+  Postal Assistant (PA)         → Pay Level 4 → ₹25,500/month
+  Sorting Assistant (SA)        → Pay Level 4 → ₹25,500/month
+  DEO (Data Entry Operator)     → Pay Level 4–5 → ₹25,500–29,200/month
 
-5. SSC MTS 2026
-   • Form: Jun 30 – Jul 31, 2026
-   • Exam: Sep–Nov 2026
-   • 10th Pass eligible ✅ | Age: 18–25 years
-   • 7,000–10,000+ vacancies
-   • No physical test for MTS ✅ | Easiest SSC exam
-   • Salary: Pay Level 1 → ₹18,000–₹22,000/month
-   • Notes:
+• Exam Pattern (Tier 1 — 60 mins):
+  General Intelligence/Reasoning → 25Q × 2 = 50 marks
+  General Awareness (GK)         → 25Q × 2 = 50 marks
+  Quantitative Aptitude (Maths)  → 25Q × 2 = 50 marks
+  English Language               → 25Q × 2 = 50 marks
+  Total                          → 100Q | 200 marks
 
-6. India Post GDS (Next cycle)
-   • 10th Pass ✅ | No exam — pure merit on 10th marks
-   • Age: 18–40 years
-   • Salary: ₹10,000–₹14,500/month
-   • Watch: indiapostgdsonline.gov.in
-   • My 10th %: ___
-   • Notes:
+• Negative Mark : -0.50 per wrong answer
+• No Physical   : ✅
+• Appearing OK  : ✅ YES
+• Fee           : ₹100 (General) | Free (Women/SC/ST/PwD)
+• Competition   : HIGH (50+ lakh applicants nationally)
+• CS Advantage  : ✅✅ DEO post — typing + computer test
+• My Target Post : DEO / PA / JSA
+• My Prep Status :
+• Mock Test Score:
+• Notes          :
+
+─────────────────────────────────────────
+
+5. SSC MTS 2026 (Multi-Tasking Staff)
+• Organization  : SSC | Portal: ssc.gov.in
+• Qualification : 10th Pass ✅ (you are 12th = fully eligible)
+• Age Limit     : 18–25 years ✅
+• Form Opens    : June 30, 2026
+• Form Deadline : July 31, 2026
+• Exam Date     : September–November 2026
+• Vacancies     : 7,000–10,000+
+• Exam Pattern  :
+  Numerical & Mathematical Ability → 20Q
+  Reasoning & Problem Solving      → 20Q
+  General English                  → 25Q
+  General Awareness                → 25Q
+  Total → 90Q | 90 marks | 90 mins
+• No Negative Marking in Paper 1 ✅
+• No Physical for MTS ✅
+• Salary        : Pay Level 1 → ₹18,000–₹22,000/month
+• Fee           : ₹100 (General) | Free (Women/SC/ST/PwD)
+• Status        : Will Apply / Applied
+• Notes         :
+
+─────────────────────────────────────────
+
+6. India Post GDS (Gramin Dak Sevak)
+• Organization  : India Post
+• Portal        : indiapostgdsonline.gov.in
+• Qualification : 10th Pass ✅ (12th pass = eligible)
+• Age Limit     : 18–40 years ✅
+• NO EXAM       : ✅ Pure merit based on 10th marks only!
+• Posts         : Branch Postmaster (BPM), ABPM, Dak Sevak
+• Salary        : ₹10,000–₹14,500/month (TRCA)
+• Next Cycle    : Mid-2026 (watch portal)
+• My 10th %     : ___
+• Competition   : MEDIUM — depends on your 10th marks
+• Status        : Watching / Applied
+• Notes         :
 
 ═══════════════════════════════════════
-📚 COMMON SYLLABUS (CHSL + MTS + Phase 14)
+📚 COMMON SYLLABUS — SSC ALL EXAMS
 ═══════════════════════════════════════
-• General Intelligence &amp; Reasoning — 25Q
-• General Awareness / GK — 25Q
-• Quantitative Aptitude (Maths) — 25Q
-• English Language — 25Q
-• Computer Skill Test (DEO only — CHSL)
 
-Negative Marking:
-• CHSL: -0.50 per wrong | MTS: No negative marking
-• Phase 14: -0.50 per wrong
+Subject                    | CHSL | MTS | Phase14 | My Level
+──────────────────────────────────────────────────────────────
+General Intelligence       | 25Q  | 20Q | 25Q     | ___/10
+General Awareness (GK)     | 25Q  | 25Q | 25Q     | ___/10
+Quantitative Aptitude      | 25Q  | 20Q | 25Q     | ___/10
+English Language           | 25Q  | 25Q | 25Q     | ___/10
+
+NEGATIVE MARKING:
+• CHSL     : -0.50 per wrong ⚠️
+• MTS P1   : No negative marking ✅
+• Phase 14 : -0.50 per wrong ⚠️
+• NTPC     : -1/3 per wrong ⚠️
+
+📖 Books / Resources:
+• GK        : Lucent General Knowledge
+• Reasoning : RS Aggarwal Verbal & Non-Verbal
+• Maths     : Rakesh Yadav Class Notes + NCERT 9–10
+• English   : SP Bakshi / Neetu Singh English
+• Current   : Monthly Affairs Cloud / Vision IAS Monthly
+• Mock Tests: Testbook / Gradeup / Career Power (free mocks)
 
 ═══════════════════════════════════════
-🚫 EXAMS TO AVOID IN 2026 (NOT ELIGIBLE)
+📅 MONTH-WISE ACTION PLAN — 2026
 ═══════════════════════════════════════
-• SSC CGL — Needs Graduation (apply Aug 2027)
-• SSC CPO/SI — Physical test + Graduation
-• UPSC CSE — Graduation required
-• RRB ALP — Needs ITI certificate
-• Any Bank PO/Clerk — Final year/Graduation needed
+
+March 2026 (NOW)
+├── ✅ RRB NTPC 12th level — Download admit card
+├── 🔴 SSC Phase 14 — APPLY before Apr 30
+└── Start: GK daily + Reasoning + Maths revision
+
+April 2026
+├── 🔴 SSC Phase 14 deadline → Apr 30 — APPLY
+├── 🔴 SSC CHSL form opens → Apr 30 — APPLY SAME DAY
+└── Appear for SSC GD written exam (Apr–May)
+
+May 2026
+├── SSC CHSL form deadline → May 31 — APPLY
+├── RRB NTPC 12th level exam → ~May (appear!)
+└── Intensify CHSL prep
+
+June 2026
+└── SSC MTS form opens → Jun 30 — APPLY
+
+July 2026
+├── SSC MTS form deadline → Jul 31 — APPLY
+└── SSC CHSL Tier 1 exam begins (Jul–Sep)
+
+Sep–Nov 2026
+├── SSC MTS exam
+└── SSC CHSL results expected
+
+2027 (After Graduation Aug)
+├── SSC CGL 2027 — APPLY (most important central exam)
+├── RRB NTPC Graduate Level — APPLY
+└── IBPS Clerk / PO Bank exams — APPLY
+
+═══════════════════════════════════════
+💰 SALARY COMPARISON (Central Govt)
+═══════════════════════════════════════
+SSC CGL Inspector      ₹44,900+/month  (after graduation)
+SSC CGL Auditor        ₹35,400+/month  (after graduation)
+RRB NTPC Grad Level    ₹25,500–35,400  (after graduation)
+SSC CHSL DEO           ₹25,500–29,200  ✅ 12th pass now
+SSC CHSL PA/SA         ₹25,500/month   ✅ 12th pass now
+SSC CHSL LDC/JSA       ₹19,900/month   ✅ 12th pass now
+RRB NTPC 12th Level    ₹19,900–25,500  ✅ Already applied
+SSC MTS                ₹18,000–22,000  ✅ 12th pass now
+India Post GDS         ₹10,000–14,500  ✅ 10th pass, no exam
+
+═══════════════════════════════════════
+🚫 EXAMS TO AVOID / NOT ELIGIBLE 2026
+═══════════════════════════════════════
+• SSC CGL          — Graduation needed ❌
+• SSC CPO/SI       — Physical test + Graduation ❌
+• UPSC CSE         — Graduation needed ❌
+• RRB ALP          — ITI certificate needed ❌
+• RRB Group D      — ITI certificate needed ❌
+• IBPS PO/Clerk    — Final year/Graduation needed ❌
+• NDA/CDS          — Defense/Physical ❌
+• CAPF (AC)        — Graduation + Physical ❌
+
+═══════════════════════════════════════
+📝 MOCK TEST TRACKER
+═══════════════════════════════════════
+Date | Exam | Score | Weak Area | Action Taken
+──────────────────────────────────────────────
+     |      |       |           |
+     |      |       |           |
+     |      |       |           |
+
+Target Scores:
+• SSC CHSL Tier 1  : 150+/200 (safe score)
+• SSC MTS          : 70+/90
+• SSC Phase 14     : 130+/200
+• RRB NTPC         : 70+/100
 
 ═══════════════════════════════════════
 🌐 OFFICIAL LINKS
 ═══════════════════════════════════════
-• ssc.gov.in — SSC all exams
-• rrbapply.gov.in — Railway exams
-• indiapostgdsonline.gov.in — India Post GDS"></textarea>
+• ssc.gov.in               — SSC all exams
+• rrbapply.gov.in          — Railway exams
+• indiapostgdsonline.gov.in — India Post GDS
+• testbook.com             — Free mock tests
+• sscadda.com              — Previous year papers
+• oliveboard.in            — Free mocks + study material</textarea>
     </div>
   </div>
 
@@ -1222,67 +1222,207 @@ Negative Marking:
     <div class="nb-panel-inner">
       <div class="nb-panel-toolbar">
         <span>🔴 Bihar Jobs — Notes, Deadlines, Domicile Info</span>
-        <button class="nb-save-btn" onclick="saveNote(&#39;bihar&#39;)">💾 Save</button>
+        <button class="nb-save-btn" onclick="saveNote('bihar')">💾 Save</button>
       </div>
-      <textarea class="nb-textarea" id="note-bihar" placeholder="Write your Bihar exam notes here...
+      <textarea class="nb-textarea" id="note-bihar">═══════════════════════════════════════
+📋 BIHAR JOBS — 2026 COMPLETE TRACKER
+═══════════════════════════════════════
+
+⚠️ PROFILE CHECK:
+• Age           : 18+ (under 19)
+• Qualification : 12th Pass ✅
+• Degree        : BSc CS — Aug 2027
+• Domicile      : Chhattisgarh ⚠️
+• Excluded      : Physical test / Police / Constable
+
+🚨 DOMICILE WARNING:
+Bihar STATE exams mein aap CG domicile hone ke karan
+GENERAL / UR category mein aayenge.
+Bihar ka OBC/SC/ST reservation benefit NAHI milega.
+Central Govt exams (SSC, RRB) ke liye CG certificate
+fully valid hai ✅
 
 ═══════════════════════════════════════
-⚠️ IMPORTANT — READ FIRST
+✅ ELIGIBLE IN 2026 (12th Pass, No Physical)
 ═══════════════════════════════════════
-You are CG Domicile → In Bihar STATE exams you are
-treated as GENERAL/UR candidate only.
-No OBC/SC/ST reservation benefits from Bihar.
-Central exams (SSC, RRB) held in Bihar:
-your CG certificate is fully valid ✅.
 
-Physical test exams EXCLUDED: Bihar Police SI,
-Bihar Police Constable, BPSSC posts.
+🔥 EXAM 1 — BSSC Inter Level (Next Cycle)
+• Organization  : BSSC (Bihar Staff Selection Commission)
+• Portal        : bssc.bihar.gov.in
+• Qualification : 12th Pass ✅
+• Age Limit     : 18–37 years (General Male) ✅
+                  Women : 18–40 years
+                  SC/ST : +5 years | OBC : +3 years
+                  (Bihar OBC — no benefit for you)
+• Vacancies     : 26,426 (current cycle — form closed Feb 2026)
+                  NEXT CYCLE: notification Sep–Dec 2026
+• Posts         : LDC (Lower Division Clerk)
+                  Revenue Employee
+                  Panchayat Secretary
+                  Clerk cum Typist
+• Salary        : Pay Level 4–5 → ₹19,900–₹25,000/month
+• Selection     : Prelims CBT → Mains → DV
+• No Physical   : ✅
+• Negative Mark : Yes — 0.25 per wrong answer
+• Application   : Watch bssc.bihar.gov.in — Sep–Dec 2026
+• Competition   : HIGH (lakhs of applicants)
+• My Status     : Watching / Applied
+• Notes         :
 
-═══════════════════════════════════════
-📋 ELIGIBLE IN 2026 (12th Pass, No Physical)
-═══════════════════════════════════════
-1. BSSC Inter Level — NEXT CYCLE (Watch)
-   • 12th Pass ✅ | Bihar domicile = General/UR for you
-   • Current cycle form closed (Feb 2026)
-   • NEXT notification: Sep–Dec 2026
-   • Posts: LDC, Revenue Employee, Panchayat Secretary
-   • Salary: ₹19,900–₹25,000/month
-   • No physical test ✅ | Written only
-   • Status: Watch bssc.bihar.gov.in
-   • Notes:
+─────────────────────────────────────────
 
-═══════════════════════════════════════
-📋 ELIGIBLE AFTER AUG 2027 (Graduate)
-═══════════════════════════════════════
-2. BPSC State Service Exam (73rd CCE)
-   • Graduate ❌ (eligible Aug 2027)
-   • Posts: Deputy Collector, DSP, BDO, Naib Tehsildar
-   • Salary: ₹35,400–₹56,100/month
-   • Bihar domicile: General/UR category for you
-   • Target: 73rd CCE notification (2027)
-   • Start GS prep NOW — takes 1.5–2 years
-   • Notes:
-
-3. BSSC CGL-4 (4th Graduate Level)
-   • Graduate ❌ (eligible Aug 2027)
-   • 1,883 vacancies | Salary: ₹29,200–₹44,900/month
-   • Next cycle notification: 2027
-   • Notes:
+🔥 EXAM 2 — BSSC Matric Level
+• Organization  : BSSC
+• Qualification : 10th Pass ✅ (you are 12th = eligible)
+• Age Limit     : 18–37 years ✅
+• Posts         : Office Attendant, Peon, Group D clerical
+• Salary        : Pay Level 1–2 → ₹15,000–₹19,000/month
+• Selection     : Written only → DV
+• No Physical   : ✅
+• Watch         : bssc.bihar.gov.in for notifications
+• Competition   : MEDIUM (less known = better odds)
+• Notes         :
 
 ═══════════════════════════════════════
-🚫 EXCLUDED (Physical Test / Not Eligible)
+🎓 ELIGIBLE AFTER AUG 2027 (Graduate)
 ═══════════════════════════════════════
-• Bihar Police Constable — Physical test ❌
-• Bihar Police SI (Daroga) — Physical test ❌
-• BPSSC posts — Physical test ❌
-• BSSC CGL-4 current cycle — Graduate needed ❌
+
+3. BPSC State Service Exam — 73rd CCE
+• Organization  : BPSC (Bihar Public Service Commission)
+• Portal        : bpsc.bih.nic.in
+• Qualification : Any Graduate ✅ (after Aug 2027)
+• Age Limit     : 20–37 years (General Male)
+                  Women : 20–40 years | You = ~20 in 2027 ✅
+• Vacancies     : ~1,000–1,500 per cycle
+• Posts         : Deputy Collector, DSP, BDO
+                  Naib Tehsildar, State Tax Inspector
+• Salary        :
+  Group A (Deputy Collector, DSP) → ₹56,100+/month
+  Group B (BDO, Naib Tehsildar)   → ₹35,400–₹44,900/month
+  Group C (Tax Inspector etc.)    → ₹25,300–₹35,400/month
+• Selection     : Prelims (150Q MCQ)
+                  → Mains (4 papers + Optional)
+                  → Interview (120 marks)
+• Domicile      : CG domicile = General/UR category only
+• 73rd CCE      : Notification expected early 2027
+• START PREP NOW — takes 1.5–2 years minimum!
+• Notes         :
+
+─────────────────────────────────────────
+
+4. BSSC CGL-4 (4th Graduate Level)
+• Organization  : BSSC
+• Qualification : Any Graduate ✅ (after Aug 2027)
+• Age Limit     : 21–37 years
+• Vacancies     : 1,883 posts
+• Salary        : Pay Level 6–8 → ₹29,200–₹44,900/month
+• Selection     : Prelims → Mains → DV
+• No Physical   : ✅
+• Next Cycle    : 2027 notification expected
+• Notes         :
+
+─────────────────────────────────────────
+
+5. BTSC (Bihar Technical Service Commission)
+• Organization  : BTSC — btsc.bih.nic.in
+• Qualification : BSc CS / BCA / Diploma (IT/CS) ✅
+• Vacancies     : 42,467 (2026 calendar)
+• Posts Relevant: Junior Engineer (IT), Lab Technician,
+                  Computer Operator, Technical Assistant
+• Salary        : Pay Level 6–9 → ₹25,300–₹44,900/month
+• CS Advantage  : ✅✅ Your degree directly fits
+• After         : Aug 2027
+• Notes         :
+
+═══════════════════════════════════════
+📚 BPSC + BSSC COMMON SYLLABUS
+═══════════════════════════════════════
+
+BSSC Inter Level Syllabus:
+Subject                  | Marks | My Level
+─────────────────────────────────────────────
+General Studies (GS)     |  40   | ___/10
+General Science          |  20   | ___/10
+Mathematics (Basic)      |  20   | ___/10
+Mental Ability/Reasoning |  20   | ___/10
+Hindi                    |  20   | ___/10
+General English          |  10   | ___/10
+
+BPSC Prelims Syllabus (150Q):
+• General Studies — History, Geography, Polity, Economy
+• Science & Technology
+• Bihar Specific GK (HIGH weightage)
+• Current Affairs | Mental Ability
+
+📖 Books / Resources:
+• Bihar GK    : Arihant Bihar GK / Spectrum Bihar
+• GS          : Lucent GK + NCERT 6–12
+• Maths       : RS Aggarwal Basic Maths
+• Reasoning   : RS Aggarwal Verbal & Non-Verbal
+• Hindi       : Lucent Samanya Hindi
+• Online      : bpsc.bih.nic.in (old papers)
+
+═══════════════════════════════════════
+📅 2026–27 ACTION PLAN FOR BIHAR
+═══════════════════════════════════════
+
+2026 (Now)
+├── Watch bssc.bihar.gov.in for next Inter Level cycle
+├── Start GS + Bihar GK preparation
+└── Note: No Bihar exam form available right now
+
+Sep–Dec 2026
+└── BSSC Inter Level next cycle notification expected
+    → Apply immediately when form opens
+
+2027 (After Graduation)
+├── BPSC 73rd CCE — Apply (most important)
+├── BSSC CGL-4 next cycle — Apply
+├── BTSC IT/CS posts — Apply
+└── Bihar Police SI — SKIP (physical test ❌)
+
+═══════════════════════════════════════
+💰 SALARY COMPARISON (Bihar Govt)
+═══════════════════════════════════════
+BPSC Deputy Collector  ₹56,100+/month   (after graduation)
+BPSC DSP               ₹56,100+/month   (after graduation)
+BTSC JE (IT)           ₹29,200–44,900   (after graduation)
+BSSC CGL-4             ₹29,200–44,900   (after graduation)
+BSSC Inter Level       ₹19,900–25,000   ✅ (12th pass now)
+BSSC Matric Level      ₹15,000–19,000   ✅ (10th pass)
+
+═══════════════════════════════════════
+📋 RESERVATION (Bihar — for reference)
+═══════════════════════════════════════
+Category      | Age Relax | Reservation
+──────────────────────────────────────────
+General/UR    | None      | Open seats
+EBC (Ext. BC) | +3 years  | 18%
+OBC (Bihar)   | +3 years  | 12%
+SC            | +5 years  | 16%
+ST            | +5 years  | 1%
+EWS           | None      | 10%
+Women         | +5 years  | 35%/33%
+
+⚠️ YOU = GENERAL/UR in Bihar (CG domicile)
+
+═══════════════════════════════════════
+🚫 EXCLUDED — DO NOT APPLY (2026)
+═══════════════════════════════════════
+• Bihar Police Constable  — Physical test ❌
+• Bihar Police SI/Daroga  — Physical test + Graduation ❌
+• BPSSC ASI               — Physical test ❌
+• BPSC 72nd CCE           — Graduation needed ❌
+• BSSC CGL-4 current      — Graduation needed ❌
 
 ═══════════════════════════════════════
 🌐 OFFICIAL LINKS
 ═══════════════════════════════════════
-• bpsc.bih.nic.in — BPSC Civil Services
-• bssc.bihar.gov.in — BSSC Inter Level, CGL
-• csbc.bih.nic.in — Bihar Police (skip for now)"></textarea>
+• bpsc.bih.nic.in         — BPSC Civil Services
+• bssc.bihar.gov.in       — BSSC Inter Level, CGL
+• btsc.bih.nic.in         — BTSC Technical posts
+• state.bihar.gov.in      — All Bihar Govt news
+• csbc.bih.nic.in         — Bihar Police (skip for now)</textarea>
     </div>
   </div>
 
@@ -1291,61 +1431,186 @@ Bihar Police Constable, BPSSC posts.
     <div class="nb-panel-inner">
       <div class="nb-panel-toolbar">
         <span>💻 IT Companies — Placement Tracking, Test Prep, Contacts</span>
-        <button class="nb-save-btn" onclick="saveNote(&#39;it&#39;)">💾 Save</button>
+        <button class="nb-save-btn" onclick="saveNote('it')">💾 Save</button>
       </div>
-      <textarea class="nb-textarea" id="note-it" placeholder="Write your IT company notes here...
+      <textarea class="nb-textarea" id="note-it">═══════════════════════════════════════
+📋 COMPANY TRACKING — 2026
+═══════════════════════════════════════
 
-SUGGESTED STRUCTURE:
-═══════════════════════════════════════
-📋 COMPANY TRACKING
-═══════════════════════════════════════
 1. TCS iON NQT
-   • Deadline: Apr 2, 2026 | Exam: Apr 14, 2026
-   • Registered: Yes / No
-   • Score Target: 70%+
-   • Notes:
+   • Form Deadline : Apr 2, 2026
+   • Exam Date     : Apr 14, 2026
+   • Portal        : tcsion.com → Learners-Youth
+   • Cost          : ₹999 (IT variant) / ₹599 (Cognitive)
+   • Free Option   : nextstep.tcs.com — Free NQT for 2027 batch
+                     (opens when you are in final year)
+   • Score Valid   : 2 years (till Apr 2028)
+   • Exam Pattern  : Numerical (25m) + Verbal (25m) + Reasoning (25m)
+                     + Advanced Quant (25m) + Coding (90m) = 190 mins
+   • No Negative Marking ✅
+   • Salary        : TCS Ninja ₹3.36 LPA | TCS Digital ₹7–9 LPA
+   • Status        : Applied / Not Applied
+   • My Score      : ___
+   • Notes         :
 
-2. Infosys InfyTQ
-   • Portal: infytq.infosys.com (FREE)
-   • Registered: Yes / No
-   • Target: 65%+ for certification
-   • Notes:
+─────────────────────────────────────────
 
-3. Wipro Elite NTH
-   • Registration: Aug–Nov 2026
-   • Salary: ₹3.5 LPA (Elite) / ₹6.5 LPA (Turbo)
-   • Notes:
+2. Infosys — InfyTQ (FREE ✅)
+   • Portal        : infytq.infosys.com
+   • Cost          : FREE
+   • Register      : Anytime — exam year round
+   • Pass Mark     : 65%+ to get certification
+   • Certificate   : "Infosys Certified Software Programmer"
+   • Exam Sections : Aptitude (Technical), Logical Reasoning,
+                     Verbal English, Pseudo Code, Puzzle,
+                     English Grammar, English Writing (7 sections)
+   • Hardest Part  : Logical Reasoning — practice well
+   • Salary        : SE ₹3.6 LPA | SP (Power Programmer) ₹9.5 LPA
+   • Status        : Registered / Not Registered
+   • My Score      : ___
+   • Notes         :
+
+─────────────────────────────────────────
+
+3. Wipro — Elite NTH / Turbo
+   • Portal        : careers.wipro.com
+   • Cost          : FREE ✅
+   • Registration  : Aug–Nov 2026 (for 2027 batch)
+   • Eligibility   : 60% throughout, no active backlogs
+   • Exam Sections : Aptitude + Written English (Essay — HARD!)
+                     + Coding (2 problems)
+   • Then          : Technical Interview → HR Interview
+   • Salary        : Elite ₹3.5 LPA | Turbo ₹6.5 LPA
+   • Pro Tip       : Written English eliminates most — practice essays
+   • Status        : Registered / Not Registered
+   • Notes         :
+
+─────────────────────────────────────────
 
 4. LTIMindtree
-   • Registration: Aug–Sep 2026
-   • Salary: ₹5–7 LPA
-   • Notes:
+   • Portal        : careers.ltimindtree.com
+   • Cost          : FREE ✅
+   • Registration  : Aug–Sep 2026 (opens early — apply fast)
+   • Eligibility   : 60% throughout, CS/IT preferred
+   • Exam          : Aptitude + Coding
+   • ~50% shortlisted candidates progress to interview
+   • Salary        : ₹5–7 LPA (Fresher) | Turbo role higher
+   • Status        : Registered / Not Registered
+   • Notes         :
 
-5. Cognizant GenC
-   • Registration: Sep–Dec 2026
-   • Salary: ₹4–8 LPA
-   • Notes:
+─────────────────────────────────────────
 
-6. Accenture
-   • Registration: Sep–Dec 2026
-   • Salary: ₹4.5 LPA
-   • Notes:
+5. Cognizant — GenC / GenC Elevate / GenC Pro
+   • Portal        : careers.cognizant.com
+   • Cost          : FREE ✅
+   • Registration  : Sep–Dec 2026 (for 2027 batch)
+   • Eligibility   : 60% throughout, no backlogs
+   • Exam          : Aptitude + Logical + Verbal
+                     + Coding (1–2 problems)
+                     + Communication Assessment
+   • Salary        : GenC ₹4 LPA | GenC Elevate ₹5 LPA
+                     | GenC Pro ₹8 LPA
+   • Status        : Registered / Not Registered
+   • Notes         :
+
+─────────────────────────────────────────
+
+6. Accenture — ASE (Associate Software Engineer)
+   • Portal        : accenture.com/in-en/careers
+   • Cost          : FREE ✅
+   • Registration  : Sep–Dec 2026
+   • Eligibility   : 60% / 6.5 CGPA, no active backlogs
+   • Exam          : Cognitive & Technical Assessment
+                     + Coding Test
+                     + Behavioral/Psychometric Assessment (unique!)
+   • Pro Tip       : Psychometric test — be consistent in answers
+   • Salary        : ₹4.5 LPA
+   • Status        : Registered / Not Registered
+   • Notes         :
+
+─────────────────────────────────────────
+
+7. HCL Technologies
+   • Portal        : hcltech.com/careers
+   • Cost          : FREE ✅
+   • Registration  : Oct–Dec 2026
+   • Eligibility   : 60%, 2027 batch
+   • Salary        : ₹3–4.5 LPA
+   • Status        : Registered / Not Registered
+   • Notes         :
+
+─────────────────────────────────────────
+
+8. IIT Patna Campus Placements (On-Campus)
+   • Through       : IIT Patna T&P Cell (FREE)
+   • Season        : Oct 2026 onwards (Summer Internship 2027)
+   • Companies     : TCS, Infosys, Wipro, Cognizant, Accenture,
+                     HCL, research labs, startups
+   • Prepare       : Resume + LeetCode + Projects + LinkedIn
+   • Notes         :
 
 ═══════════════════════════════════════
 🎯 DSA PREP TRACKER (LeetCode)
 ═══════════════════════════════════════
+• GitHub         : github.com/ayushcmd
 • Problems Solved: ___
-• Target: 150+ by Aug 2026
-• Weak Topics:
-• Strong Topics:
+• Target by Aug  : 150+ problems
+• Easy Solved    : ___
+• Medium Solved  : ___
+• Hard Solved    : ___
+• Weak Topics    :
+• Strong Topics  :
+• Current Streak :
 
 ═══════════════════════════════════════
-📁 PROJECTS TO HIGHLIGHT
+📁 PROJECTS TO HIGHLIGHT IN INTERVIEWS
 ═══════════════════════════════════════
-• FitoGlobe (Full Stack + ML)
-• Dollar Hegemony (ML Research)
-• India Crime Analytics
-• GitHub: github.com/ayushcmd"></textarea>
+1. FitoGlobe
+   • Stack  : React 18 + Vite + Node.js + PostgreSQL + Prisma
+   • Status : In Development
+   • GitHub : github.com/ayushcmd
+   • Points to mention:
+
+2. Dollar Hegemony
+   • Stack  : Python + XGBoost + LSTM + FastAPI + Plotly Dash
+   • Status : Ready for public release
+   • GitHub : github.com/ayushcmd
+   • Points to mention:
+
+3. India Crime Analytics
+   • Stack  : React + Recharts + Chart.js + MongoDB Atlas
+   • Status : Completed
+   • Points to mention:
+
+═══════════════════════════════════════
+📊 SALARY COMPARISON (Quick Reference)
+═══════════════════════════════════════
+TCS Digital        ₹7–9 LPA   (Hard to crack)
+LTIMindtree        ₹5–7 LPA   (Medium)
+Cognizant Pro      ₹8 LPA     (Medium-Hard)
+Accenture ASE      ₹4.5 LPA   (Easy-Medium)
+Cognizant Elevate  ₹5 LPA     (Medium)
+Cognizant GenC     ₹4 LPA     (Easy)
+Infosys SP         ₹9.5 LPA   (Hard — DSA heavy)
+Wipro Turbo        ₹6.5 LPA   (Medium)
+Wipro Elite        ₹3.5 LPA   (Easy)
+HCL                ₹3–4.5 LPA (Easy)
+TCS Ninja          ₹3.36 LPA  (Easy)
+Infosys SE         ₹3.6 LPA   (Easy-Medium)
+
+═══════════════════════════════════════
+🌐 OFFICIAL PORTALS
+═══════════════════════════════════════
+• tcsion.com               — TCS NQT
+• infytq.infosys.com       — Infosys Free Cert
+• careers.wipro.com        — Wipro
+• careers.ltimindtree.com  — LTIMindtree
+• careers.cognizant.com    — Cognizant
+• accenture.com/careers    — Accenture
+• unstop.com               — Competitions + Hiring
+• hackerearth.com          — Coding challenges
+• hackerrank.com           — Skill certificates
+• leetcode.com             — DSA Practice</textarea>
     </div>
   </div>
 
@@ -1353,136 +1618,654 @@ SUGGESTED STRUCTURE:
   <div class="nb-panel" id="nb-jlpt">
     <div class="nb-panel-inner">
       <div class="nb-panel-toolbar">
-        <span>🇯🇵 JLPT &amp; Japanese Language — Study Plan, Progress, Resources</span>
-        <button class="nb-save-btn" onclick="saveNote(&#39;jlpt&#39;)">💾 Save</button>
+        <span>🇯🇵 JLPT & Japanese Language — Study Plan, Progress, Resources</span>
+        <button class="nb-save-btn" onclick="saveNote('jlpt')">💾 Save</button>
       </div>
-      <textarea class="nb-textarea" id="note-jlpt" placeholder="Write your JLPT / Japanese notes here...
-
-SUGGESTED STRUCTURE:
+      <textarea class="nb-textarea" id="note-jlpt">═══════════════════════════════════════
+🇯🇵 JLPT — 2026 COMPLETE STUDY TRACKER
 ═══════════════════════════════════════
-🎯 MY JLPT PLAN
-═══════════════════════════════════════
-• July 2026 Exam: Targeting Level ___
-• December 2026 Exam: Targeting Level ___
-• Registration Site: jlptonline.co.in
-• Exam Fee: ~₹1,500–2,000
 
-JLPT Levels:
-N5 → Beginner (800 words, 100 Kanji)
-N4 → Elementary (1,500 words, 300 Kanji)
-N3 → Intermediate (3,750 words, 650 Kanji) — aim before MEXT interview
-N2 → Upper-Intermediate
-N1 → Advanced (business level)
+⚠️ PROFILE & TARGET:
+• Current Level : Beginner → Intermediate
+• July 2026     : Target N4 ⭐
+• December 2026 : Target N3 ⭐⭐
+• Primary Books : Minna no Nihongo (みんなの日本語)
+• AI Tools      : Claude + Gemini (quizzes & practice)
+• Custom Notes  : Claude-made resource ✅
 
 ═══════════════════════════════════════
-📚 STUDY RESOURCES
+📅 EXAM DATES — CONFIRMED
 ═══════════════════════════════════════
-Free:
-• NHK Web Easy (nhk.or.jp/easy) — news in simple Japanese
-• Jisho.org — best Japanese dictionary
-• Anki — flashcards for vocab
-• Duolingo / Tae Kim Grammar Guide
 
-Books:
-• Genki I &amp; II (standard textbook)
-• Nihongo So-Matome N5/N4
+🎯 JLPT July Session
+• Exam Date     : July 6, 2026 (Sunday) ✅ CONFIRMED
+• Registration  : ~Late March – June 2026
+• Portal        : jlptonline.co.in
+• Fee           : ~₹1,500–₹2,000
+• Result        : September 2026
+• Target Level  : N4
+• Status        : Registered / Not Registered
+• Roll Number   :
+• Exam Center   :
 
-Apps:
-• WaniKani — Kanji learning
-• BunPro — grammar SRS
+🎯 JLPT December Session
+• Exam Date     : December 6, 2026 (Sunday) ✅ CONFIRMED
+• Registration  : ~August–October 2026
+• Portal        : jlptonline.co.in
+• Fee           : ~₹1,500–₹2,000
+• Result        : February 2027
+• Target Level  : N3
+• Status        : Will Register in Aug
+• Notes         :
 
 ═══════════════════════════════════════
-📅 PROGRESS LOG
+📊 JLPT LEVEL BREAKDOWN
 ═══════════════════════════════════════
-• Started learning: ___
-• Hiragana mastered: Yes / No
-• Katakana mastered: Yes / No
-• Kanji learned so far: ___
-• Vocab known: ___
+
+N4 (July Target) — Elementary
+• Vocabulary    : ~1,500 words
+• Kanji         : ~300 kanji
+• Grammar       : ~100 grammar points
+• Pass Score    : 90/180 (each section min: 38/60)
+• Sections      :
+  Language Knowledge (Vocab+Grammar) → 60 marks
+  Reading                            → 60 marks
+  Listening                          → 60 marks
+• Duration      : ~105 minutes
+
+N3 (December Target) — Lower Intermediate
+• Vocabulary    : ~3,750 words
+• Kanji         : ~650 kanji
+• Grammar       : ~170 grammar points
+• Pass Score    : 95/180 (each section min: 19/60)
+• Why N3 Matters: "Working level" Japanese
+                  Strong boost for MEXT 2027 interview ✅
 
 ═══════════════════════════════════════
-🎌 WHY JLPT MATTERS FOR YOU
+📚 YOUR RESOURCES — HOW TO USE THEM
 ═══════════════════════════════════════
-• MEXT UG 2027 interview advantage
-• GKS Korea — differentiator (not required but impresses)
-• JLPT N3+ = work eligibility in Japan after graduation"></textarea>
+
+1. Minna no Nihongo (みんなの日本語)
+• Book 1        : Covers N5 level (Chapters 1–25)
+• Book 2        : Covers N4 level (Chapters 26–50)
+• Strategy      :
+  → Book 1 complete karo pehle (N5 base strong karo)
+  → Book 2 pe jao for N4 target
+  → Har chapter mein: Vocab → Grammar → Drill → Practice
+• My Progress   :
+  Book 1 Chapter : ___/25
+  Book 2 Chapter : ___/50
+  Last Studied   :
+
+─────────────────────────────────────
+
+2. Claude (AI Tool) — Prompts to Use
+• Vocabulary Quiz:
+  "Quiz me on N4 Japanese vocabulary.
+  Give me 10 words with 4 options each."
+
+• Grammar Practice:
+  "Give me 5 fill-in-the-blank sentences
+  using N4 grammar patterns like て-form,
+  たい, ている, でしょう etc."
+
+• Chapter Drill:
+  "I am on Minna no Nihongo Chapter [X].
+  Create a 10 question quiz on the vocab
+  and grammar from this chapter."
+
+• Error Correction:
+  "I will write Japanese sentences.
+  Correct my mistakes and explain why."
+
+─────────────────────────────────────
+
+3. Gemini (AI Tool) — How to Use
+• Listening Practice via voice mode
+• Kanji Quiz: "Show me 10 N4 kanji with
+  readings and meanings. Then quiz me."
+• Conversation: Simple N4 level daily life chat
+
+─────────────────────────────────────
+
+4. Claude-Made Custom Resource ✅
+• Use For       : Quick reference, grammar tables,
+                  verb conjugation charts
+• My resource location:
+• Last updated  :
+
+═══════════════════════════════════════
+📅 STUDY PLAN — N4 by July 6, 2026
+═══════════════════════════════════════
+
+Daily Study: Minimum 45–60 minutes/day
+
+MARCH 2026 (Foundation)
+├── Hiragana — perfect (if not done) — 3 days
+├── Katakana — perfect — 3 days
+├── Minna Book 1 Ch 1–8 (core grammar)
+├── Vocab: 10 words/day → 300+ by month end
+└── Claude quiz: Daily 10 vocab questions
+
+APRIL 2026
+├── Minna Book 1 Ch 9–18
+├── Grammar: て-form, ている, たい, ましょう
+├── Kanji: 5 new kanji/day → 150+ by month end
+└── Claude: Grammar fill-in-the-blank daily
+
+MAY 2026
+├── Minna Book 1 Ch 19–25 (complete Book 1!)
+├── N4 Mock Test 1 → identify weak areas
+├── Grammar: でしょう、かもしれない、ながら、ので
+└── Kanji: 5/day → 300+ by month end
+
+JUNE 2026
+├── Minna Book 2 Ch 26–38
+├── N4 Mock Test 2 + Mock Test 3
+├── Reading: 1 short passage/day (N4 level)
+└── JLPT N4 past papers (2023, 2024)
+
+JULY 1–5, 2026 (Final Week)
+├── Full N4 mock test daily
+├── Only revision — no new content
+└── July 6 → EXAM DAY 🎌
+
+═══════════════════════════════════════
+📅 STUDY PLAN — N3 by December 6, 2026
+═══════════════════════════════════════
+
+JULY–AUGUST 2026
+├── Minna Book 2 Ch 39–50 (complete Book 2)
+├── Introduce N3 grammar (~170 points)
+├── Vocab: increase to 15 words/day
+└── Claude: N3 grammar pattern drills
+
+SEPTEMBER 2026
+├── Analyze July N4 result — weak areas
+├── Fix gaps while continuing N3 prep
+└── Kanji: 650 total — 5–7 new/day
+
+OCTOBER 2026
+├── N3 Mock Test 1
+├── JLPT Register for December (deadline ~Oct)
+└── Grammar: Complex patterns
+  (のに、ために、ようだ etc.)
+
+NOVEMBER 2026
+├── N3 Mock Test 2 + Mock Test 3
+├── Past papers: 2023, 2024 N3
+└── Listening intensive (30 min/day)
+
+DECEMBER 1–5 (Final Week)
+├── Full N3 mock daily → Revision only
+└── December 6 → EXAM DAY 🎌
+
+═══════════════════════════════════════
+📊 PROGRESS TRACKER
+═══════════════════════════════════════
+
+VOCABULARY:
+• N5 words known   : ___/800
+• N4 words known   : ___/1500
+• N3 words known   : ___/3750
+• Daily target     : 10–15 words/day
+
+KANJI:
+• N5 kanji         : ___/100
+• N4 kanji         : ___/300
+• N3 kanji         : ___/650
+• Daily target     : 5 kanji/day
+
+GRAMMAR:
+• N5 points done   : ___/80
+• N4 points done   : ___/100
+• N3 points done   : ___/170
+
+MOCK TEST SCORES:
+Date     | Level | Vocab | Reading | Listening | Total | Pass?
+──────────────────────────────────────────────────────────────
+         | N4    |       |         |           |       |
+         | N4    |       |         |           |       |
+         | N3    |       |         |           |       |
+         | N3    |       |         |           |       |
+
+PASS MARKS:
+N4 → 90/180 overall + 38/60 each section
+N3 → 95/180 overall + 19/60 each section
+
+═══════════════════════════════════════
+🎌 WHY JLPT MATTERS FOR YOUR GOALS
+═══════════════════════════════════════
+1. MEXT UG Scholarship 2027
+   N4 = basic shown → good for application
+   N3 = strong advantage in interview ✅✅
+
+2. GKS Korea Scholarship
+   Shows language learning discipline
+   Differentiator among Indian applicants ✅
+
+3. Career in Japan (after graduation)
+   JLPT N3 = eligible for many IT jobs in Japan
+   Japanese IT companies hire CS graduates
+
+═══════════════════════════════════════
+🔗 FREE RESOURCES
+═══════════════════════════════════════
+• jlptonline.co.in         — Official registration
+• jlpt.jp                  — Official site (past papers)
+• jisho.org                — Best Japanese dictionary
+• takoboto.jp              — Vocab + example sentences
+• bunpro.jp                — Grammar SRS (free tier)
+• Nihongo con Teppei (YT)  — Listening (beginner friendly)
+• JapanesePod101 (YT)      — Structured lessons
+• Anki                     — Flashcards (free, best SRS)
+
+Saved AI Prompts:
+• "N4 vocab quiz — 10 questions"
+• "N4 grammar drill — て-form"
+• "Correct my Japanese: [your sentence]"
+• "N3 reading passage + comprehension questions"
+• "Minna no Nihongo Ch [X] quiz"</textarea>
     </div>
   </div>
 
   <!-- Scholarships Notebook -->
-  <div class="nb-panel active" id="nb-schol">
+  <div class="nb-panel" id="nb-schol">
     <div class="nb-panel-inner">
       <div class="nb-panel-toolbar">
         <span>🌏 International Scholarships — Deadlines, Documents, Strategy</span>
-        <button class="nb-save-btn" onclick="saveNote(&#39;schol&#39;)">💾 Save</button>
+        <button class="nb-save-btn" onclick="saveNote('schol')">💾 Save</button>
       </div>
-      <textarea class="nb-textarea" id="note-schol" placeholder="Write your Scholarship notes here...
-
-SUGGESTED STRUCTURE:
+      <textarea class="nb-textarea" id="note-schol">═══════════════════════════════════════
+🌏 SCHOLARSHIPS — COMPLETE 2026–27 TRACKER
 ═══════════════════════════════════════
-🎯 PRIMARY TARGETS (2026)
-═══════════════════════════════════════
-1. MEXT UG (Embassy Route) 🇯🇵
-   • Deadline: ~May 2026
-   • Status: Not Applied / Preparing / Applied
-   • Fully funded: ¥117,000/month + tuition + airfare
-   • Apply at: Embassy of Japan, New Delhi
-   • Documents needed:
-     - Academic transcripts (10th, 12th)
-     - Personal statement (study plan)
-     - Letter of recommendation x2
-     - Passport copy
-     - Health certificate
-   • Notes:
 
-2. GKS UG 2027 (Korea) 🇰🇷
-   • Apply Window: Sep 15 – Oct 31, 2026
-   • Fully funded: tuition + ₹57,000/month + flight + 1yr Korean language
-   • Age: Under 25 ✅
-   • No bachelor degree needed ✅
-   • Apply: studyinkorea.go.kr (Embassy Track or University Track)
-   • Documents needed:
-     - High school certificate + transcripts
-     - UG enrollment certificate
-     - 2 recommendation letters
-     - Personal statement
-     - Health certificate
-   • Notes:
+⚠️ PROFILE:
+• Age           : 18+ (under 19)
+• Current Qual  : 12th Pass + BSc CS (2nd year)
+• Graduation    : August 2027
+• Primary Target: JAPAN 🇯🇵 (MEXT UG — University Route)
+• Secondary     : Korea, EU, UK, Germany, Belgium, Ireland
+• UG Targets    : Apply in 2026 (for 2027 enrollment)
+• PG/Masters    : Apply after Aug 2027 (for 2028 enrollment)
+• Excluded      : MEXT Embassy Route for UG
 
-═══════════════════════════════════════
-📋 OTHER TARGETS (Research for 2027)
-═══════════════════════════════════════
-3. Erasmus Mundus (EU) 🇪🇺
-   • For Masters — after graduation (2027)
-   • Deadline: Jan–Feb each year
-   • ₹90,000/month + tuition + travel
-   • Needs bachelor degree → apply 2028 cycle
-   • Start researching programs NOW: erasmus-plus.ec.europa.eu
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇯🇵 SECTION A — JAPAN (PRIMARY TARGET)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-4. DAAD IIT Sandwich 🇩🇪
-   • For IIT students — semester in Germany
-   • Deadline: ~Oct 30, 2026
-   • Stipend: €934/month + travel
-   • Apply at: daad.in
-   • Need: IIT supervisor recommendation
+⭐ SCHOLARSHIP 1 — MEXT University Recommended (UG)
+YOUR #1 PRIORITY
+• Route         : University Recommended ✅
+• Level         : Undergraduate (UG)
+• Duration      : 5 years (1 yr Japanese prep + 4 yr UG)
+• Stipend       : ¥117,000/month (~₹63,000–₹65,000)
+• Covers        : Full tuition + Airfare + Stipend + Housing
+• Eligibility   :
+  - 12 years schooling completed ✅
+  - Age: Under 24 as of April enrollment ✅
+  - Not previous MEXT recipient
+• Application   : Oct–Dec 2026 (for Sep 2027 enrollment)
+• Results       : Feb–June 2027
+• Enrollment    : September/October 2027
 
-5. VLIR-UOS (Belgium) 🇧🇪
-   • Masters scholarships
-   • After graduation (2027)
-   • Research: vliruos.be
+🎯 TARGET UNIVERSITIES FOR CS/DATA:
+University          | Location | Strength
+─────────────────────────────────────────
+Tokyo University    | Tokyo    | ⭐⭐⭐⭐⭐ #1
+Kyoto University    | Kyoto    | ⭐⭐⭐⭐⭐ #2
+Osaka University    | Osaka    | ⭐⭐⭐⭐
+Tohoku University   | Sendai   | ⭐⭐⭐⭐ CS strong
+Nagoya University   | Nagoya   | ⭐⭐⭐⭐
+Tokyo Tech          | Tokyo    | ⭐⭐⭐⭐⭐ Eng only
+Tsukuba University  | Tsukuba  | ⭐⭐⭐⭐ CS strong
+APU (Ritsumeikan)   | Beppu    | ⭐⭐⭐ English OK
 
-═══════════════════════════════════════
-📁 COMMON DOCUMENTS CHECKLIST
-═══════════════════════════════════════
+📋 DOCUMENTS NEEDED:
 [ ] 10th Marksheet + Certificate
 [ ] 12th Marksheet + Certificate
-[ ] Ongoing UG Enrollment Certificate
-[ ] Passport (valid 2+ years)
-[ ] Recommendation Letters x2 (professor/principal)
-[ ] Statement of Purpose / Study Plan
-[ ] English proficiency proof (if needed)
-[ ] Health Certificate
-[ ] Bank Statement (for some scholarships)"></textarea>
+[ ] UG Enrollment Certificate (IIT Patna)
+[ ] Academic transcripts (IIT Patna — CPI 8.7 ✅)
+[ ] Study Plan / Field of Study Plan (2,000–3,000 words)
+[ ] Letter of Recommendation (x2 — IIT professors)
+[ ] Passport (valid 2+ years) — GET IF NOT DONE!
+[ ] Health Certificate (doctor certified)
+[ ] JLPT score (N3+ = strong advantage)
+
+🎯 MY APPLICATION STATUS:
+University 1 : ___ | Applied: ___ | Result: ___
+University 2 : ___ | Applied: ___ | Result: ___
+University 3 : ___ | Applied: ___ | Result: ___
+
+• Official Info : studyinjapan.go.jp
+• My JLPT Score : ___
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇰🇷 SECTION B — SOUTH KOREA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 2 — GKS UG 2027 ⭐ APPLY SEP 2026
+• Level         : Undergraduate (UG) ✅
+• Duration      : 5 years (1 yr Korean prep + 4 yr UG)
+• Stipend       : KRW 900,000/month (~₹55,000–₹57,000)
+• Covers        : Full tuition + Stipend + Airfare
+                  + Settlement allowance + Health insurance
+• Eligibility   :
+  - Under 25 years old ✅
+  - No bachelor's degree needed ✅ (12th pass enough)
+  - GPA 80%+ or top 20% of class
+  - India quota: 78 seats
+    (28 Embassy Track + 50 University Track)
+• Application Opens : September 15, 2026
+• Deadline          : October 31, 2026
+• Results       : December 2026 / January 2027
+• Enrollment    : March 2027
+
+📋 DOCUMENTS NEEDED:
+[ ] High school certificate + transcripts
+[ ] UG enrollment certificate (IIT Patna)
+[ ] 2 recommendation letters
+[ ] Personal statement (study plan)
+[ ] Health certificate
+[ ] Birth certificate
+[ ] Passport copy
+[ ] TOPIK certificate (optional but +10% bonus points)
+[ ] Notarized English translations
+
+• Portal        : studyinkorea.go.kr
+• Track Chosen  : Embassy / University
+• Target Uni    :
+• My Status     : Will Apply (Sep 2026)
+• Notes         :
+
+SCHOLARSHIP 3 — GKS Graduate (Masters)
+• Level         : Masters ❌ (need bachelor's degree)
+• Apply         : February each year
+• Stipend       : KRW 1,000,000/month (~₹62,000)
+• Target        : Apply Feb 2028 (after Aug 2027 graduation)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇪🇺 SECTION C — EUROPEAN UNION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 4 — Erasmus Mundus Joint Masters (EMJM)
+• Level         : Masters ONLY ❌ (need bachelor's)
+• Duration      : 1–2 years (joint degree, 2+ countries)
+• Stipend       : €1,000–€1,400/month (~₹90,000–₹1.2L)
+• Covers        : Full tuition + Stipend + Travel + Insurance
+• Total Value   : ~€33,600 over 2 years (~₹30+ lakhs)
+• Eligibility   : Bachelor's degree + English proficiency
+• Application   : Oct–Jan (for Sep start next year)
+  For 2028 enrollment: Apply Oct 2027 – Jan 2028
+• Max Apply     : Up to 3 different programs per year
+• Indian Category: "Partner Country" = higher stipend tier
+• CS Programs   : EMJMD Data Science, EMJMD AI,
+                  EMJMD Computer Science,
+                  EMJMD Security & Networks etc.
+• Portal        : erasmus-plus.ec.europa.eu
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇩🇪 SECTION D — GERMANY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 5 — DAAD Study Scholarship (Masters)
+• Level         : Masters ❌ (need bachelor's)
+• Stipend       : €934/month (~₹84,000–₹95,000)
+• Covers        : Stipend + Travel + Health insurance
+  (German public unis = FREE tuition already!)
+• Eligibility   :
+  - Bachelor's + CGPA 8.5/10 — IIT 8.7 CPI ✅✅
+  - English: IELTS 6.5+ / TOEFL 90+
+• For Oct 2028 start → Apply Aug 2027 (YOUR CYCLE) ✅
+• CS Programs   : TU Munich, KIT, TU Berlin, RWTH Aachen
+• Portal        : daad.in | daad.de
+• Notes         :
+
+🎯 DAAD SPECIAL FOR IIT STUDENTS:
+A. DAAD–IIT Master Sandwich (KOSPIE)
+   • FOR IIT STUDENTS SPECIFICALLY ✅
+   • Do project/thesis at German university
+     while enrolled at IIT Patna
+   • Duration   : 7 months (Sep–Mar)
+   • Stipend    : €992/month + travel + research allowance
+   • Eligibility: IIT students | CGPA 8.5+ ✅
+   • Deadline   : March 13, 2027 (for 2027 intake)
+   • Apply at   : daad.in → KOSPIE program
+   • Notes      :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇬🇧 SECTION E — UNITED KINGDOM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 6 — Commonwealth Masters Scholarship
+• Level         : Masters ❌ (need bachelor's)
+• Stipend       : £1,236/month (~₹1.3 lakh/month)
+• Covers        : Full tuition + Stipend + Airfare
+• Eligibility   : Indian citizen + First class bachelor's
+                  Under 35 years ✅
+• Deadline      : October–December each year
+  For 2028: Apply Oct–Dec 2027
+• Portal        : cscuk.fcdo.gov.uk
+• Notes         :
+
+SCHOLARSHIP 7 — Chevening Scholarship
+• Level         : Masters ❌ (need bachelor's)
+• Stipend       : £1,127/month (~₹1.18 lakh/month)
+• Covers        : Full tuition + Stipend + Visa + Airfare
+• Eligibility   : Bachelor's + 2 years work experience
+• Deadline      : November 5 each year
+  For 2028 enrollment: Apply Nov 2027
+• Portal        : chevening.org
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇧🇪 SECTION F — BELGIUM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 8 — VLIR-UOS
+• Level         : Masters ❌ (need bachelor's)
+• Stipend       : €700–€1,175/month (~₹63,000–₹1.06 lakh)
+• Covers        : Full tuition + Stipend + Airfare + Insurance
+• Eligibility   : Developing country ✅ + bachelor's
+                  Under 35 years ✅
+• Deadline      : February–March each year
+  For 2028: Apply Feb–Mar 2028
+• CS Programs   : KU Leuven, VUB, UGent, UAntwerp
+• Portal        : vliruos.be/en/scholarships
+• Low Cost of Living: Belgium cheaper than UK ✅
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇮🇪 SECTION G — IRELAND
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 9 — GOI-IES Ireland
+• Level         : Masters / PhD ❌ (need bachelor's)
+• Stipend       : €10,000 lump sum (~₹9 lakhs)
+• Eligibility   : Indian citizen + bachelor's + Under 40
+• Deadline      : January–February each year
+• Competition   : MEDIUM (less known = better odds) ✅
+• Note          : Ireland = HQ of Google, Apple, Meta,
+                  LinkedIn — great for CS career ✅✅
+• Portal        : gov.ie/en/service/international-scholarships
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇮🇹 SECTION H — ITALY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 10 — MAECI Italy
+• Level         : Masters / PhD
+• Stipend       : €900/month (~₹81,000)
+• Covers        : Stipend + Tuition waiver
+• Deadline      : February–March (apply via Embassy)
+• CS Programs   : Politecnico Milano, Politecnico Torino
+• Portal        : esteri.it | Italian Embassy New Delhi
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇸🇪 SECTION I — SWEDEN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 11 — SISGP Sweden
+• Level         : Masters ❌ (need bachelor's + work exp)
+• Stipend       : SEK 11,000/month (~₹88,000)
+• Covers        : Full tuition + Stipend + Travel + Insurance
+• Deadline      : February 10 each year
+• CS Programs   : KTH Royal Institute (top CS),
+                  Chalmers, Stockholm, Uppsala
+• Portal        : si.se/en/apply/scholarships
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇭🇺 SECTION J — HUNGARY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 12 — Stipendium Hungaricum
+• Level         : UG ✅ / Masters / PhD
+  NOTE: UG track with 12th pass — RESEARCH THIS
+• Duration      : 4 years UG / 2 years Masters
+• Covers        : Full tuition + Accommodation + Health
+• Stipend       : LOW — but FREE tuition + dorm
+• Deadline      : January 15 each year
+  For 2028 enrollment: Apply Jan 2027
+• Note          : Low cost of living ✅ Budapest growing tech
+• Portal        : stipendiumhungaricum.hu
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇫🇷 SECTION K — FRANCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 13 — Eiffel Excellence
+• Level         : Masters ❌ (need bachelor's)
+• Stipend       : €1,181/month (~₹1.06 lakh)
+• Note          : CANNOT apply directly — university nominates you
+                  Apply to French university first → they nominate
+• Deadline      : January each year (nominations)
+• CS Programs   : Polytechnique, INRIA, Sorbonne,
+                  CentraleSupélec (top AI/CS)
+• Portal        : campusfrance.org/en/eiffel
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇹🇼 SECTION L — TAIWAN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 14 — Taiwan MOFA
+• Level         : UG ✅ (12th pass) / Masters
+• Stipend       : TWD 15,000–25,000/month (~₹40,000–₹66,000)
+• Covers        : Tuition + Stipend
+• Eligibility   : 12th Pass ✅ | Age under 35
+• Deadline      : February–March each year
+  For 2027 enrollment: Apply Feb–Mar 2026 (CHECK NOW!)
+• Portal        : mofa.gov.tw | Taiwan Education Center India
+• Note          : NTUST, NCTU strong in CS ✅
+                  Lower competition vs Japan/Korea ✅
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🇸🇬 SECTION M — SINGAPORE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCHOLARSHIP 15 — NUS/NTU Research
+• Level         : Masters / PhD ❌ (after graduation)
+• Stipend       : SGD 2,200/month (~₹1.35 lakh)
+• Covers        : Full tuition + Stipend
+• Deadline      : December–February each year
+• CS Programs   : NUS (top 10 CS world), NTU
+• Portal        : nus.edu.sg | ntu.edu.sg
+• Notes         :
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡 MONEY COMPARISON (Low Cost Countries)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Country     | Stipend/mo | Cost of Living | Value
+─────────────────────────────────────────────────
+Taiwan      | ₹40–66K    | ₹25,000–35,000 | ✅ BEST
+Korea       | ₹57,000    | ₹35,000–45,000 | ✅ Good
+Hungary     | Low        | FREE dorm+low  | ✅ Survival ok
+Germany     | ₹84,000    | ₹60,000–75,000 | ✅ Decent
+Japan       | ₹63,000    | ₹45,000–55,000 | ✅ Tight
+Belgium     | ₹90,000    | ₹70,000–85,000 | Moderate
+Sweden      | ₹88,000    | ₹80,000–95,000 | Tight
+Singapore   | ₹1.35L     | ₹90,000–1.1L  | Best savings
+
+🏆 BEST VALUE: Taiwan → Korea → Germany
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 MASTER APPLICATION TIMELINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2026 (Apply These NOW / This Year)
+├── Feb–Mar 2026   → Taiwan MOFA (CHECK IF STILL OPEN!)
+├── Sep–Oct 2026   → GKS Korea UG 2027 ⭐ APPLY
+└── Oct–Dec 2026   → MEXT University Recommended UG ⭐⭐ APPLY
+
+2027 (After Aug Graduation)
+├── Aug–Oct 2027   → DAAD Masters (Germany) ⭐
+├── Oct 2027–Jan 28→ Erasmus Mundus Masters ⭐
+├── Nov 2027       → Chevening UK
+├── Oct–Dec 2027   → Commonwealth UK Masters
+├── Jan 2027       → Stipendium Hungaricum
+├── Jan–Feb 2028   → GOI-IES Ireland Masters
+├── Feb 2028       → VLIR-UOS Belgium Masters
+├── Feb 2028       → SISGP Sweden
+├── Jan 2028       → Eiffel France (via university)
+└── Dec–Feb 2028   → Singapore NUS/NTU Research
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 MASTER DOCUMENTS CHECKLIST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PREPARE NOW (for 2026 UG scholarships):
+[ ] 10th Marksheet + Certificate (attested)
+[ ] 12th Marksheet + Certificate (attested)
+[ ] IIT Patna Enrollment Certificate
+[ ] IIT Patna Transcripts (CPI 8.7 ✅)
+[ ] PASSPORT — GET IMMEDIATELY IF NOT DONE!
+    passportindia.gov.in | Tatkaal ~1–3 weeks | ₹3,500
+[ ] Passport photos (20+ copies)
+[ ] 2 Recommendation Letters (IIT professors)
+[ ] Statement of Purpose / Study Plan (draft)
+[ ] Health Certificate (doctor signed)
+[ ] Birth Certificate
+
+PREPARE FOR MASTERS (by 2027):
+[ ] Bachelor's Degree Certificate + Transcripts
+[ ] IELTS/TOEFL score (IELTS 6.5+ minimum)
+[ ] GRE score (some programs need)
+[ ] JLPT score (Japan)
+[ ] TOPIK score (Korea)
+[ ] Research proposal / SOP
+[ ] CV/Resume (academic format)
+[ ] Project portfolio (GitHub + LinkedIn)
+
+⭐ PASSPORT NOTE:
+Without passport you CANNOT apply for any scholarship.
+GET IT DONE IMMEDIATELY if not done.
+passportindia.gov.in → Tatkaal = 1–3 weeks
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 ALL OFFICIAL LINKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• studyinjapan.go.jp         — MEXT official
+• studyinkorea.go.kr         — GKS official portal
+• erasmus-plus.ec.europa.eu  — Erasmus Mundus catalogue
+• daad.in                    — DAAD India office
+• chevening.org              — Chevening UK
+• cscuk.fcdo.gov.uk          — Commonwealth UK
+• vliruos.be                 — VLIR-UOS Belgium
+• si.se/en                   — Swedish Institute
+• stipendiumhungaricum.hu    — Hungary
+• campusfrance.org           — France/Eiffel
+• gov.ie/scholarships        — GOI-IES Ireland
+• mofa.gov.tw                — Taiwan MOFA
+• nus.edu.sg/admissions      — NUS Singapore
+• passportindia.gov.in       — Passport application</textarea>
     </div>
   </div>
 
@@ -1877,6 +2660,5 @@ document.querySelectorAll('.nb-textarea').forEach(ta => {
 render();
 loadNotebooks();
 </script>
-
-
-</body></html>
+</body>
+</html>
