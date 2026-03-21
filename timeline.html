@@ -1,0 +1,1882 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)file:///C:/Users/ASUS/Downloads/Ayush%20Raj%20%202026%20Master%20Timeline.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayush Raj — 2026 Master Timeline</title>
+<link href="./Ayush 2026 Master Timeline_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #1a1d24;
+    --border: #252830;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --green: #22c55e;
+    --green-dim: #14532d;
+    --yellow: #eab308;
+    --yellow-dim: #713f12;
+    --white-ev: #f8fafc;
+    --blue: #3b82f6;
+    --blue-dim: #1e3a5f;
+    --red: #ef4444;
+    --purple: #a855f7;
+    --orange: #f97316;
+    --cyan: #06b6d4;
+    --month-w: 280px;
+    --card-gap: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── Header ─── */
+  .header {
+    padding: 24px 32px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: linear-gradient(135deg, #0f1117 0%, #0a0c10 100%);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-left h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, #f8fafc, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .header-left p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 2px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 7px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 500;
+  }
+
+  .btn:hover { background: var(--surface2); border-color: #3b4455; }
+  .btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+  /* ─── Filter Bar ─── */
+  .filter-bar {
+    padding: 12px 32px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .filter-btn {
+    padding: 5px 13px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--surface2);
+    color: var(--text);
+    border-color: #3b4455;
+  }
+
+  /* ─── Timeline Scroll Container ─── */
+  .timeline-wrap {
+    overflow-x: auto;
+    padding: 24px 32px 40px;
+    scrollbar-color: #252830 transparent;
+    scrollbar-width: thin;
+  }
+
+  .timeline-wrap::-webkit-scrollbar { height: 6px; }
+  .timeline-wrap::-webkit-scrollbar-track { background: transparent; }
+  .timeline-wrap::-webkit-scrollbar-thumb { background: #252830; border-radius: 3px; }
+
+  /* ─── Month Grid ─── */
+  .months-row {
+    display: flex;
+    gap: 2px;
+    min-width: max-content;
+    align-items: flex-start;
+  }
+
+  .month-col {
+    width: var(--month-w);
+    flex-shrink: 0;
+  }
+
+  .month-header {
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    position: sticky;
+    top: 0;
+  }
+
+  .month-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .month-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .month-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap);
+    padding: 8px 6px;
+    background: #0d1016;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    min-height: 80px;
+  }
+
+  /* ─── Event Cards ─── */
+  .event-card {
+    border-radius: 7px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .event-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 7px 0 0 7px;
+  }
+
+  /* Status Colors */
+  .ev-applied::before { background: var(--green); }
+  .ev-apply::before   { background: var(--yellow); }
+  .ev-exam::before    { background: var(--white-ev); }
+  .ev-info::before    { background: var(--blue); }
+  .ev-prep::before    { background: var(--purple); }
+
+  .ev-applied { border-color: #1a3a28; }
+  .ev-apply   { border-color: #3a2e0a; }
+  .ev-exam    { border-color: #2d3340; }
+  .ev-info    { border-color: #1e2a40; }
+  .ev-prep    { border-color: #2d1f40; }
+
+  .event-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    z-index: 2;
+  }
+
+  .ev-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 7px;
+    border-radius: 12px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 5px;
+  }
+
+  .tag-gov    { background: #1e3a5f; color: #93c5fd; }
+  .tag-it     { background: #1a2e1a; color: #86efac; }
+  .tag-schol  { background: #2d1f40; color: #d8b4fe; }
+  .tag-lang   { background: #1f2d1a; color: #a3e635; }
+  .tag-cg     { background: #3a1f10; color: #fdba74; }
+  .tag-bihar  { background: #3a101a; color: #fca5a5; }
+  .tag-central{ background: #102a3a; color: #67e8f9; }
+
+  .ev-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+
+  .ev-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--muted);
+  }
+
+  .ev-note {
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-top: 4px;
+    line-height: 1.4;
+    border-top: 1px solid var(--border);
+    padding-top: 5px;
+    display: none;
+  }
+
+  .event-card.expanded .ev-note { display: block; }
+
+  .ev-status {
+    position: absolute;
+    top: 8px; right: 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .status-applied { background: var(--green-dim); color: var(--green); }
+  .status-apply   { background: var(--yellow-dim); color: var(--yellow); }
+  .status-exam    { background: #1e2a40; color: #93c5fd; }
+  .status-info    { background: #1a1d24; color: var(--muted); }
+  .status-prep    { background: #2d1f40; color: #d8b4fe; }
+  .status-tentative { background: #2d2510; color: #fb923c; font-size: 0.58rem; }
+
+  /* ─── Edit Modal ─── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    width: 500px;
+    max-width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 9px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--blue);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .btn-danger { background: #3a1010; border-color: #5a2020; color: #fca5a5; }
+  .btn-danger:hover { background: #4a1414; }
+  .btn-primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .btn-primary:hover { background: #2563eb; }
+
+  /* ─── Add Event Button ─── */
+  .add-event-btn {
+    width: 100%;
+    padding: 8px;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'Space Grotesk', sans-serif;
+    margin-top: 4px;
+  }
+
+  .add-event-btn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: #1e2a40;
+  }
+
+  /* ─── Stats Bar ─── */
+  .stats-bar {
+    display: flex;
+    gap: 24px;
+    padding: 14px 32px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stat-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+
+  .stat-label { font-size: 0.72rem; color: var(--muted); }
+  .stat-count { font-size: 0.82rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+  /* ─── Today Marker ─── */
+  .today-marker {
+    background: linear-gradient(135deg, #1e3a5f, #102030);
+    border: 1px solid var(--blue);
+    border-radius: 7px;
+    padding: 6px 10px;
+    font-size: 0.68rem;
+    color: var(--blue);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  /* ─── Scrollbar for month ─── */
+  .month-col:first-child .month-header { border-color: #1e3a5f; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .header, .filter-bar, .timeline-wrap, .stats-bar { padding-left: 16px; padding-right: 16px; }
+    :root { --month-w: 240px; }
+  }
+
+  /* ─── Notebook Section ─── */
+  .notebook-section {
+    padding: 32px;
+    border-top: 2px solid var(--border);
+    background: var(--bg);
+  }
+
+  .notebook-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .notebook-header h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .notebook-tabs {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0;
+  }
+
+  .nb-tab {
+    padding: 9px 18px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.15s;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nb-tab:hover { color: var(--text); background: var(--surface); }
+  .nb-tab.active { color: var(--text); border-bottom-color: var(--blue); background: var(--surface); }
+
+  .nb-panel { display: none; }
+  .nb-panel.active { display: block; }
+
+  .nb-panel-inner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .nb-panel-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nb-panel-toolbar span {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .nb-save-btn {
+    padding: 5px 14px;
+    background: var(--green-dim);
+    border: 1px solid var(--green);
+    color: var(--green);
+    border-radius: 5px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: all 0.15s;
+  }
+
+  .nb-save-btn:hover { background: #166534; }
+
+  .nb-textarea {
+    width: 100%;
+    min-height: 340px;
+    padding: 20px;
+    background: var(--surface);
+    border: none;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    resize: vertical;
+    outline: none;
+  }
+
+  .nb-textarea::placeholder { color: #3b4455; }
+
+  .nb-saved-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--green-dim);
+    border: 1px solid var(--green);
+    color: var(--green);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+
+  .nb-saved-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <h1>⚡ Ayush Raj — 2026 Master Timeline</h1>
+    <p>IIT Patna · CSDA 2nd Year · 18 yrs &nbsp;|&nbsp; Click any card to expand · Edit mode to customize</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-end;">
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Applied</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div> Apply / Deadline</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--white-ev)"></div> Exam Date</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div> Info / Result</div>
+    </div>
+    <div class="controls">
+      <button class="btn" onclick="toggleEditMode()">✏️ Edit Mode</button>
+      <button class="btn" onclick="exportData()">💾 Save JSON</button>
+      <button class="btn" onclick="document.getElementById(&#39;importFile&#39;).click()">📂 Load JSON</button>
+      <input type="file" id="importFile" style="display:none" accept=".json" onchange="importData(event)">
+    </div>
+  </div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar" id="statsBar">
+  <div class="stat-item"><div class="stat-dot" style="background:var(--green)"></div><span class="stat-label">Applied</span><span class="stat-count" id="countApplied">3</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--yellow)"></div><span class="stat-label">Upcoming Deadlines</span><span class="stat-count" id="countApply">20</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--white-ev)"></div><span class="stat-label">Exams Scheduled</span><span class="stat-count" id="countExam">10</span></div>
+  <div class="stat-item"><div class="stat-dot" style="background:var(--blue)"></div><span class="stat-label">Info / Results</span><span class="stat-count" id="countPrep">0</span></div>
+</div>
+
+<!-- Filter Bar -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCat(&#39;all&#39;, this)">All</button>
+  <button class="filter-btn" onclick="filterCat(&#39;central&#39;, this)">🏛️ Central Govt</button>
+  <button class="filter-btn" onclick="filterCat(&#39;cg&#39;, this)">🟠 CG State</button>
+  <button class="filter-btn" onclick="filterCat(&#39;bihar&#39;, this)">🔴 Bihar</button>
+  <button class="filter-btn" onclick="filterCat(&#39;it&#39;, this)">💻 IT Companies</button>
+  <button class="filter-btn" onclick="filterCat(&#39;schol&#39;, this)">🌏 Scholarships</button>
+  <button class="filter-btn" onclick="filterCat(&#39;lang&#39;, this)">🗣️ JLPT / Language</button>
+</div>
+
+<!-- Timeline -->
+<div class="timeline-wrap">
+  <div class="months-row" id="timelineRoot"><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">JAN</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-1">
+        
+      <div class="event-card ev-info" data-id="j1">
+    <span class="ev-tag tag-schol">Scholarship</span>
+    <span class="ev-status status-info">Info</span>
+    <div class="ev-title">GKS UG 2026 Results (Info)</div>
+    <div class="ev-date">Jan 2026</div>
+    <div class="ev-note">Korea GKS Undergraduate 2026 results typically announced in January. If you had applied (Sept-Oct 2025 window), check studyinkorea.go.kr. The 2027 cycle opens Sept 15, 2026.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">FEB</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-2">
+        
+      <div class="event-card ev-info" data-id="f1">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-info">Info</span>
+    <div class="ev-title">SSC GD Exam — POSTPONED</div>
+    <div class="ev-date">Was Feb 23</div>
+    <div class="ev-note">✅ ALREADY APPLIED. SSC GD Constable 2026 exam postponed from Feb 23. Revised dates expected April–May 2026. ⚠️ NOTE: This exam has a Physical Efficiency Test — you applied before knowing this. Just appear for written exam. Keep checking ssc.gov.in.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="border-color:#3b82f6;background:#0f1a2e;">
+        <span class="month-name" style="color:#60a5fa;">MAR</span>
+        <span class="month-num">📍 NOW</span>
+      </div>
+      <div class="month-body" id="month-3">
+        <div class="today-marker">📍 YOU ARE HERE</div>
+      <div class="event-card ev-applied" data-id="m1">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-applied">Applied ✓</span>
+    <div class="ev-title">RRB NTPC 12th Level Exam</div>
+    <div class="ev-date">Mar 16–27, 2026</div>
+    <div class="ev-note">✅ ALREADY APPLIED. RRB NTPC CEN 07/2025 — 12th Pass (UG Level). Posts: Junior Clerk cum Typist, Account Clerk cum Typist, Junior Time Keeper, Commercial cum Ticket Clerk. Exam ONGOING. Check admit card at rrbapply.gov.in. Salary: Pay Level 2–3 → ₹19,900–₹25,500/month. No physical test ✅.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">APR</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-4">
+        
+      <div class="event-card ev-apply" data-id="a1">
+    <span class="ev-tag tag-it">IT / Campus</span>
+    <span class="ev-status status-apply">Apply!</span>
+    <div class="ev-title">TCS iON NQT — DEADLINE</div>
+    <div class="ev-date">Apr 2, 2026</div>
+    <div class="ev-note">Last date to register for April TCS iON NQT. Visit tcsion.com → Select "Learners-Youth" → Choose IT variant (₹999) or Cognitive (₹599). Score valid 2 years — useful when you graduate in 2027. You are eligible as 2nd year pre-final student.</div>
+  </div><div class="event-card ev-exam" data-id="a2">
+    <span class="ev-tag tag-it">IT / Campus</span>
+    <span class="ev-status status-exam">Exam</span>
+    <div class="ev-title">TCS iON NQT Exam</div>
+    <div class="ev-date">Apr 14, 2026</div>
+    <div class="ev-note">TCS National Qualifier Test. Duration: 190 mins. Sections: Numerical, Verbal, Reasoning (25 min each), Advanced Quant+Reasoning (25 min), Coding (90 min). No negative marking. Score valid 2 years. Mode: At-home or in-centre.</div>
+  </div><div class="event-card ev-applied" data-id="a5">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">SSC GD Exam — Tentative</div>
+    <div class="ev-date">Apr–May 2026</div>
+    <div class="ev-note">✅ ALREADY APPLIED. SSC GD Constable exam rescheduled to April-May 2026. Written exam first → then PET/PST for shortlisted. Just appear for written — you've done the hard part. ssc.gov.in for hall ticket.</div>
+  </div><div class="event-card ev-apply" data-id="a6">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-apply">Apply!</span>
+    <div class="ev-title">🔴 SSC Phase 14 — DEADLINE</div>
+    <div class="ev-date">Apr 30, 2026</div>
+    <div class="ev-note">🚨 URGENT — APPLY BEFORE APR 30. SSC Selection Post Phase 14. Form opens Mar 31, closes Apr 30. 2,400+ vacancies. Many 12th pass posts available ✅. Age: 18–42 years (wider range). No interview, no physical test ✅. CBT only → DV. Salary: Pay Level 1–7 (₹18,000–₹44,900/month). Apply NOW at ssc.gov.in → OTR login → Phase XIV.</div>
+  </div><div class="event-card ev-apply" data-id="chsl_form">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-apply">Apply!</span>
+    <div class="ev-title">SSC CHSL 2026 — Form Opens</div>
+    <div class="ev-date">Apr 30, 2026</div>
+    <div class="ev-note">SSC CHSL 2026 form opens April 30. Deadline: May 31. 12th Pass ✅ eligible. Posts: LDC (₹19,900), JSA (₹19,900), Postal Assistant/Sorting Assistant (₹25,500), DEO (₹25,500–₹29,200). Appearing candidates allowed ✅ (must have passed by DV). No physical test ✅. Negative marking: -0.5. Competition: HIGH (50+ lakh applicants). DEO post = CS background advantage. Apply at ssc.gov.in.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">MAY</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-5">
+        
+      <div class="event-card ev-applied" data-id="my1">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">RRB NTPC 12th Level Exam</div>
+    <div class="ev-date">~May 2026</div>
+    <div class="ev-note">✅ ALREADY APPLIED. RRB NTPC CEN 07/2025 — 12th pass UG level. CBT-1 tentatively May 2026. Posts: Junior Clerk, Account Clerk, Commercial cum Ticket Clerk. Salary: ₹19,900–₹25,500/month. No physical test ✅. Check rrbapply.gov.in for admit card. Appearing candidates allowed for exam but need passing certificate at DV.</div>
+  </div><div class="event-card ev-apply" data-id="chsl_deadline">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-apply">Apply!</span>
+    <div class="ev-title">SSC CHSL 2026 — Form Deadline</div>
+    <div class="ev-date">May 31, 2026</div>
+    <div class="ev-note">LAST DATE to apply for SSC CHSL 2026. Apply at ssc.gov.in. Posts: LDC, JSA, PA/SA, DEO. 12th Pass ✅. Age: 18–27 years. Fee: ₹100 (General), Free for Women/SC/ST/PwD. Salary: ₹19,900–₹29,200/month. Exam: July–September 2026.</div>
+  </div><div class="event-card ev-apply" data-id="my3">
+    <span class="ev-tag tag-schol">Scholarship</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">MEXT 2027 Embassy Deadline</div>
+    <div class="ev-date">~May 2026</div>
+    <div class="ev-note">CRITICAL! MEXT Embassy Recommended UG Scholarship for 2027 enrollment — deadline approximately May 2026 for India. Fully funded: ¥117,000/month stipend + tuition + airfare. 5-year scholarship (1 yr Japanese prep + 4 yr UG). Apply at Embassy of Japan, New Delhi. You are eligible as current UG student. No Japanese needed initially.</div>
+  </div><div class="event-card ev-apply" data-id="cg_deo_form">
+    <span class="ev-tag tag-cg">CG State</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">CG DEO — Form Deadline</div>
+    <div class="ev-date">~May 2026</div>
+    <div class="ev-note">CG Vyapam Data Entry Operator recruitment. Form typically closes ~4–6 weeks before exam date. Qualification: 12th Pass + typing speed 5000 KDPH. Age: 18–35 years (General). CG domicile required. Fee: ₹0 for CG domicile. Apply at vyapamcg.cgstate.gov.in. Your BSc CS background = big advantage.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">JUN</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-6">
+        
+      <div class="event-card ev-apply" data-id="mts_notif">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-apply">Apply!</span>
+    <div class="ev-title">SSC MTS 2026 — Form Opens</div>
+    <div class="ev-date">Jun 30, 2026</div>
+    <div class="ev-note">SSC MTS (Multi-Tasking Staff) 2026 notification + form opens June 30. 10th Pass ✅ eligible (you are 12th pass = easily qualified). Age: 18–25 years. Fee: ₹100 (General), Free for Women/SC/ST/PwD. 7,000–10,000+ vacancies. No physical test for MTS posts ✅. CBT only → DV. Salary: Pay Level 1 → ₹18,000–₹22,000/month. Easiest paper of all SSC exams. Apply at ssc.gov.in.</div>
+  </div><div class="event-card ev-info" data-id="jn3">
+    <span class="ev-tag tag-bihar">Bihar</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">BSSC Inter Level Prelims (Info)</div>
+    <div class="ev-date">Jun–Jul 2026</div>
+    <div class="ev-note">BSSC 2nd Inter Level — 26,426 vacancies (LDC, Panchayat Secretary, Revenue Employee). 12th pass eligible but Bihar domicile required — you are CG domicile so you will be treated as General/UR category. Form closed Feb 2026 (missed). NEXT CYCLE — watch bssc.bihar.gov.in. Salary: ₹19,900–₹25,000/month.</div>
+  </div><div class="event-card ev-exam" data-id="cg_deo_exam">
+    <span class="ev-tag tag-cg">CG State</span>
+    <span class="ev-status status-exam">Exam</span>
+    <div class="ev-title">CG DEO Exam (Data Entry Operator)</div>
+    <div class="ev-date">Jun 28, 2026</div>
+    <div class="ev-note">CG Vyapam Data Entry Operator Exam — confirmed on official exam calendar. Qualification: 12th Pass + 5000 KDPH typing. Salary: Pay Level 4–5 → ₹19,500–₹25,000/month. Selection: Written Test → Typing Test → DV. Your CS background = highest advantage of any CG exam. Syllabus: GK, Hindi, Maths, Reasoning, Computer Knowledge.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">JUL</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-7">
+        
+      <div class="event-card ev-exam" data-id="jl1">
+    <span class="ev-tag tag-lang">JLPT / Language</span>
+    <span class="ev-status status-exam">Exam</span>
+    <div class="ev-title">🇯🇵 JLPT Exam — July Session</div>
+    <div class="ev-date">Jul 6, 2026 (SUN)</div>
+    <div class="ev-note">CONFIRMED EXAM DATE — JLPT July 2026. First Sunday of July. Japan Language Proficiency Test. Centers across India. Carry admit card + ID proof. JLPT score boosts your MEXT scholarship application. Aim for N4/N5 if beginner. Results: September 2026.</div>
+  </div><div class="event-card ev-info" data-id="jl2">
+    <span class="ev-tag tag-bihar">Bihar</span>
+    <span class="ev-status status-info">Info</span>
+    <div class="ev-title">BPSC 72nd CCE Prelims (Info)</div>
+    <div class="ev-date">Jul 26, 2026</div>
+    <div class="ev-note">INFO ONLY — for 2027 planning. BPSC 72nd CCE Prelims. Qualification: Graduate ❌ (you need Aug 2027). ~1,000+ vacancies. Posts: Deputy Collector, DSP, BDO, Naib Tehsildar. Salary: ₹35,400–₹56,100/month. Bihar domicile preferred for reserved seats. CG domicile = General category. Target BPSC 73rd cycle after graduation. psc.bih.nic.in.</div>
+  </div><div class="event-card ev-exam" data-id="jl3">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">SSC CHSL 2026 — Exam (Tier 1)</div>
+    <div class="ev-date">Jul–Sep 2026</div>
+    <div class="ev-note">SSC CHSL 2026 Tier 1 CBT exam window July–September 2026. YOU ARE ELIGIBLE ✅ — 12th Pass. Posts: LDC, JSA, DEO, PA/SA. Salary: ₹19,900–₹29,200/month. Syllabus: Reasoning (25Q), GK (25Q), Maths (25Q), English (25Q). Negative marking: -0.50. DEO post = CS/typing advantage. No physical test ✅.</div>
+  </div><div class="event-card ev-apply" data-id="mts_deadline">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-apply">Apply!</span>
+    <div class="ev-title">SSC MTS 2026 — Form Deadline</div>
+    <div class="ev-date">Jul 31, 2026</div>
+    <div class="ev-note">LAST DATE to apply for SSC MTS 2026 at ssc.gov.in. 10th Pass eligible ✅, you are 12th pass. Age: 18–25 years. 7,000–10,000+ vacancies. No physical test for MTS posts ✅. Easiest SSC exam. Do not miss this.</div>
+  </div><div class="event-card ev-apply" data-id="cg_ag3_form">
+    <span class="ev-tag tag-cg">CG State</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">CG Asst Grade-3 — Form Deadline</div>
+    <div class="ev-date">~Jul–Aug 2026</div>
+    <div class="ev-note">CG Vyapam Assistant Grade-3 form typically closes 6–8 weeks before exam. Qualification: 12th Pass. Age: 18–35 years. Fee waived for CG domicile. Apply at vyapamcg.cgstate.gov.in. This is the BIGGEST batch — largest number of vacancies (500–3000 posts across departments). Start preparing: CG GK, Hindi, Maths, Reasoning.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">AUG</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-8">
+        
+      <div class="event-card ev-apply" data-id="ag1">
+    <span class="ev-tag tag-lang">JLPT / Language</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">JLPT December — Registration Opens</div>
+    <div class="ev-date">~Aug 2026</div>
+    <div class="ev-note">JLPT December 2026 registration typically opens August. Exam date: December 6, 2026 (confirmed). Register at jlptonline.co.in. If you gave N5 in July and passed, aim for N4 in December. JLPT results from July session come in September — use that to decide.</div>
+  </div><div class="event-card ev-apply" data-id="ag2">
+    <span class="ev-tag tag-it">IT / Campus</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">Wipro Elite NTH Registration</div>
+    <div class="ev-date">Aug–Nov 2026</div>
+    <div class="ev-note">Wipro Elite NTH / Turbo drives open August–November for 2027 batch. Salary: ₹3.5 LPA (Elite) → ₹6.5 LPA (Turbo). Qualification: 60% throughout, no backlogs. Register at careers.wipro.com. Sections: Aptitude, Written English (hard!), Coding (2 problems). Practice essay writing!</div>
+  </div><div class="event-card ev-apply" data-id="ag3">
+    <span class="ev-tag tag-it">IT / Campus</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">LTIMindtree Registration Opens</div>
+    <div class="ev-date">Aug–Sep 2026</div>
+    <div class="ev-note">LTIMindtree hiring registration for 2027 batch opens August-September. Salary: ₹5–7 LPA. Register at careers.ltimindtree.com. 60% throughout, CS/IT preferred. Test: Aptitude + Coding. About 50% shortlisted candidates progress to interview. Apply early as slots fill fast.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">SEP</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-9">
+        
+      <div class="event-card ev-apply" data-id="sp1">
+    <span class="ev-tag tag-schol">Scholarship</span>
+    <span class="ev-status status-apply">Apply!</span>
+    <div class="ev-title">GKS UG 2027 Applications OPEN</div>
+    <div class="ev-date">Sep 15, 2026</div>
+    <div class="ev-note">🔥 KEY OPPORTUNITY! Global Korea Scholarship (GKS) Undergraduate 2027 cycle opens Sep 15, 2026. Fully funded: tuition + ₹57,000/month + flight + language training (1 yr Korean). Age limit: under 25 ✅. No bachelor's needed (you don't have one) ✅. Apply via Embassy Track (Korean Embassy, New Delhi) or University Track (studyinkorea.go.kr). India quota: 26 embassy + 47 university seats.</div>
+  </div><div class="event-card ev-apply" data-id="sp2">
+    <span class="ev-tag tag-it">IT / Campus</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">Cognizant GenC / Accenture Drives</div>
+    <div class="ev-date">Sep–Dec 2026</div>
+    <div class="ev-note">Cognizant GenC (₹4 LPA), GenC Elevate (₹5 LPA), GenC Pro (₹8 LPA) and Accenture ASE (₹4.5 LPA) off-campus drives open September onwards for 2027 batch. Register at careers.cognizant.com and accenture.com/careers. 60% throughout required. Test: Aptitude + Coding + Psychometric (Accenture).</div>
+  </div><div class="event-card ev-info" data-id="sp4">
+    <span class="ev-tag tag-bihar">Bihar</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">BSSC Inter Level — Next Cycle Watch</div>
+    <div class="ev-date">Sep–Dec 2026</div>
+    <div class="ev-note">BSSC 2nd Inter Level next recruitment notification expected Sep–Dec 2026. 12th Pass eligible ✅. Bihar domicile — you (CG domicile) = General/UR category only. No reserved benefits. But you can still apply and compete. Posts: LDC, Revenue Employee, Panchayat Secretary. Salary: ₹19,900–₹25,000/month. Watch bssc.bihar.gov.in.</div>
+  </div><div class="event-card ev-exam" data-id="mts_exam">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">SSC MTS 2026 — Exam</div>
+    <div class="ev-date">Sep–Nov 2026</div>
+    <div class="ev-note">SSC MTS 2026 CBT exam window September–November 2026. 10th pass eligible ✅ (you are 12th pass). Age: 18–25 years. 7,000–10,000+ vacancies. Paper: Reasoning (20Q), English (25Q), Maths (25Q), GK (25Q). Time: 90 mins. No negative marking in Paper 1. Easiest SSC exam to crack. No physical for MTS ✅.</div>
+  </div><div class="event-card ev-exam" data-id="cg_ag3_sep">
+    <span class="ev-tag tag-cg">CG State</span>
+    <span class="ev-status status-exam">Exam</span>
+    <div class="ev-title">CG Assistant Grade-3 Exam (Batch 1)</div>
+    <div class="ev-date">Sep 6, 2026</div>
+    <div class="ev-note">CG Vyapam Assistant Grade-3 — Batch 1. CONFIRMED on official calendar. Qualification: 12th Pass. Age: 18–35 years (General). Salary: Pay Level 3–4 → ₹19,500–₹22,000/month. Selection: Written MCQ only → Document Verification. No physical test ✅. Departments: Revenue, Health, Education, Forest, Agriculture — desk/office work. Syllabus: CG GK, Hindi, General Maths, Reasoning, Computer.</div>
+  </div><div class="event-card ev-apply" data-id="cg_patwari_form">
+    <span class="ev-tag tag-cg">CG State</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">CG Patwari — Form Expected</div>
+    <div class="ev-date">~Sep–Oct 2026</div>
+    <div class="ev-note">🔥 MOST IMPORTANT CG EXAM FOR YOU. CG Patwari recruitment notification expected Sep-Oct 2026. Qualification: 12th Pass + 1-year Computer Diploma (CPCT/DEO certificate). Age: 18–40 years ✅. Salary: Pay Level 6 → ₹25,300–₹82,200 basic (gross ~₹40,000–₹55,000/month) — BEST salary for 12th pass. Vacancies: 1,000–2,000+. ACTION NOW: Get enrolled in a 1-year Computer Diploma course immediately if you don't have one. vyapamcg.cgstate.gov.in.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">OCT</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-10">
+        
+      <div class="event-card ev-apply" data-id="oc1">
+    <span class="ev-tag tag-schol">Scholarship</span>
+    <span class="ev-status status-apply">Apply!</span>
+    <div class="ev-title">GKS UG 2027 — DEADLINE</div>
+    <div class="ev-date">Oct 31, 2026</div>
+    <div class="ev-note">FINAL DEADLINE for GKS Undergraduate 2027. Submit to Korean Embassy (Embassy Track) or chosen Korean university (University Track). Documents needed: High school + UG transcripts, personal statement, recommendation letters, health certificate, passport copy. studyinkorea.go.kr.</div>
+  </div><div class="event-card ev-apply" data-id="oc2">
+    <span class="ev-tag tag-schol">Scholarship</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">DAAD IIT Sandwich Deadline</div>
+    <div class="ev-date">Oct 30, 2026</div>
+    <div class="ev-note">DAAD-IIT Master Sandwich Scholarship deadline ~October 30, 2026. Allows IIT students to do a semester at a German university with full funding (€934/month + travel). Contact daad.in for exact deadline. Needs: Recommendation from IIT Patna supervisor, German university acceptance.</div>
+  </div><div class="event-card ev-apply" data-id="oc3">
+    <span class="ev-tag tag-lang">JLPT / Language</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">JLPT December — Reg Deadline</div>
+    <div class="ev-date">~Oct 2026</div>
+    <div class="ev-note">Last date to register for JLPT December 2026 exam. jlptonline.co.in. Exam date: December 6 (confirmed). Registration typically closes ~6 weeks before exam. Fee: ~₹1,500–2,000.</div>
+  </div><div class="event-card ev-info" data-id="chsl_result">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">SSC Phase 14 Exam Result (Info)</div>
+    <div class="ev-date">~Oct 2026</div>
+    <div class="ev-note">SSC Selection Post Phase 14 results expected ~October 2026 (if exam held May-July). Check ssc.gov.in for scorecards and merit list. Qualified candidates called for DV. Keep all original documents ready.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">NOV</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-11">
+        
+      <div class="event-card ev-exam" data-id="cg_stor_exam">
+    <span class="ev-tag tag-cg">CG State</span>
+    <span class="ev-status status-exam">Exam</span>
+    <div class="ev-title">CG Storekeeper (Bhandarpalak) Exam</div>
+    <div class="ev-date">Nov 22, 2026</div>
+    <div class="ev-note">CG Vyapam Storekeeper exam — CONFIRMED on official calendar. Qualification: 12th Pass. Age: 18–35 years. Salary: Pay Level 3–4 → ₹19,500–₹22,000/month. Selection: Written only → DV. No physical test ✅. Departments: Agriculture, Food &amp; Civil Supplies. Low to medium competition — less popular post = better chances.</div>
+  </div><div class="event-card ev-apply" data-id="nv1">
+    <span class="ev-tag tag-schol">Scholarship</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">MEXT Uni Recommended 2027 — Apply</div>
+    <div class="ev-date">Nov 2026</div>
+    <div class="ev-note">MEXT University Recommended 2027 scholarship applications open at most Japanese universities in November 2026. Apply directly to the Japanese university you want. Popular for CS/Data: Tokyo, Osaka, Tohoku, Kyushu, Nagoya, APU. Fully funded: ¥117,000/month + tuition + airfare. No Japanese required initially. Check each university's international admissions page.</div>
+  </div></div>
+    </div><div class="month-col">
+      <div class="month-header" style="">
+        <span class="month-name" style="">DEC</span>
+        <span class="month-num">2026</span>
+      </div>
+      <div class="month-body" id="month-12">
+        
+      <div class="event-card ev-exam" data-id="cg_ag3_dec1">
+    <span class="ev-tag tag-cg">CG State</span>
+    <span class="ev-status status-exam">Exam</span>
+    <div class="ev-title">CG Assistant Grade-3 Exam (Batch 2)</div>
+    <div class="ev-date">Dec 6, 2026</div>
+    <div class="ev-note">CG Vyapam Assistant Grade-3 — Batch 2. CONFIRMED on official calendar. Same eligibility as Sep batch. 12th Pass. Salary: ₹19,500–₹22,000/month. Apply if you missed Sep batch or want another attempt. Written MCQ → DV only. No physical test ✅.</div>
+  </div><div class="event-card ev-exam" data-id="cg_ag3_dec2">
+    <span class="ev-tag tag-cg">CG State</span>
+    <span class="ev-status status-exam">Exam</span>
+    <div class="ev-title">CG Assistant Grade-3 Exam (Batch 3)</div>
+    <div class="ev-date">Dec 20, 2026</div>
+    <div class="ev-note">CG Vyapam Assistant Grade-3 — Batch 3. CONFIRMED on official calendar. Third and final batch for 2026. Qualification: 12th Pass. Age: 18–35 years. Salary: ₹19,500–₹22,000/month. Written MCQ only. No physical test ✅. This batch typically covers remaining departments not covered in earlier batches.</div>
+  </div><div class="event-card ev-apply" data-id="cg_patwari_exam">
+    <span class="ev-tag tag-cg">CG State</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">CG Patwari Exam — Expected (Form in 2026)</div>
+    <div class="ev-date">Dec 2026 / Jan 2027</div>
+    <div class="ev-note">CG Patwari exam expected Dec 2026 or early Jan 2027 (form released Sep-Oct 2026). APPLY IN 2026 — exam may fall in early 2027. Qualification: 12th Pass + Computer Diploma. Salary: ₹25,300–₹82,200 basic. Most important CG exam for 12th pass CS students. Negative marking: 0.25 per wrong answer. Start preparing CG GK, Hindi, Maths, Computer seriously.</div>
+  </div><div class="event-card ev-exam" data-id="dc1">
+    <span class="ev-tag tag-lang">JLPT / Language</span>
+    <span class="ev-status status-exam">Exam</span>
+    <div class="ev-title">🇯🇵 JLPT Exam — December Session</div>
+    <div class="ev-date">Dec 6, 2026 (SUN)</div>
+    <div class="ev-note">CONFIRMED EXAM DATE — JLPT December 2026. First Sunday of December. Carry admit card + ID proof. If you gave N5 in July and passed, aim for N4 here. N3 is considered "working level" Japanese — strongly recommended before MEXT 2027 interview. Results: February 2027.</div>
+  </div><div class="event-card ev-info" data-id="dc2">
+    <span class="ev-tag tag-schol">Scholarship</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">GKS UG 2027 Results</div>
+    <div class="ev-date">~Dec 2026</div>
+    <div class="ev-note">GKS UG 2027 scholarship results expected December 2026 (if applied in Sep-Oct 2026). Check studyinkorea.go.kr or Korean Embassy India website. Selected candidates proceed for Korean language training starting March 2027.</div>
+  </div><div class="event-card ev-info" data-id="dc3">
+    <span class="ev-tag tag-central">Central Govt</span>
+    <span class="ev-status status-tentative">TENTATIVE</span>
+    <div class="ev-title">SSC GD 2027 Notification Expected</div>
+    <div class="ev-date">~Dec 2026</div>
+    <div class="ev-note">SSC GD Constable 2027 cycle notification expected around December 2026 (based on calendar pattern). You'll still be 12th pass eligible. Watch ssc.gov.in.</div>
+  </div></div>
+    </div></div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+  <div class="modal">
+    <h3 id="modalTitle">Edit Event</h3>
+    <div class="form-group">
+      <label>Event Title</label>
+      <input type="text" id="editTitle" placeholder="e.g. RRB NTPC Exam">
+    </div>
+    <div class="form-group">
+      <label>Date</label>
+      <input type="text" id="editDate" placeholder="e.g. Apr 14 or April 14, 2026">
+    </div>
+    <div class="form-group">
+      <label>Status</label>
+      <select id="editStatus">
+        <option value="ev-apply">🟡 Apply / Deadline</option>
+        <option value="ev-applied">🟢 Already Applied</option>
+        <option value="ev-exam">⚪ Exam Date</option>
+        <option value="ev-info">🔵 Info / Result</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <select id="editCat">
+        <option value="central">🏛️ Central Government</option>
+        <option value="cg">🟠 CG State</option>
+        <option value="bihar">🔴 Bihar</option>
+        <option value="it">💻 IT Company</option>
+        <option value="schol">🌏 Scholarship</option>
+        <option value="lang">🗣️ Language / JLPT</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Notes / Details</label>
+      <textarea id="editNote" placeholder="Add deadline link, eligibility, salary, or any notes..."></textarea>
+    </div>
+    <div class="form-group">
+      <label>Tentative? (adds orange badge)</label>
+      <select id="editTentative">
+        <option value="false">No — confirmed date</option>
+        <option value="true">Yes — tentative date</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Month (1–12)</label>
+      <input type="number" id="editMonth" min="1" max="12">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-danger" id="deleteBtn" onclick="deleteEvent()">Delete</button>
+      <button class="btn" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEvent()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Notebook Section -->
+<div class="notebook-section">
+  <div class="notebook-header">
+    <h2>📓 My Notebook <span style="font-size:0.7rem;color:var(--muted);font-weight:400;font-family:&#39;JetBrains Mono&#39;,monospace;">— auto-saved in browser</span></h2>
+    <button class="btn" onclick="exportNotebook()">💾 Export Notes (.txt)</button>
+  </div>
+
+  <div class="notebook-tabs">
+    <button class="nb-tab" onclick="switchTab(&#39;cg&#39;, this)">🟠 CG State Jobs</button>
+    <button class="nb-tab" onclick="switchTab(&#39;central&#39;, this)">🏛️ Central Govt</button>
+    <button class="nb-tab" onclick="switchTab(&#39;bihar&#39;, this)">🔴 Bihar Jobs</button>
+    <button class="nb-tab" onclick="switchTab(&#39;it&#39;, this)">💻 IT Companies</button>
+    <button class="nb-tab" onclick="switchTab(&#39;jlpt&#39;, this)">🇯🇵 JLPT / Japanese</button>
+    <button class="nb-tab active" onclick="switchTab(&#39;schol&#39;, this)">🌏 Scholarships</button>
+  </div>
+
+  <!-- CG Notebook -->
+  <div class="nb-panel" id="nb-cg">
+    <div class="nb-panel-inner">
+      <div class="nb-panel-toolbar">
+        <span>🟠 CG State Jobs — Notes, Syllabus, Strategy, Deadlines</span>
+        <button class="nb-save-btn" onclick="saveNote(&#39;cg&#39;)">💾 Save</button>
+      </div>
+      <textarea class="nb-textarea" id="note-cg" placeholder="Write your CG exam notes here...
+
+SUGGESTED STRUCTURE:
+═══════════════════════════════════════
+📋 EXAMS TO APPEAR IN 2026
+═══════════════════════════════════════
+1. CG DEO (Data Entry Operator) — Jun 28, 2026
+   • Qualification: 12th Pass + Typing 5000 KDPH
+   • Salary: ₹19,500–₹25,000/month
+   • Apply: ~May 2026
+   • Notes:
+
+2. CG Assistant Grade-3 — Sep 6 / Dec 6 / Dec 20, 2026
+   • Qualification: 12th Pass
+   • Salary: ₹19,500–₹22,000/month
+   • Apply: ~Jul–Aug 2026
+   • Notes:
+
+3. CG Storekeeper — Nov 22, 2026
+   • Qualification: 12th Pass
+   • Salary: ₹19,500–₹22,000/month
+   • Notes:
+
+4. CG Patwari (APPLY in 2026, Exam Dec/Jan)
+   • Qualification: 12th + Computer Diploma
+   • Salary: ₹25,300–₹82,200 basic (BEST PAYING)
+   • ACTION: Get Computer Diploma enrolled NOW
+   • Notes:
+
+═══════════════════════════════════════
+📚 COMMON SYLLABUS (All CG Vyapam)
+═══════════════════════════════════════
+• CG GK &amp; Current Affairs — High weightage
+• General Hindi — High weightage
+• Mathematics (Basic) — Medium
+• Reasoning &amp; Mental Ability — Medium
+• Computer Knowledge — YOUR ADVANTAGE ✅
+• General English — Low
+
+═══════════════════════════════════════
+🌐 OFFICIAL LINKS
+═══════════════════════════════════════
+• vyapamcg.cgstate.gov.in — All CG Vyapam exams
+• psc.cg.gov.in — CGPSC State Service (after graduation)"></textarea>
+    </div>
+  </div>
+
+  <!-- Central Govt Notebook -->
+  <div class="nb-panel" id="nb-central">
+    <div class="nb-panel-inner">
+      <div class="nb-panel-toolbar">
+        <span>🏛️ Central Government Jobs — Notes, Deadlines, Strategy</span>
+        <button class="nb-save-btn" onclick="saveNote(&#39;central&#39;)">💾 Save</button>
+      </div>
+      <textarea class="nb-textarea" id="note-central" placeholder="Write your Central Govt exam notes here...
+
+═══════════════════════════════════════
+✅ ALREADY APPLIED
+═══════════════════════════════════════
+1. RRB NTPC 12th Level (CEN 07/2025)
+   • Exam: ~May 2026 (Tentative)
+   • Posts: Junior Clerk, Account Clerk, Commercial cum Ticket Clerk
+   • Salary: Pay Level 2–3 → ₹19,900–₹25,500/month
+   • No physical test ✅
+   • Status: Watch rrbapply.gov.in for admit card
+   • My Score Target:
+   • Notes:
+
+2. SSC GD Constable 2026
+   • Exam: Apr–May 2026 (Postponed from Feb)
+   • ⚠️ Has Physical Test (PET/PST) after written
+   • Just appear for written exam — already applied
+   • Status: Check ssc.gov.in for revised hall ticket
+   • Notes:
+
+═══════════════════════════════════════
+🔴 URGENT — APPLY BEFORE APR 30
+═══════════════════════════════════════
+3. SSC Selection Post Phase 14
+   • Form: Mar 31 – Apr 30, 2026
+   • 2,400+ vacancies | 12th Pass posts ✅
+   • Age: 18–42 years (wider range)
+   • No physical test ✅ | CBT only
+   • Salary: Pay Level 1–7 (₹18,000–₹44,900/month)
+   • Apply: ssc.gov.in → OTR → Phase XIV
+   • Status: Applied / Not Applied
+   • Notes:
+
+═══════════════════════════════════════
+📋 UPCOMING FORMS (April–July 2026)
+═══════════════════════════════════════
+4. SSC CHSL 2026 — 🔥 MOST IMPORTANT
+   • Form: Apr 30 – May 31, 2026
+   • Exam: Jul–Sep 2026
+   • 12th Pass ✅ | Age: 18–27 years
+   • Posts: LDC (₹19,900), PA/SA (₹25,500), DEO (₹25,500–29,200)
+   • No physical test ✅ | Negative marking: -0.50
+   • DEO post = YOUR CS ADVANTAGE ✅
+   • Appearing candidates: ✅ ALLOWED
+   • My Prep Status:
+   • Notes:
+
+5. SSC MTS 2026
+   • Form: Jun 30 – Jul 31, 2026
+   • Exam: Sep–Nov 2026
+   • 10th Pass eligible ✅ | Age: 18–25 years
+   • 7,000–10,000+ vacancies
+   • No physical test for MTS ✅ | Easiest SSC exam
+   • Salary: Pay Level 1 → ₹18,000–₹22,000/month
+   • Notes:
+
+6. India Post GDS (Next cycle)
+   • 10th Pass ✅ | No exam — pure merit on 10th marks
+   • Age: 18–40 years
+   • Salary: ₹10,000–₹14,500/month
+   • Watch: indiapostgdsonline.gov.in
+   • My 10th %: ___
+   • Notes:
+
+═══════════════════════════════════════
+📚 COMMON SYLLABUS (CHSL + MTS + Phase 14)
+═══════════════════════════════════════
+• General Intelligence &amp; Reasoning — 25Q
+• General Awareness / GK — 25Q
+• Quantitative Aptitude (Maths) — 25Q
+• English Language — 25Q
+• Computer Skill Test (DEO only — CHSL)
+
+Negative Marking:
+• CHSL: -0.50 per wrong | MTS: No negative marking
+• Phase 14: -0.50 per wrong
+
+═══════════════════════════════════════
+🚫 EXAMS TO AVOID IN 2026 (NOT ELIGIBLE)
+═══════════════════════════════════════
+• SSC CGL — Needs Graduation (apply Aug 2027)
+• SSC CPO/SI — Physical test + Graduation
+• UPSC CSE — Graduation required
+• RRB ALP — Needs ITI certificate
+• Any Bank PO/Clerk — Final year/Graduation needed
+
+═══════════════════════════════════════
+🌐 OFFICIAL LINKS
+═══════════════════════════════════════
+• ssc.gov.in — SSC all exams
+• rrbapply.gov.in — Railway exams
+• indiapostgdsonline.gov.in — India Post GDS"></textarea>
+    </div>
+  </div>
+
+  <!-- Bihar Notebook -->
+  <div class="nb-panel" id="nb-bihar">
+    <div class="nb-panel-inner">
+      <div class="nb-panel-toolbar">
+        <span>🔴 Bihar Jobs — Notes, Deadlines, Domicile Info</span>
+        <button class="nb-save-btn" onclick="saveNote(&#39;bihar&#39;)">💾 Save</button>
+      </div>
+      <textarea class="nb-textarea" id="note-bihar" placeholder="Write your Bihar exam notes here...
+
+═══════════════════════════════════════
+⚠️ IMPORTANT — READ FIRST
+═══════════════════════════════════════
+You are CG Domicile → In Bihar STATE exams you are
+treated as GENERAL/UR candidate only.
+No OBC/SC/ST reservation benefits from Bihar.
+Central exams (SSC, RRB) held in Bihar:
+your CG certificate is fully valid ✅.
+
+Physical test exams EXCLUDED: Bihar Police SI,
+Bihar Police Constable, BPSSC posts.
+
+═══════════════════════════════════════
+📋 ELIGIBLE IN 2026 (12th Pass, No Physical)
+═══════════════════════════════════════
+1. BSSC Inter Level — NEXT CYCLE (Watch)
+   • 12th Pass ✅ | Bihar domicile = General/UR for you
+   • Current cycle form closed (Feb 2026)
+   • NEXT notification: Sep–Dec 2026
+   • Posts: LDC, Revenue Employee, Panchayat Secretary
+   • Salary: ₹19,900–₹25,000/month
+   • No physical test ✅ | Written only
+   • Status: Watch bssc.bihar.gov.in
+   • Notes:
+
+═══════════════════════════════════════
+📋 ELIGIBLE AFTER AUG 2027 (Graduate)
+═══════════════════════════════════════
+2. BPSC State Service Exam (73rd CCE)
+   • Graduate ❌ (eligible Aug 2027)
+   • Posts: Deputy Collector, DSP, BDO, Naib Tehsildar
+   • Salary: ₹35,400–₹56,100/month
+   • Bihar domicile: General/UR category for you
+   • Target: 73rd CCE notification (2027)
+   • Start GS prep NOW — takes 1.5–2 years
+   • Notes:
+
+3. BSSC CGL-4 (4th Graduate Level)
+   • Graduate ❌ (eligible Aug 2027)
+   • 1,883 vacancies | Salary: ₹29,200–₹44,900/month
+   • Next cycle notification: 2027
+   • Notes:
+
+═══════════════════════════════════════
+🚫 EXCLUDED (Physical Test / Not Eligible)
+═══════════════════════════════════════
+• Bihar Police Constable — Physical test ❌
+• Bihar Police SI (Daroga) — Physical test ❌
+• BPSSC posts — Physical test ❌
+• BSSC CGL-4 current cycle — Graduate needed ❌
+
+═══════════════════════════════════════
+🌐 OFFICIAL LINKS
+═══════════════════════════════════════
+• bpsc.bih.nic.in — BPSC Civil Services
+• bssc.bihar.gov.in — BSSC Inter Level, CGL
+• csbc.bih.nic.in — Bihar Police (skip for now)"></textarea>
+    </div>
+  </div>
+
+  <!-- IT Notebook -->
+  <div class="nb-panel" id="nb-it">
+    <div class="nb-panel-inner">
+      <div class="nb-panel-toolbar">
+        <span>💻 IT Companies — Placement Tracking, Test Prep, Contacts</span>
+        <button class="nb-save-btn" onclick="saveNote(&#39;it&#39;)">💾 Save</button>
+      </div>
+      <textarea class="nb-textarea" id="note-it" placeholder="Write your IT company notes here...
+
+SUGGESTED STRUCTURE:
+═══════════════════════════════════════
+📋 COMPANY TRACKING
+═══════════════════════════════════════
+1. TCS iON NQT
+   • Deadline: Apr 2, 2026 | Exam: Apr 14, 2026
+   • Registered: Yes / No
+   • Score Target: 70%+
+   • Notes:
+
+2. Infosys InfyTQ
+   • Portal: infytq.infosys.com (FREE)
+   • Registered: Yes / No
+   • Target: 65%+ for certification
+   • Notes:
+
+3. Wipro Elite NTH
+   • Registration: Aug–Nov 2026
+   • Salary: ₹3.5 LPA (Elite) / ₹6.5 LPA (Turbo)
+   • Notes:
+
+4. LTIMindtree
+   • Registration: Aug–Sep 2026
+   • Salary: ₹5–7 LPA
+   • Notes:
+
+5. Cognizant GenC
+   • Registration: Sep–Dec 2026
+   • Salary: ₹4–8 LPA
+   • Notes:
+
+6. Accenture
+   • Registration: Sep–Dec 2026
+   • Salary: ₹4.5 LPA
+   • Notes:
+
+═══════════════════════════════════════
+🎯 DSA PREP TRACKER (LeetCode)
+═══════════════════════════════════════
+• Problems Solved: ___
+• Target: 150+ by Aug 2026
+• Weak Topics:
+• Strong Topics:
+
+═══════════════════════════════════════
+📁 PROJECTS TO HIGHLIGHT
+═══════════════════════════════════════
+• FitoGlobe (Full Stack + ML)
+• Dollar Hegemony (ML Research)
+• India Crime Analytics
+• GitHub: github.com/ayushcmd"></textarea>
+    </div>
+  </div>
+
+  <!-- JLPT Notebook -->
+  <div class="nb-panel" id="nb-jlpt">
+    <div class="nb-panel-inner">
+      <div class="nb-panel-toolbar">
+        <span>🇯🇵 JLPT &amp; Japanese Language — Study Plan, Progress, Resources</span>
+        <button class="nb-save-btn" onclick="saveNote(&#39;jlpt&#39;)">💾 Save</button>
+      </div>
+      <textarea class="nb-textarea" id="note-jlpt" placeholder="Write your JLPT / Japanese notes here...
+
+SUGGESTED STRUCTURE:
+═══════════════════════════════════════
+🎯 MY JLPT PLAN
+═══════════════════════════════════════
+• July 2026 Exam: Targeting Level ___
+• December 2026 Exam: Targeting Level ___
+• Registration Site: jlptonline.co.in
+• Exam Fee: ~₹1,500–2,000
+
+JLPT Levels:
+N5 → Beginner (800 words, 100 Kanji)
+N4 → Elementary (1,500 words, 300 Kanji)
+N3 → Intermediate (3,750 words, 650 Kanji) — aim before MEXT interview
+N2 → Upper-Intermediate
+N1 → Advanced (business level)
+
+═══════════════════════════════════════
+📚 STUDY RESOURCES
+═══════════════════════════════════════
+Free:
+• NHK Web Easy (nhk.or.jp/easy) — news in simple Japanese
+• Jisho.org — best Japanese dictionary
+• Anki — flashcards for vocab
+• Duolingo / Tae Kim Grammar Guide
+
+Books:
+• Genki I &amp; II (standard textbook)
+• Nihongo So-Matome N5/N4
+
+Apps:
+• WaniKani — Kanji learning
+• BunPro — grammar SRS
+
+═══════════════════════════════════════
+📅 PROGRESS LOG
+═══════════════════════════════════════
+• Started learning: ___
+• Hiragana mastered: Yes / No
+• Katakana mastered: Yes / No
+• Kanji learned so far: ___
+• Vocab known: ___
+
+═══════════════════════════════════════
+🎌 WHY JLPT MATTERS FOR YOU
+═══════════════════════════════════════
+• MEXT UG 2027 interview advantage
+• GKS Korea — differentiator (not required but impresses)
+• JLPT N3+ = work eligibility in Japan after graduation"></textarea>
+    </div>
+  </div>
+
+  <!-- Scholarships Notebook -->
+  <div class="nb-panel active" id="nb-schol">
+    <div class="nb-panel-inner">
+      <div class="nb-panel-toolbar">
+        <span>🌏 International Scholarships — Deadlines, Documents, Strategy</span>
+        <button class="nb-save-btn" onclick="saveNote(&#39;schol&#39;)">💾 Save</button>
+      </div>
+      <textarea class="nb-textarea" id="note-schol" placeholder="Write your Scholarship notes here...
+
+SUGGESTED STRUCTURE:
+═══════════════════════════════════════
+🎯 PRIMARY TARGETS (2026)
+═══════════════════════════════════════
+1. MEXT UG (Embassy Route) 🇯🇵
+   • Deadline: ~May 2026
+   • Status: Not Applied / Preparing / Applied
+   • Fully funded: ¥117,000/month + tuition + airfare
+   • Apply at: Embassy of Japan, New Delhi
+   • Documents needed:
+     - Academic transcripts (10th, 12th)
+     - Personal statement (study plan)
+     - Letter of recommendation x2
+     - Passport copy
+     - Health certificate
+   • Notes:
+
+2. GKS UG 2027 (Korea) 🇰🇷
+   • Apply Window: Sep 15 – Oct 31, 2026
+   • Fully funded: tuition + ₹57,000/month + flight + 1yr Korean language
+   • Age: Under 25 ✅
+   • No bachelor degree needed ✅
+   • Apply: studyinkorea.go.kr (Embassy Track or University Track)
+   • Documents needed:
+     - High school certificate + transcripts
+     - UG enrollment certificate
+     - 2 recommendation letters
+     - Personal statement
+     - Health certificate
+   • Notes:
+
+═══════════════════════════════════════
+📋 OTHER TARGETS (Research for 2027)
+═══════════════════════════════════════
+3. Erasmus Mundus (EU) 🇪🇺
+   • For Masters — after graduation (2027)
+   • Deadline: Jan–Feb each year
+   • ₹90,000/month + tuition + travel
+   • Needs bachelor degree → apply 2028 cycle
+   • Start researching programs NOW: erasmus-plus.ec.europa.eu
+
+4. DAAD IIT Sandwich 🇩🇪
+   • For IIT students — semester in Germany
+   • Deadline: ~Oct 30, 2026
+   • Stipend: €934/month + travel
+   • Apply at: daad.in
+   • Need: IIT supervisor recommendation
+
+5. VLIR-UOS (Belgium) 🇧🇪
+   • Masters scholarships
+   • After graduation (2027)
+   • Research: vliruos.be
+
+═══════════════════════════════════════
+📁 COMMON DOCUMENTS CHECKLIST
+═══════════════════════════════════════
+[ ] 10th Marksheet + Certificate
+[ ] 12th Marksheet + Certificate
+[ ] Ongoing UG Enrollment Certificate
+[ ] Passport (valid 2+ years)
+[ ] Recommendation Letters x2 (professor/principal)
+[ ] Statement of Purpose / Study Plan
+[ ] English proficiency proof (if needed)
+[ ] Health Certificate
+[ ] Bank Statement (for some scholarships)"></textarea>
+    </div>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="nb-saved-toast" id="savedToast">✅ Notes saved!</div>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────────────────
+const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+const MONTH_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+let editMode = false;
+let editingId = null;
+let currentFilter = 'all';
+
+// Event schema: { id, month, title, date, status, cat, note, tentative }
+let events = [
+
+  // ─── JANUARY ──────────────────────────────────────────────────
+  { id:'j1', month:1, title:'GKS UG 2026 Results (Info)', date:'Jan 2026', status:'ev-info', cat:'schol', tentative:false,
+    note:'Korea GKS Undergraduate 2026 results typically announced in January. If you had applied (Sept-Oct 2025 window), check studyinkorea.go.kr. The 2027 cycle opens Sept 15, 2026.' },
+
+  // ─── FEBRUARY ─────────────────────────────────────────────────
+  { id:'f1', month:2, title:'SSC GD Exam — POSTPONED', date:'Was Feb 23', status:'ev-info', cat:'central', tentative:false,
+    note:'✅ ALREADY APPLIED. SSC GD Constable 2026 exam postponed from Feb 23. Revised dates expected April–May 2026. ⚠️ NOTE: This exam has a Physical Efficiency Test — you applied before knowing this. Just appear for written exam. Keep checking ssc.gov.in.' },
+
+  // ─── MARCH ────────────────────────────────────────────────────
+  { id:'m1', month:3, title:'RRB NTPC 12th Level Exam', date:'Mar 16–27, 2026', status:'ev-applied', cat:'central', tentative:false,
+    note:'✅ ALREADY APPLIED. RRB NTPC CEN 07/2025 — 12th Pass (UG Level). Posts: Junior Clerk cum Typist, Account Clerk cum Typist, Junior Time Keeper, Commercial cum Ticket Clerk. Exam ONGOING. Check admit card at rrbapply.gov.in. Salary: Pay Level 2–3 → ₹19,900–₹25,500/month. No physical test ✅.' },
+  // ─── APRIL ────────────────────────────────────────────────────
+  { id:'a1', month:4, title:'TCS iON NQT — DEADLINE', date:'Apr 2, 2026', status:'ev-apply', cat:'it', tentative:false,
+    note:'Last date to register for April TCS iON NQT. Visit tcsion.com → Select "Learners-Youth" → Choose IT variant (₹999) or Cognitive (₹599). Score valid 2 years — useful when you graduate in 2027. You are eligible as 2nd year pre-final student.' },
+  { id:'a2', month:4, title:'TCS iON NQT Exam', date:'Apr 14, 2026', status:'ev-exam', cat:'it', tentative:false,
+    note:'TCS National Qualifier Test. Duration: 190 mins. Sections: Numerical, Verbal, Reasoning (25 min each), Advanced Quant+Reasoning (25 min), Coding (90 min). No negative marking. Score valid 2 years. Mode: At-home or in-centre.' },
+
+  { id:'a5', month:4, title:'SSC GD Exam — Tentative', date:'Apr–May 2026', status:'ev-applied', cat:'central', tentative:true,
+    note:'✅ ALREADY APPLIED. SSC GD Constable exam rescheduled to April-May 2026. Written exam first → then PET/PST for shortlisted. Just appear for written — you\'ve done the hard part. ssc.gov.in for hall ticket.' },
+  { id:'a6', month:4, title:'🔴 SSC Phase 14 — DEADLINE', date:'Apr 30, 2026', status:'ev-apply', cat:'central', tentative:false,
+    note:'🚨 URGENT — APPLY BEFORE APR 30. SSC Selection Post Phase 14. Form opens Mar 31, closes Apr 30. 2,400+ vacancies. Many 12th pass posts available ✅. Age: 18–42 years (wider range). No interview, no physical test ✅. CBT only → DV. Salary: Pay Level 1–7 (₹18,000–₹44,900/month). Apply NOW at ssc.gov.in → OTR login → Phase XIV.' },
+  { id:'chsl_form', month:4, title:'SSC CHSL 2026 — Form Opens', date:'Apr 30, 2026', status:'ev-apply', cat:'central', tentative:false,
+    note:'SSC CHSL 2026 form opens April 30. Deadline: May 31. 12th Pass ✅ eligible. Posts: LDC (₹19,900), JSA (₹19,900), Postal Assistant/Sorting Assistant (₹25,500), DEO (₹25,500–₹29,200). Appearing candidates allowed ✅ (must have passed by DV). No physical test ✅. Negative marking: -0.5. Competition: HIGH (50+ lakh applicants). DEO post = CS background advantage. Apply at ssc.gov.in.' },
+  // ─── MAY ──────────────────────────────────────────────────────
+  { id:'my1', month:5, title:'RRB NTPC 12th Level Exam', date:'~May 2026', status:'ev-applied', cat:'central', tentative:true,
+    note:'✅ ALREADY APPLIED. RRB NTPC CEN 07/2025 — 12th pass UG level. CBT-1 tentatively May 2026. Posts: Junior Clerk, Account Clerk, Commercial cum Ticket Clerk. Salary: ₹19,900–₹25,500/month. No physical test ✅. Check rrbapply.gov.in for admit card. Appearing candidates allowed for exam but need passing certificate at DV.' },
+  { id:'chsl_deadline', month:5, title:'SSC CHSL 2026 — Form Deadline', date:'May 31, 2026', status:'ev-apply', cat:'central', tentative:false,
+    note:'LAST DATE to apply for SSC CHSL 2026. Apply at ssc.gov.in. Posts: LDC, JSA, PA/SA, DEO. 12th Pass ✅. Age: 18–27 years. Fee: ₹100 (General), Free for Women/SC/ST/PwD. Salary: ₹19,900–₹29,200/month. Exam: July–September 2026.' },
+  { id:'my3', month:5, title:'MEXT 2027 Embassy Deadline', date:'~May 2026', status:'ev-apply', cat:'schol', tentative:true,
+    note:'CRITICAL! MEXT Embassy Recommended UG Scholarship for 2027 enrollment — deadline approximately May 2026 for India. Fully funded: ¥117,000/month stipend + tuition + airfare. 5-year scholarship (1 yr Japanese prep + 4 yr UG). Apply at Embassy of Japan, New Delhi. You are eligible as current UG student. No Japanese needed initially.' },
+
+  // ─── JUNE ─────────────────────────────────────────────────────
+  { id:'mts_notif', month:6, title:'SSC MTS 2026 — Form Opens', date:'Jun 30, 2026', status:'ev-apply', cat:'central', tentative:false,
+    note:'SSC MTS (Multi-Tasking Staff) 2026 notification + form opens June 30. 10th Pass ✅ eligible (you are 12th pass = easily qualified). Age: 18–25 years. Fee: ₹100 (General), Free for Women/SC/ST/PwD. 7,000–10,000+ vacancies. No physical test for MTS posts ✅. CBT only → DV. Salary: Pay Level 1 → ₹18,000–₹22,000/month. Easiest paper of all SSC exams. Apply at ssc.gov.in.' },
+  { id:'jn3', month:6, title:'BSSC Inter Level Prelims (Info)', date:'Jun–Jul 2026', status:'ev-info', cat:'bihar', tentative:true,
+    note:'BSSC 2nd Inter Level — 26,426 vacancies (LDC, Panchayat Secretary, Revenue Employee). 12th pass eligible but Bihar domicile required — you are CG domicile so you will be treated as General/UR category. Form closed Feb 2026 (missed). NEXT CYCLE — watch bssc.bihar.gov.in. Salary: ₹19,900–₹25,000/month.' },
+  { id:'cg_deo_form', month:5, title:'CG DEO — Form Deadline', date:'~May 2026', status:'ev-apply', cat:'cg', tentative:true,
+    note:'CG Vyapam Data Entry Operator recruitment. Form typically closes ~4–6 weeks before exam date. Qualification: 12th Pass + typing speed 5000 KDPH. Age: 18–35 years (General). CG domicile required. Fee: ₹0 for CG domicile. Apply at vyapamcg.cgstate.gov.in. Your BSc CS background = big advantage.' },
+  { id:'cg_deo_exam', month:6, title:'CG DEO Exam (Data Entry Operator)', date:'Jun 28, 2026', status:'ev-exam', cat:'cg', tentative:false,
+    note:'CG Vyapam Data Entry Operator Exam — confirmed on official exam calendar. Qualification: 12th Pass + 5000 KDPH typing. Salary: Pay Level 4–5 → ₹19,500–₹25,000/month. Selection: Written Test → Typing Test → DV. Your CS background = highest advantage of any CG exam. Syllabus: GK, Hindi, Maths, Reasoning, Computer Knowledge.' },
+  // ─── JULY ─────────────────────────────────────────────────────
+  { id:'jl1', month:7, title:'🇯🇵 JLPT Exam — July Session', date:'Jul 6, 2026 (SUN)', status:'ev-exam', cat:'lang', tentative:false,
+    note:'CONFIRMED EXAM DATE — JLPT July 2026. First Sunday of July. Japan Language Proficiency Test. Centers across India. Carry admit card + ID proof. JLPT score boosts your MEXT scholarship application. Aim for N4/N5 if beginner. Results: September 2026.' },
+  { id:'jl2', month:7, title:'BPSC 72nd CCE Prelims (Info)', date:'Jul 26, 2026', status:'ev-info', cat:'bihar', tentative:false,
+    note:'INFO ONLY — for 2027 planning. BPSC 72nd CCE Prelims. Qualification: Graduate ❌ (you need Aug 2027). ~1,000+ vacancies. Posts: Deputy Collector, DSP, BDO, Naib Tehsildar. Salary: ₹35,400–₹56,100/month. Bihar domicile preferred for reserved seats. CG domicile = General category. Target BPSC 73rd cycle after graduation. psc.bih.nic.in.' },
+  { id:'jl3', month:7, title:'SSC CHSL 2026 — Exam (Tier 1)', date:'Jul–Sep 2026', status:'ev-exam', cat:'central', tentative:true,
+    note:'SSC CHSL 2026 Tier 1 CBT exam window July–September 2026. YOU ARE ELIGIBLE ✅ — 12th Pass. Posts: LDC, JSA, DEO, PA/SA. Salary: ₹19,900–₹29,200/month. Syllabus: Reasoning (25Q), GK (25Q), Maths (25Q), English (25Q). Negative marking: -0.50. DEO post = CS/typing advantage. No physical test ✅.' },
+  { id:'mts_deadline', month:7, title:'SSC MTS 2026 — Form Deadline', date:'Jul 31, 2026', status:'ev-apply', cat:'central', tentative:false,
+    note:'LAST DATE to apply for SSC MTS 2026 at ssc.gov.in. 10th Pass eligible ✅, you are 12th pass. Age: 18–25 years. 7,000–10,000+ vacancies. No physical test for MTS posts ✅. Easiest SSC exam. Do not miss this.' },
+
+  // ─── AUGUST ───────────────────────────────────────────────────
+  { id:'ag1', month:8, title:'JLPT December — Registration Opens', date:'~Aug 2026', status:'ev-apply', cat:'lang', tentative:true,
+    note:'JLPT December 2026 registration typically opens August. Exam date: December 6, 2026 (confirmed). Register at jlptonline.co.in. If you gave N5 in July and passed, aim for N4 in December. JLPT results from July session come in September — use that to decide.' },
+  { id:'ag2', month:8, title:'Wipro Elite NTH Registration', date:'Aug–Nov 2026', status:'ev-apply', cat:'it', tentative:true,
+    note:'Wipro Elite NTH / Turbo drives open August–November for 2027 batch. Salary: ₹3.5 LPA (Elite) → ₹6.5 LPA (Turbo). Qualification: 60% throughout, no backlogs. Register at careers.wipro.com. Sections: Aptitude, Written English (hard!), Coding (2 problems). Practice essay writing!' },
+  { id:'ag3', month:8, title:'LTIMindtree Registration Opens', date:'Aug–Sep 2026', status:'ev-apply', cat:'it', tentative:true,
+    note:'LTIMindtree hiring registration for 2027 batch opens August-September. Salary: ₹5–7 LPA. Register at careers.ltimindtree.com. 60% throughout, CS/IT preferred. Test: Aptitude + Coding. About 50% shortlisted candidates progress to interview. Apply early as slots fill fast.' },
+  // ─── SEPTEMBER ────────────────────────────────────────────────
+  { id:'sp1', month:9, title:'GKS UG 2027 Applications OPEN', date:'Sep 15, 2026', status:'ev-apply', cat:'schol', tentative:false,
+    note:'🔥 KEY OPPORTUNITY! Global Korea Scholarship (GKS) Undergraduate 2027 cycle opens Sep 15, 2026. Fully funded: tuition + ₹57,000/month + flight + language training (1 yr Korean). Age limit: under 25 ✅. No bachelor\'s needed (you don\'t have one) ✅. Apply via Embassy Track (Korean Embassy, New Delhi) or University Track (studyinkorea.go.kr). India quota: 26 embassy + 47 university seats.' },
+  { id:'sp2', month:9, title:'Cognizant GenC / Accenture Drives', date:'Sep–Dec 2026', status:'ev-apply', cat:'it', tentative:true,
+    note:'Cognizant GenC (₹4 LPA), GenC Elevate (₹5 LPA), GenC Pro (₹8 LPA) and Accenture ASE (₹4.5 LPA) off-campus drives open September onwards for 2027 batch. Register at careers.cognizant.com and accenture.com/careers. 60% throughout required. Test: Aptitude + Coding + Psychometric (Accenture).' },
+  { id:'sp4', month:9, title:'BSSC Inter Level — Next Cycle Watch', date:'Sep–Dec 2026', status:'ev-info', cat:'bihar', tentative:true,
+    note:'BSSC 2nd Inter Level next recruitment notification expected Sep–Dec 2026. 12th Pass eligible ✅. Bihar domicile — you (CG domicile) = General/UR category only. No reserved benefits. But you can still apply and compete. Posts: LDC, Revenue Employee, Panchayat Secretary. Salary: ₹19,900–₹25,000/month. Watch bssc.bihar.gov.in.' },
+  // ─── OCTOBER ──────────────────────────────────────────────────
+  { id:'oc1', month:10, title:'GKS UG 2027 — DEADLINE', date:'Oct 31, 2026', status:'ev-apply', cat:'schol', tentative:false,
+    note:'FINAL DEADLINE for GKS Undergraduate 2027. Submit to Korean Embassy (Embassy Track) or chosen Korean university (University Track). Documents needed: High school + UG transcripts, personal statement, recommendation letters, health certificate, passport copy. studyinkorea.go.kr.' },
+  { id:'oc2', month:10, title:'DAAD IIT Sandwich Deadline', date:'Oct 30, 2026', status:'ev-apply', cat:'schol', tentative:true,
+    note:'DAAD-IIT Master Sandwich Scholarship deadline ~October 30, 2026. Allows IIT students to do a semester at a German university with full funding (€934/month + travel). Contact daad.in for exact deadline. Needs: Recommendation from IIT Patna supervisor, German university acceptance.' },
+  { id:'oc3', month:10, title:'JLPT December — Reg Deadline', date:'~Oct 2026', status:'ev-apply', cat:'lang', tentative:true,
+    note:'Last date to register for JLPT December 2026 exam. jlptonline.co.in. Exam date: December 6 (confirmed). Registration typically closes ~6 weeks before exam. Fee: ~₹1,500–2,000.' },
+  { id:'mts_exam', month:9, title:'SSC MTS 2026 — Exam', date:'Sep–Nov 2026', status:'ev-exam', cat:'central', tentative:true,
+    note:'SSC MTS 2026 CBT exam window September–November 2026. 10th pass eligible ✅ (you are 12th pass). Age: 18–25 years. 7,000–10,000+ vacancies. Paper: Reasoning (20Q), English (25Q), Maths (25Q), GK (25Q). Time: 90 mins. No negative marking in Paper 1. Easiest SSC exam to crack. No physical for MTS ✅.' },
+  { id:'chsl_result', month:10, title:'SSC Phase 14 Exam Result (Info)', date:'~Oct 2026', status:'ev-info', cat:'central', tentative:true,
+    note:'SSC Selection Post Phase 14 results expected ~October 2026 (if exam held May-July). Check ssc.gov.in for scorecards and merit list. Qualified candidates called for DV. Keep all original documents ready.' },
+  { id:'cg_ag3_form', month:7, title:'CG Asst Grade-3 — Form Deadline', date:'~Jul–Aug 2026', status:'ev-apply', cat:'cg', tentative:true,
+    note:'CG Vyapam Assistant Grade-3 form typically closes 6–8 weeks before exam. Qualification: 12th Pass. Age: 18–35 years. Fee waived for CG domicile. Apply at vyapamcg.cgstate.gov.in. This is the BIGGEST batch — largest number of vacancies (500–3000 posts across departments). Start preparing: CG GK, Hindi, Maths, Reasoning.' },
+  { id:'cg_ag3_sep', month:9, title:'CG Assistant Grade-3 Exam (Batch 1)', date:'Sep 6, 2026', status:'ev-exam', cat:'cg', tentative:false,
+    note:'CG Vyapam Assistant Grade-3 — Batch 1. CONFIRMED on official calendar. Qualification: 12th Pass. Age: 18–35 years (General). Salary: Pay Level 3–4 → ₹19,500–₹22,000/month. Selection: Written MCQ only → Document Verification. No physical test ✅. Departments: Revenue, Health, Education, Forest, Agriculture — desk/office work. Syllabus: CG GK, Hindi, General Maths, Reasoning, Computer.' },
+  { id:'cg_patwari_form', month:9, title:'CG Patwari — Form Expected', date:'~Sep–Oct 2026', status:'ev-apply', cat:'cg', tentative:true,
+    note:'🔥 MOST IMPORTANT CG EXAM FOR YOU. CG Patwari recruitment notification expected Sep-Oct 2026. Qualification: 12th Pass + 1-year Computer Diploma (CPCT/DEO certificate). Age: 18–40 years ✅. Salary: Pay Level 6 → ₹25,300–₹82,200 basic (gross ~₹40,000–₹55,000/month) — BEST salary for 12th pass. Vacancies: 1,000–2,000+. ACTION NOW: Get enrolled in a 1-year Computer Diploma course immediately if you don\'t have one. vyapamcg.cgstate.gov.in.' },
+  { id:'cg_stor_exam', month:11, title:'CG Storekeeper (Bhandarpalak) Exam', date:'Nov 22, 2026', status:'ev-exam', cat:'cg', tentative:false,
+    note:'CG Vyapam Storekeeper exam — CONFIRMED on official calendar. Qualification: 12th Pass. Age: 18–35 years. Salary: Pay Level 3–4 → ₹19,500–₹22,000/month. Selection: Written only → DV. No physical test ✅. Departments: Agriculture, Food & Civil Supplies. Low to medium competition — less popular post = better chances.' },
+  { id:'cg_ag3_dec1', month:12, title:'CG Assistant Grade-3 Exam (Batch 2)', date:'Dec 6, 2026', status:'ev-exam', cat:'cg', tentative:false,
+    note:'CG Vyapam Assistant Grade-3 — Batch 2. CONFIRMED on official calendar. Same eligibility as Sep batch. 12th Pass. Salary: ₹19,500–₹22,000/month. Apply if you missed Sep batch or want another attempt. Written MCQ → DV only. No physical test ✅.' },
+  { id:'cg_ag3_dec2', month:12, title:'CG Assistant Grade-3 Exam (Batch 3)', date:'Dec 20, 2026', status:'ev-exam', cat:'cg', tentative:false,
+    note:'CG Vyapam Assistant Grade-3 — Batch 3. CONFIRMED on official calendar. Third and final batch for 2026. Qualification: 12th Pass. Age: 18–35 years. Salary: ₹19,500–₹22,000/month. Written MCQ only. No physical test ✅. This batch typically covers remaining departments not covered in earlier batches.' },
+  { id:'cg_patwari_exam', month:12, title:'CG Patwari Exam — Expected (Form in 2026)', date:'Dec 2026 / Jan 2027', status:'ev-apply', cat:'cg', tentative:true,
+    note:'CG Patwari exam expected Dec 2026 or early Jan 2027 (form released Sep-Oct 2026). APPLY IN 2026 — exam may fall in early 2027. Qualification: 12th Pass + Computer Diploma. Salary: ₹25,300–₹82,200 basic. Most important CG exam for 12th pass CS students. Negative marking: 0.25 per wrong answer. Start preparing CG GK, Hindi, Maths, Computer seriously.' },
+
+  // ─── NOVEMBER ─────────────────────────────────────────────────
+  { id:'nv1', month:11, title:'MEXT Uni Recommended 2027 — Apply', date:'Nov 2026', status:'ev-apply', cat:'schol', tentative:true,
+    note:'MEXT University Recommended 2027 scholarship applications open at most Japanese universities in November 2026. Apply directly to the Japanese university you want. Popular for CS/Data: Tokyo, Osaka, Tohoku, Kyushu, Nagoya, APU. Fully funded: ¥117,000/month + tuition + airfare. No Japanese required initially. Check each university\'s international admissions page.' },
+  // ─── DECEMBER ─────────────────────────────────────────────────
+  { id:'dc1', month:12, title:'🇯🇵 JLPT Exam — December Session', date:'Dec 6, 2026 (SUN)', status:'ev-exam', cat:'lang', tentative:false,
+    note:'CONFIRMED EXAM DATE — JLPT December 2026. First Sunday of December. Carry admit card + ID proof. If you gave N5 in July and passed, aim for N4 here. N3 is considered "working level" Japanese — strongly recommended before MEXT 2027 interview. Results: February 2027.' },
+  { id:'dc2', month:12, title:'GKS UG 2027 Results', date:'~Dec 2026', status:'ev-info', cat:'schol', tentative:true,
+    note:'GKS UG 2027 scholarship results expected December 2026 (if applied in Sep-Oct 2026). Check studyinkorea.go.kr or Korean Embassy India website. Selected candidates proceed for Korean language training starting March 2027.' },
+  { id:'dc3', month:12, title:'SSC GD 2027 Notification Expected', date:'~Dec 2026', status:'ev-info', cat:'central', tentative:true,
+    note:'SSC GD Constable 2027 cycle notification expected around December 2026 (based on calendar pattern). You\'ll still be 12th pass eligible. Watch ssc.gov.in.' },
+];
+
+// ─── RENDER ─────────────────────────────────────────────────────────────────
+function render() {
+  const root = document.getElementById('timelineRoot');
+  root.innerHTML = '';
+
+  MONTHS.forEach((m, mi) => {
+    const monthIdx = mi + 1;
+    const col = document.createElement('div');
+    col.className = 'month-col';
+
+    const isCurrentMonth = monthIdx === 3; // March = current (adjust if needed)
+
+    col.innerHTML = `
+      <div class="month-header" style="${isCurrentMonth ? 'border-color:#3b82f6;background:#0f1a2e;' : ''}">
+        <span class="month-name" style="${isCurrentMonth ? 'color:#60a5fa;' : ''}">${m}</span>
+        <span class="month-num">${isCurrentMonth ? '📍 NOW' : '2026'}</span>
+      </div>
+      <div class="month-body" id="month-${monthIdx}">
+        ${isCurrentMonth ? '<div class="today-marker">📍 YOU ARE HERE</div>' : ''}
+      </div>
+    `;
+
+    root.appendChild(col);
+  });
+
+  // Place events
+  const filtered = currentFilter === 'all'
+    ? events
+    : events.filter(e => e.cat === currentFilter);
+
+  filtered.forEach(ev => {
+    const body = document.getElementById(`month-${ev.month}`);
+    if (!body) return;
+    const card = createCard(ev);
+    body.appendChild(card);
+  });
+
+  // Add "+" buttons in edit mode
+  if (editMode) {
+    MONTHS.forEach((_, mi) => {
+      const body = document.getElementById(`month-${mi+1}`);
+      if (!body) return;
+      const btn = document.createElement('button');
+      btn.className = 'add-event-btn';
+      btn.textContent = '+ Add Event';
+      btn.onclick = () => openAddModal(mi+1);
+      body.appendChild(btn);
+    });
+  }
+
+  updateStats();
+}
+
+function createCard(ev) {
+  const card = document.createElement('div');
+  card.className = `event-card ${ev.status}`;
+  card.dataset.id = ev.id;
+
+  const catLabel = { central:'Central Govt', cg:'CG State', bihar:'Bihar', it:'IT / Campus', schol:'Scholarship', lang:'JLPT / Language' }[ev.cat] || ev.cat;
+  const catClass = { central:'tag-central', cg:'tag-cg', bihar:'tag-bihar', it:'tag-it', schol:'tag-schol', lang:'tag-lang' }[ev.cat] || 'tag-gov';
+
+  const statusLabel = { 'ev-applied':'Applied ✓', 'ev-apply':'Apply!', 'ev-exam':'Exam', 'ev-prep':'Action', 'ev-info':'Info' }[ev.status] || '';
+  const statusClass = { 'ev-applied':'status-applied', 'ev-apply':'status-apply', 'ev-exam':'status-exam', 'ev-prep':'status-prep', 'ev-info':'status-info' }[ev.status] || '';
+
+  card.innerHTML = `
+    <span class="ev-tag ${catClass}">${catLabel}</span>
+    ${ev.tentative ? '<span class="ev-status status-tentative">TENTATIVE</span>' : `<span class="ev-status ${statusClass}">${statusLabel}</span>`}
+    <div class="ev-title">${ev.title}</div>
+    <div class="ev-date">${ev.date}</div>
+    ${ev.note ? `<div class="ev-note">${ev.note}</div>` : ''}
+  `;
+
+  card.onclick = () => {
+    if (editMode) {
+      openEditModal(ev.id);
+    } else {
+      card.classList.toggle('expanded');
+    }
+  };
+
+  return card;
+}
+
+// ─── STATS ──────────────────────────────────────────────────────────────────
+function updateStats() {
+  document.getElementById('countApplied').textContent = events.filter(e => e.status === 'ev-applied').length;
+  document.getElementById('countApply').textContent   = events.filter(e => e.status === 'ev-apply').length;
+  document.getElementById('countExam').textContent    = events.filter(e => e.status === 'ev-exam').length;
+  document.getElementById('countPrep').textContent    = events.filter(e => e.status === 'ev-prep').length;
+}
+
+// ─── EDIT MODE ──────────────────────────────────────────────────────────────
+function toggleEditMode() {
+  editMode = !editMode;
+  document.querySelector('[onclick="toggleEditMode()"]').classList.toggle('active', editMode);
+  document.querySelector('[onclick="toggleEditMode()"]').textContent = editMode ? '✅ Edit Mode ON' : '✏️ Edit Mode';
+  render();
+}
+
+// ─── MODAL ──────────────────────────────────────────────────────────────────
+function openEditModal(id) {
+  const ev = events.find(e => e.id === id);
+  if (!ev) return;
+  editingId = id;
+
+  document.getElementById('modalTitle').textContent = 'Edit Event';
+  document.getElementById('editTitle').value     = ev.title;
+  document.getElementById('editDate').value      = ev.date;
+  document.getElementById('editStatus').value    = ev.status;
+  document.getElementById('editCat').value       = ev.cat;
+  document.getElementById('editNote').value      = ev.note || '';
+  document.getElementById('editTentative').value = ev.tentative ? 'true' : 'false';
+  document.getElementById('editMonth').value     = ev.month;
+  document.getElementById('deleteBtn').style.display = 'inline-block';
+
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function openAddModal(month) {
+  editingId = null;
+  document.getElementById('modalTitle').textContent = `Add Event — ${MONTH_FULL[month-1]}`;
+  document.getElementById('editTitle').value     = '';
+  document.getElementById('editDate').value      = '';
+  document.getElementById('editStatus').value    = 'ev-apply';
+  document.getElementById('editCat').value       = 'central';
+  document.getElementById('editNote').value      = '';
+  document.getElementById('editTentative').value = 'false';
+  document.getElementById('editMonth').value     = month;
+  document.getElementById('deleteBtn').style.display = 'none';
+
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function closeModalOnOverlay(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function saveEvent() {
+  const title     = document.getElementById('editTitle').value.trim();
+  const date      = document.getElementById('editDate').value.trim();
+  const status    = document.getElementById('editStatus').value;
+  const cat       = document.getElementById('editCat').value;
+  const note      = document.getElementById('editNote').value.trim();
+  const tentative = document.getElementById('editTentative').value === 'true';
+  const month     = parseInt(document.getElementById('editMonth').value) || 1;
+
+  if (!title) { alert('Please enter a title.'); return; }
+
+  if (editingId) {
+    const ev = events.find(e => e.id === editingId);
+    if (ev) Object.assign(ev, { title, date, status, cat, note, tentative, month });
+  } else {
+    events.push({
+      id: 'custom_' + Date.now(),
+      month, title, date, status, cat, note, tentative
+    });
+  }
+
+  closeModal();
+  render();
+}
+
+function deleteEvent() {
+  if (!editingId) return;
+  if (!confirm('Delete this event?')) return;
+  events = events.filter(e => e.id !== editingId);
+  closeModal();
+  render();
+}
+
+// ─── FILTER ─────────────────────────────────────────────────────────────────
+function filterCat(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+// ─── EXPORT / IMPORT ────────────────────────────────────────────────────────
+function exportData() {
+  const blob = new Blob([JSON.stringify(events, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'ayush_timeline_2026.json';
+  a.click();
+}
+
+function importData(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (Array.isArray(data)) {
+        events = data;
+        render();
+        alert('Timeline loaded successfully!');
+      }
+    } catch { alert('Invalid JSON file.'); }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+// ─── NOTEBOOK ────────────────────────────────────────────────────────────────
+const NB_KEYS = { cg:'nb_cg', central:'nb_central', bihar:'nb_bihar', it:'nb_it', jlpt:'nb_jlpt', schol:'nb_schol' };
+
+function loadNotebooks() {
+  Object.entries(NB_KEYS).forEach(([key, storageKey]) => {
+    const saved = localStorage.getItem(storageKey);
+    if (saved) {
+      const ta = document.getElementById('note-' + key);
+      if (ta) ta.value = saved;
+    }
+  });
+}
+
+function saveNote(key) {
+  const ta = document.getElementById('note-' + key);
+  if (!ta) return;
+  localStorage.setItem(NB_KEYS[key], ta.value);
+  showToast();
+}
+
+function switchTab(key, btn) {
+  document.querySelectorAll('.nb-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.nb-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('nb-' + key).classList.add('active');
+}
+
+function showToast() {
+  const toast = document.getElementById('savedToast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+function exportNotebook() {
+  let out = '═══════════════════════════════════════\nAYUSH RAJ — 2026 MASTER NOTEBOOK\n═══════════════════════════════════════\n\n';
+  const labels = { cg:'🟠 CG STATE JOBS', central:'🏛️ CENTRAL GOVT', bihar:'🔴 BIHAR JOBS', it:'💻 IT COMPANIES', jlpt:'🇯🇵 JLPT / JAPANESE', schol:'🌏 SCHOLARSHIPS' };
+  Object.entries(NB_KEYS).forEach(([key, storageKey]) => {
+    const val = localStorage.getItem(storageKey) || document.getElementById('note-' + key)?.value || '';
+    out += `\n${'═'.repeat(40)}\n${labels[key]}\n${'═'.repeat(40)}\n${val}\n`;
+  });
+  const blob = new Blob([out], { type: 'text/plain' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Ayush_2026_Notebook.txt';
+  a.click();
+}
+
+// Auto-save on typing (debounced)
+document.querySelectorAll('.nb-textarea').forEach(ta => {
+  let timer;
+  ta.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      const key = ta.id.replace('note-', '');
+      saveNote(key);
+    }, 1200);
+  });
+});
+
+// ─── INIT ───────────────────────────────────────────────────────────────────
+render();
+loadNotebooks();
+</script>
+
+
+</body></html>
